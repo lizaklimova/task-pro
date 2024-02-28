@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/task-pro/static/css/main.cd2e038f.css",
+    "main.js": "/task-pro/static/js/main.f644e063.js",
+    "index.html": "/task-pro/index.html",
+    "main.cd2e038f.css.map": "/task-pro/static/css/main.cd2e038f.css.map",
+    "main.f644e063.js.map": "/task-pro/static/js/main.f644e063.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cd2e038f.css",
+    "static/js/main.f644e063.js"
+  ]
+}
