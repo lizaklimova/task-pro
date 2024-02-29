@@ -10,10 +10,9 @@ const Filter = ({ width, height, fillColor, strokeColor }) => {
     >
       <path
         d="M14.6668 2H1.3335L6.66683 8.30667V12.6667L9.3335 14V8.30667L14.6668 2Z"
-        stroke-opacity="0.8"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
