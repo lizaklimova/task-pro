@@ -109,8 +109,6 @@ img {
   height: auto;
   border:none;
 }
-
-
 `;
 
 export default GlobalStyles;
