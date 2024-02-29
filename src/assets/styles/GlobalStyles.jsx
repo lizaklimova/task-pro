@@ -110,9 +110,7 @@ img {
   border:none;
 }
 
-svg {
-  fill: currentColor;
-}
+
 `;
 
 export default GlobalStyles;
