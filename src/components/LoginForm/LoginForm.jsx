@@ -10,7 +10,7 @@ import {
 } from './LoginForm.styled';
 
 const LoginForm = () => {
-  const nandleFormSubmit = ms => new Promise(r => setTimeout(r, ms));
+  const handleFormSubmit = ms => new Promise(r => setTimeout(r, ms));
 
   return (
     <Background>
@@ -29,7 +29,7 @@ const LoginForm = () => {
             password: '',
           }}
           onSubmit={async values => {
-            await nandleFormSubmit(500);
+            await handleFormSubmit(500);
             alert(JSON.stringify(values, null, 2));
           }}
         >
