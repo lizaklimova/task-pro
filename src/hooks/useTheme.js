@@ -6,5 +6,6 @@ export const useTheme = () => {
   useLayoutEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
+
   return { theme, setTheme };
 };
