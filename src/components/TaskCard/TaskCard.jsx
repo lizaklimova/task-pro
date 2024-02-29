@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Status from 'components/icons/Status';
 import Pencil from 'components/icons/Pencil';
 import Trash from 'components/icons/Trash';
@@ -8,54 +9,79 @@ import {
   CardDescr,
   InfoWrap,
   BtnsList,
+  CardActionButton,
 } from './TaskCard.styled';
 
 const TaskCard = () => {
+  const [showFullText, setShowFullText] = useState(false);
+  const text =
+    'Create a visually stunning and eye-catching watch dial design that embodies our brands essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design.';
+
+  const handleClick = () => {
+    setShowFullText(!showFullText);
+  };
+
   return (
     <CardItem>
       <Status width={16} height={16} />
       <CardTitle>The Watch Spot Design</CardTitle>
-      <CardDescr>
-        Create a visually stunning and eye-catching watch dial design that
-        embodies our brand's essence of sleek aesthetics and modern elegance.
-        Your design should be unique, innovative, and reflective of the latest
-        trends in watch design.
+      <CardDescr onClick={handleClick}>
+        {showFullText ? text : `${text.slice(0, 100)}...`}
       </CardDescr>
       <hr />
-      <InfoWrap>
-        <div>
-          <h5>Priority</h5>
-          <p>Low</p>
-        </div>
 
-        <div>
-          <h5>Deadline</h5>
-          <span>12/05/2023</span>
-        </div>
-      </InfoWrap>
+      <div>
+        <InfoWrap>
+          <div>
+            <h5>Priority</h5>
+            <p>Low</p>
+          </div>
 
-      <BtnsList>
-        <li>
-          <button type="button">
-            <Bell width={16} height={16} strokeColor={'white'} />
-          </button>
-        </li>
-        <li>
-          <button type="button">
-            <Status width={16} height={16} strokeColor={'white'} />
-          </button>
-        </li>
-        <li>
-          <button type="button">
-            <Pencil width={16} height={16} strokeColor={'white'} />
-          </button>
-        </li>
-        <li>
-          <button type="button">
-            <Trash width={16} height={16} strokeColor={'white'} />
-          </button>
-        </li>
-      </BtnsList>
+          <div>
+            <h5>Deadline</h5>
+            <span>12/05/2023</span>
+          </div>
+        </InfoWrap>
+
+        <BtnsList>
+          <li>
+            <CardActionButton type="button">
+              <Bell
+                width={16}
+                height={16}
+                strokeColor={'rgba(16, 16, 16, 0.5)'}
+              />
+            </CardActionButton>
+          </li>
+          <li>
+            <CardActionButton type="button">
+              <Status
+                width={16}
+                height={16}
+                strokeColor={'rgba(16, 16, 16, 0.5)'}
+              />
+            </CardActionButton>
+          </li>
+          <li>
+            <CardActionButton type="button">
+              <Pencil
+                width={16}
+                height={16}
+                strokeColor={'rgba(16, 16, 16, 0.5)'}
+              />
+            </CardActionButton>
+          </li>
+          <li>
+            <CardActionButton type="button">
+              <Trash
+                width={16}
+                height={16}
+                strokeColor={'rgba(16, 16, 16, 0.5)'}
+              />
+            </CardActionButton>
+          </li>
+        </BtnsList>
+      </div>
     </CardItem>
   );
 };

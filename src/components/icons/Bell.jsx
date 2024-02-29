@@ -1,8 +1,8 @@
 const Bell = ({ width, height, fillColor, strokeColor }) => {
   return (
     <svg
-      width={width}
-      height={height}
+      width={width || null}
+      height={height || null}
       viewBox="0 0 14 16"
       fill="none"
       stroke={strokeColor || null}
