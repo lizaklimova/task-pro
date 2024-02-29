@@ -1,33 +1,43 @@
 import Status from 'components/icons/Status';
+import Pencil from 'components/icons/Pencil';
+import Trash from 'components/icons/Trash';
+import Bell from 'components/icons/Bell';
+import {
+  CardItem,
+  CardTitle,
+  CardDescr,
+  InfoWrap,
+  BtnsList,
+} from './TaskCard.styled';
 
 const TaskCard = () => {
   return (
-    <li>
+    <CardItem>
       <Status width={16} height={16} />
-      <h4>The Watch Spot Design</h4>
-      <p>
+      <CardTitle>The Watch Spot Design</CardTitle>
+      <CardDescr>
         Create a visually stunning and eye-catching watch dial design that
         embodies our brand's essence of sleek aesthetics and modern elegance.
         Your design should be unique, innovative, and reflective of the latest
         trends in watch design.
-      </p>
+      </CardDescr>
       <hr />
-      <div>
+      <InfoWrap>
         <div>
-          <p>Priority</p>
-          <span>Low</span>
+          <h5>Priority</h5>
+          <p>Low</p>
         </div>
 
         <div>
-          <p>Deadline</p>
+          <h5>Deadline</h5>
           <span>12/05/2023</span>
         </div>
-      </div>
+      </InfoWrap>
 
-      <ul>
+      <BtnsList>
         <li>
           <button type="button">
-            <Status width={16} height={16} strokeColor={'white'} />
+            <Bell width={16} height={16} strokeColor={'white'} />
           </button>
         </li>
         <li>
@@ -37,16 +47,16 @@ const TaskCard = () => {
         </li>
         <li>
           <button type="button">
-            <Status width={16} height={16} strokeColor={'white'} />
+            <Pencil width={16} height={16} strokeColor={'white'} />
           </button>
         </li>
         <li>
           <button type="button">
-            <Status width={16} height={16} strokeColor={'white'} />
+            <Trash width={16} height={16} strokeColor={'white'} />
           </button>
         </li>
-      </ul>
-    </li>
+      </BtnsList>
+    </CardItem>
   );
 };
 
