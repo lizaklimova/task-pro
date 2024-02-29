@@ -1,15 +1,15 @@
-import { lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import GlobalStyles from 'assets/styles';
-import { PrivateRoute, PublicRoute } from 'routes';
+import { PublicRoute } from 'routes';
 import SharedLayout from 'layouts/SharedLayout';
 
-const WelcomePage = lazy(() => import('../../pages/WelcomePage'));
-const AuthPage = lazy(() => import('../../pages/AuthPage'));
-const HomePage = lazy(() => import('../../pages/HomePage'));
-const ScreensPage = lazy(() => import('../../pages/ScreensPage'));
-const NotFoundPage = lazy(() => import('../../pages/NotFoundPage'));
+const WelcomePage = lazy(() => import('pages/WelcomePage'));
+const AuthPage = lazy(() => import('pages/AuthPage'));
+const HomePage = lazy(() => import('pages/HomePage'));
+const ScreensPage = lazy(() => import('pages/ScreensPage'));
+const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 const App = () => {
   return (
@@ -22,35 +22,46 @@ const App = () => {
           <Link to="/">Welcome</Link>
         </li>
         <li>
-          <Link to="auth">Auth</Link>
+          <Link to="/auth">Auth</Link>
         </li>
         <li>
-          <Link to="home">Home</Link>
+          <Link to="/home">Home</Link>
         </li>
       </ul>
-      <Routes>
-        <Route path="/" element={<WelcomePage />} />
-        <Route
-          path="auth/:id"
-          element={<PublicRoute component={<AuthPage />} redirectTo="/home" />}
-        />
 
-        <Route path="/home" element={<SharedLayout />}>
+      <Suspense fallback="Loading">
+        <Routes>
+          <Route path="/home" element={<SharedLayout />}>
+            <Route
+              index
+              // element={
+              //   <PrivateRoute component={<HomePage />} redirectTo={'/auth'} />
+              // }
+              element={<HomePage />}
+            />
+            <Route
+              path="/home/:boardId"
+              // element={
+              //   <PrivateRoute
+              //     component={<ScreensPage />}
+              //     redirectTo={'/auth'}
+              //   />
+              // }
+              element={<ScreensPage />}
+            />
+          </Route>
+
+          <Route path="/" element={<WelcomePage />} />
           <Route
-            index
+            path="auth/:id"
             element={
-              <PrivateRoute component={<HomePage />} redirectTo={'/auth'} />
+              <PublicRoute component={<AuthPage />} redirectTo="/home" />
             }
           />
-          <Route
-            path="/home/:boardId"
-            element={
-              <PrivateRoute component={<ScreensPage />} redirectTo={'/auth'} />
-            }
-          />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
     </>
   );
 };
