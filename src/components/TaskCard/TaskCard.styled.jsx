@@ -4,7 +4,7 @@ export const CardItem = styled.li`
   max-width: 335px;
   border-radius: 10px;
   padding: 24px 14px;
-  background-color: #ffffff;
+  background-color: var(--card-bg);
   list-style-type: none;
   border-left: 7px solid #8fa1d0;
 
@@ -17,12 +17,14 @@ export const CardItem = styled.li`
 
 export const CardTitle = styled.h4`
   margin-bottom: 8px;
+  color: var(--text-color);
 `;
 
 export const CardDescr = styled.p`
   font-size: 12px;
   line-height: 1.33333;
-  color: rgba(22, 22, 22, 0.7);
+  color: var(--text-color);
+  opacity: 0.7;
   margin-bottom: 14px;
   cursor: pointer;
 `;
@@ -40,18 +42,19 @@ export const InfoWrap = styled.div`
   h5 {
     font-weight: 400;
     font-size: 8px;
-    color: rgba(22, 22, 22, 0.5);
+    color: var(--text-color);
+    opacity: 0.5;
     margin-bottom: 4px;
   }
 
   span {
     font-size: 10px;
-    color: #161616;
+    color: var(--text-color);
   }
 
   p {
     font-size: 10px;
-    color: #161616;
+    color: var(--text-color);
     display: flex;
     gap: 4px;
 
@@ -76,6 +79,7 @@ export const CardActionButton = styled.button`
 
   svg,
   path {
+    stroke: var(--text-color);
     transition: stroke 150ms linear;
   }
 

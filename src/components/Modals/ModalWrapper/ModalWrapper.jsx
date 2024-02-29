@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { CLOSE_KEY_CODE } from 'constants';
 import Close from 'components/icons/Close';
 import {
   ModalBackdrop,
@@ -7,14 +8,10 @@ import {
   ModalContainer,
 } from './ModalWrapper.styled';
 
-const CLOSE_KEY_CODE = 'Escape';
-
 const ModalWrapper = ({ children, width, onClose }) => {
   useEffect(() => {
     const handleCloseKeyPress = event => {
-      if (event.code === CLOSE_KEY_CODE) {
-        onClose();
-      }
+      if (event.code === CLOSE_KEY_CODE) onClose();
     };
 
     document.addEventListener('keydown', handleCloseKeyPress);

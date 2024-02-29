@@ -23,7 +23,6 @@ const TaskCard = () => {
 
   return (
     <CardItem>
-      <Status width={16} height={16} />
       <CardTitle>The Watch Spot Design</CardTitle>
       <CardDescr onClick={handleClick}>
         {showFullText ? text : `${text.slice(0, 100)}...`}

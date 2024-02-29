@@ -7,7 +7,7 @@ const Header = ({ openMenu }) => {
   return (
     <HeaderSection>
       <BurgerBtn type="button" onClick={openMenu}>
-        <Burger width={24} height={24} />
+        <Burger width={24} height={24} fill={'#161616'} />
       </BurgerBtn>
       <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
         <ThemeSelect />

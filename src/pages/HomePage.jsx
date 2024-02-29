@@ -1,13 +1,7 @@
 import { MainContainer } from 'components/App/App.styled';
-import TaskCard from 'components/TaskCard';
 
 const HomePage = () => {
-  return (
-    <MainContainer>
-      MainPage
-      <TaskCard />
-    </MainContainer>
-  );
+  return <MainContainer>MainPage</MainContainer>;
 };
 
 export default HomePage;

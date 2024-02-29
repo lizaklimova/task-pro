@@ -1,14 +1,12 @@
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import SidebarContent from '../SidebarContent';
 import { AsideBackdrop, AsideMenu } from './SidebarMenu.styled';
 
 const SidebarMenu = ({ isMenuOpen, closeMenu }) => {
   useEffect(() => {
     const onEscClose = event => {
-      if (event.code === 'Escape') {
-        closeMenu();
-        // document.body.style.overflow = '';
-      }
+      if (event.code === 'Escape') closeMenu();
     };
 
     window.addEventListener('keydown', onEscClose);
@@ -17,19 +15,17 @@ const SidebarMenu = ({ isMenuOpen, closeMenu }) => {
   }, [closeMenu]);
 
   const onBackdropClose = ({ target, currentTarget }) => {
-    if (target === currentTarget) {
-      closeMenu();
-      // document.body.style.overflow = '';
-    }
+    if (target === currentTarget) closeMenu();
   };
 
-  return (
+  return createPortal(
     <>
       {isMenuOpen && <AsideBackdrop onClick={onBackdropClose} />}
       <AsideMenu className={isMenuOpen ? 'is-open' : ''}>
         <SidebarContent />
       </AsideMenu>
-    </>
+    </>,
+    document.getElementById('menu-root')
   );
 };
 

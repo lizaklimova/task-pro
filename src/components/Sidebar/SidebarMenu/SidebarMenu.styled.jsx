@@ -13,7 +13,6 @@ export const AsideBackdrop = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: rgba(21, 21, 21, 0.5);
-    z-index: 2;
   }
 `;
 
@@ -28,7 +27,6 @@ export const AsideMenu = styled.div`
     background-color: #121212;
     color: #fff;
     transition: left 250ms linear;
-    z-index: 3;
 
     &.is-open {
       left: 0;

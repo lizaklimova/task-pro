@@ -4,19 +4,12 @@ import SidebarMenu from 'components/Sidebar/SidebarMenu';
 import Header from 'components/Header';
 import { Outlet } from 'react-router-dom';
 
-
 const SharedLayout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const openMenu = () => {
-    setIsMenuOpen(true);
-    // document.body.style.overflow = 'hidden';
-  };
+  const openMenu = () => setIsMenuOpen(true);
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-    // document.body.style.overflow = '';
-  };
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <>
