@@ -17,7 +17,7 @@ const App = () => {
       <GlobalStyles />
       <Toaster position="top-center" />
 
-      <ul>
+      <ul style={{ display: 'flex', justifyContent: 'center', gap: '15px' }}>
         <li>
           <Link to="/">Welcome</Link>
         </li>
