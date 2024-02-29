@@ -1,8 +1,10 @@
 import GlobalStyles from 'assets/styles/GlobalStyles';
 import { lazy } from 'react';
-import { Toaster } from 'react-hot-toast';
 import { Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import GlobalStyles from 'assets/styles';
 import { PrivateRoute, PublicRoute } from 'routes';
+import SharedLayout from 'layouts/SharedLayout';
 
 const WelcomePage = lazy(() => import('pages'));
 const AuthPage = lazy(() => import('pages'));
@@ -23,7 +25,7 @@ const App = () => {
           element={<PublicRoute component={<AuthPage />} redirectTo="/home" />}
         />
 
-        <Route path="/" element={s}>
+        <Route path="/" element={<SharedLayout />}>
           <Route
             path="/home"
             element={
