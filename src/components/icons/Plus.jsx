@@ -10,15 +10,15 @@ const Plus = ({ width, height, fillColor, strokeColor }) => {
     >
       <path
         d="M10 4.16663V15.8333"
-        stroke-width="1.8"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M4.1665 10H15.8332"
-        stroke-width="1.8"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
