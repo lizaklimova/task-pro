@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 export const MainContainer = styled.div`
   width: 100%;
-  padding: 0 16px;
+  padding: 14px 16px 24px 16px;
   margin: 0 auto;
 
   @media screen and (min-width: 375px) {
@@ -10,10 +10,15 @@ export const MainContainer = styled.div`
   }
 
   @media screen and (min-width: 768px) {
+    padding-top: 26px;
+    padding-bottom: 32px;
     max-width: 736px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1272px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    max-width: 1148px;
+    margin: unset;
   }
 `;
