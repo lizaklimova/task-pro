@@ -4,6 +4,7 @@ const GlobalStyles = createGlobalStyle`
 :root {
     --easedTransition: 350ms ease-in-out;
 }
+
 html[data-theme='dark']{
   --text-color:#fff;
   --bar-color:#121212;
@@ -15,6 +16,7 @@ html[data-theme='dark']{
   --input-color:#bedbb0;
   --chose-color:#1f1f1f;
 }
+
 html[data-theme='light']{
   --text-color:#161616;
   --bar-color:#fff;
@@ -26,6 +28,7 @@ html[data-theme='light']{
   --input-color:#bedbb0;
   --chose-color:#f6f6f7;
 }
+
 html[data-theme='violet']{
   --text-color:#fff;
   --bar-color: #5255bc;
