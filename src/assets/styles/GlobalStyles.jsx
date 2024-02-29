@@ -4,6 +4,39 @@ const GlobalStyles = createGlobalStyle`
 :root {
     --easedTransition: 350ms ease-in-out;
 }
+html[data-theme='dark']{
+  --text-color:#fff;
+  --bar-color:#121212;
+  --header-color:#161616;
+  --background-color: #1f1f1f;
+  --grey-text-color:rgba(255, 255, 255, 0.8);
+  --lightgrey-text-color:rgba(255, 255, 255, 0.5);
+  --accent-color:#bedbb0;
+  --input-color:#bedbb0;
+  --chose-color:#1f1f1f;
+}
+html[data-theme='light']{
+  --text-color:#161616;
+  --bar-color:#fff;
+  --header-color:#fcfcfc;
+  --background-color: #f6f6f7;
+  --grey-text-color:rgba(22, 22, 22, 0.8);
+  --lightgrey-text-color:rgba(22, 22, 22, 0.5);
+  --accent-color:#bedbb0;
+  --input-color:#bedbb0;
+  --chose-color:#f6f6f7;
+}
+html[data-theme='violet']{
+  --text-color:#fff;
+  --bar-color: #5255bc;
+  --header-color:#fff;
+  --background-color: rgba(236, 237, 253, 0.4);
+  --grey-text-color:rgba(22, 22, 22, 0.8);
+  --lightgrey-text-color:rgba(255, 255, 255, 0.5);
+  --accent-color:#5255bc;
+  --input-color:#5255bc;
+  --chose-color:rgba(255, 255, 255, 0.5);
+}
 
 *,
 *::before,
