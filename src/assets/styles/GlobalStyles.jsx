@@ -107,11 +107,11 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
-  border:none;
+  border: none;
 }
 
 svg {
-  fill: currentColor;
+  /* fill: currentColor; */
 }
 `;
 

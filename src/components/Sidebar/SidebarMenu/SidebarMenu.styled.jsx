@@ -27,13 +27,11 @@ export const AsideMenu = styled.div`
     padding: 24px;
     background-color: #121212;
     color: #fff;
-    opacity: 0;
-    transition: left 150ms linear, opacity 350ms linear;
+    transition: left 250ms linear;
     z-index: 3;
 
     &.is-open {
       left: 0;
-      opacity: 1;
     }
   }
 
