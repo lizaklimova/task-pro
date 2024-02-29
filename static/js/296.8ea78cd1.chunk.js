@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktask_pro=self.webpackChunktask_pro||[]).push([[296],{805:function(e,n,r){r.r(n);var s=r(184);n.default=function(){return(0,s.jsx)(s.Fragment,{children:(0,s.jsx)("h1",{children:"ScreensPage"})})}}}]);
-//# sourceMappingURL=296.8ea78cd1.chunk.js.map
