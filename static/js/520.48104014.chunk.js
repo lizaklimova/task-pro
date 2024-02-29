@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktask_pro=self.webpackChunktask_pro||[]).push([[520],{520:function(e,n,r){r.r(n);var t=r(184);n.default=function(){return(0,t.jsx)(t.Fragment,{children:(0,t.jsx)("h1",{children:"NotFoundPage"})})}}}]);
+//# sourceMappingURL=520.48104014.chunk.js.map
