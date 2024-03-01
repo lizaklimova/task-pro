@@ -1,67 +1,37 @@
-import Close from '..//icons/Close';
 import {} from './NeedHelpModal.css';
-import { useEffect } from 'react';
+import ModalWrapper from 'components/Modals/ModalWrapper';
+import { closeModal } from 'helpers';
 
-const NeedHelpModal = ({ onClose }) => {
-  useEffect(() => {
-    const handleKeyDown = evt => {
-      if (evt.code === 'Escape') {
-        onClose();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'auto';
-    };
-  }, [onClose]);
-
+const NeedHelpModal = ({ showModal }) => {
   const handleSubmit = evt => {
     if (evt.target === evt.currentTarget) {
-      onClose();
+      closeModal(showModal);
     }
   };
 
   return (
-    <>
-      <div className="modal-overlay">
-        <div className="modal-help">
-          <form onSubmit={handleSubmit} className="help-form">
-            <button type="button" className="close-button" onClick={onClose}>
-              <Close
-                width={18}
-                height={18}
-                fillColor="#fff"
-                strokeColor="#fff"
-              />
-            </button>
-            <h2 className="form-title-lh">Need Help</h2>
-            <div>
-              <input
-                type="email"
-                name="email"
-                className="input-email"
-                placeholder="Email address"
-              />
-            </div>
-            <div className="row-form">
-              <textarea
-                type="text"
-                name="comment"
-                className="comment"
-                placeholder="Comment"
-              />
-            </div>
-            <button type="submit" className="btn-send-lg">
-              Send
-            </button>
-          </form>
-        </div>
-      </div>
-    </>
+    <ModalWrapper width={335} onClose={() => closeModal(showModal)}>
+      <h2 className="form-title-lh">Need Help</h2>
+      <form onSubmit={handleSubmit} className="help-form">
+        <input
+          type="email"
+          name="email"
+          className="input-email"
+          placeholder="Email address"
+        />
+
+        <textarea
+          type="text"
+          name="comment"
+          className="comment"
+          placeholder="Comment"
+        />
+
+        <button type="submit" className="btn-send-lg">
+          Send
+        </button>
+      </form>
+    </ModalWrapper>
   );
 };
 

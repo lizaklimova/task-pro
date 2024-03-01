@@ -1,20 +1,16 @@
 import { useState } from 'react';
 import NeedHelpModal from '../NeedHelpModal/NeedHelpModal';
+import { openModal } from 'helpers';
 
 const NeedHelp = () => {
   const [shownModal, setShownModal] = useState(false);
 
   return (
     <>
-      <button type="button" onClick={() => setShownModal(true)}>
+      <button type="button" onClick={() => openModal(setShownModal)}>
         Need help?
       </button>
-      {shownModal && (
-        <NeedHelpModal
-          setShowModal={setShownModal}
-          onClose={() => setShownModal(false)}
-        />
-      )}
+      {shownModal && <NeedHelpModal showModal={setShownModal} />}
     </>
   );
 };

@@ -19,8 +19,8 @@ export const ModalContainer = styled.div`
   color: var(--text-color);
   background: var(--modal-background);
   border-radius: 8px;
-
-  width: ${props => (props.$containerWidth ? props.$containerWidth : '336px')};
+  width: ${props =>
+    props.$containerWidth ? `${props.$containerWidth}px` : '100%'};
 `;
 
 export const ModalCloseButton = styled.button`
