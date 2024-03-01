@@ -2,6 +2,7 @@
 // import Lightning from 'components/icons/Lightning';
 import { LightningBox, Logo } from './SidebarContent.styled';
 import Lightning from 'components/icons/Lightning';
+import { BoardCreateModal } from 'components/Modals/BoardsModals/BoardCreateModal';
 import NeedHelp from 'components/NeedHelp/NeedHelp';
 
 const SidebarContent = () => {
@@ -19,6 +20,7 @@ const SidebarContent = () => {
 
         <p>Task Pro</p>
       </Logo>
+      <BoardCreateModal />
       <NeedHelp />
     </>
   );

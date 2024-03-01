@@ -1,17 +1,45 @@
-import FourCircles from 'components/icons/FourCircles';
-import Star from 'components/icons/Star';
-import Loading from 'components/icons/Loading';
-import Puzzle from 'components/icons/Puzzle';
-import Lightning from 'components/icons/Lightning';
-import ThreeCircles from 'components/icons/ThreeCircles';
-import Hexagon from 'components/icons/Hexagon';
+import { useState } from 'react';
+import ModalWrapper from '../ModalWrapper/ModalWrapper';
+import { IconsList } from './IconsList';
+import Plus from 'components/icons/Plus';
+// import { BacksIconsList } from './BacksIconsList';
+// import defaultDark from 'assets/images/backs-small/1x/default-dark.jpg';
+// import defaultDarkRetina from 'assets/images/backs-small/2x/default-dark-2x.jpg';
 
-export const BoardCreateModalChildren = () => {
+export const BoardCreateModal = () => {
+  const [shownModal, setShownModal] = useState(false);
+
   return (
     <>
-      <h3 style={{ color: 'white' }}>New board</h3>
-      <input type="text" placeholder="Title" />
-      <p>Icons</p>
+      <button type="button" onClick={() => setShownModal(true)}>
+        Open Modal Board Base
+      </button>
+      {shownModal && (
+        <ModalWrapper width="400px" onClose={() => setShownModal(false)}>
+          <form>
+            <h3 style={{ color: 'white' }}>New board</h3>
+            <input type="text" placeholder="Title" />
+            <p style={{ color: 'white' }}>Icons</p>
+            <IconsList />
+            <p style={{ color: 'white' }}>Background</p>
+            {/* <BacksIconsList /> */}
+            {/* <img
+            src={defaultDark}
+            srcSet={`${defaultDarkRetina} 2x`}
+            alt="default"
+          /> */}
+            <button type="submit">
+              <Plus
+                width={14}
+                height={14}
+                fillColor={'#850606'}
+                strokeColor={'green'}
+              />{' '}
+              Create
+            </button>
+          </form>
+        </ModalWrapper>
+      )}
     </>
   );
 };
