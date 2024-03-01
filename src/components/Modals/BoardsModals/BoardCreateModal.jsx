@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';
+import Plus from 'components/icons/Plus';
 // import { BacksIconsList } from './BacksIconsList';
 // import defaultDark from 'assets/images/backs-small/1x/default-dark.jpg';
 // import defaultDarkRetina from 'assets/images/backs-small/2x/default-dark-2x.jpg';
@@ -27,7 +28,15 @@ export const BoardCreateModal = () => {
             srcSet={`${defaultDarkRetina} 2x`}
             alt="default"
           /> */}
-            <button type="submit">+ create</button>
+            <button type="submit">
+              <Plus
+                width={14}
+                height={14}
+                fillColor={'#850606'}
+                strokeColor={'green'}
+              />{' '}
+              Create
+            </button>
           </form>
         </ModalWrapper>
       )}

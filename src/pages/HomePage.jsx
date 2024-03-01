@@ -1,13 +1,7 @@
 import { MainContainer } from 'components/App/App.styled';
-import { BoardCreateModal } from 'components/Modals/BoardsModals/BoardCreateModal';
 
 const HomePage = () => {
-  return (
-    <MainContainer>
-      MainPage
-      <BoardCreateModal />
-    </MainContainer>
-  );
+  return <MainContainer>MainPage</MainContainer>;
 };
 
 export default HomePage;
