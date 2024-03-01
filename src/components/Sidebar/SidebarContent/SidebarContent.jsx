@@ -1,7 +1,8 @@
-import ShownModal from 'components/Modals/ShownModal';
+/* import ShownModal from 'components/Modals/ShownModal'; */
 // import Lightning from 'components/icons/Lightning';
 import { LightningBox, Logo } from './SidebarContent.styled';
 import Lightning from 'components/icons/Lightning';
+import NeedHelp from 'components/NeedHelp/NeedHelp';
 
 const SidebarContent = () => {
   return (
@@ -18,7 +19,7 @@ const SidebarContent = () => {
 
         <p>Task Pro</p>
       </Logo>
-      <ShownModal />
+      <NeedHelp />
     </>
   );
 };
