@@ -2,10 +2,15 @@ import { useState } from 'react';
 import ModalWrapper from 'components/Modals/ModalWrapper';
 import { closeModal } from 'helpers';
 import Plus from 'components/icons/Plus';
-import { AddCardModalContent, AddCardForm } from './AddingCardModal.styled';
+import {
+  AddCardModalContent,
+  AddCardForm,
+  LabelDiv,
+} from './AddingCardModal.styled';
 
 const AddingCardModal = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [labelColor, setLabelColor] = useState('violet');
 
   return (
     <>
@@ -21,10 +26,40 @@ const AddingCardModal = () => {
               <label>
                 Label color
                 <div>
-                  <input type="radio" name="label" value="violet" />
-                  <input type="radio" name="label" value="pink" />
-                  <input type="radio" name="label" value="green" />
-                  <input type="radio" name="label" value="gray" />
+                  <input
+                    type="radio"
+                    name="label"
+                    value="violet"
+                    checked={labelColor === 'violet'}
+                    onChange={e => setLabelColor(e.target.value)}
+                  />
+                  <input
+                    type="radio"
+                    name="label"
+                    value="pink"
+                    checked={labelColor === 'pink'}
+                    onChange={e => setLabelColor(e.target.value)}
+                  />
+                  <input
+                    type="radio"
+                    name="label"
+                    value="green"
+                    checked={labelColor === 'green'}
+                    onChange={e => setLabelColor(e.target.value)}
+                  />
+                  <input
+                    type="radio"
+                    name="label"
+                    value="gray"
+                    checked={labelColor === 'gray'}
+                    onChange={e => setLabelColor(e.target.value)}
+                  />
+                  <LabelDiv>
+                    <span id="violet"></span>
+                    <span id="pink"></span>
+                    <span id="green"></span>
+                    <span id="gray"></span>
+                  </LabelDiv>
                 </div>
               </label>
 

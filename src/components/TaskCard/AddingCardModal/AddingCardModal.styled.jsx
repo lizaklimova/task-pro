@@ -28,6 +28,16 @@ export const AddCardForm = styled.form`
     margin-bottom: 14px;
   }
 
+  input[type='radio'] {
+    cursor: pointer;
+    z-index: 1;
+    /* opacity: 0; */
+  }
+
+  input[type='radio']:checked + div span {
+    outline: 1px solid red;
+  }
+
   textarea {
     ${inputsCommonStyles}
     line-height: 1.29;
@@ -43,6 +53,7 @@ export const AddCardForm = styled.form`
     flex-direction: column;
 
     & > div {
+      position: relative;
       display: flex;
       gap: 8px;
       margin-top: 4px;
@@ -70,5 +81,36 @@ export const AddCardForm = styled.form`
       padding: 7px;
       background-color: #fff;
     }
+  }
+`;
+
+export const LabelDiv = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  span {
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+  }
+
+  #violet {
+    background-color: #8fa1d0;
+  }
+
+  #pink {
+    background-color: #e09cb5;
+  }
+
+  #green {
+    background-color: #bedbb0;
+  }
+
+  #gray {
+    background-color: rgba(22, 22, 22, 0.3);
   }
 `;
