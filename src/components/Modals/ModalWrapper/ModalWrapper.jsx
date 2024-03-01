@@ -26,7 +26,11 @@ const ModalWrapper = ({ children, width, onClose }) => {
         onClick={event => event.stopPropagation()}
       >
         <ModalCloseButton type="button" onClick={onClose}>
-          <Close width="18" height="18" strokeColor="white" />
+          <Close
+            width="18"
+            height="18"
+            strokeColor="var(--icon-stroke-color)"
+          />
         </ModalCloseButton>
         <div>{children}</div>
       </ModalContainer>
