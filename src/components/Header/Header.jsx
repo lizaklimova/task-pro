@@ -1,5 +1,5 @@
 import { HeaderSection, BurgerBtn } from './Header.styled';
-import Burger from 'components/icons/Burger';
+import Burger from 'components/Icons/Burger';
 import ThemeSelect from 'components/ThemeSelect/ThemeSelect';
 import Profile from 'components/Profile/Profile';
 

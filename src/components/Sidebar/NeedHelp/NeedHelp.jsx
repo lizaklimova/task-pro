@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import NeedHelpModal from '../NeedHelpModal/NeedHelpModal';
+import NeedHelpModal from '../../Modals/NeedHelpModal/NeedHelpModal';
 import { openModal } from 'helpers';
 
 const NeedHelp = () => {
