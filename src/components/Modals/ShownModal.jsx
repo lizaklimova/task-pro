@@ -11,7 +11,7 @@ const ShownModal = () => {
       </button>
       {shownModal && (
         <ModalWrapper width="400px" onClose={() => setShownModal(false)}>
-          <p style={{ color: 'white' }}>Children Info</p>
+          <p>Children Info</p>
         </ModalWrapper>
       )}
     </>

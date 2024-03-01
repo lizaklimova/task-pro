@@ -16,8 +16,8 @@ export const ModalContainer = styled.div`
   position: relative;
   padding: 24px;
   min-height: 200px;
-  background: #151515;
-  border: 1px solid rgba(190, 219, 176, 0.5);
+  color: var(--text-color);
+  background: var(--modal-background);
   border-radius: 8px;
 
   width: ${props => (props.$containerWidth ? props.$containerWidth : '336px')};
