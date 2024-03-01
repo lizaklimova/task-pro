@@ -1,0 +1,98 @@
+.help-form {
+  border: 1px solid rgba(190, 219, 176, 0.5);
+  border-radius: 8px;
+  width: 335px;
+  height: 355px;
+  background-color: #151515;
+  margin: 0;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: transparent;
+}
+.form-title-lh {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-left: 24px;
+  margin-bottom: 24px;
+}
+
+.input-email {
+  border: 1px solid #bedbb0;
+  border-radius: 8px;
+  width: 287px;
+  height: 49px;
+  opacity: 0.4;
+  margin-left: 24px;
+  background-color: #151515;
+  margin-bottom: 24px;
+  color: #fff;
+  padding-left: 18px;
+}
+.comment {
+  border: 1px solid #bedbb0;
+  border-radius: 8px;
+  width: 287px;
+  height: 120px;
+  opacity: 0.4;
+  margin-left: 24px;
+  background-color: #151515;
+  margin-bottom: 24px;
+  color: #fff;
+  margin-right: 18px;
+  padding-left: 18px;
+}
+.input-email:hover,
+.comment:hover {
+  border-color: #9dc888;
+}
+.btn-send-lg {
+  border-radius: 8px;
+  width: 287px;
+  height: 49px;
+  background: #bedbb0;
+  margin-left: 24px;
+  cursor: pointer;
+}
+
+.btn-send-lg:hover {
+  background: #9dc888;
+}
+input.comment::placeholder,
+input.input-email::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.close-icon {
+  position: absolute;
+  top: -12px;
+  right: 12px;
+  cursor: pointer;
+  stroke-width: 1.5px;
+}
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1440px) {
+  .help-form {
+    width: 400px;
+    height: 355px;
+  }
+  .input-email {
+    width: 352px;
+    height: 49px;
+  }
+  .comment {
+    width: 352px;
+    height: 120px;
+  }
+  .btn-send-lg {
+    width: 352px;
+    height: 49px;
+  }
+}
