@@ -1,79 +1,37 @@
-import FourCircles from 'components/icons/FourCircles';
-import Star from 'components/icons/Star';
-import Loading from 'components/icons/Loading';
-import Puzzle from 'components/icons/Puzzle';
-import Box from 'components/icons/Box';
-import Lightning from 'components/icons/Lightning';
-import ThreeCircles from 'components/icons/ThreeCircles';
-import Hexagon from 'components/icons/Hexagon';
+import React, { useState } from 'react';
+
+import sprite from 'assets/images/icons/icons-sprite.svg';
+import { iconsdArray } from './IconsArr';
+
+import { IconsUL, InputRadio } from './BoardModals.styled';
 
 export const IconsList = () => {
+  const [selectedIconId, setSelectedIconId] = useState(0);
+
+  const handleIconChange = id => {
+    setSelectedIconId(id);
+  };
+
   return (
-    <ul>
-      <li>
-        <FourCircles
-          width={28}
-          height={28}
-          fillColor={'#850606'}
-          strokeColor={'yellow'}
-        />
-      </li>
-      <li>
-        <Star
-          width={28}
-          height={28}
-          fillColor={'#850606'}
-          strokeColor={'yellow'}
-        />
-      </li>
-      <li>
-        <Loading
-          width={28}
-          height={28}
-          fillColor={'#850606'}
-          strokeColor={'yellow'}
-        />
-      </li>
-      <li>
-        <Puzzle
-          width={28}
-          height={28}
-          fillColor={'#850606'}
-          strokeColor={'yellow'}
-        />
-      </li>
-      <li>
-        <Box
-          width={28}
-          height={28}
-          fillColor={'#850606'}
-          strokeColor={'yellow'}
-        />
-      </li>
-      <li>
-        <Lightning
-          width={28}
-          height={28}
-          fillColor={'#850606'}
-          strokeColor={'yellow'}
-        />
-      </li>
-      <li>
-        <ThreeCircles
-          width={28}
-          height={28}
-          fillColor={'#850606'}
-          strokeColor={'yellow'}
-        />
-      </li>
-      <li>
-        <Hexagon
-          width={28}
-          height={28}
-          fillColor={'#850606'}
-          strokeColor={'yellow'}
-        />
-      </li>
-    </ul>
+    <IconsUL>
+      {iconsdArray.map(item => {
+        return (
+          <li key={item.id}>
+            <label>
+              <InputRadio
+                type="radio"
+                name="icon"
+                value={item.id}
+                checked={selectedIconId === item.id}
+                onChange={() => handleIconChange(item.id)}
+              />
+              <svg width="18" height="18" style={{ stroke: 'aliceblue' }}>
+                <use xlinkHref={`${sprite}#${item.name}`} />
+              </svg>
+            </label>
+          </li>
+        );
+      })}
+    </IconsUL>
   );
 };
