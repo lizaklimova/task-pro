@@ -32,7 +32,7 @@ const ModalWrapper = ({ children, width, onClose }) => {
             strokeColor="var(--icon-stroke-color)"
           />
         </ModalCloseButton>
-        <div>{children}</div>
+        {children}
       </ModalContainer>
     </ModalBackdrop>,
     document.getElementById('modal-root')
