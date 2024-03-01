@@ -1,4 +1,3 @@
-
 import { useTheme } from 'hooks/useTheme';
 import React from 'react';
 import Select from 'react-select';
@@ -11,16 +10,19 @@ const options = [
 ];
 
 function ThemeSelect() {
+  // eslint-disable-next-line
   const { theme, setTheme } = useTheme();
-  const onChangeTheme = (event) => {
+  const onChangeTheme = event => {
     setTheme(event.value);
-  }
-  
+  };
+
   return (
-    <div >
+    <div>
       <Select
-        classNamePrefix='custom-select'
-        onChange={event=>{onChangeTheme(event)}}
+        classNamePrefix="custom-select"
+        onChange={event => {
+          onChangeTheme(event);
+        }}
         options={options}
         placeholder="Theme"
       />
