@@ -26,6 +26,7 @@ html[data-theme='light']{
   --input-color:#bedbb0;
   --chose-color:#f6f6f7;
 }
+
 html[data-theme='violet']{
   --text-color:#fff;
   --bar-color: #5255bc;
