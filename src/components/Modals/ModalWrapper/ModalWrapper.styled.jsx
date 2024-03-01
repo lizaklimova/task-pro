@@ -10,6 +10,10 @@ export const ModalBackdrop = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #706f6f99;
+
+  @media screen and (max-width: 375px) {
+    padding: 15px;
+  }
 `;
 
 export const ModalContainer = styled.div`
@@ -19,8 +23,16 @@ export const ModalContainer = styled.div`
   color: var(--text-color);
   background: var(--modal-background);
   border-radius: 8px;
-  width: ${props =>
-    props.$containerWidth ? `${props.$containerWidth}px` : '100%'};
+  width: 100%;
+
+  @media screen and (min-width: 375px) {
+    width: 335px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: ${props =>
+      props.$containerWidth ? `${props.$containerWidth}px` : '350px'};
+  }
 `;
 
 export const ModalCloseButton = styled.button`

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { CLOSE_KEY_CODE } from 'constants';
-import Close from 'components/icons/Close';
+import Close from 'components/Icons/Close';
 import {
   ModalBackdrop,
   ModalCloseButton,

@@ -10,7 +10,7 @@ const NeedHelpModal = ({ showModal }) => {
   };
 
   return (
-    <ModalWrapper width={335} onClose={() => closeModal(showModal)}>
+    <ModalWrapper width={400} onClose={() => closeModal(showModal)}>
       <h2 className="form-title-lh">Need Help</h2>
       <form onSubmit={handleSubmit} className="help-form">
         <input
