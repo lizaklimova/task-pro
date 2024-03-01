@@ -81,8 +81,28 @@ export const BackInputRadio = styled.input`
 `;
 
 export const Button = styled.button`
-  padding: 10px;
   font-weight: 500;
+  font-size: 14px;
   border-radius: 8px;
+  padding: 10px;
   background-color: var(--accent-color);
+  color: var(--btn-icon-bg);
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--easedTransition);
+
+  @media screen and (min-width: 1440px) {
+    &:hover,
+    &:focus {
+      opacity: 0.7;
+    }
+  }
+`;
+export const Span = styled.span`
+  background-color: var(--btn-icon-bg);
+  border-radius: 6px;
+  padding: 7px;
 `;
