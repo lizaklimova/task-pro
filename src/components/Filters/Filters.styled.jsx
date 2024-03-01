@@ -6,10 +6,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const Title = styled.h2`
-  color: inherit;
-  font-family: 'Poppins';
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: normal;
 `;
@@ -26,22 +23,16 @@ export const ClearTitle = styled.h3`
   display: flex;
   flex-shrink: 0;
   margin-right: auto;
-  color: inherit;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: normal;
 `;
 
 export const ClearButton = styled.button`
   color: var(--text-color);
-  font-family: Poppins;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
   line-height: normal;
   letter-spacing: -0.24px;
+  background-color: inherit;
   text-decoration-line: underline;
 `;
 
