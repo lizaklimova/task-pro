@@ -80,27 +80,6 @@ export const BackInputRadio = styled.input`
   }
 `;
 
-// button {
-//     font-weight: 500;
-//     border-radius: 8px;
-//     padding: 10px;
-//     background-color: #5255bc;
-//     color: #fff;
-//     margin-top: 40px;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     gap: 8px;
-
-//     span {
-//       display: flex;
-//       align-items: center;
-//       justify-content: center;
-//       border-radius: 6px;
-//       padding: 7px;
-//       background-color: #fff;
-//     }
-
 export const Button = styled.button`
   padding: 10px;
   font-weight: 500;
