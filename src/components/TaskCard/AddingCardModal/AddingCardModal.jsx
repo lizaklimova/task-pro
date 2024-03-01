@@ -5,8 +5,16 @@ import Plus from 'components/icons/Plus';
 import {
   AddCardModalContent,
   AddCardForm,
-  LabelDiv,
+  LabelRadioList,
+  LabelRadioInput,
 } from './AddingCardModal.styled';
+
+const labelArr = [
+  { id: 1, color: 'violet' },
+  { id: 2, color: 'pink' },
+  { id: 3, color: 'green' },
+  { id: 4, color: 'gray' },
+];
 
 const AddingCardModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -25,42 +33,28 @@ const AddingCardModal = () => {
 
               <label>
                 Label color
-                <div>
-                  <input
-                    type="radio"
-                    name="label"
-                    value="violet"
-                    checked={labelColor === 'violet'}
-                    onChange={e => setLabelColor(e.target.value)}
-                  />
-                  <input
-                    type="radio"
-                    name="label"
-                    value="pink"
-                    checked={labelColor === 'pink'}
-                    onChange={e => setLabelColor(e.target.value)}
-                  />
-                  <input
-                    type="radio"
-                    name="label"
-                    value="green"
-                    checked={labelColor === 'green'}
-                    onChange={e => setLabelColor(e.target.value)}
-                  />
-                  <input
-                    type="radio"
-                    name="label"
-                    value="gray"
-                    checked={labelColor === 'gray'}
-                    onChange={e => setLabelColor(e.target.value)}
-                  />
-                  <LabelDiv>
-                    <span id="violet"></span>
-                    <span id="pink"></span>
-                    <span id="green"></span>
-                    <span id="gray"></span>
-                  </LabelDiv>
-                </div>
+                <LabelRadioList>
+                  {labelArr.map(({ id, color }) => {
+                    return (
+                      <li key={id}>
+                        <LabelRadioInput
+                          $color={color}
+                          type="radio"
+                          name="label"
+                          value={color}
+                          checked={labelColor === color}
+                          onChange={e => setLabelColor(e.target.value)}
+                        />
+                      </li>
+                    );
+                  })}
+                </LabelRadioList>
+                {/* <LabelDiv>
+                  <span id="violet"></span>
+                  <span id="pink"></span>
+                  <span id="green"></span>
+                  <span id="gray"></span>
+                </LabelDiv> */}
               </label>
 
               <label>

@@ -28,15 +28,9 @@ export const AddCardForm = styled.form`
     margin-bottom: 14px;
   }
 
-  input[type='radio'] {
-    cursor: pointer;
-    z-index: 1;
-    /* opacity: 0; */
-  }
-
-  input[type='radio']:checked + div span {
+  /* input[type='radio']:checked + div span {
     outline: 1px solid red;
-  }
+  } */
 
   textarea {
     ${inputsCommonStyles}
@@ -51,14 +45,6 @@ export const AddCardForm = styled.form`
     color: rgba(22, 22, 22, 0.5);
     display: flex;
     flex-direction: column;
-
-    & > div {
-      position: relative;
-      display: flex;
-      gap: 8px;
-      margin-top: 4px;
-      margin-bottom: 14px;
-    }
   }
 
   button {
@@ -84,11 +70,33 @@ export const AddCardForm = styled.form`
   }
 `;
 
+export const LabelRadioList = styled.ul`
+  position: relative;
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+`;
+
+export const LabelRadioInput = styled.input`
+  cursor: pointer;
+  z-index: 1;
+  /* opacity: 0; */
+
+  &::before {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: ${({ $color }) => $color};
+  }
+`;
+
 export const LabelDiv = styled.div`
   position: absolute;
+  top: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 7px;
 
   span {
