@@ -10,8 +10,7 @@ const options = [
 ];
 
 function ThemeSelect() {
-  // eslint-disable-next-line
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
   const onChangeTheme = event => {
     setTheme(event.value);
   };

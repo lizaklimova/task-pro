@@ -1,15 +1,22 @@
 import { useState } from 'react';
 import NeedHelpModal from '../../Modals/NeedHelpModal/NeedHelpModal';
 import { openModal } from 'helpers';
+import Help from 'components/Icons/Help';
+import { HelpBtn } from '../SidebarContent/SidebarContent.styled';
 
 const NeedHelp = () => {
   const [shownModal, setShownModal] = useState(false);
 
   return (
     <>
-      <button type="button" onClick={() => openModal(setShownModal)}>
+      <HelpBtn type="button" onClick={() => openModal(setShownModal)}>
+        <Help
+          width={20}
+          height={20}
+          strokeColor={'var(--sidebar-icon-color)'}
+        />
         Need help?
-      </button>
+      </HelpBtn>
       {shownModal && <NeedHelpModal showModal={setShownModal} />}
     </>
   );
