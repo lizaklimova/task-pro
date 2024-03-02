@@ -89,7 +89,7 @@ html[data-theme='violet']{
   --text-color:#161616;
   --bar-color: #5255bc;
   --header-color:#fff;
-  --background-color:  #B8BCFD;
+  --background-color:  #ECEDFD;
   --grey-text-color:rgba(22, 22, 22, 0.8);
   --lightgrey-text-color:rgba(22, 22, 22, 0.5);
   --accent-color:#5255bc;
