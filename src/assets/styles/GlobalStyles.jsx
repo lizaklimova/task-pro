@@ -27,6 +27,9 @@ html[data-theme='dark']{
   --priority-gray: rgba(255, 255, 255, 0.3);
   --btn-icon-bg: #161616;
   --btn-icon-color: #fff;
+  --plus-icon-bg: #fff;
+  --plus-btn-hover: #403f3f;
+  --accent-btn-hover: #9DC888;
 }
 
 html[data-theme='light']{
@@ -51,6 +54,9 @@ html[data-theme='light']{
   --priority-gray: rgba(22, 22, 22, 0.3);
   --btn-icon-bg: #161616;
   --btn-icon-color: #fff;
+  --plus-icon-bg: #161616;
+  --plus-btn-hover: #919090;
+  --accent-btn-hover: #9DC888;
 }
 
 html[data-theme='violet']{
@@ -75,6 +81,9 @@ html[data-theme='violet']{
   --priority-gray: rgba(22, 22, 22, 0.3);
   --btn-icon-bg: #fcfcfc;
   --btn-icon-color: #161616;
+  --plus-icon-bg:#5255bc;
+  --plus-btn-hover: #999cd3;
+  --accent-btn-hover: #7B7EDE;
 }
 
 *,
@@ -102,6 +111,7 @@ body {
     grid-template: "sidebar header header" 68px
         "sidebar main main" auto 
         / 260px auto auto;
+        
   }
 }
 
