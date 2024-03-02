@@ -1,7 +1,8 @@
 import { HeaderSection, BurgerBtn } from './Header.styled';
-import Burger from 'components/icons/Burger';
+import Burger from 'components/Icons/Burger';
 import ThemeSelect from 'components/ThemeSelect/ThemeSelect';
 import Profile from 'components/Profile/Profile';
+import {TempForLanguages} from 'components/TempForLanguages/TempForLanguages';
 
 const Header = ({ openMenu }) => {
   return (
@@ -10,6 +11,7 @@ const Header = ({ openMenu }) => {
         <Burger width={24} height={24} fill={'#161616'} />
       </BurgerBtn>
       <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+        <TempForLanguages/>
         <ThemeSelect />
         <Profile />
       </div>

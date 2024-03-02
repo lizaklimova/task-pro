@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { RotatingLines } from 'react-loader-spinner';
 
 export const LoaderContainer = styled.div`
   position: fixed;
@@ -11,10 +10,4 @@ export const LoaderContainer = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: var(--background-color);
-`;
-
-export const StyledRotatingLines = styled(RotatingLines)`
-  stroke: var(--accent-color);
-  stroke-width: 5px;
-  animation-duration: 0.75s;
 `;

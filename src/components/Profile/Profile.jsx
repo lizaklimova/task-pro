@@ -1,12 +1,26 @@
-import React from 'react'
+// import Bell from 'components/icons/Bell';
 
-function Profile() {
+import User from 'components/icons/User';
+import React from 'react';
+import { Button, UserContainer, UserName } from './Profile.styled';
+
+
+const Profile=()=>{
   return (
-      <div>
-          <p>Name</p>
-          <img src="#" alt="" />
-    </div>
-  )
+    <UserContainer>
+      <UserName>Name</UserName>
+      <Button type="button">
+        
+        <User
+          width={68}
+          height={68}
+          strokeColor={'var(--svg-back-color)'}
+          fillColor={'var(--svg-color)'}
+        />
+        {/* <img src="#" alt="" /> */}
+      </Button>
+    </UserContainer>
+  );
 }
 
 export default Profile

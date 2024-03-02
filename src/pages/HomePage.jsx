@@ -1,10 +1,10 @@
 import { MainContainer } from 'components/App/App.styled';
-import AddingCardModal from 'components/TaskCard/AddingCardModal/AddingCardModal';
+import CardModal from 'components/Modals/CardModal';
 
 const HomePage = () => {
   return (
     <MainContainer>
-      <AddingCardModal />
+      <CardModal variant="add" />
     </MainContainer>
   );
 };
