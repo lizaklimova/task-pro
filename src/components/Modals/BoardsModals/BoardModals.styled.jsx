@@ -79,7 +79,7 @@ export const BackInputRadio = styled.input`
 `;
 
 export const BackImage = styled.img`
-  border-radius: 6px;
+  border-radius: 7px;
   width: 28px;
   height: 28px;
 `;
@@ -104,6 +104,7 @@ export const Button = styled.button`
     }
   }
 `;
+
 export const Span = styled.span`
   background-color: var(--btn-icon-bg);
   border-radius: 6px;
