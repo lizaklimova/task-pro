@@ -9,10 +9,10 @@ const SidebarContent = () => {
       <Logo>
         <LightningBox>
           <Lightning
-            width={20}
-            height={20}
-            fillColor={'red'}
-            strokeColor={'yellow'}
+            width={12}
+            height={16}
+            fillColor={'white'}
+            strokeColor={'white'}
           />
         </LightningBox>
 
