@@ -50,7 +50,9 @@
       "medium": "Medium",
       "high": "High"
     },
-    "beforeStart": "Before starting your project, it is essential to create a board to visualize and track all the necessary tasks and milestones. This board serves as a powerful tool to organize the workflow and ensure effective collaboration among team members.",
+    "beforeStart1": "Before starting your project, it is essential ",
+    "beforeStartColor": "to create a board",
+    "beforeStart2": " to visualize and track all the necessary tasks and milestones. This board serves as a powerful tool to organize the workflow and ensure effective collaboration among team members.",
     "modals": {
       "newTitle": "New board",
       "editTitle": "Edit board",

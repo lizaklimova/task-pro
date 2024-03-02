@@ -29,6 +29,9 @@ html[data-theme='dark']{
   --priority-gray: rgba(255, 255, 255, 0.3);
   --btn-icon-bg: #161616;
   --btn-icon-color: #fff;
+  --plus-icon-bg: #fff;
+  --plus-btn-hover: #403f3f;
+  --accent-btn-hover: #9DC888;
   --sidebar-add-btn:#bedbb0;
   --sidebar-icon-color:#fff;
   --sidebar-plus-icon: #161616;
@@ -66,24 +69,27 @@ html[data-theme='light']{
   --priority-gray: rgba(22, 22, 22, 0.3);
   --btn-icon-bg: #161616;
   --btn-icon-color: #fff;
-    --sidebar-add-btn:#bedbb0;
-	  --sidebar-icon-color:#161616;
- --sidebar-plus-icon: #161616;
- --sidebar-active-board:#f6f6f7;
- --sidebar-help-span:#bedbb0;
- --sidebar-logout:#bedbb0;
- --sidebar-lightning-fill: #fff;
+  --plus-icon-bg: #161616;
+  --plus-btn-hover: #919090;
+  --accent-btn-hover: #9DC888;
+  --sidebar-add-btn:#bedbb0;
+	--sidebar-icon-color:#161616;
+  --sidebar-plus-icon: #161616;
+  --sidebar-active-board:#f6f6f7;
+  --sidebar-help-span:#bedbb0;
+  --sidebar-logout:#bedbb0;
+  --sidebar-lightning-fill: #fff;
  	--sidebar-lightning-bg: #161616;
---sidebar-myboard-text:rgba(22, 22, 22, 0.5);
---sedibar-text: #161616;
---sidebar-help-container:#f6f6f7;
+  --sidebar-myboard-text:rgba(22, 22, 22, 0.5);
+  --sedibar-text: #161616;
+  --sidebar-help-container:#f6f6f7;
 }
 
 html[data-theme='violet']{
   --text-color:#161616;
   --bar-color: #5255bc;
   --header-color:#fff;
-  --background-color:  #B8BCFD;
+  --background-color:  #ECEDFD;
   --grey-text-color:rgba(22, 22, 22, 0.8);
   --lightgrey-text-color:rgba(22, 22, 22, 0.5);
   --accent-color:#5255bc;
@@ -103,6 +109,9 @@ html[data-theme='violet']{
   --priority-gray: rgba(22, 22, 22, 0.3);
   --btn-icon-bg: #fcfcfc;
   --btn-icon-color: #161616;
+  --plus-icon-bg:#5255bc;
+  --plus-btn-hover: #999cd3;
+  --accent-btn-hover: #7B7EDE;
   --sidebar-add-btn:#b8bcfd;
   --sidebar-icon-color:#fff;
   --sidebar-plus-icon: #fff;
@@ -141,6 +150,7 @@ body {
     grid-template: "sidebar header header" 68px
         "sidebar main main" auto 
         / 260px auto auto;
+        
   }
 }
 

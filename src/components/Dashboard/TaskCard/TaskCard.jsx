@@ -12,7 +12,7 @@ import {
   CardActionButton,
 } from './TaskCard.styled';
 
-const TaskCard = () => {
+const TaskCard = ({ card }) => {
   const [showFullText, setShowFullText] = useState(false);
   const text =
     'Create a visually stunning and eye-catching watch dial design that embodies our brands essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design.';
@@ -25,7 +25,7 @@ const TaskCard = () => {
     <CardItem>
       <CardTitle>The Watch Spot Design</CardTitle>
       <CardDescr onClick={handleClick}>
-        {showFullText ? text : `${text.slice(0, 100)}...`}
+        {showFullText ? text : `${text.slice(0, 86)}...`}
       </CardDescr>
       <hr />
 
