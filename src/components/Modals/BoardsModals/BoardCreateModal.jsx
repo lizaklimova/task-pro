@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';
-import Plus from 'components/Icons/Plus';
-// import { BacksIconsList } from './BacksIconsList';
-// import defaultDark from 'assets/images/backs-small/1x/default-dark.jpg';
-// import defaultDarkRetina from 'assets/images/backs-small/2x/default-dark-2x.jpg';
 
+import Plus from 'components/Icons/Plus';
+
+import { Form, Title, Input, Text, Button, Span } from './BoardModals.styled';
 export const BoardCreateModal = () => {
   const [shownModal, setShownModal] = useState(false);
 
@@ -16,28 +15,26 @@ export const BoardCreateModal = () => {
       </button>
       {shownModal && (
         <ModalWrapper width={350} onClose={() => setShownModal(false)}>
-          <form>
-            <h3 style={{ color: 'white' }}>New board</h3>
-            <input type="text" placeholder="Title" />
-            <p style={{ color: 'white' }}>Icons</p>
+          <Form>
+            <Title>New board</Title>
+            <Input type="text" placeholder="Title" />
+
+            <Text>Icons</Text>
             <IconsList />
-            <p style={{ color: 'white' }}>Background</p>
-            {/* <BacksIconsList /> */}
-            {/* <img
-            src={defaultDark}
-            srcSet={`${defaultDarkRetina} 2x`}
-            alt="default"
-          /> */}
-            <button type="submit">
-              <Plus
-                width={14}
-                height={14}
-                fillColor={'#850606'}
-                strokeColor={'green'}
-              />{' '}
+
+            <Text>Background</Text>
+
+            <Button type="submit">
+              <Span>
+                <Plus
+                  width={14}
+                  height={14}
+                  strokeColor={'var(--btn-icon-color)'}
+                />
+              </Span>
               Create
-            </button>
-          </form>
+            </Button>
+          </Form>
         </ModalWrapper>
       )}
     </>
