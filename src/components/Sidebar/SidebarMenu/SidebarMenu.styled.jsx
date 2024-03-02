@@ -23,8 +23,8 @@ export const AsideMenu = styled.div`
     left: -100%;
     width: 210px;
     height: 100vh;
-    padding: 24px;
-    background-color: #121212;
+    padding: 14px;
+    background-color: var(--bar-color);
     color: #fff;
     transition: left 250ms linear;
 
