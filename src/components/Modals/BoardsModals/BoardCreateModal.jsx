@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';
-
-import Plus from 'components/Iconss/Icons/Plus';
-
+import Plus from 'components/Icons/Plus';
 import { Form, Title, Input, Text, Button, Span } from './BoardModals.styled';
+
 export const BoardCreateModal = () => {
   const [shownModal, setShownModal] = useState(false);
 

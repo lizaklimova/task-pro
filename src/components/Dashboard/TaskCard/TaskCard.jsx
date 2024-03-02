@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Status from 'components/Iconss/Icons/Status';
-import Pencil from 'components/Iconss/Icons/Pencil';
-import Trash from 'components/Iconss/Icons/Trash';
-import Bell from 'components/Iconss/Icons/Bell';
+import Status from 'components/Icons/Status';
+import Pencil from 'components/Icons/Pencil';
+import Trash from 'components/Icons/Trash';
+import Bell from 'components/Icons/Bell';
 import {
   CardItem,
   CardTitle,
