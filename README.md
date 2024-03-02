@@ -18,7 +18,7 @@ provides a convenient way to organize tasks and collaborate with teams.
    - Register a new account or log in to gain full access to all TaskPro
      features.
 
-**💪🏻 Used technologies**
+## Used technologies 💪🏻
 
 <p align="center" >
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="36" height="36" alt="JavaScript" /></a>
@@ -75,7 +75,7 @@ TaskPro - це додаток, розроблений для ефективно�
      Зареєструйте новий обліковий запис або увійдіть, щоб мати повний доступ до
      всіх можливостей TaskPro.
 
-**💪🏻 Використані технології**
+## Використані технології 💪🏻
 
 <p align="center" >
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="36" height="36" alt="JavaScript" /></a>
