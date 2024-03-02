@@ -18,6 +18,8 @@ html[data-theme='dark']{
   --card-bg: #121212;
   --scroll-bar-color: #121212;
   --scroll-bar-bg: rgba(255, 255, 255, 0.08);
+  --svg-back-color:#1f1f1f;
+  --svg-color:#151515;
   --icon-stroke-color: #fff;
   --modal-background: #151515;
   --loader-color: #53cf17;
@@ -33,12 +35,11 @@ html[data-theme='dark']{
   --sidebar-active-board:#1f1f1f;
   --sidebar-help-span:#bedbb0;
   --sidebar-logout:#bedbb0;
-   --sidebar-lightning-fill: #fff;
-	--sidebar-lightning-bg: rgba(255, 255, 255, 0.08);
---sidebar-myboard-text:rgba(255, 255, 255, 0.5);
---sedibar-text: #fff;
---sidebar-help-container: #1f1f1f;
-
+  --sidebar-lightning-fill: #fff;
+  --sidebar-lightning-bg: rgba(255, 255, 255, 0.08);
+  --sidebar-myboard-text:rgba(255, 255, 255, 0.5);
+  --sedibar-text: #fff;
+  --sidebar-help-container: #1f1f1f;
 }
 
 html[data-theme='light']{
@@ -54,6 +55,8 @@ html[data-theme='light']{
   --card-bg: #fff;
   --scroll-bar-color: rgba(22, 22, 22, 0.1);;
   --scroll-bar-bg: #e8e8e8;
+  --svg-back-color:#FFFFFF;
+  --svg-color:#f6f6f7;
   --icon-stroke-color: #161616;
   --modal-background: #fcfcfc;
   --loader-color: #53cf17;
@@ -89,6 +92,8 @@ html[data-theme='violet']{
   --card-bg: #fff;
   --scroll-bar-color: #b8bcfd;
   --scroll-bar-bg: #fff;
+  --svg-back-color:#ecedfd;
+  --svg-color:#FFFFFF;
   --icon-stroke-color: #161616;
   --modal-background: #fcfcfc;
   --loader-color: #3d1780;
@@ -98,19 +103,17 @@ html[data-theme='violet']{
   --priority-gray: rgba(22, 22, 22, 0.3);
   --btn-icon-bg: #fcfcfc;
   --btn-icon-color: #161616;
-   --sidebar-add-btn:#b8bcfd;
- --sidebar-icon-color:#fff;
+  --sidebar-add-btn:#b8bcfd;
+  --sidebar-icon-color:#fff;
   --sidebar-plus-icon: #fff;
- --sidebar-active-board: rgba(255, 255, 255, 0.5);
- --sidebar-help-span:#5255bc;
- --sidebar-logout: #fff;
+  --sidebar-active-board: rgba(255, 255, 255, 0.5);
+  --sidebar-help-span:#5255bc;
+  --sidebar-logout: #fff;
   --sidebar-lightning-fill: #5255bc;
-  	--sidebar-lightning-bg: #fff;
---sidebar-myboard-text:rgba(255, 255, 255, 0.5);
---sedibar-text: #fff;
---sidebar-help-container:rgba(236, 237, 253, 0.4);
-
-
+  --sidebar-lightning-bg: #fff;
+  --sidebar-myboard-text:rgba(255, 255, 255, 0.5);
+  --sedibar-text: #fff;
+  --sidebar-help-container:rgba(236, 237, 253, 0.4);
 }
 
 *,
