@@ -5,7 +5,7 @@ import { closeModal } from 'helpers';
 import { LABEL_ARR } from 'constants';
 import ModalWrapper from 'components/Modals/ModalWrapper';
 import Calendar from 'components/Calendar';
-import Plus from 'components/Icons/Plus';
+import Plus from 'components/Iconss/Icons/Plus';
 import {
   CardModalContent,
   CardForm,

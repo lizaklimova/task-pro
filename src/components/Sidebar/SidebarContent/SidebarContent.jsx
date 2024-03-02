@@ -1,7 +1,7 @@
 /* import ShownModal from 'components/Modals/ShownModal'; */
 // import Lightning from 'components/icons/Lightning';
 import { LightningBox, Logo } from './SidebarContent.styled';
-import Lightning from 'components/Icons/Lightning';
+import Lightning from 'components/Iconss/Icons/Lightning';
 import { BoardCreateModal } from 'components/Modals/BoardsModals/BoardCreateModal';
 import NeedHelp from 'components/Sidebar/NeedHelp/NeedHelp';
 
