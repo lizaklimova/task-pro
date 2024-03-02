@@ -4,7 +4,7 @@ import { Button, Img, LanguageContainer } from './TempForLanguages.styled';
 
 export const TempForLanguages = () => {
   const [disabled, setDisabled] = useState(true);
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   // console.log(t);
   const changeLanguage = lng => {
     setDisabled(!disabled);
