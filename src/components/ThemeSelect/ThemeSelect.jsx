@@ -1,4 +1,3 @@
-
 import { useTheme } from 'hooks/useTheme';
 import React from 'react';
 import Select from 'react-select';
@@ -11,16 +10,18 @@ const options = [
 ];
 
 function ThemeSelect() {
-  const {  setTheme } = useTheme();
-  const onChangeTheme = (event) => {
+  const { setTheme } = useTheme();
+  const onChangeTheme = event => {
     setTheme(event.value);
-  }
-  
+  };
+
   return (
-    <div >
+    <div>
       <Select
-        classNamePrefix='custom-select'
-        onChange={event=>{onChangeTheme(event)}}
+        classNamePrefix="custom-select"
+        onChange={event => {
+          onChangeTheme(event);
+        }}
         options={options}
         placeholder="Theme"
       />

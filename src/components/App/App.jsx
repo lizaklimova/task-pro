@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import GlobalStyles from 'assets/styles';
 import { PublicRoute } from 'routes';
 import SharedLayout from 'layouts/SharedLayout';
+import Loader from 'components/Loader/Loader';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage'));
 const AuthPage = lazy(() => import('pages/AuthPage'));
@@ -29,7 +30,7 @@ const App = () => {
         </li>
       </ul>
 
-      <Suspense fallback="Loading">
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/home" element={<SharedLayout />}>
             <Route

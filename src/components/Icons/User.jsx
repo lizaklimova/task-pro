@@ -1,4 +1,3 @@
-
 const User = ({ width, height, fillColor, strokeColor }) => {
   return (
     <svg
@@ -31,4 +30,3 @@ const User = ({ width, height, fillColor, strokeColor }) => {
   );
 };
 export default User;
-

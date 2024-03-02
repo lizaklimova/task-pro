@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { CLOSE_KEY_CODE } from 'constants';
-import Close from 'components/icons/Close';
+import Close from 'components/Icons/Close';
 import {
   ModalBackdrop,
   ModalCloseButton,
@@ -26,9 +26,13 @@ const ModalWrapper = ({ children, width, onClose }) => {
         onClick={event => event.stopPropagation()}
       >
         <ModalCloseButton type="button" onClick={onClose}>
-          <Close width="18" height="18" strokeColor="white" />
+          <Close
+            width="18"
+            height="18"
+            strokeColor="var(--icon-stroke-color)"
+          />
         </ModalCloseButton>
-        <div>{children}</div>
+        {children}
       </ModalContainer>
     </ModalBackdrop>,
     document.getElementById('modal-root')

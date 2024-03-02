@@ -1,10 +1,9 @@
-const Plus = ({ width, height, fillColor, strokeColor }) => {
+const Plus = ({ width, height, strokeColor }) => {
   return (
     <svg
       width={width}
       height={height}
       viewBox="0 0 20 20"
-      fill={fillColor || null}
       stroke={strokeColor || null}
       xmlns="http://www.w3.org/2000/svg"
     >
