@@ -11,7 +11,7 @@ const options = [
 ];
 
 function ThemeSelect() {
-  const { theme, setTheme } = useTheme();
+  const {  setTheme } = useTheme();
   const onChangeTheme = (event) => {
     setTheme(event.value);
   }

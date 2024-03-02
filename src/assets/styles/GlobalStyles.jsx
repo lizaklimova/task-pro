@@ -18,6 +18,8 @@ html[data-theme='dark']{
   --card-bg: #121212;
   --scroll-bar-color: #121212;
   --scroll-bar-bg: rgba(255, 255, 255, 0.08);
+  --svg-back-color:#1f1f1f;
+  --svg-color:#151515;
 }
 
 html[data-theme='light']{
@@ -33,6 +35,8 @@ html[data-theme='light']{
   --card-bg: #fff;
   --scroll-bar-color: rgba(22, 22, 22, 0.1);;
   --scroll-bar-bg: #e8e8e8;
+  --svg-back-color:#FFFFFF;
+  --svg-color:#f6f6f7;
 }
 
 html[data-theme='violet']{
@@ -48,6 +52,8 @@ html[data-theme='violet']{
   --card-bg: #fff;
   --scroll-bar-color: #b8bcfd;
   --scroll-bar-bg: #fff;
+   --svg-back-color:#ecedfd;
+  --svg-color:#FFFFFF;
 }
 
 *,
