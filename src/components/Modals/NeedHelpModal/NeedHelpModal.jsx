@@ -8,7 +8,7 @@ import {
   Commenttextarea,
   ButtonSend,
   ModalMessage,
-  ModalMessageSucces,
+  ModalMessageSuccess,
 } from './NeedHelpModal.styled';
 
 const NeedHelpModal = ({ showModal }) => {
@@ -54,7 +54,7 @@ const NeedHelpModal = ({ showModal }) => {
       </Modalform>
       {errorMessage && <ModalMessage>{errorMessage}</ModalMessage>}
       {successMessage && (
-        <ModalMessageSucces>{successMessage}</ModalMessageSucces>
+        <ModalMessageSuccess>{successMessage}</ModalMessageSuccess>
       )}
     </ModalWrapper>
   );
