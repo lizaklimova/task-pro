@@ -5,6 +5,78 @@ const GlobalStyles = createGlobalStyle`
     --easedTransition: 350ms ease-in-out;
 }
 
+html[data-theme='dark']{
+  --text-color:#fff;
+  --bar-color:#121212;
+  --header-color:#161616;
+  --background-color: #1f1f1f;
+  --grey-text-color:rgba(255, 255, 255, 0.8);
+  --lightgrey-text-color:rgba(255, 255, 255, 0.5);
+  --accent-color:#bedbb0;
+  --input-color:#bedbb0;
+  --chose-color:#1f1f1f;
+  --card-bg: #121212;
+  --scroll-bar-color: #121212;
+  --scroll-bar-bg: rgba(255, 255, 255, 0.08);
+  --icon-stroke-color: #fff;
+  --modal-background: #151515;
+  --loader-color: #53cf17;
+  --priority-blue: #8FA1D0;
+  --priority-pink: #E09CB5;
+  --priority-green: #BEDBB0;
+  --priority-gray: rgba(255, 255, 255, 0.3);
+  --btn-icon-bg: #161616;
+  --btn-icon-color: #fff;
+}
+
+html[data-theme='light']{
+  --text-color:#161616;
+  --bar-color:#fff;
+  --header-color:#fcfcfc;
+  --background-color: #f6f6f7;
+  --grey-text-color:rgba(22, 22, 22, 0.8);
+  --lightgrey-text-color:rgba(22, 22, 22, 0.5);
+  --accent-color:#bedbb0;
+  --input-color:#bedbb0;
+  --chose-color:#f6f6f7;
+  --card-bg: #fff;
+  --scroll-bar-color: rgba(22, 22, 22, 0.1);;
+  --scroll-bar-bg: #e8e8e8;
+  --icon-stroke-color: #161616;
+  --modal-background: #fcfcfc;
+  --loader-color: #53cf17;
+  --priority-blue: #8FA1D0;
+  --priority-pink: #E09CB5;
+  --priority-green: #BEDBB0;
+  --priority-gray: rgba(22, 22, 22, 0.3);
+  --btn-icon-bg: #161616;
+  --btn-icon-color: #fff;
+}
+
+html[data-theme='violet']{
+  --text-color:#161616;
+  --bar-color: #5255bc;
+  --header-color:#fff;
+  --background-color:  #B8BCFD;
+  --grey-text-color:rgba(22, 22, 22, 0.8);
+  --lightgrey-text-color:rgba(22, 22, 22, 0.5);
+  --accent-color:#5255bc;
+  --input-color:#5255bc;
+  --chose-color:rgba(255, 255, 255, 0.5);
+  --card-bg: #fff;
+  --scroll-bar-color: #b8bcfd;
+  --scroll-bar-bg: #fff;
+  --icon-stroke-color: #161616;
+  --modal-background: #fcfcfc;
+  --loader-color: #3d1780;
+  --priority-blue: #8FA1D0;
+  --priority-pink: #E09CB5;
+  --priority-green: #BEDBB0;
+  --priority-gray: rgba(22, 22, 22, 0.3);
+  --btn-icon-bg: #fcfcfc;
+  --btn-icon-color: #161616;
+}
+
 *,
 *::before,
 *::after  {
@@ -12,15 +84,15 @@ const GlobalStyles = createGlobalStyle`
 }
 
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', 'Golos Text', sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 14px;
     line-height: 1.29;
     letter-spacing: -0.02em;
     margin: 0;
-    color: #000;
-    background-color: #fff;
+    color: var(--text-color);
+    background-color: var(--background-color);
     transition: background-color var(--easedTransition), color var(--easedTransition);
 }
 
@@ -56,16 +128,19 @@ aside {
   }
 }
 
- /* ::-webkit-scrollbar {
-
+ ::-webkit-scrollbar {
+  width: 12px;
 } 
 
 ::-webkit-scrollbar-thumb {
-
+  background-color: var(--scroll-bar-color);
+  border-radius: 7px;
 }
 
 ::-webkit-scrollbar-track {
-} */
+   background-color: var(--scroll-bar-bg);
+   color: rgba(255, 255, 255, 0.4);
+}
 
 h1,
 h2,
@@ -107,10 +182,8 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
-  border:none;
+  border: none;
 }
-
-
 `;
 
 export default GlobalStyles;

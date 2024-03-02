@@ -1,0 +1,103 @@
+{
+  "startPage": {
+    "mainText": "Supercharge your productivity and take control of your tasks with Task Pro - Don't wait, start achieving your goals now!",
+    "regLink": "Registration",
+    "loginLink": "Log In"
+  },
+  "authForms": {
+    "regTitle": "Registration",
+    "loginTitle": "Log In",
+    "name": "Enter your name",
+    "email": "Enter your email",
+    "password": "Create a password",
+    "confirm": "Confirm a password",
+    "regButton": "Register Now",
+    "loginButton": "Log In Now"
+  },
+  "header": {
+    "theme": "Theme",
+    "theme1": "Light",
+    "theme2": "Dark",
+    "theme3": "Violet",
+    "lang": "Language",
+    "langEn": "English",
+    "langUk": "Ukrainian"
+  },
+  "editUser": {
+    "title": "Edit  profile",
+    "button": "Send"
+  },
+  "sidebar": {
+    "boards": "My boards",
+    "create": "Create a new board",
+    "helpText": "If you need help with TaskPro, check out our support resources or reach out to our customer support team.",
+    "helpButton": "Need help?",
+    "logoutButton": "Log out ",
+    "helpModal": {
+      "title": "Need help",
+      "email": "Email address ",
+      "comment": "Comment",
+      "button": "Send"
+    }
+  },
+  "boards": {
+    "filterButton": "Filters",
+    "filter": {
+      "label": "Label color",
+      "all": "Show all",
+      "without": "Without priority",
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "beforeStart": "Before starting your project, it is essential to create a board to visualize and track all the necessary tasks and milestones. This board serves as a powerful tool to organize the workflow and ensure effective collaboration among team members.",
+    "modals": {
+      "newTitle": "New board",
+      "editTitle": "Edit board",
+      "icons": "Icons",
+      "background": "Background",
+      "input": "Title",
+      "newButton": "Create",
+      "editButton": "Edit"
+    }
+  },
+  "columns": {
+    "addButton": "Add another column",
+    "modals": {
+      "addTitle": "Add column",
+      "editTitle": "Edit column",
+      "input": "Title",
+      "addButton": "Add",
+      "editButton": "Edit"
+    }
+  },
+  "cards": {
+    "addButton": "Add another card",
+    "modals": {
+      "addTitle": "Add card",
+      "editTitle": "Edit card",
+      "title": "Title",
+      "description": "Description",
+      "label": "Label color",
+      "deadline": "Deadline",
+      "today": "Today,",
+      "addButton": "Add",
+      "editButton": "Edit"
+    },
+    "popup": {
+      "progress": "In progress",
+      "done": "Done"
+    }
+  },
+  "404": {
+    "title": "Oops! Page Not Found",
+    "text": "It seems like you've stumbled upon a page that doesn't exist. Don't worry, it happens to the best of us. Maybe you followed an outdated link, or the page has been moved.",
+    "stepsTitle": "Here are a few things you can try:",
+    "step1": "1. Check the URL for typos and try again.",
+    "step2": "2. Return to the homepage and navigate from there.",
+    "step3": "3. Contact the website administrator for assistance.",
+    "stillTrouble": "If you're still having trouble, feel free to reach out. We're here to help!",
+    "homeLink": "Home",
+    "helpButton": "Contact Us"
+  }
+}

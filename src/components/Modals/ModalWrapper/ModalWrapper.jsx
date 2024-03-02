@@ -1,20 +1,17 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import Close from 'components/icons/Close';
+import { CLOSE_KEY_CODE } from 'constants';
+import Close from 'components/Icons/Close';
 import {
   ModalBackdrop,
   ModalCloseButton,
   ModalContainer,
 } from './ModalWrapper.styled';
 
-const CLOSE_KEY_CODE = 'Escape';
-
 const ModalWrapper = ({ children, width, onClose }) => {
   useEffect(() => {
     const handleCloseKeyPress = event => {
-      if (event.code === CLOSE_KEY_CODE) {
-        onClose();
-      }
+      if (event.code === CLOSE_KEY_CODE) onClose();
     };
 
     document.addEventListener('keydown', handleCloseKeyPress);
@@ -29,9 +26,13 @@ const ModalWrapper = ({ children, width, onClose }) => {
         onClick={event => event.stopPropagation()}
       >
         <ModalCloseButton type="button" onClick={onClose}>
-          <Close width="18" height="18" strokeColor="white" />
+          <Close
+            width="18"
+            height="18"
+            strokeColor="var(--icon-stroke-color)"
+          />
         </ModalCloseButton>
-        <div>{children}</div>
+        {children}
       </ModalContainer>
     </ModalBackdrop>,
     document.getElementById('modal-root')
