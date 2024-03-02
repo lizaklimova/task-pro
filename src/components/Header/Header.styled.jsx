@@ -23,10 +23,11 @@ export const BurgerBtn = styled.button`
 
   svg,
   path {
+    stroke: var(--text-color);
+
     @media screen and (min-width: 768px) {
       width: 32px;
       height: 32px;
-      stroke: var(--text-color);
     }
   }
 
@@ -34,8 +35,6 @@ export const BurgerBtn = styled.button`
     display: none;
   }
 `;
-
-
 
 const User = ({ width, height, fillColor, strokeColor }) => {
   return (
@@ -69,4 +68,3 @@ const User = ({ width, height, fillColor, strokeColor }) => {
   );
 };
 export default User;
-
