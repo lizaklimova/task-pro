@@ -5,6 +5,7 @@ export const Container = styled.div`
   color: var(--text-color);
   display: flex;
   flex-direction: column;
+  height: 100%;
 `;
 
 export const Content = styled.div`
@@ -83,7 +84,7 @@ export const BoardContainer = styled.div`
   }
 
   @media screen and (min-width: 1439px) {
-    max-height: 170px;
+    max-height: 320px;
     width: 260px;
   }
 `;
