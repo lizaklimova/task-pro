@@ -29,6 +29,7 @@ html[data-theme='dark']{
   --btn-icon-color: #fff;
   --sidebar-add-btn:#bedbb0;
   --sidebar-icon-color:#fff;
+  --sidebar-change-color:rgba(255, 255, 255, 0.5);
   --sidebar-plus-icon: #161616;
   --sidebar-active-board:#1f1f1f;
   --sidebar-help-span:#bedbb0;
@@ -38,7 +39,7 @@ html[data-theme='dark']{
 --sidebar-myboard-text:rgba(255, 255, 255, 0.5);
 --sedibar-text: #fff;
 --sidebar-help-container: #1f1f1f;
-
+--sidebar-logout-text: #fff;
 }
 
 html[data-theme='light']{
@@ -65,6 +66,8 @@ html[data-theme='light']{
   --btn-icon-color: #fff;
     --sidebar-add-btn:#bedbb0;
 	  --sidebar-icon-color:#161616;
+	    --sidebar-change-color:#1616167b;
+
  --sidebar-plus-icon: #161616;
  --sidebar-active-board:#f6f6f7;
  --sidebar-help-span:#bedbb0;
@@ -74,6 +77,7 @@ html[data-theme='light']{
 --sidebar-myboard-text:rgba(22, 22, 22, 0.5);
 --sedibar-text: #161616;
 --sidebar-help-container:#f6f6f7;
+--sidebar-logout-text: #161616;
 }
 
 html[data-theme='violet']{
@@ -100,8 +104,10 @@ html[data-theme='violet']{
   --btn-icon-color: #161616;
    --sidebar-add-btn:#b8bcfd;
  --sidebar-icon-color:#fff;
+   --sidebar-change-color:rgba(255, 255, 255, 0.5);
+
   --sidebar-plus-icon: #fff;
- --sidebar-active-board: rgba(255, 255, 255, 0.5);
+ --sidebar-active-board: rgba(255, 255, 255, 0.2);
  --sidebar-help-span:#5255bc;
  --sidebar-logout: #fff;
   --sidebar-lightning-fill: #5255bc;
@@ -109,6 +115,7 @@ html[data-theme='violet']{
 --sidebar-myboard-text:rgba(255, 255, 255, 0.5);
 --sedibar-text: #fff;
 --sidebar-help-container:rgba(236, 237, 253, 0.4);
+--sidebar-logout-text: #fff;
 
 
 }
