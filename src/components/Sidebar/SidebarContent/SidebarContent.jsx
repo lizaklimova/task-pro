@@ -4,7 +4,7 @@ import {
   BoardBoxInfo,
   BoardContainer,
   ChangeBox,
-  ChangeIcons,
+  // ChangeIcons,
   Container,
   Content,
   CreateBox,
