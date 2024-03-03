@@ -23,6 +23,7 @@ export const AsideMenu = styled.div`
     color: #fff;
     background-color: var(--bar-color);
   }
+
   @media screen and (max-width: 1439px) {
     position: absolute;
     top: 0;
@@ -32,10 +33,8 @@ export const AsideMenu = styled.div`
     height: 100vh;
     padding: 14px;
     background-color: var(--bar-color);
-    color: #fff;
+    color: var(--text-color);
     transition: left 250ms linear;
-    /* overflow-y: auto; */
-    /* overflow-x: hidden; */
 
     &.is-open {
       left: 0;

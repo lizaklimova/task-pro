@@ -1,10 +1,8 @@
-// import { margin } from '@mui/system';
 import {
   BoardBox,
   BoardBoxInfo,
   BoardContainer,
   ChangeBox,
-  // ChangeIcons,
   Container,
   Content,
   CreateBox,
@@ -21,10 +19,8 @@ import {
   NameBox,
 } from './SidebarContent.styled';
 import Lightning from 'components/Icons/Lightning';
-
 import { BoardCreateModal } from 'components/Modals/BoardsModals/BoardCreateModal';
 import NeedHelp from 'components/Sidebar/NeedHelp/NeedHelp';
-
 import FourCircles from 'components/Icons/FourCircles';
 import Denis from 'assets/images/Denis.png';
 import LogOut from 'components/Icons/LogOut';
@@ -54,7 +50,88 @@ const SidebarContent = () => {
           <CreateText>{t('sidebar.create')}</CreateText>
           <BoardCreateModal />
         </CreateBox>
-        <BoardContainer id="boards">
+        <BoardContainer>
+          <BoardBox>
+            <BoardBoxInfo>
+              <NameBox>
+                <FourCircles
+                  width={16}
+                  height={16}
+                  strokeColor={'var(--sidebar-icon-color)'}
+                />
+                <p>Project office</p>
+              </NameBox>
+              <ChangeBox>
+                <BoardEditModal />
+                <DeleteModal />
+              </ChangeBox>
+            </BoardBoxInfo>
+          </BoardBox>
+
+          <BoardBox>
+            <BoardBoxInfo>
+              <NameBox>
+                <FourCircles
+                  width={16}
+                  height={16}
+                  strokeColor={'var(--sidebar-icon-color)'}
+                />
+                <p>Project office</p>
+              </NameBox>
+              <ChangeBox>
+                <BoardEditModal />
+                <DeleteModal />
+              </ChangeBox>
+            </BoardBoxInfo>
+          </BoardBox>
+          <BoardBox>
+            <BoardBoxInfo>
+              <NameBox>
+                <FourCircles
+                  width={16}
+                  height={16}
+                  strokeColor={'var(--sidebar-icon-color)'}
+                />
+                <p>Project office</p>
+              </NameBox>
+              <ChangeBox>
+                <BoardEditModal />
+                <DeleteModal />
+              </ChangeBox>
+            </BoardBoxInfo>
+          </BoardBox>
+          <BoardBox>
+            <BoardBoxInfo>
+              <NameBox>
+                <FourCircles
+                  width={16}
+                  height={16}
+                  strokeColor={'var(--sidebar-icon-color)'}
+                />
+                <p>Project office</p>
+              </NameBox>
+              <ChangeBox>
+                <BoardEditModal />
+                <DeleteModal />
+              </ChangeBox>
+            </BoardBoxInfo>
+          </BoardBox>
+          <BoardBox>
+            <BoardBoxInfo>
+              <NameBox>
+                <FourCircles
+                  width={16}
+                  height={16}
+                  strokeColor={'var(--sidebar-icon-color)'}
+                />
+                <p>Project office</p>
+              </NameBox>
+              <ChangeBox>
+                <BoardEditModal />
+                <DeleteModal />
+              </ChangeBox>
+            </BoardBoxInfo>
+          </BoardBox>
           <BoardBox>
             <BoardBoxInfo>
               <NameBox>
@@ -75,9 +152,9 @@ const SidebarContent = () => {
       </Content>
       <Footer>
         <HelpContainer>
-          <img src={Denis} alt="" />
+          <img src={Denis} alt="plant" />
           <HelpText>
-            {t('sidebar.helpText1')} <br />
+            {t('sidebar.helpText1')}&nbsp;
             <HelpSpan>TaskPro</HelpSpan>
             {t('sidebar.helpText2')}
           </HelpText>
