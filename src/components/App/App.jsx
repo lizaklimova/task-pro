@@ -18,7 +18,7 @@ const App = () => {
       <GlobalStyles />
       <Toaster position="top-center" />
 
-      {/* <ul style={{ display: 'flex', justifyContent: 'center', gap: '15px' }}>
+      <ul style={{ display: 'flex', justifyContent: 'center', gap: '15px' }}>
         <li>
           <Link to="/">Welcome</Link>
         </li>
@@ -28,7 +28,7 @@ const App = () => {
         <li>
           <Link to="/home">Home</Link>
         </li>
-      </ul> */}
+      </ul>
 
       <Suspense fallback={<Loader />}>
         <Routes>
