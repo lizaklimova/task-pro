@@ -102,5 +102,9 @@
     "stillTrouble": "If you're still having trouble, feel free to reach out. We're here to help!",
     "homeLink": "Home",
     "helpButton": "Contact Us"
+  },
+  "deleteModal": {
+    "title": "Are you sure you want to delete this?",
+    "confirm": "Confirm"
   }
 }
