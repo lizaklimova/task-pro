@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const WelcomeBg = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ export const WelcomeBg = styled.div`
   padding: 20px;
   width: 100vw;
   height: 100vh;
-  background: var(--green-gradient);
+  background: var(--light-green-gradient);
 
   img {
     margin-bottom: 14px;
@@ -87,7 +87,7 @@ export const AuthNavWrap = styled.div`
   gap: 14px;
 `;
 
-export const AuthRegisterLink = styled(NavLink)`
+export const AuthRegisterLink = styled(Link)`
   font-weight: 500;
   text-align: center;
   min-width: 280px;
@@ -115,7 +115,7 @@ export const AuthRegisterLink = styled(NavLink)`
   }
 `;
 
-export const AuthLoginLink = styled(NavLink)`
+export const AuthLoginLink = styled(Link)`
   font-weight: 500;
   transition: color var(--easedTransition);
 
