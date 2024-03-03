@@ -11,14 +11,19 @@ export const BoardCreateModal = () => {
   const [shownModal, setShownModal] = useState(false);
   const { t } = useTranslation();
 
+  const submitHandler = e => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <AddBtn type="button" onClick={() => setShownModal(true)}>
         <Plus width={20} height={20} strokeColor={'var(--sidebar-plus-icon)'} />
       </AddBtn>
+
       {shownModal && (
         <ModalWrapper width={350} onClose={() => setShownModal(false)}>
-          <Form>
+          <Form onSubmit={submitHandler}>
             <Title>{t('boards.modals.newTitle')}</Title>
             <Input type="text" placeholder={t('boards.modals.input')} />
 
