@@ -5,7 +5,7 @@ import {
   editColumn,
   fetchColumnsOfBoard,
 } from './operations';
-import { handlePending, handleRejected } from './helpers';
+import { handlePending, handleRejected } from '../helpers';
 
 const columnsInitialState = {
   columns: [],
@@ -41,10 +41,10 @@ const columnsSlice = createSlice({
       .addCase(editColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const editedItemindex = state.columns.findIndex(
+        const editedItemIndex = state.columns.findIndex(
           ({ id }) => id === action.payload.id
         );
-        state.columns = state.columns.with(editedItemindex, action.payload);
+        state.columns = state.columns.with(editedItemIndex, action.payload);
       })
       .addCase(editColumn.pending, handlePending)
       .addCase(editColumn.rejected, handleRejected)
