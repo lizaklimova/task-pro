@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const CardItem = styled.li`
+export const CardItem = styled.div`
   width: 334px;
   border-radius: 10px;
   padding: 24px 14px;
