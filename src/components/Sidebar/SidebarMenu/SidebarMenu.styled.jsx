@@ -20,7 +20,7 @@ export const AsideMenu = styled.div`
   @media screen and (min-width: 1439px) {
     padding: 24px;
     height: 100vh;
-    color: #fff;
+    color: (--text-color);
     background-color: var(--bar-color);
   }
 
@@ -35,6 +35,8 @@ export const AsideMenu = styled.div`
     background-color: var(--bar-color);
     color: var(--text-color);
     transition: left 250ms linear;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     &.is-open {
       left: 0;

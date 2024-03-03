@@ -39,14 +39,13 @@ html[data-theme='dark']{
   --sidebar-active-board:#1f1f1f;
   --sidebar-help-span:#bedbb0;
   --sidebar-logout:#bedbb0;
-
-   --sidebar-lightning-fill: #fff;
+  --sidebar-lightning-fill: #fff;
 	--sidebar-lightning-bg: rgba(255, 255, 255, 0.08);
---sidebar-myboard-text:rgba(255, 255, 255, 0.5);
---sedibar-text: #fff;
---sidebar-help-container: #1f1f1f;
---sidebar-logout-text: #fff;
---sidebar-before: #bedbb0;
+  --sidebar-myboard-text:rgba(255, 255, 255, 0.5);
+  --sidebar-text: #fff;
+  --sidebar-help-container: #1f1f1f;
+  --sidebar-logout-text: #fff;
+  --sidebar-before: #bedbb0;
 }
 
 html[data-theme='light']{
@@ -60,7 +59,7 @@ html[data-theme='light']{
   --input-color:#bedbb0;
   --chose-color:#f6f6f7;
   --card-bg: #fff;
-  --scroll-bar-color: rgba(22, 22, 22, 0.1);;
+  --scroll-bar-color: rgba(22, 22, 22, 0.1);
   --scroll-bar-bg: #e8e8e8;
   --svg-back-color:#FFFFFF;
   --svg-color:#f6f6f7;
@@ -73,23 +72,20 @@ html[data-theme='light']{
   --priority-gray: rgba(22, 22, 22, 0.3);
   --btn-icon-bg: #161616;
   --btn-icon-color: #fff;
-
-    --sidebar-add-btn:#bedbb0;
-	  --sidebar-icon-color:#161616;
-	    --sidebar-change-color:#1616167b;
-
- --sidebar-plus-icon: #161616;
- --sidebar-active-board:#f6f6f7;
- --sidebar-help-span:#bedbb0;
- --sidebar-logout:#bedbb0;
- --sidebar-lightning-fill: #fff;
+  --sidebar-add-btn:#bedbb0;
+	--sidebar-icon-color:#161616;
+	--sidebar-change-color:#1616167b;
+  --sidebar-plus-icon: #161616;
+  --sidebar-active-board:#f6f6f7;
+  --sidebar-help-span:#bedbb0;
+  --sidebar-logout:#bedbb0;
+  --sidebar-lightning-fill: #fff;
  	--sidebar-lightning-bg: #161616;
---sidebar-myboard-text:rgba(22, 22, 22, 0.5);
---sedibar-text: #161616;
---sidebar-help-container:#f6f6f7;
---sidebar-logout-text: #161616;
---sidebar-before: #bedbb0;
-
+  --sidebar-myboard-text:rgba(22, 22, 22, 0.5);
+  --sidebar-text: #161616;
+  --sidebar-help-container:#f6f6f7;
+  --sidebar-logout-text: #161616;
+  --sidebar-before: #bedbb0;
 }
 
 html[data-theme='violet']{
@@ -116,25 +112,20 @@ html[data-theme='violet']{
   --priority-gray: rgba(22, 22, 22, 0.3);
   --btn-icon-bg: #fcfcfc;
   --btn-icon-color: #161616;
-
-   --sidebar-add-btn:#b8bcfd;
- --sidebar-icon-color:#fff;
-   --sidebar-change-color:rgba(255, 255, 255, 0.5);
-
+  --sidebar-add-btn:#b8bcfd;
+  --sidebar-icon-color:#fff;
+  --sidebar-change-color:rgba(255, 255, 255, 0.5);
   --sidebar-plus-icon: #fff;
- --sidebar-active-board: rgba(255, 255, 255, 0.2);
- --sidebar-help-span:#5255bc;
- --sidebar-logout: #fff;
+  --sidebar-active-board: rgba(255, 255, 255, 0.2);
+  --sidebar-help-span:#5255bc;
+  --sidebar-logout: #fff;
   --sidebar-lightning-fill: #5255bc;
-  	--sidebar-lightning-bg: #fff;
---sidebar-myboard-text:rgba(255, 255, 255, 0.5);
---sedibar-text: #fff;
---sidebar-help-container:rgba(236, 237, 253, 0.4);
---sidebar-logout-text: #fff;
---sidebar-before: #fff;
-
-
-
+  --sidebar-lightning-bg: #fff;
+  --sidebar-myboard-text:rgba(255, 255, 255, 0.5);
+  --sidebar-text: #fff;
+  --sidebar-help-container:rgba(236, 237, 253, 0.4);
+  --sidebar-logout-text: #fff;
+  --sidebar-before: #fff;
 }
 
 *,
@@ -161,8 +152,7 @@ body {
     display: grid;
     grid-template: "sidebar header header" 68px
         "sidebar main main" auto 
-        / 260px auto auto;
-        
+        / 260px auto auto;    
   }
 }
 

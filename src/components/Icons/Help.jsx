@@ -1,11 +1,11 @@
 const Help = ({ width, height, fillColor, strokeColor }) => {
   return (
     <svg
-      width={width}
-      height={height}
+      width={width || '14px'}
+      height={height || '14px'}
       viewBox="0 0 20 20"
-      fill="none"
-      stroke={strokeColor || null}
+      fill={fillColor || 'none'}
+      stroke={strokeColor || 'none'}
       xmlns="http://www.w3.org/2000/svg"
     >
       <g clipPath="url(#clip0_93_113)">
@@ -30,7 +30,7 @@ const Help = ({ width, height, fillColor, strokeColor }) => {
       </g>
       <defs>
         <clipPath id="clip0_93_113">
-          <rect width={width} height={height} fill={fillColor || null} />
+          <rect width={width} height={height} fill={fillColor || 'none'} />
         </clipPath>
       </defs>
     </svg>

@@ -21,7 +21,7 @@ export const Logo = styled.div`
   gap: 8px;
   align-items: center;
   margin-bottom: 70px;
-  color: var(--sedibar-text);
+  color: var(--sidebar-text);
   font-weight: 600;
   /* @media screen and (min-width: 1440px) {
     display: block;
@@ -59,7 +59,7 @@ export const CreateText = styled.p`
   max-width: 76px;
   font-weight: 500;
   text-align: left;
-  color: var(--sedibar-text);
+  color: var(--sidebar-text);
 `;
 
 export const CreateBox = styled.div`
@@ -74,18 +74,24 @@ export const CreateBox = styled.div`
 `;
 
 export const BoardContainer = styled.div`
-  max-height: 150px;
+  max-height: 250px;
   overflow-y: auto;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -14px;
+  margin-right: -14px;
 
   &::-webkit-scrollbar {
     width: 5px;
   }
 
+  @media screen and (min-width: 768px) {
+    max-height: 290px;
+  }
+
   @media screen and (min-width: 1439px) {
-    max-height: 320px;
+    max-height: 260px;
     width: 260px;
+    margin-left: -24px;
+    margin-right: -24px;
   }
 `;
 
@@ -119,7 +125,7 @@ export const NameBox = styled.div`
   display: flex;
   gap: 4px;
   font-weight: 500;
-  color: var(--sedibar-text);
+  color: var(--sidebar-text);
 `;
 
 export const ChangeBox = styled.div`
@@ -141,7 +147,7 @@ export const HelpContainer = styled.div`
 `;
 
 export const HelpText = styled.p`
-  color: var(--sedibar-text);
+  color: var(--sidebar-text);
   margin-top: 14px;
   margin-bottom: 18px;
 `;
@@ -154,7 +160,7 @@ export const HelpSpan = styled.span`
 export const HelpBtn = styled.button`
   background: transparent;
   padding: 0;
-  color: var(--sedibar-text);
+  color: var(--sidebar-text);
   display: flex;
   gap: 8px;
   align-items: center;

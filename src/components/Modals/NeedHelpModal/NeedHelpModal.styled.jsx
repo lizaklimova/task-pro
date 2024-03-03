@@ -7,7 +7,10 @@ export const Modalform = styled.form`
     border-color: #9dc888;
   }
   @media screen and (min-width: 1440px) {
-    width: 400px;
+    Emailinput,
+    Commenttextarea {
+      width: 100%;
+    }
   }
 `;
 
@@ -63,22 +66,11 @@ export const ButtonSend = styled.button`
   width: 100%;
   height: 49px;
   background-color: var(--accent-color);
+  color: var(--btn-icon-bg);
   cursor: pointer;
   transition: opacity var(--easedTransition);
 
   &:hover {
-    opacity: 0.5;
+    opacity: 0.7;
   }
-`;
-
-export const ModalMessage = styled.div`
-  color: red;
-  margin-top: 10px;
-  text-align: center;
-`;
-
-export const ModalMessageSuccess = styled.div`
-  color: #9dc888;
-  margin-top: 10px;
-  text-align: center;
 `;

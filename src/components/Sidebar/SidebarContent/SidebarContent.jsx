@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   BoardBox,
   BoardBoxInfo,
@@ -18,15 +19,14 @@ import {
   MyBoard,
   NameBox,
 } from './SidebarContent.styled';
+import plantImg from 'assets/images/sidebar/plant.png';
 import Lightning from 'components/Icons/Lightning';
-import { BoardCreateModal } from 'components/Modals/BoardsModals/BoardCreateModal';
-import NeedHelp from 'components/Sidebar/NeedHelp/NeedHelp';
 import FourCircles from 'components/Icons/FourCircles';
-import Denis from 'assets/images/Denis.png';
 import LogOut from 'components/Icons/LogOut';
+import { BoardCreateModal } from 'components/Modals/BoardsModals/BoardCreateModal';
+import NeedHelp from 'components/Sidebar/NeedHelp';
 import { DeleteModal } from 'components/Modals/DeleteModal/DeleteModal';
 import { BoardEditModal } from 'components/Modals/BoardsModals/BoardEditModal';
-import { useTranslation } from 'react-i18next';
 
 const SidebarContent = () => {
   const { t } = useTranslation();
@@ -152,7 +152,7 @@ const SidebarContent = () => {
       </Content>
       <Footer>
         <HelpContainer>
-          <img src={Denis} alt="plant" />
+          <img src={plantImg} alt="plant" />
           <HelpText>
             {t('sidebar.helpText1')}&nbsp;
             <HelpSpan>TaskPro</HelpSpan>

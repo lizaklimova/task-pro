@@ -1,11 +1,11 @@
 const Bell = ({ width, height, fillColor, strokeColor }) => {
   return (
     <svg
-      width={width || null}
-      height={height || null}
+      width={width || '14px'}
+      height={height || '14px'}
       viewBox="0 0 14 16"
-      fill="none"
-      stroke={strokeColor || null}
+      fill={fillColor || 'none'}
+      stroke={strokeColor || 'none'}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

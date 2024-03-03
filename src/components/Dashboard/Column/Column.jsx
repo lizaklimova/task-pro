@@ -1,5 +1,11 @@
+import { useState } from 'react';
+import { nanoid } from '@reduxjs/toolkit';
+import { useTranslation } from 'react-i18next';
 import Pencil from 'components/Icons/Pencil';
 import Trash from 'components/Icons/Trash';
+import ColumnModal from 'components/Modals/ColumnModal';
+import Plus from 'components/Icons/Plus';
+import TaskCard from '../TaskCard';
 import {
   AddButton,
   ButtonsList,
@@ -9,12 +15,6 @@ import {
   ColumnWrap,
   IconWrap,
 } from './Column.styled';
-import Plus from 'components/Icons/Plus';
-import { useTranslation } from 'react-i18next';
-import TaskCard from '../TaskCard';
-import { nanoid } from '@reduxjs/toolkit';
-import { useState } from 'react';
-import ColumnModal from 'components/Modals/ColumnModal';
 
 const Column = ({ column }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
