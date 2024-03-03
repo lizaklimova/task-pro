@@ -191,10 +191,6 @@ aside {
 
  ::-webkit-scrollbar {
   width: 7px;
-
-  @media screen and (min-width: 768px){
-    width: 10px;
-  }
 } 
 
 ::-webkit-scrollbar-thumb {
