@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import Trash from 'components/Icons/Trash';
 import { ChangeIcons } from 'components/Sidebar/SidebarContent/SidebarContent.styled';
+import { DeleteModalContent } from './DeleteModalContent';
 
 export const DeleteModal = () => {
   const [shownModal, setShownModal] = useState(false);
@@ -16,8 +17,8 @@ export const DeleteModal = () => {
         />
       </ChangeIcons>
       {shownModal && (
-        <ModalWrapper width="400px" onClose={() => setShownModal(false)}>
-          <p style={{ color: 'white' }}>Children Info</p>
+        <ModalWrapper width={335} onClose={() => setShownModal(false)}>
+          <DeleteModalContent />
         </ModalWrapper>
       )}
     </>

@@ -19,7 +19,7 @@ export const ModalBackdrop = styled.div`
 export const ModalContainer = styled.div`
   position: relative;
   padding: 24px;
-  min-height: 150px;
+  min-height: 130px;
   color: var(--text-color);
   background: var(--modal-background);
   border-radius: 8px;
