@@ -10,9 +10,11 @@ import {
 } from './NeedHelpModal.styled';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from 'react-i18next';
 
 const NeedHelpModal = ({ showModal }) => {
   const [query, setQuery] = useState('');
+  const { t } = useTranslation();
 
   const handleSubmit = evt => {
     evt.preventDefault();
@@ -38,16 +40,20 @@ const NeedHelpModal = ({ showModal }) => {
       <ModalWrapper width={400} onClose={() => closeModal(showModal)}>
         <ToastContainer />
         <Modalform onSubmit={handleSubmit} className="help-form">
-          <ModalTitle>Need Help</ModalTitle>
-          <Emailinput type="email" name="email" placeholder="Email address" />
+          <ModalTitle>{t('sidebar.helpModal.title')}</ModalTitle>
+          <Emailinput
+            type="email"
+            name="email"
+            placeholder={t('sidebar.helpModal.email')}
+          />
           <Commenttextarea
             type="text"
             name="comment"
-            placeholder="Comment"
+            placeholder={t('sidebar.helpModal.comment')}
             value={query}
             onChange={handleChange}
           />
-          <ButtonSend type="submit">Send</ButtonSend>
+          <ButtonSend type="submit">{t('sidebar.helpModal.button')}</ButtonSend>
         </Modalform>
       </ModalWrapper>
     </>
