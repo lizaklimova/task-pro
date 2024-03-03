@@ -96,7 +96,7 @@ export const BoardBox = styled(NavLink)`
       border-radius: 4px 0 0 4px;
       width: 4px;
       height: 61px;
-      background: #bedbb0;
+      background: var(--sidebar-before);
     }
     background-color: var(--sidebar-active-board);
   }
@@ -146,11 +146,12 @@ export const HelpBtn = styled.button`
   gap: 8px;
   align-items: center;
 `;
-export const LogoutContainer = styled.div`
+export const LogoutContainer = styled.button`
   display: flex;
   gap: 14px;
   align-items: center;
   padding-left: 10px;
+  background: transparent;
 `;
 export const LogoutText = styled.p`
   font-weight: 500;

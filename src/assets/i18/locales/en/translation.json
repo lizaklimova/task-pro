@@ -30,7 +30,8 @@
   "sidebar": {
     "boards": "My boards",
     "create": "Create a new board",
-    "helpText": "If you need help with TaskPro, check out our support resources or reach out to our customer support team.",
+    "helpText1": "If you need help with",
+    "helpText2": ", check out our support resources or reach out to our customer support team.",
     "helpButton": "Need help?",
     "logoutButton": "Log out ",
     "helpModal": {
