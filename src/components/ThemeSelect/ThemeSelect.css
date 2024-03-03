@@ -1,74 +1,74 @@
 .custom-select__control {
-    background-color: transparent !important;
-    border: none !important;
-    height: 21px;
-    gap: 4px;
+  background-color: transparent !important;
+  border: none !important;
+  height: 21px;
+  gap: 4px;
 }
 
 .custom-select__control--is-focused {
-    border-color: transparent !important;
-    box-shadow: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
 }
 
 .custom-select__menu {
-    background-color: var(--header-color) !important;
-    width: 100px !important;
-    color: var(--grey-text-color);
+  background-color: var(--header-color) !important;
+  width: 100px !important;
+  color: var(--grey-text-color);
 }
 
 .custom-select__indicator-separator {
-    display: none !important;
+  display: none !important;
 }
 
 .custom-select__input-container {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 
 .custom-select__placeholder {
-    font-family: "Poppins", sans-serif !important;
-    font-weight: 500 !important;
-    font-size: 14px !important;
-    letter-spacing: -0.02em;
-    color: var(--grey-text-color) !important;
-    padding: 0 !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  letter-spacing: -0.02em;
+  color: var(--grey-text-color) !important;
+  padding: 0 !important;
 }
 
 .custom-select__value-container {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 
 .custom-select__single-value {
-    color: var(--grey-text-color) !important;
+  color: var(--grey-text-color) !important;
 }
 
 .custom-select__indicators {
-    cursor: pointer !important;
+  cursor: pointer !important;
 }
 
 .custom-select__indicator {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 
 .custom-select__option {
-    cursor: pointer !important;
-    transition: 350ms ease-in-out;
+  cursor: pointer !important;
+  transition: 350ms ease-in-out;
 }
 
 .custom-select__option--is-focused {
-    background-color: transparent !important;
-    color: var(--accent-color) !important;
+  background-color: transparent !important;
+  color: var(--accent-color) !important;
 }
 
 .custom-select__option--is-hover {
-    background-color: transparent !important;
-    color: var(--accent-color) !important;
+  background-color: transparent !important;
+  color: var(--accent-color) !important;
 }
 
 .custom-select__option--is-selected {
-    background-color: lighten(var(--lightgrey-text-color), 8%) !important;
-    color: var(--grey-text-color) !important;
+  background-color: lighten(var(--lightgrey-text-color), 8%) !important;
+  color: var(--grey-text-color) !important;
 }
 
 .custom-select__option--is-selected:hover {
-    color: var(--accent-color) !important;
+  color: var(--accent-color) !important;
 }

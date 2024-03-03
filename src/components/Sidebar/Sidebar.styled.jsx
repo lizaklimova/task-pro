@@ -7,7 +7,7 @@ export const Aside = styled.aside`
     display: block;
     padding: 24px;
     background-color: var(--bar-color);
-    color: #fff;
+    color: var(--text-color);
     height: 100vh;
   }
 `;

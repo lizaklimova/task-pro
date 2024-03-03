@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import sprite from 'assets/images/icons/icons-sprite.svg';
-import { iconsdArray } from './IconsArr';
+import { ICONS_ARRAY } from 'constants/index';
 
 import {
   IconsUl,
@@ -20,7 +20,7 @@ export const IconsList = () => {
 
   return (
     <IconsUl>
-      {iconsdArray.map(item => {
+      {ICONS_ARRAY.map(item => {
         return (
           <IconLi key={item.id}>
             <IconLabel>

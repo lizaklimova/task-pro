@@ -1,11 +1,13 @@
-import { useTranslation } from 'react-i18next';
-import { AddButton, ColumnsList, IconWrap, Wrap } from './Dashboard.styled';
-import Plus from 'components/Icons/Plus';
-import Column from './Column';
+import { useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
+import { useTranslation } from 'react-i18next';
+import Plus from 'components/Icons/Plus';
 import ColumnModal from 'components/Modals/ColumnModal';
+import Column from './Column';
+import { AddButton, ColumnsList, IconWrap, Wrap } from './Dashboard.styled';
 
 const Dashboard = ({ board }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useTranslation();
 
   return (
@@ -19,14 +21,16 @@ const Dashboard = ({ board }) => {
           ))}
         </ColumnsList>
       )}
-      <AddButton type="button">
+      <AddButton type="button" onClick={() => setIsModalOpen(true)}>
         <IconWrap>
           <Plus width={14} height={14} />
         </IconWrap>
         {t('columns.addButton')}
       </AddButton>
 
-      <ColumnModal />
+      {isModalOpen && (
+        <ColumnModal variant="add" closeModal={() => setIsModalOpen(false)} />
+      )}
     </Wrap>
   );
 };

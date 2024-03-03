@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import GlobalStyles from 'assets/styles';
 import { PublicRoute } from 'routes';
@@ -17,18 +17,6 @@ const App = () => {
     <>
       <GlobalStyles />
       <Toaster position="top-center" />
-
-      <ul style={{ display: 'flex', justifyContent: 'center', gap: '15px' }}>
-        <li>
-          <Link to="/">Welcome</Link>
-        </li>
-        <li>
-          <Link to="/auth">Auth</Link>
-        </li>
-        <li>
-          <Link to="/home">Home</Link>
-        </li>
-      </ul>
 
       <Suspense fallback={<Loader />}>
         <Routes>

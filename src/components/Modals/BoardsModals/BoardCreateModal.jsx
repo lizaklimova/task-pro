@@ -1,12 +1,15 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';
+import { BacksList } from './BacksList';
 import Plus from 'components/Icons/Plus';
 import { Form, Title, Input, Text, Button, Span } from './BoardModals.styled';
 import { AddBtn } from 'components/Sidebar/SidebarContent/SidebarContent.styled';
 
 export const BoardCreateModal = () => {
   const [shownModal, setShownModal] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -16,13 +19,14 @@ export const BoardCreateModal = () => {
       {shownModal && (
         <ModalWrapper width={350} onClose={() => setShownModal(false)}>
           <Form>
-            <Title>New board</Title>
-            <Input type="text" placeholder="Title" />
+            <Title>{t('boards.modals.newTitle')}</Title>
+            <Input type="text" placeholder={t('boards.modals.input')} />
 
-            <Text>Icons</Text>
+            <Text>{t('boards.modals.icons')}</Text>
             <IconsList />
 
-            <Text>Background</Text>
+            <Text>{t('boards.modals.background')}</Text>
+            <BacksList />
 
             <Button type="submit">
               <Span>
@@ -32,7 +36,7 @@ export const BoardCreateModal = () => {
                   strokeColor={'var(--btn-icon-color)'}
                 />
               </Span>
-              Create
+              {t('boards.modals.newButton')}
             </Button>
           </Form>
         </ModalWrapper>

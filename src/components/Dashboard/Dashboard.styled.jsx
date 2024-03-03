@@ -6,7 +6,7 @@ export const Wrap = styled.div`
   padding-top: 39px;
   padding-bottom: 24px;
 
-  overflow-x: scroll;
+  overflow-x: auto;
   scroll-behavior: smooth;
 
   &::-webkit-scrollbar-thumb {

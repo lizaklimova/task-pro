@@ -17,6 +17,13 @@ export const AsideBackdrop = styled.div`
 `;
 
 export const AsideMenu = styled.div`
+  @media screen and (min-width: 1439px) {
+    padding: 24px;
+    height: 100vh;
+    color: (--text-color);
+    background-color: var(--bar-color);
+  }
+
   @media screen and (max-width: 1439px) {
     position: absolute;
     top: 0;
@@ -26,10 +33,10 @@ export const AsideMenu = styled.div`
     height: 100vh;
     padding: 14px;
     background-color: var(--bar-color);
-    color: #fff;
+    color: var(--text-color);
     transition: left 250ms linear;
-    /* overflow-y: auto; */
-    /* overflow-x: hidden; */
+    overflow-y: auto;
+    overflow-x: hidden;
 
     &.is-open {
       left: 0;
