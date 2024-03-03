@@ -35,6 +35,8 @@ export const AsideMenu = styled.div`
     background-color: var(--bar-color);
     color: var(--text-color);
     transition: left 250ms linear;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     &.is-open {
       left: 0;

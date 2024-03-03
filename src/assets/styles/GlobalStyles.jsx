@@ -59,7 +59,7 @@ html[data-theme='light']{
   --input-color:#bedbb0;
   --chose-color:#f6f6f7;
   --card-bg: #fff;
-  --scroll-bar-color: rgba(22, 22, 22, 0.1);;
+  --scroll-bar-color: rgba(22, 22, 22, 0.1);
   --scroll-bar-bg: #e8e8e8;
   --svg-back-color:#FFFFFF;
   --svg-color:#f6f6f7;
@@ -86,7 +86,6 @@ html[data-theme='light']{
   --sidebar-help-container:#f6f6f7;
   --sidebar-logout-text: #161616;
   --sidebar-before: #bedbb0;
-
 }
 
 html[data-theme='violet']{
@@ -127,9 +126,6 @@ html[data-theme='violet']{
   --sidebar-help-container:rgba(236, 237, 253, 0.4);
   --sidebar-logout-text: #fff;
   --sidebar-before: #fff;
-
-
-
 }
 
 *,
@@ -156,8 +152,7 @@ body {
     display: grid;
     grid-template: "sidebar header header" 68px
         "sidebar main main" auto 
-        / 260px auto auto;
-        
+        / 260px auto auto;    
   }
 }
 

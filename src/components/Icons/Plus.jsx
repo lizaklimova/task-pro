@@ -1,10 +1,10 @@
 const Plus = ({ width, height, strokeColor }) => {
   return (
     <svg
-      width={width}
-      height={height}
+      width={width || '14px'}
+      height={height || '14px'}
       viewBox="0 0 20 20"
-      stroke={strokeColor || null}
+      stroke={strokeColor || 'none'}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

@@ -74,18 +74,24 @@ export const CreateBox = styled.div`
 `;
 
 export const BoardContainer = styled.div`
-  max-height: 150px;
+  max-height: 250px;
   overflow-y: auto;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -14px;
+  margin-right: -14px;
 
   &::-webkit-scrollbar {
     width: 5px;
   }
 
+  @media screen and (min-width: 768px) {
+    max-height: 290px;
+  }
+
   @media screen and (min-width: 1439px) {
-    max-height: 320px;
+    max-height: 260px;
     width: 260px;
+    margin-left: -24px;
+    margin-right: -24px;
   }
 `;
 

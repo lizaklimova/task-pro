@@ -1,16 +1,16 @@
 const EyeCrossed = ({ width, height, fillColor, strokeColor }) => {
   return (
     <svg
-      width={width}
-      height={height}
+      width={width || '14px'}
+      height={height || '14px'}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       ariaLabelledby="eyeCrossedIconTitle"
-      stroke={strokeColor || null}
+      fill={fillColor || 'none'}
+      stroke={strokeColor || 'none'}
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      fill={fillColor || null}
       color="#000000"
     >
       <path d="M22 12C22 12 19 18 12 18C5 18 2 12 2 12C2 12 5 6 12 6C19 6 22 12 22 12Z" />{' '}
