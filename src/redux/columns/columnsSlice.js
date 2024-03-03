@@ -60,11 +60,11 @@ const columnsSlice = createSlice({
   },
 });
 
-export const {
-  fetchColumnsOfBoard,
-  addColumnAction,
-  removeColumnAction,
-  editColumnAction,
-  setColumnToEditAction,
-} = columnsSlice.actions;
+// export const {
+//   fetchColumnsOfBoard,
+//   addColumnAction,
+//   removeColumnAction,
+//   editColumnAction,
+//   setColumnToEditAction,
+// } = columnsSlice.actions;
 export const columnsReducer = columnsSlice.reducer;
