@@ -8,9 +8,23 @@ import {
   Input,
   SubmitBtn,
 } from './RegisterForm.styled';
+import { useDispatch } from 'react-redux';
+import { register } from '../../../redux/auth/authOperations';
+import { useState } from 'react';
 
 const RegisterForm = () => {
-  const nandleFormSubmit = ms => new Promise(r => setTimeout(r, ms));
+  const dispatch = useDispatch();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    dispatch(register({ name, email, password }));
+    setName('');
+    setEmail('');
+    setPassword('');
+  };
 
   return (
     <Background>
@@ -29,9 +43,8 @@ const RegisterForm = () => {
             email: '',
             password: '',
           }}
-          onSubmit={async values => {
-            await nandleFormSubmit(500);
-            alert(JSON.stringify(values, null, 2));
+          onSubmit={async () => {
+            handleFormSubmit();
           }}
         >
           {({ isSubmitting }) => (

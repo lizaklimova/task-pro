@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Field, Form } from 'formik';
 
 export const Background = styled.div`
@@ -33,7 +33,7 @@ export const AuthList = styled.ul`
   gap: 14px;
 `;
 
-export const AuthLink = styled(Link)`
+export const AuthLink = styled(NavLink)`
   color: #ffffff30;
   font-size: 18px;
   font-weight: 500;
@@ -42,7 +42,7 @@ export const AuthLink = styled(Link)`
     color: #ffffff;
   }
 
-  &:active {
+  &.active {
     color: #ffffff;
   }
 `;
