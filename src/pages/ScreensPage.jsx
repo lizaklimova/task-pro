@@ -1,5 +1,6 @@
 import { MainContainer } from 'components/App/App.styled';
 import Dashboard from 'components/Dashboard';
+import BoardHeader from 'components/Dashboard/BoardHeader';
 // import { useDispatch } from 'react-redux';
 // import { useParams } from 'react-router-dom';
 
@@ -77,7 +78,7 @@ const ScreensPage = () => {
 
   return (
     <MainContainer>
-      <h2>{board.name}</h2>
+      <BoardHeader title={board.name} />
       <Dashboard board={board} />
     </MainContainer>
   );

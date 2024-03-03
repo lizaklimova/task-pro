@@ -4,8 +4,10 @@ import Plus from 'components/Icons/Plus';
 import Column from './Column';
 import { nanoid } from '@reduxjs/toolkit';
 import ColumnModal from 'components/Modals/ColumnModal';
+import { useState } from 'react';
 
 const Dashboard = ({ board }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useTranslation();
 
   return (
@@ -19,14 +21,16 @@ const Dashboard = ({ board }) => {
           ))}
         </ColumnsList>
       )}
-      <AddButton type="button">
+      <AddButton type="button" onClick={() => setIsModalOpen(true)}>
         <IconWrap>
           <Plus width={14} height={14} />
         </IconWrap>
         {t('columns.addButton')}
       </AddButton>
 
-      <ColumnModal />
+      {isModalOpen && (
+        <ColumnModal variant="add" closeModal={() => setIsModalOpen(false)} />
+      )}
     </Wrap>
   );
 };
