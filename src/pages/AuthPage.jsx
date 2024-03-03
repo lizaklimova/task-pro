@@ -1,14 +1,11 @@
 import LoginForm from 'components/Auth/LoginForm';
 import RegisterForm from 'components/Auth/RegisterForm';
+import { useParams } from 'react-router-dom';
 
 const AuthPage = () => {
-  return (
-    <>
-      <h1>AuthPage</h1>
-      <RegisterForm />
-      <LoginForm />
-    </>
-  );
+  const { id } = useParams();
+
+  return <>{id === 'register' ? <RegisterForm /> : <LoginForm />}</>;
 };
 
 export default AuthPage;
