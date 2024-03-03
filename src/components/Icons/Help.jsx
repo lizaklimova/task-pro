@@ -4,7 +4,7 @@ const Help = ({ width, height, fillColor, strokeColor }) => {
       width={width}
       height={height}
       viewBox="0 0 20 20"
-      fill={fillColor || null}
+      fill="none"
       stroke={strokeColor || null}
       xmlns="http://www.w3.org/2000/svg"
     >

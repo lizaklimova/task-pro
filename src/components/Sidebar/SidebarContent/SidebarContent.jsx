@@ -1,6 +1,7 @@
 // import { margin } from '@mui/system';
 import {
   BoardBox,
+  BoardBoxInfo,
   BoardContainer,
   ChangeBox,
   ChangeIcons,
@@ -15,6 +16,7 @@ import {
   LightningBox,
   Logo,
   LogoutContainer,
+  LogoutText,
   MyBoard,
   NameBox,
 } from './SidebarContent.styled';
@@ -50,32 +52,34 @@ const SidebarContent = () => {
           <CreateText>Create a new board</CreateText>
           <BoardCreateModal />
         </CreateBox>
-        <BoardContainer>
+        <BoardContainer id="boards">
           <BoardBox>
-            <NameBox>
-              <FourCircles
-                width={16}
-                height={16}
-                strokeColor={'var(--sidebar-icon-color)'}
-              />
-              <p>Project office</p>
-            </NameBox>
-            <ChangeBox>
-              <ChangeIcons type="button">
-                <Pencil
+            <BoardBoxInfo>
+              <NameBox>
+                <FourCircles
                   width={16}
                   height={16}
                   strokeColor={'var(--sidebar-icon-color)'}
                 />
-              </ChangeIcons>
-              <ChangeIcons type="button">
-                <Trash
-                  width={16}
-                  height={16}
-                  strokeColor={'var(--sidebar-icon-color)'}
-                />
-              </ChangeIcons>
-            </ChangeBox>
+                <p>Project office</p>
+              </NameBox>
+              <ChangeBox>
+                <ChangeIcons type="button">
+                  <Pencil
+                    width={16}
+                    height={16}
+                    strokeColor={'var(--sidebar-change-color'}
+                  />
+                </ChangeIcons>
+                <ChangeIcons type="button">
+                  <Trash
+                    width={16}
+                    height={16}
+                    strokeColor={'var(--sidebar-change-color'}
+                  />
+                </ChangeIcons>
+              </ChangeBox>
+            </BoardBoxInfo>
           </BoardBox>
         </BoardContainer>
       </Content>
@@ -83,7 +87,7 @@ const SidebarContent = () => {
         <HelpContainer>
           <img src={Denis} alt="" />
           <HelpText>
-            If you need help with
+            If you need help with <br />
             <HelpSpan>TaskPro</HelpSpan>, check out our support resources or
             reach out to our customer support team.
           </HelpText>
@@ -97,7 +101,7 @@ const SidebarContent = () => {
             height={32}
             strokeColor={'var(--sidebar-logout)'}
           />
-          <p>Log out</p>
+          <LogoutText>Log out</LogoutText>
         </LogoutContainer>
       </Footer>
     </Container>
