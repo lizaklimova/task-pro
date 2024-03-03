@@ -3,6 +3,9 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
 :root {
     --easedTransition: 350ms ease-in-out;
+    --black-color: #161616;
+    --white-color: #fff;
+    --green-gradient: linear-gradient(180deg, #ffffff 25%, #bedbb0 92.19%);
 }
 
 html[data-theme='dark']{
