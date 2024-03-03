@@ -25,7 +25,7 @@ export const Input = styled.input`
   outline: transparent;
   box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
 
-  &: focus {
+  &:focus {
     opacity: 1;
   }
 `;
@@ -43,7 +43,9 @@ export const IconsUl = styled.ul`
   gap: 8px;
 `;
 export const IconLi = styled.li``;
+
 export const IconLabel = styled.label``;
+
 export const IconSVG = styled.svg`
   stroke: var(--icon-stroke-color);
   stroke-opacity: 0.5;
@@ -65,19 +67,21 @@ export const BacksUl = styled.ul`
   gap: 4px;
 `;
 export const BackLi = styled.li``;
+
 export const BackLabel = styled.label``;
-export const BackSVG = styled.svg`
-  stroke: --icon-stroke-color;
-  stroke-opacity: 0.5;
-`;
 
 export const BackInputRadio = styled.input`
   display: none;
 
-  &:checked + svg use {
-    stroke: var(--accent-color);
-    stroke-opacity: 1;
+  &:checked + img {
+    border: 2px solid var(--accent-color);
   }
+`;
+
+export const BackImage = styled.img`
+  border-radius: 7px;
+  width: 28px;
+  height: 28px;
 `;
 
 export const Button = styled.button`
@@ -87,7 +91,6 @@ export const Button = styled.button`
   padding: 10px;
   background-color: var(--accent-color);
   color: var(--btn-icon-bg);
-  margin-top: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,6 +104,7 @@ export const Button = styled.button`
     }
   }
 `;
+
 export const Span = styled.span`
   background-color: var(--btn-icon-bg);
   border-radius: 6px;

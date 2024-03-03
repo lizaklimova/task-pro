@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 export const CardItem = styled.li`
-  max-width: 335px;
+  width: 334px;
   border-radius: 10px;
   padding: 24px 14px;
   background-color: var(--card-bg);
@@ -21,12 +21,14 @@ export const CardTitle = styled.h4`
 `;
 
 export const CardDescr = styled.p`
+  width: 290px;
   font-size: 12px;
   line-height: 1.33333;
   color: var(--text-color);
   opacity: 0.7;
   margin-bottom: 14px;
   cursor: pointer;
+  text-wrap: wrap;
 `;
 
 export const InfoWrap = styled.div`

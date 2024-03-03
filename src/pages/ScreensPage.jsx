@@ -1,15 +1,84 @@
-import { TempForLanguages } from 'components/TempForLanguages/TempForLanguages';
-import { useTranslation } from 'react-i18next';
 import { MainContainer } from 'components/App/App.styled';
+import Dashboard from 'components/Dashboard';
+// import { useDispatch } from 'react-redux';
+// import { useParams } from 'react-router-dom';
 
 const ScreensPage = () => {
-  const { t } = useTranslation();
+  //when Denis creates it:
+  // const { boardId } = useParams();
+  // const dispatch = useDispatch();
+  // const board = useSelector(selectBoard);
+  // const error = useSelector(selectError);
+
+  // useEffect(() => {
+  //   dispatch(fetchBoard(boardId));
+  // }, [dispatch]);
+
+  const board = {
+    name: 'Not empty',
+    columns: [
+      {
+        title: 'TO DO',
+        cards: [
+          {
+            title: 'Calculate KAM teams plan',
+          },
+          {
+            title: 'Calculate KAM clients plan',
+          },
+          {
+            title: 'Calculate LR teams plan',
+          },
+          {
+            title: 'Prepare file for LR clients calculation',
+          },
+          {
+            title: 'Prepare file for LR clients calculation',
+          },
+          {
+            title: 'Prepare file for LR clients calculation',
+          },
+          {
+            title: 'Prepare file for LR clients calculation',
+          },
+        ],
+      },
+      {
+        title: 'Important',
+        cards: [
+          {
+            title: 'Eat something',
+          },
+        ],
+      },
+      {
+        title: 'Bla',
+        cards: [
+          {
+            title: 'Eat something',
+          },
+        ],
+      },
+      {
+        title: 'Bla',
+        cards: [
+          {
+            title: 'Eat something',
+          },
+        ],
+      },
+    ],
+  };
+
+  // const board = {
+  //   name: 'Empty',
+  //   columns: [],
+  // };
 
   return (
     <MainContainer>
-      <h1>ScreensPage</h1>
-      <TempForLanguages />
-      <p>{t('boards.beforeStart')}</p>
+      <h2>{board.name}</h2>
+      <Dashboard board={board} />
     </MainContainer>
   );
 };

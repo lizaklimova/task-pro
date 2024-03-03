@@ -1,36 +1,61 @@
-import {} from './NeedHelpModal.css';
+import React, { useState } from 'react';
 import ModalWrapper from 'components/Modals/ModalWrapper';
 import { closeModal } from 'helpers';
+import {
+  Modalform,
+  ModalTitle,
+  Emailinput,
+  Commenttextarea,
+  ButtonSend,
+  ModalMessage,
+  ModalMessageSuccess,
+} from './NeedHelpModal.styled';
 
 const NeedHelpModal = ({ showModal }) => {
+  const [query, setQuery] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
   const handleSubmit = evt => {
-    if (evt.target === evt.currentTarget) {
-      closeModal(showModal);
+    evt.preventDefault();
+
+    if (query.trim() === '') {
+      setErrorMessage('Please enter data to submit');
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 4000); // Таймінг 4 сек
+      return;
     }
+
+    setSuccessMessage('Form submitted successfull!');
+    setTimeout(() => {
+      setSuccessMessage('');
+      closeModal(showModal);
+    }, 4000);
+  };
+
+  const handleChange = evt => {
+    setQuery(evt.target.value);
   };
 
   return (
     <ModalWrapper width={400} onClose={() => closeModal(showModal)}>
-      <h2 className="form-title-lh">Need Help</h2>
-      <form onSubmit={handleSubmit} className="help-form">
-        <input
-          type="email"
-          name="email"
-          className="input-email"
-          placeholder="Email address"
-        />
-
-        <textarea
+      <Modalform onSubmit={handleSubmit} className="help-form">
+        <ModalTitle>Need Help</ModalTitle>
+        <Emailinput type="email" name="email" placeholder="Email address" />
+        <Commenttextarea
           type="text"
           name="comment"
-          className="comment"
           placeholder="Comment"
+          value={query}
+          onChange={handleChange}
         />
-
-        <button type="submit" className="btn-send-lg">
-          Send
-        </button>
-      </form>
+        <ButtonSend type="submit">Send</ButtonSend>
+      </Modalform>
+      {errorMessage && <ModalMessage>{errorMessage}</ModalMessage>}
+      {successMessage && (
+        <ModalMessageSuccess>{successMessage}</ModalMessageSuccess>
+      )}
     </ModalWrapper>
   );
 };

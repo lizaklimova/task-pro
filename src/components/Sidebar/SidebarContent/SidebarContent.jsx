@@ -1,6 +1,5 @@
-import { margin } from '@mui/system';
+// import { margin } from '@mui/system';
 import {
-  AddBtn,
   BoardBox,
   BoardBoxInfo,
   BoardContainer,
@@ -11,7 +10,6 @@ import {
   CreateBox,
   CreateText,
   Footer,
-  HelpBtn,
   HelpContainer,
   HelpSpan,
   HelpText,
@@ -23,14 +21,14 @@ import {
   NameBox,
 } from './SidebarContent.styled';
 import Lightning from 'components/Icons/Lightning';
-import Plus from 'components/Icons/Plus';
+// import Plus from 'components/Icons/Plus';
 import { BoardCreateModal } from 'components/Modals/BoardsModals/BoardCreateModal';
 import NeedHelp from 'components/Sidebar/NeedHelp/NeedHelp';
 import Pencil from 'components/Icons/Pencil';
 import Trash from 'components/Icons/Trash';
 import FourCircles from 'components/Icons/FourCircles';
-import Denis from '../../../assets/images/Denis.png';
-import Help from 'components/Icons/Help';
+import Denis from 'assets/images/Denis.png';
+// import Help from 'components/Icons/Help';
 import LogOut from 'components/Icons/LogOut';
 
 const SidebarContent = () => {
