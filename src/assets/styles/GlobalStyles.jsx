@@ -46,7 +46,7 @@ html[data-theme='dark']{
 --sedibar-text: #fff;
 --sidebar-help-container: #1f1f1f;
 --sidebar-logout-text: #fff;
-
+--sidebar-before: #bedbb0;
 }
 
 html[data-theme='light']{
@@ -88,6 +88,7 @@ html[data-theme='light']{
 --sedibar-text: #161616;
 --sidebar-help-container:#f6f6f7;
 --sidebar-logout-text: #161616;
+--sidebar-before: #bedbb0;
 
 }
 
@@ -130,6 +131,7 @@ html[data-theme='violet']{
 --sedibar-text: #fff;
 --sidebar-help-container:rgba(236, 237, 253, 0.4);
 --sidebar-logout-text: #fff;
+--sidebar-before: #fff;
 
 
 

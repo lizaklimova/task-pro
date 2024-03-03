@@ -3,9 +3,11 @@ import NeedHelpModal from '../../Modals/NeedHelpModal/NeedHelpModal';
 import { openModal } from 'helpers';
 import Help from 'components/Icons/Help';
 import { HelpBtn } from '../SidebarContent/SidebarContent.styled';
+import { useTranslation } from 'react-i18next';
 
 const NeedHelp = () => {
   const [shownModal, setShownModal] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -15,7 +17,7 @@ const NeedHelp = () => {
           height={20}
           strokeColor={'var(--sidebar-icon-color)'}
         />
-        Need help?
+        {t('sidebar.helpModal.title')}
       </HelpBtn>
       {shownModal && <NeedHelpModal showModal={setShownModal} />}
     </>
