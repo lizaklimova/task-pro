@@ -1,9 +1,8 @@
-
+import React, { useState } from 'react';
 import Eye from 'components/Icons/Eye';
 import EyeCrossed from 'components/Icons/EyeCrossed';
 import Plus from 'components/Icons/Plus';
 import User from 'components/Icons/User';
-import React, { useState } from 'react';
 import {
   AddPhoto,
   Avatar,
@@ -24,6 +23,7 @@ const UserModal = () => {
     console.log(event.target.files);
     setImage(event.target.files[0]);
   }
+
   return (
     <div>
       <h3>Edit profile</h3>

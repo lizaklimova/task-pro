@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Pencil from 'components/Icons/Pencil';
 import Trash from 'components/Icons/Trash';
 import ColumnModal from 'components/Modals/ColumnModal';
+import CardModal from 'components/Modals/CardModal';
 import Plus from 'components/Icons/Plus';
 import TaskCard from '../TaskCard';
 import {
@@ -17,7 +18,9 @@ import {
 } from './Column.styled';
 
 const Column = ({ column }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isColumnModalOpen, setIsColumnModalOpen] = useState(false);
+  const [isCardModalOpen, setIsCardModalOpen] = useState(false);
+
   const { t } = useTranslation();
 
   return (
@@ -30,7 +33,7 @@ const Column = ({ column }) => {
               <ColumnButton
                 type="button"
                 aria-label="Edit column title"
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => setIsColumnModalOpen(true)}
               >
                 <Pencil width={16} height={16} />
               </ColumnButton>
@@ -51,7 +54,7 @@ const Column = ({ column }) => {
           ))}
         </CardsList>
 
-        <AddButton type="button">
+        <AddButton type="button" onClick={() => setIsCardModalOpen(true)}>
           <IconWrap>
             <Plus width={14} height={14} />
           </IconWrap>
@@ -59,8 +62,17 @@ const Column = ({ column }) => {
         </AddButton>
       </ColumnWrap>
 
-      {isModalOpen && (
-        <ColumnModal variant="edit" closeModal={() => setIsModalOpen(false)} />
+      {isColumnModalOpen && (
+        <ColumnModal
+          variant="edit"
+          closeModal={() => setIsColumnModalOpen(false)}
+        />
+      )}
+      {isCardModalOpen && (
+        <CardModal
+          variant="add"
+          closeCardModal={() => setIsCardModalOpen(false)}
+        />
       )}
     </>
   );

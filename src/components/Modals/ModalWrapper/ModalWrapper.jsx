@@ -11,6 +11,7 @@ import {
 const ModalWrapper = ({ children, width, onClose }) => {
   useEffect(() => {
     const handleCloseKeyPress = event => {
+      console.log(event);
       if (event.code === CLOSE_KEY_CODE) onClose();
     };
 
@@ -25,7 +26,11 @@ const ModalWrapper = ({ children, width, onClose }) => {
         $containerWidth={width}
         onClick={event => event.stopPropagation()}
       >
-        <ModalCloseButton type="button" onClick={onClose}>
+        <ModalCloseButton
+          type="button"
+          aria-label="Close modal"
+          onClick={onClose}
+        >
           <Close
             width="18"
             height="18"

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import ModalWrapper from 'components/Modals/ModalWrapper';
-import { closeModal } from 'helpers';
 import {
   Modalform,
   ModalTitle,
@@ -27,7 +26,7 @@ const NeedHelpModal = ({ showModal }) => {
     toast.success('Form submit is successfully!');
 
     setTimeout(() => {
-      closeModal(showModal);
+      showModal(false);
     }, 4000);
   };
 
@@ -37,7 +36,7 @@ const NeedHelpModal = ({ showModal }) => {
 
   return (
     <>
-      <ModalWrapper width={400} onClose={() => closeModal(showModal)}>
+      <ModalWrapper width={400} onClose={() => showModal(false)}>
         <ToastContainer />
         <Modalform onSubmit={handleSubmit} className="help-form">
           <ModalTitle>{t('sidebar.helpModal.title')}</ModalTitle>
