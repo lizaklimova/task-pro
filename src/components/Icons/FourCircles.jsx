@@ -4,7 +4,7 @@ const FourCircles = ({ width, height, fillColor, strokeColor }) => {
       width={width}
       height={height}
       viewBox="0 0 18 18"
-      fill={fillColor || null}
+      fill="none"
       stroke={strokeColor || null}
       xmlns="http://www.w3.org/2000/svg"
     >

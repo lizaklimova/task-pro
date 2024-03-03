@@ -32,8 +32,8 @@ export const BacksList = () => {
               />
               <BackImage
                 src={item.image}
-                srcset={`${item.image} 1x, ${item.retina} 2x"`}
-                alt={item.image}
+                srcSet={`${item.image} 1x, ${item.retina} 2x`}
+                alt="background miniature"
                 width={28}
                 height={28}
               />
