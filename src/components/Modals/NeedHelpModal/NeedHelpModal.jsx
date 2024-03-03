@@ -7,29 +7,24 @@ import {
   Emailinput,
   Commenttextarea,
   ButtonSend,
-  ModalMessage,
-  ModalMessageSuccess,
 } from './NeedHelpModal.styled';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const NeedHelpModal = ({ showModal }) => {
   const [query, setQuery] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubmit = evt => {
     evt.preventDefault();
 
     if (query.trim() === '') {
-      setErrorMessage('Please enter data to submit');
-      setTimeout(() => {
-        setErrorMessage('');
-      }, 4000); // Таймінг 4 сек
+      toast.error('Please enter data to submit');
       return;
     }
 
-    setSuccessMessage('Form submitted successfull!');
+    toast.success('Form submit is successfully!');
+
     setTimeout(() => {
-      setSuccessMessage('');
       closeModal(showModal);
     }, 4000);
   };
@@ -39,24 +34,23 @@ const NeedHelpModal = ({ showModal }) => {
   };
 
   return (
-    <ModalWrapper width={400} onClose={() => closeModal(showModal)}>
-      <Modalform onSubmit={handleSubmit} className="help-form">
-        <ModalTitle>Need Help</ModalTitle>
-        <Emailinput type="email" name="email" placeholder="Email address" />
-        <Commenttextarea
-          type="text"
-          name="comment"
-          placeholder="Comment"
-          value={query}
-          onChange={handleChange}
-        />
-        <ButtonSend type="submit">Send</ButtonSend>
-      </Modalform>
-      {errorMessage && <ModalMessage>{errorMessage}</ModalMessage>}
-      {successMessage && (
-        <ModalMessageSuccess>{successMessage}</ModalMessageSuccess>
-      )}
-    </ModalWrapper>
+    <>
+      <ModalWrapper width={400} onClose={() => closeModal(showModal)}>
+        <ToastContainer />
+        <Modalform onSubmit={handleSubmit} className="help-form">
+          <ModalTitle>Need Help</ModalTitle>
+          <Emailinput type="email" name="email" placeholder="Email address" />
+          <Commenttextarea
+            type="text"
+            name="comment"
+            placeholder="Comment"
+            value={query}
+            onChange={handleChange}
+          />
+          <ButtonSend type="submit">Send</ButtonSend>
+        </Modalform>
+      </ModalWrapper>
+    </>
   );
 };
 
