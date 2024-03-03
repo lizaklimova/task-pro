@@ -1,6 +1,8 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { getCurrentUser } from '../../redux/auth/authOperations';
 import GlobalStyles from 'assets/styles';
 import { PublicRoute } from 'routes';
 import SharedLayout from 'layouts/SharedLayout';
@@ -13,6 +15,12 @@ const ScreensPage = lazy(() => import('pages/ScreensPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
       <GlobalStyles />
