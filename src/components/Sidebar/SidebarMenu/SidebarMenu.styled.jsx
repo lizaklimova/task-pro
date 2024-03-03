@@ -20,7 +20,7 @@ export const AsideMenu = styled.div`
   @media screen and (min-width: 1439px) {
     padding: 24px;
     height: 100vh;
-    color: #fff;
+    color: (--text-color);
     background-color: var(--bar-color);
   }
 
