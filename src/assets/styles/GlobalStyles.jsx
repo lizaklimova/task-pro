@@ -43,6 +43,9 @@ html[data-theme='dark']{
   --sidebar-myboard-text:rgba(255, 255, 255, 0.5);
   --sedibar-text: #fff;
   --sidebar-help-container: #1f1f1f;
+  --btn-text-color:#161616;
+  --svg-back-color-user:#1f1f1f;
+  --svg-color-user:#151515;
 }
 
 html[data-theme='light']{
@@ -83,6 +86,9 @@ html[data-theme='light']{
   --sidebar-myboard-text:rgba(22, 22, 22, 0.5);
   --sedibar-text: #161616;
   --sidebar-help-container:#f6f6f7;
+  --btn-text-color:#161616;
+  --svg-back-color-user:#f6f6f7;
+  --svg-color-user:#fff;
 }
 
 html[data-theme='violet']{
@@ -123,6 +129,9 @@ html[data-theme='violet']{
   --sidebar-myboard-text:rgba(255, 255, 255, 0.5);
   --sedibar-text: #fff;
   --sidebar-help-container:rgba(236, 237, 253, 0.4);
+  --btn-text-color:#fff;
+  --svg-back-color-user:#ecedfd;
+  --svg-color-user:#fff;
 }
 
 *,

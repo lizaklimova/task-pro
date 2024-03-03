@@ -25,7 +25,7 @@ export const Input = styled.input`
   outline: transparent;
   box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
 
-  &: focus {
+  &:focus {
     opacity: 1;
   }
 `;

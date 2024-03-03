@@ -1,7 +1,7 @@
-const User = ({ width, height, fillColor, strokeColor }) => {
+const UserDefault = ({ width, height, fillColor, strokeColor }) => {
   return (
     <svg
-      style={{ width: 68, height: 68 }}
+      style={{ width: 32, height: 32 }}
       width={width}
       height={height}
       viewBox="0 0 68 68"
@@ -29,4 +29,4 @@ const User = ({ width, height, fillColor, strokeColor }) => {
     </svg>
   );
 };
-export default User;
+export default UserDefault;
