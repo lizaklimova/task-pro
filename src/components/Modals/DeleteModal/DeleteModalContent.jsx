@@ -8,7 +8,7 @@ export const DeleteModalContent = onConfirmClick => {
     <Container>
       <Title>{t('deleteModal.title')}</Title>
 
-      <ConfirmButton type="button" onClick={onConfirmClick}>
+      <ConfirmButton type="button" onClick={() => onConfirmClick}>
         {t('deleteModal.confirm')}
       </ConfirmButton>
     </Container>
