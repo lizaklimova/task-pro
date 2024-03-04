@@ -1,5 +1,4 @@
 import LinkedInIcon from 'components/icons/Linkedin';
-
 import {
   DevContainer,
   DevName,
