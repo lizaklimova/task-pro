@@ -69,7 +69,7 @@ const RegisterForm = () => {
             value={values.name}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={errors.name && touched.name}
+            $error={errors.name && touched.name}
             name="name"
             placeholder="Enter your name"
           />
