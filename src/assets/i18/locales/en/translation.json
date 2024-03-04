@@ -35,6 +35,8 @@
     "helpButton": "Need help?",
     "logoutButton": "Log out ",
     "helpModal": {
+      "toast.error": "Please enter data to submit",
+      "toast.success": "Form submit is successfully!",
       "title": "Need help",
       "email": "Email address ",
       "comment": "Comment",
