@@ -12,7 +12,7 @@ import {
   CardActionButton,
 } from './TaskCard.styled';
 
-const TaskCard = ({ card, openModal }) => {
+const TaskCard = ({ card, openCardModal }) => {
   const [showFullText, setShowFullText] = useState(false);
   const text =
     'Create a visually stunning and eye-catching watch dial design that embodies our brands essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design.';
@@ -62,7 +62,11 @@ const TaskCard = ({ card, openModal }) => {
             </CardActionButton>
           </li>
           <li>
-            <CardActionButton type="button" aria-label="Edit card">
+            <CardActionButton
+              type="button"
+              aria-label="Edit card"
+              onClick={openCardModal}
+            >
               <Pencil
                 width={16}
                 height={16}

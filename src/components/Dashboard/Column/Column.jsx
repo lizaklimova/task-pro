@@ -19,7 +19,8 @@ import {
 
 const Column = ({ column }) => {
   const [isColumnModalOpen, setIsColumnModalOpen] = useState(false);
-  const [isCardModalOpen, setIsCardModalOpen] = useState(false);
+  const [isAddCardModalOpen, setIsAddCardModalOpen] = useState(false);
+  const [isEditCardModalOpen, setIsEditCardModalOpen] = useState(false);
 
   const { t } = useTranslation();
 
@@ -49,12 +50,15 @@ const Column = ({ column }) => {
         <CardsList>
           {column.cards.map(card => (
             <li key={nanoid()}>
-              <TaskCard card={card} />
+              <TaskCard
+                card={card}
+                openCardModal={() => setIsEditCardModalOpen(true)}
+              />
             </li>
           ))}
         </CardsList>
 
-        <AddButton type="button" onClick={() => setIsCardModalOpen(true)}>
+        <AddButton type="button" onClick={() => setIsAddCardModalOpen(true)}>
           <IconWrap>
             <Plus width={14} height={14} />
           </IconWrap>
@@ -68,10 +72,16 @@ const Column = ({ column }) => {
           closeModal={() => setIsColumnModalOpen(false)}
         />
       )}
-      {isCardModalOpen && (
+      {isAddCardModalOpen && (
         <CardModal
           variant="add"
-          closeCardModal={() => setIsCardModalOpen(false)}
+          closeCardModal={() => setIsAddCardModalOpen(false)}
+        />
+      )}
+      {isEditCardModalOpen && (
+        <CardModal
+          variant="edit"
+          closeCardModal={() => setIsEditCardModalOpen(false)}
         />
       )}
     </>
