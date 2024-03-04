@@ -49,6 +49,8 @@ html[data-theme='dark']{
   --svg-color-user:#151515;
   --sidebar-logout-text: #fff;
   --sidebar-before: #bedbb0;
+  --default-icon-fill: rgb(31, 31, 31);
+  --default-icon-stroke: rgba(255, 255, 255, 0.1);
 }
 
 html[data-theme='light']{
@@ -95,6 +97,8 @@ html[data-theme='light']{
   --svg-color-user:#fff;
   --sidebar-logout-text: #161616;
   --sidebar-before: #bedbb0;
+  --default-icon-fill: rgba(22, 22, 22, 0.1);
+  --default-icon-stroke: rgb(246, 246, 247);
 }
 
 html[data-theme='violet']{
@@ -141,6 +145,8 @@ html[data-theme='violet']{
   --svg-color-user:#fff;
   --sidebar-logout-text: #fff;
   --sidebar-before: #fff;
+  --default-icon-fill: rgba(22, 22, 22, 0.1);
+  --default-icon-stroke: rgb(236, 237, 253);
 }
 
 *,
