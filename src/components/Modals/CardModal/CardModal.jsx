@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { addCard, editCard } from '../../../redux/cards/cardsOperations';
+// import { addCard, editCard } from '../../../redux/cards/cardsOperations';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { LABEL_ARR } from 'constants';
 import ModalWrapper from 'components/Modals/ModalWrapper';
