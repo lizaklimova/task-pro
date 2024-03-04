@@ -1,4 +1,4 @@
-import registerSchema from "./UserRegisterValidation";
-import loginSchema from "./UserLoginValidation";
+import registerSchema from './userRegisterValidation.js';
+import loginSchema from './userLoginValidation.js';
 
 export { registerSchema, loginSchema };

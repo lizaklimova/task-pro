@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DatePicker from 'react-datepicker';
 import i18next from 'i18next';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
@@ -7,8 +7,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 const Calendar = React.forwardRef(
   ({ selectedDate, setDate, toggleCalendar }, ref) => {
-    // const [selectedDate, setSelectedDay] = useState(new Date());
-
     const minDate = new Date();
     setDefaultLocale('en');
     registerLocale('uk', uk);

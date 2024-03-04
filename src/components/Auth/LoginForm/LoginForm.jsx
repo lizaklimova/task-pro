@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { loginSchema } from 'Validations';
+import { loginSchema } from 'validations';
 import { logIn } from '../../../redux/auth/authOperations';
 import {
   Background,
