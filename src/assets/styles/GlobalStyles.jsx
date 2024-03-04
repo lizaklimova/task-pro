@@ -3,6 +3,11 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
 :root {
     --easedTransition: 350ms ease-in-out;
+    --black-color: #161616;
+    --white-color: #fff;
+    --light-green-gradient: linear-gradient(180deg, #ffffff 25%, #bedbb0 92.19%);
+    --dark-green-gradient: linear-gradient(180deg, #263238 25%, #37474F 92.19%);
+    --light-green: #92E3A9;
 }
 
 html[data-theme='dark']{
