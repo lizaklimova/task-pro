@@ -62,8 +62,8 @@ export const Input = styled.input`
   border-radius: 8px;
   color: #ffffff;
 
-  ${({ error }) =>
-    error &&
+  ${({ $error }) =>
+    $error &&
     `
     border-color: #fc8181;
   `}
