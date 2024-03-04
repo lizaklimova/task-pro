@@ -1,8 +1,10 @@
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import toast from 'react-hot-toast';
 // import { addCard, editCard } from '../../../redux/cards/cardsOperations';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
-import { LABEL_ARR } from 'constants';
+import { LABEL_ARR, TOASTER_CONFIG } from 'constants';
+import { makeValidDate } from 'helpers';
 import ModalWrapper from 'components/Modals/ModalWrapper';
 import Calendar from 'components/Calendar';
 import Plus from 'components/Icons/Plus';
@@ -22,19 +24,25 @@ const CardModal = ({ variant, closeCardModal }) => {
   const [selectedDate, setSelectedDay] = useState(new Date());
 
   const { t } = useTranslation();
+
   const datePickerRef = useRef(null);
 
   const handleFormSubmit = e => {
     e.preventDefault();
     const { title, description } = e.target.children;
 
+    const dateForServer = makeValidDate(selectedDate);
+
     const cardInfo = {
       title: title.value,
       description: description.value,
       label: labelColor,
-      date: selectedDate.toDateString(),
+      date: dateForServer,
     };
+
     console.log(cardInfo);
+    toast('Card is added', TOASTER_CONFIG);
+    closeCardModal();
   };
 
   const openDatePicker = () => {
@@ -64,11 +72,13 @@ const CardModal = ({ variant, closeCardModal }) => {
             name="title"
             placeholder={t('cards.modals.title')}
             defaultValue={variant === 'add' ? '' : ''}
+            required
           />
           <textarea
             name="description"
             placeholder={t('cards.modals.description')}
             defaultValue={variant === 'add' ? '' : ''}
+            required
           ></textarea>
 
           <label>

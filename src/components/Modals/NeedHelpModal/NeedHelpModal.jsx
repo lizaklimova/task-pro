@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import ModalWrapper from 'components/Modals/ModalWrapper';
+import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
+import { TOASTER_CONFIG } from 'constants';
 import {
   Modalform,
   ModalTitle,
@@ -7,10 +10,6 @@ import {
   Commenttextarea,
   ButtonSend,
 } from './NeedHelpModal.styled';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useTranslation } from 'react-i18next';
-/*import axios from 'axios';*/
 
 const NeedHelpModal = ({ showModal }) => {
   const [email, setEmail] = useState('');
@@ -22,32 +21,12 @@ const NeedHelpModal = ({ showModal }) => {
     console.log(email, text);
 
     if (email.trim() === '' || text.trim() === '') {
-      toast.error(t('sidebar.helpModal.toast.error'), {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'colored',
-      });
+      toast(t('sidebar.helpModal.toast.error'), TOASTER_CONFIG);
       return;
     }
 
-    toast.success(t('sidebar.helpModal.toast.success'), {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'colored',
-    });
-    setTimeout(() => {
-      showModal(false);
-    }, 4000);
+    toast(t('sidebar.helpModal.toast.success'), TOASTER_CONFIG);
+    showModal(false);
   };
 
   const handleEmailChange = evt => {
@@ -61,7 +40,6 @@ const NeedHelpModal = ({ showModal }) => {
   return (
     <>
       <ModalWrapper width={400} onClose={() => showModal(false)}>
-        <ToastContainer />
         <Modalform onSubmit={handleSubmit} className="help-form">
           <ModalTitle>{t('sidebar.helpModal.title')}</ModalTitle>
           <Emailinput

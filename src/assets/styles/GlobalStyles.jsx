@@ -255,6 +255,13 @@ img {
   height: auto;
   border: none;
 }
+
+.themed_toaster {
+  border: 1px solid var(--accent-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  filter: drop-shadow(1px 1px 7px var(--accent-color));
+}
 `;
 
 export default GlobalStyles;

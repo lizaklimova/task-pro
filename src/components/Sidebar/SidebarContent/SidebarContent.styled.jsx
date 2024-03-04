@@ -62,7 +62,9 @@ export const CreateText = styled.p`
 `;
 
 export const CreateBox = styled.div`
+  font-size: 13px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   max-width: 100%;
   padding-top: 17px;

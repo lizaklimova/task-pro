@@ -33,3 +33,5 @@ export const MODAL_TRANSITION = {
     top: '-100vh',
   },
 };
+
+export const TOASTER_CONFIG = { className: 'themed_toaster' };
