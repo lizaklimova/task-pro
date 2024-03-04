@@ -70,6 +70,21 @@ const SidebarContent = () => {
           <BoardBox>
             <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
           </BoardBox>
+          <BoardBox>
+            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
+          </BoardBox>
+          <BoardBox>
+            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
+          </BoardBox>
+          <BoardBox>
+            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
+          </BoardBox>
+          <BoardBox>
+            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
+          </BoardBox>
+          <BoardBox>
+            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
+          </BoardBox>
         </BoardContainer>
       </Content>
 
