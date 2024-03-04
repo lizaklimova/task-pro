@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   color: var(--text-color);
@@ -72,6 +73,46 @@ export const CreateBox = styled.div`
   border-top: 1px var(--sidebar-myboard-text) solid;
   border-bottom: 1px var(--sidebar-myboard-text) solid;
   margin-bottom: 20px;
+`;
+
+export const BoardContainer = styled.div`
+  max-height: 250px;
+  overflow-y: auto;
+  margin-left: -14px;
+  margin-right: -14px;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-height: 290px;
+  }
+
+  @media screen and (min-width: 1439px) {
+    max-height: 260px;
+    width: 260px;
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+`;
+
+export const BoardBox = styled(NavLink)`
+  display: flex;
+  align-items: center;
+
+  &.active {
+    &::before {
+      content: '';
+      display: block;
+      border-radius: 0 4px 4px 0;
+      width: 4px;
+      height: 61px;
+      background: var(--sidebar-before);
+    }
+
+    background-color: var(--sidebar-active-board);
+  }
 `;
 
 export const HelpContainer = styled.div`

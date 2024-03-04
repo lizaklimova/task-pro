@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 export const AsideBackdrop = styled.div`
   display: none;
 
-  @media screen and (max-width: 1439px) {
+  @media screen and (max-width: 1440px) {
     display: block;
     position: fixed;
     top: 0;
@@ -17,14 +17,12 @@ export const AsideBackdrop = styled.div`
 `;
 
 export const AsideMenu = styled.div`
-  @media screen and (min-width: 1439px) {
-    padding: 24px;
-    height: 100vh;
-    color: (--text-color);
-    background-color: var(--bar-color);
+  @media screen and (min-width: 1440px) {
+    display: none;
   }
 
   @media screen and (max-width: 1439px) {
+    display: block;
     position: absolute;
     top: 0;
     left: -100%;

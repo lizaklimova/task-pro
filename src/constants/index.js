@@ -25,12 +25,13 @@ export const BACKDROP_TRANSITION = {
 
 export const MODAL_TRANSITION = {
   initial: {
-    top: '-100vh',
+    y: '-100vh',
     transition: { type: 'spring' },
   },
-  isOpen: { top: '0' },
+  isOpen: { y: '0' },
   exit: {
-    top: '-100vh',
+    top: '100vh',
+    transition: { duration: 5 },
   },
 };
 

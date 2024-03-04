@@ -1,7 +1,9 @@
 import React from 'react';
-import DatePicker from 'react-datepicker';
 import i18next from 'i18next';
-import { registerLocale, setDefaultLocale } from 'react-datepicker';
+import ReactDatePicker, {
+  registerLocale,
+  setDefaultLocale,
+} from 'react-datepicker';
 import { uk } from 'date-fns/locale/uk';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -12,7 +14,7 @@ const Calendar = React.forwardRef(
     registerLocale('uk', uk);
 
     return (
-      <DatePicker
+      <ReactDatePicker
         ref={ref}
         locale={
           i18next.language === 'uk' || i18next.language === 'uk-UA'

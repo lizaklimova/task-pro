@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { Container, Title, ConfirmButton } from './DeleteModal.styled';
 
-export const DeleteModal = ({ onClose, handleBoardDelete }) => {
+const DeleteModal = ({ onClose, handleBoardDelete }) => {
   const { t } = useTranslation();
 
   return (
@@ -21,3 +21,5 @@ export const DeleteModal = ({ onClose, handleBoardDelete }) => {
     </ModalWrapper>
   );
 };
+
+export default DeleteModal;

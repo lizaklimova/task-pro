@@ -31,6 +31,10 @@ const CardModal = ({ variant, closeCardModal }) => {
     e.preventDefault();
     const { title, description } = e.target.children;
 
+    if (!title.value.trim() || !description.value.trim()) {
+      return toast(t('cards.modals.toast.error'), TOASTER_CONFIG);
+    }
+
     const dateForServer = makeValidDate(selectedDate);
 
     const cardInfo = {
@@ -41,7 +45,7 @@ const CardModal = ({ variant, closeCardModal }) => {
     };
 
     console.log(cardInfo);
-    toast('Card is added', TOASTER_CONFIG);
+    toast(t('cards.modals.toast.success'), TOASTER_CONFIG);
     closeCardModal();
   };
 
@@ -72,13 +76,11 @@ const CardModal = ({ variant, closeCardModal }) => {
             name="title"
             placeholder={t('cards.modals.title')}
             defaultValue={variant === 'add' ? '' : ''}
-            required
           />
           <textarea
             name="description"
             placeholder={t('cards.modals.description')}
             defaultValue={variant === 'add' ? '' : ''}
-            required
           ></textarea>
 
           <label>

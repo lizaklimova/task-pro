@@ -88,6 +88,7 @@
       "today": "Today,",
       "addButton": "Add",
       "editButton": "Edit",
+      "toast.error": "Please enter all fields to create a task ❗️",
       "toast.success": "Card is added successfully ✅"
     },
     "popup": {

@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
 :root {
     --easedTransition: 350ms ease-in-out;
+    --cubicTransition: 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
     --black-color: #161616;
     --white-color: #fff;
     --light-green-gradient: linear-gradient(180deg, #ffffff 25%, #bedbb0 92.19%);
@@ -260,6 +261,7 @@ img {
   border: 1px solid var(--accent-color);
   background-color: var(--background-color);
   color: var(--text-color);
+  text-align: center;
   filter: drop-shadow(1px 1px 7px var(--accent-color));
 }
 `;

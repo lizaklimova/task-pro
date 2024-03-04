@@ -1,11 +1,20 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import plantImg from 'assets/images/sidebar/plant.png';
+import Lightning from 'components/Icons/Lightning';
+import LogOut from 'components/Icons/LogOut';
+import BoardModal from 'components/Modals/BoardModal';
+import NeedHelp from 'components/Sidebar/NeedHelp';
+import Plus from 'components/Icons/Plus';
+import AddedBoard from '../AddedBoard';
 import {
   AddBtn,
   Container,
   Content,
   CreateBox,
   CreateText,
+  BoardBox,
+  BoardContainer,
   Footer,
   HelpContainer,
   HelpSpan,
@@ -16,13 +25,6 @@ import {
   LogoutText,
   MyBoard,
 } from './SidebarContent.styled';
-import plantImg from 'assets/images/sidebar/plant.png';
-import Lightning from 'components/Icons/Lightning';
-import LogOut from 'components/Icons/LogOut';
-import BoardModal from 'components/Modals/BoardModal';
-import NeedHelp from 'components/Sidebar/NeedHelp';
-import AddedBoard from '../AddedBoard';
-import Plus from 'components/Icons/Plus';
 
 const SidebarContent = () => {
   const [isAddBoardModalShown, setIsAddBoardModalShown] = useState(false);
@@ -58,9 +60,17 @@ const SidebarContent = () => {
           </AddBtn>
         </CreateBox>
 
-        <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-        <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-        <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
+        <BoardContainer>
+          <BoardBox>
+            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
+          </BoardBox>
+          <BoardBox>
+            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
+          </BoardBox>
+          <BoardBox>
+            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
+          </BoardBox>
+        </BoardContainer>
       </Content>
 
       <Footer>

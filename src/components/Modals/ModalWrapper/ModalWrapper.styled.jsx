@@ -25,6 +25,7 @@ export const ModalContainer = styled(motion.div)`
   padding: 24px;
   color: var(--text-color);
   background: var(--modal-background);
+  transition: all var(--cubicTransition);
 
   @media screen and (min-width: 375px) {
     width: 335px;

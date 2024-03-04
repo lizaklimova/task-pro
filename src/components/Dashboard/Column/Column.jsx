@@ -6,7 +6,7 @@ import Trash from 'components/Icons/Trash';
 import ColumnModal from 'components/Modals/ColumnModal';
 import CardModal from 'components/Modals/CardModal';
 import Plus from 'components/Icons/Plus';
-import { DeleteModal } from 'components/Modals/DeleteModal/DeleteModal';
+import DeleteModal from 'components/Modals/DeleteModal/DeleteModal';
 import TaskCard from '../TaskCard';
 import {
   AddButton,
