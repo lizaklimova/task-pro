@@ -9,7 +9,7 @@ const DevModal = () => {
   return (
     <>
       {isModalOpen && (
-        <ModalWrapper width={335} onClose={() => setIsModalOpen(false)}>
+        <ModalWrapper width={1000} onClose={() => setIsModalOpen(false)}>
           <DevList developers={developers.developers} />
         </ModalWrapper>
       )}
