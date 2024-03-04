@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { Field, Form } from 'formik';
 
 export const Background = styled.div`
   display: flex;
@@ -47,18 +46,24 @@ export const AuthLink = styled(NavLink)`
   }
 `;
 
-export const FormUi = styled(Form)`
+export const FormUi = styled.form`
   display: flex;
   flex-direction: column;
   gap: 14px;
 `;
 
-export const Input = styled(Field)`
+export const Input = styled.input`
   padding: 14px 18px;
   background: transparent;
   border: 1px solid #bedbb0;
   border-radius: 8px;
   color: #ffffff;
+
+  ${({ error }) =>
+    error &&
+    `
+    border-color: #fc8181;
+  `}
 `;
 
 export const SubmitBtn = styled.button`
@@ -72,4 +77,13 @@ export const SubmitBtn = styled.button`
   &:hover {
     background: #9dc888;
   }
+  &:disabled {
+    opacity: 0.3;
+  }
+`;
+
+export const ErrorPara = styled.span`
+  display: inline;
+  font-size: 8px;
+  color: #fc8181;
 `;
