@@ -6,6 +6,7 @@ import Trash from 'components/Icons/Trash';
 import ColumnModal from 'components/Modals/ColumnModal';
 import CardModal from 'components/Modals/CardModal';
 import Plus from 'components/Icons/Plus';
+import { DeleteModal } from 'components/Modals/DeleteModal/DeleteModal';
 import TaskCard from '../TaskCard';
 import {
   AddButton,
@@ -21,8 +22,15 @@ const Column = ({ column }) => {
   const [isColumnModalOpen, setIsColumnModalOpen] = useState(false);
   const [isAddCardModalOpen, setIsAddCardModalOpen] = useState(false);
   const [isEditCardModalOpen, setIsEditCardModalOpen] = useState(false);
+  const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
 
   const { t } = useTranslation();
+
+  const handleBoardDelete = ({ target }) => {
+    if ((target.id = 'column-delete')) {
+      //видаляємо дошку
+    }
+  };
 
   return (
     <>
@@ -36,12 +44,25 @@ const Column = ({ column }) => {
                 aria-label="Edit column title"
                 onClick={() => setIsColumnModalOpen(true)}
               >
-                <Pencil width={16} height={16} />
+                <Pencil
+                  width={16}
+                  height={16}
+                  strokeColor={'var(--plus-icon-bg)'}
+                />
               </ColumnButton>
             </li>
             <li>
-              <ColumnButton type="button" aria-label="Delete column">
-                <Trash width={16} height={16} />
+              <ColumnButton
+                id="column-delete"
+                type="button"
+                aria-label="Delete column"
+                onClick={() => setIsDeleteModalShown(true)}
+              >
+                <Trash
+                  width={16}
+                  height={16}
+                  strokeColor={'var(--plus-icon-bg)'}
+                />
               </ColumnButton>
             </li>
           </ButtonsList>
@@ -82,6 +103,13 @@ const Column = ({ column }) => {
         <CardModal
           variant="edit"
           closeCardModal={() => setIsEditCardModalOpen(false)}
+        />
+      )}
+
+      {isDeleteModalShown && (
+        <DeleteModal
+          onClose={() => setIsDeleteModalShown(false)}
+          handleBoardDelete={handleBoardDelete}
         />
       )}
     </>

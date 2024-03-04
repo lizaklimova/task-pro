@@ -19,7 +19,7 @@ import {
 import plantImg from 'assets/images/sidebar/plant.png';
 import Lightning from 'components/Icons/Lightning';
 import LogOut from 'components/Icons/LogOut';
-import BoardModal from 'components/Modals/BoardsModal';
+import BoardModal from 'components/Modals/BoardModal';
 import NeedHelp from 'components/Sidebar/NeedHelp';
 import AddedBoard from '../AddedBoard';
 import Plus from 'components/Icons/Plus';
@@ -29,6 +29,7 @@ const SidebarContent = () => {
   const [isEditBoardModalShown, setIsEditBoardModalShown] = useState(false);
 
   const { t } = useTranslation();
+
   return (
     <Container>
       <Content>

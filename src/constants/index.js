@@ -5,6 +5,7 @@ export const LABEL_ARR = [
   { id: 3, color: 'green' },
   { id: 4, color: 'gray' },
 ];
+
 export const ICONS_ARRAY = [
   { id: 0, name: 'icon-board-fourCircles-1' },
   { id: 1, name: 'icon-board-star-2' },
@@ -15,3 +16,20 @@ export const ICONS_ARRAY = [
   { id: 6, name: 'icon-board-colors-7' },
   { id: 7, name: 'icon-board-hexagon-8' },
 ];
+
+export const BACKDROP_TRANSITION = {
+  initial: { opacity: 0, transition: { type: 'spring' } },
+  isOpen: { opacity: 1 },
+  exit: { opacity: 0 },
+};
+
+export const MODAL_TRANSITION = {
+  initial: {
+    top: '-100vh',
+    transition: { type: 'spring' },
+  },
+  isOpen: { top: '0' },
+  exit: {
+    top: '-100vh',
+  },
+};
