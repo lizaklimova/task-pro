@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { register } from '../../../redux/auth/authOperations';
-import { registerSchema } from 'Validations';
+import { registerSchema } from 'schemas';
 import {
   Background,
   FormWrap,

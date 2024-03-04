@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { addCard, editCard } from '../../../redux/cards/cardsOperations';
+// import { addCard, editCard } from '../../../redux/cards/cardsOperations';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { LABEL_ARR } from 'constants';
 import ModalWrapper from 'components/Modals/ModalWrapper';
@@ -17,7 +17,7 @@ import {
 } from './CardModal.styled';
 
 const CardModal = ({ variant, closeCardModal }) => {
-  const [labelColor, setLabelColor] = useState('blue');
+  const [labelColor, setLabelColor] = useState('gray');
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [selectedDate, setSelectedDay] = useState(new Date());
 
@@ -26,16 +26,15 @@ const CardModal = ({ variant, closeCardModal }) => {
 
   const handleFormSubmit = e => {
     e.preventDefault();
-    // const cardData = new FormData();
-    const { title, description, label } = e.target.children;
-    console.log(e.target.children);
-    const o = {
-      title,
-      description,
+    const { title, description } = e.target.children;
+
+    const cardInfo = {
+      title: title.value,
+      description: description.value,
       label: labelColor,
-      date: selectedDate,
+      date: selectedDate.toDateString(),
     };
-    console.log(o);
+    console.log(cardInfo);
   };
 
   const openDatePicker = () => {

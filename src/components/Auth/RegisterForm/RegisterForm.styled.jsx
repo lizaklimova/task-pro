@@ -5,8 +5,9 @@ export const Background = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100dvh;
-  background: linear-gradient(to bottom, #fff 0%, #bedbb0 100%);
+  width: 100vw;
+  min-height: 100vh;
+  background: var(--light-green-gradient);
 `;
 
 export const FormWrap = styled.div`
@@ -36,6 +37,7 @@ export const AuthLink = styled(NavLink)`
   color: #ffffff30;
   font-size: 18px;
   font-weight: 500;
+  transition: color var(--easedTransition);
 
   &:hover {
     color: #ffffff;
@@ -74,10 +76,12 @@ export const SubmitBtn = styled.button`
   background: #bedbb0;
   border-radius: 8px;
   color: #161616;
+  transition: background var(--easedTransition);
 
   &:hover {
     background: #9dc888;
   }
+
   &:disabled {
     opacity: 0.3;
   }
