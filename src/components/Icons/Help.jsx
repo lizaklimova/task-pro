@@ -5,7 +5,7 @@ const Help = ({ width, height, fillColor, strokeColor }) => {
       height={height || '14px'}
       viewBox="0 0 20 20"
       fill={fillColor || 'none'}
-      stroke={strokeColor || 'none'}
+      stroke={strokeColor || null}
       xmlns="http://www.w3.org/2000/svg"
     >
       <g clipPath="url(#clip0_93_113)">
