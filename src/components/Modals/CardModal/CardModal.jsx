@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { addCard, editCard } from '../../../redux/cards/cardsOperations';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { LABEL_ARR } from 'constants';
 import ModalWrapper from 'components/Modals/ModalWrapper';
@@ -18,9 +19,24 @@ import {
 const CardModal = ({ variant, closeCardModal }) => {
   const [labelColor, setLabelColor] = useState('blue');
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [selectedDate, setSelectedDay] = useState(new Date());
 
   const { t } = useTranslation();
   const datePickerRef = useRef(null);
+
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    // const cardData = new FormData();
+    const { title, description, label } = e.target.children;
+    console.log(e.target.children);
+    const o = {
+      title,
+      description,
+      label: labelColor,
+      date: selectedDate,
+    };
+    console.log(o);
+  };
 
   const openDatePicker = () => {
     if (datePickerRef.current) {
@@ -43,7 +59,7 @@ const CardModal = ({ variant, closeCardModal }) => {
             : t('cards.modals.editTitle')}
         </p>
 
-        <CardForm>
+        <CardForm onSubmit={handleFormSubmit}>
           <input
             type="text"
             name="title"
@@ -92,7 +108,12 @@ const CardModal = ({ variant, closeCardModal }) => {
               </button>
             )}
 
-            <Calendar toggleCalendar={setIsCalendarOpen} ref={datePickerRef} />
+            <Calendar
+              selectedDate={selectedDate}
+              setDate={setSelectedDay}
+              toggleCalendar={setIsCalendarOpen}
+              ref={datePickerRef}
+            />
           </CalendarContainer>
 
           <SubmitBtn type="submit">

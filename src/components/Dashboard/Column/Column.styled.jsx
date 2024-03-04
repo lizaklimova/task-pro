@@ -38,15 +38,23 @@ export const ColumnButton = styled.button`
   background-color: transparent;
   padding: 4px;
 
-  & svg {
+  svg {
+    transition: filter var(--easedTransition);
+  }
+
+  svg path {
     stroke: var(--icon-stroke-color);
     opacity: 50%;
-    transition: all var(--easedTransition);
+    transition: stroke var(--easedTransition), opacity var(--easedTransition);
   }
-  & svg:hover {
+
+  &:hover svg path {
     stroke: var(--accent-color);
     opacity: 100%;
-    filter: drop-shadow(1px 1px 12px var(--accent-color));
+  }
+
+  &:hover svg {
+    filter: drop-shadow(1px 1px 5px var(--accent-color));
   }
 `;
 
