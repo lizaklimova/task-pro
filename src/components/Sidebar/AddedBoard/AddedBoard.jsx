@@ -16,6 +16,7 @@ import { DeleteModal } from 'components/Modals/DeleteModal/DeleteModal';
 const AddedBoard = ({ openEditModal }) => {
   const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
   //   const dispatch = useDispatch();
+
   const handleBoardDelete = ({ target }) => {
     if ((target.id = 'board-delete')) {
       //видаляємо дошку
