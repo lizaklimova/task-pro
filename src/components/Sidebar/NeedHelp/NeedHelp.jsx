@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import NeedHelpModal from '../../Modals/NeedHelpModal/NeedHelpModal';
-import { openModal } from 'helpers';
 import Help from 'components/Icons/Help';
 import { HelpBtn } from '../SidebarContent/SidebarContent.styled';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +10,7 @@ const NeedHelp = () => {
 
   return (
     <>
-      <HelpBtn type="button" onClick={() => openModal(setShownModal)}>
+      <HelpBtn type="button" onClick={() => setShownModal(true)}>
         <Help
           width={20}
           height={20}

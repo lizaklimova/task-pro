@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import sprite from 'assets/images/icons/icons-sprite.svg';
 import { ICONS_ARRAY } from 'constants/index';
 
@@ -9,7 +8,7 @@ import {
   IconLabel,
   IconSVG,
   InputRadio,
-} from './BoardModals.styled';
+} from './BoardModal.styled';
 
 export const IconsList = () => {
   const [selectedIconId, setSelectedIconId] = useState(0);

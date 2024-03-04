@@ -1,9 +1,7 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  BoardBox,
-  BoardBoxInfo,
-  BoardContainer,
-  ChangeBox,
+  AddBtn,
   Container,
   Content,
   CreateBox,
@@ -17,18 +15,19 @@ import {
   LogoutContainer,
   LogoutText,
   MyBoard,
-  NameBox,
 } from './SidebarContent.styled';
 import plantImg from 'assets/images/sidebar/plant.png';
 import Lightning from 'components/Icons/Lightning';
-import FourCircles from 'components/Icons/FourCircles';
 import LogOut from 'components/Icons/LogOut';
-import { BoardCreateModal } from 'components/Modals/BoardsModals/BoardCreateModal';
+import BoardModal from 'components/Modals/BoardsModal';
 import NeedHelp from 'components/Sidebar/NeedHelp';
-import { DeleteModal } from 'components/Modals/DeleteModal/DeleteModal';
-import { BoardEditModal } from 'components/Modals/BoardsModals/BoardEditModal';
+import AddedBoard from '../AddedBoard';
+import Plus from 'components/Icons/Plus';
 
 const SidebarContent = () => {
+  const [isAddBoardModalShown, setIsAddBoardModalShown] = useState(false);
+  const [isEditBoardModalShown, setIsEditBoardModalShown] = useState(false);
+
   const { t } = useTranslation();
   return (
     <Container>
@@ -46,110 +45,23 @@ const SidebarContent = () => {
         </Logo>
 
         <MyBoard>{t('sidebar.boards')}</MyBoard>
+
         <CreateBox>
           <CreateText>{t('sidebar.create')}</CreateText>
-          <BoardCreateModal />
+          <AddBtn type="button" onClick={() => setIsAddBoardModalShown(true)}>
+            <Plus
+              width={20}
+              height={20}
+              strokeColor={'var(--sidebar-plus-icon)'}
+            />
+          </AddBtn>
         </CreateBox>
-        <BoardContainer>
-          <BoardBox>
-            <BoardBoxInfo>
-              <NameBox>
-                <FourCircles
-                  width={16}
-                  height={16}
-                  strokeColor={'var(--sidebar-icon-color)'}
-                />
-                <p>Project office</p>
-              </NameBox>
-              <ChangeBox>
-                <BoardEditModal />
-                <DeleteModal />
-              </ChangeBox>
-            </BoardBoxInfo>
-          </BoardBox>
 
-          <BoardBox>
-            <BoardBoxInfo>
-              <NameBox>
-                <FourCircles
-                  width={16}
-                  height={16}
-                  strokeColor={'var(--sidebar-icon-color)'}
-                />
-                <p>Project office</p>
-              </NameBox>
-              <ChangeBox>
-                <BoardEditModal />
-                <DeleteModal />
-              </ChangeBox>
-            </BoardBoxInfo>
-          </BoardBox>
-          <BoardBox>
-            <BoardBoxInfo>
-              <NameBox>
-                <FourCircles
-                  width={16}
-                  height={16}
-                  strokeColor={'var(--sidebar-icon-color)'}
-                />
-                <p>Project office</p>
-              </NameBox>
-              <ChangeBox>
-                <BoardEditModal />
-                <DeleteModal />
-              </ChangeBox>
-            </BoardBoxInfo>
-          </BoardBox>
-          <BoardBox>
-            <BoardBoxInfo>
-              <NameBox>
-                <FourCircles
-                  width={16}
-                  height={16}
-                  strokeColor={'var(--sidebar-icon-color)'}
-                />
-                <p>Project office</p>
-              </NameBox>
-              <ChangeBox>
-                <BoardEditModal />
-                <DeleteModal />
-              </ChangeBox>
-            </BoardBoxInfo>
-          </BoardBox>
-          <BoardBox>
-            <BoardBoxInfo>
-              <NameBox>
-                <FourCircles
-                  width={16}
-                  height={16}
-                  strokeColor={'var(--sidebar-icon-color)'}
-                />
-                <p>Project office</p>
-              </NameBox>
-              <ChangeBox>
-                <BoardEditModal />
-                <DeleteModal />
-              </ChangeBox>
-            </BoardBoxInfo>
-          </BoardBox>
-          <BoardBox>
-            <BoardBoxInfo>
-              <NameBox>
-                <FourCircles
-                  width={16}
-                  height={16}
-                  strokeColor={'var(--sidebar-icon-color)'}
-                />
-                <p>Project office</p>
-              </NameBox>
-              <ChangeBox>
-                <BoardEditModal />
-                <DeleteModal />
-              </ChangeBox>
-            </BoardBoxInfo>
-          </BoardBox>
-        </BoardContainer>
+        <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
+        <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
+        <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
       </Content>
+
       <Footer>
         <HelpContainer>
           <img src={plantImg} alt="plant" />
@@ -171,6 +83,19 @@ const SidebarContent = () => {
           <LogoutText>{t('sidebar.logoutButton')}</LogoutText>
         </LogoutContainer>
       </Footer>
+
+      {isAddBoardModalShown && (
+        <BoardModal
+          variant="add"
+          closeModal={() => setIsAddBoardModalShown(false)}
+        />
+      )}
+      {isEditBoardModalShown && (
+        <BoardModal
+          variant="edit"
+          closeModal={() => setIsEditBoardModalShown(false)}
+        />
+      )}
     </Container>
   );
 };

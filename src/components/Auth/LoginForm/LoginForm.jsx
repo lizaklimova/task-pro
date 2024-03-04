@@ -8,9 +8,21 @@ import {
   Input,
   SubmitBtn,
 } from './LoginForm.styled';
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../../redux/auth/authOperations';
+import { useState } from 'react';
 
 const LoginForm = () => {
-  const handleFormSubmit = ms => new Promise(r => setTimeout(r, ms));
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    dispatch(logIn({ email, password }));
+    setEmail('');
+    setPassword('');
+  };
 
   return (
     <Background>
@@ -28,9 +40,9 @@ const LoginForm = () => {
             email: '',
             password: '',
           }}
-          onSubmit={async values => {
-            await handleFormSubmit(500);
-            alert(JSON.stringify(values, null, 2));
+          onSubmit={() => {
+            handleFormSubmit();
+            // alert(JSON.stringify(values, null, 2));
           }}
         >
           {({ isSubmitting }) => (

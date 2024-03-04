@@ -30,7 +30,7 @@
   font-size: 14px !important;
   letter-spacing: -0.02em;
   color: var(--grey-text-color) !important;
-  padding: 0 !important ;
+  padding: 0 !important;
 }
 
 .custom-select__value-container {
@@ -46,15 +46,12 @@
 }
 
 .custom-select__indicator {
-  /* width: 16px !important;
-    height: 16px !important; */
   padding: 0 !important;
 }
 
 .custom-select__option {
   cursor: pointer !important;
   transition: 350ms ease-in-out;
-  /* background-color: transparent !important; */
 }
 
 .custom-select__option--is-focused {
@@ -73,6 +70,5 @@
 }
 
 .custom-select__option--is-selected:hover {
-  /* background-color: lighten(var(--lightgrey-text-color), 78%) !important; */
   color: var(--accent-color) !important;
 }

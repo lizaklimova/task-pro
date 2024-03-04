@@ -1,26 +1,23 @@
-import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
-import Trash from 'components/Icons/Trash';
-import { ChangeIcons } from 'components/Sidebar/SidebarContent/SidebarContent.styled';
-import { DeleteModalContent } from './DeleteModalContent';
+import { Container, Title, ConfirmButton } from './DeleteModal.styled';
 
-export const DeleteModal = () => {
-  const [shownModal, setShownModal] = useState(false);
+export const DeleteModal = ({ onClose, handleBoardDelete }) => {
+  const { t } = useTranslation();
 
   return (
-    <>
-      <ChangeIcons type="button" onClick={() => setShownModal(true)}>
-        <Trash
-          width={16}
-          height={16}
-          strokeColor={'var(--sidebar-change-color'}
-        />
-      </ChangeIcons>
-      {shownModal && (
-        <ModalWrapper width={335} onClose={() => setShownModal(false)}>
-          <DeleteModalContent />
-        </ModalWrapper>
-      )}
-    </>
+    <ModalWrapper width={335} onClose={onClose}>
+      <Container>
+        <Title>{t('deleteModal.title')}</Title>
+
+        <ConfirmButton
+          id="board-delete"
+          type="button"
+          onClick={handleBoardDelete}
+        >
+          {t('deleteModal.confirm')}
+        </ConfirmButton>
+      </Container>
+    </ModalWrapper>
   );
 };

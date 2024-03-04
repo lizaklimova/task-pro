@@ -70,7 +70,7 @@ import {
   BackLabel,
   BackInputRadio,
   BackImage,
-} from './BoardModals.styled';
+} from './BoardModal.styled';
 
 export const BacksList = () => {
   const [selectedBackId, setSelectedBackId] = useState(0);

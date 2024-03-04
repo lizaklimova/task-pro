@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { closeModal } from 'helpers';
 import ModalWrapper from 'components/Modals/ModalWrapper/ModalWrapper';
 import {
   TitleContainer,
@@ -22,7 +21,7 @@ const Filters = ({ onChange, filterValue }) => {
   return (
     <>
       {isModalOpen && (
-        <ModalWrapper width={300} onClose={() => closeModal(setIsModalOpen)}>
+        <ModalWrapper width={300} onClose={() => setIsModalOpen(false)}>
           <TitleContainer>
             <Title>{t('boards.filterButton')}</Title>
           </TitleContainer>
