@@ -30,10 +30,13 @@
   "sidebar": {
     "boards": "My boards",
     "create": "Create a new board",
-    "helpText": "If you need help with TaskPro, check out our support resources or reach out to our customer support team.",
+    "helpText1": "If you need help with",
+    "helpText2": ", check out our support resources or reach out to our customer support team.",
     "helpButton": "Need help?",
     "logoutButton": "Log out ",
     "helpModal": {
+      "toast.error": "Please enter data to submit ❗️",
+      "toast.success": "Form submit is successfully! ✅",
       "title": "Need help",
       "email": "Email address ",
       "comment": "Comment",
@@ -50,7 +53,9 @@
       "medium": "Medium",
       "high": "High"
     },
-    "beforeStart": "Before starting your project, it is essential to create a board to visualize and track all the necessary tasks and milestones. This board serves as a powerful tool to organize the workflow and ensure effective collaboration among team members.",
+    "beforeStart1": "Before starting your project, it is essential ",
+    "beforeStartColor": "to create a board",
+    "beforeStart2": " to visualize and track all the necessary tasks and milestones. This board serves as a powerful tool to organize the workflow and ensure effective collaboration among team members.",
     "modals": {
       "newTitle": "New board",
       "editTitle": "Edit board",
@@ -82,7 +87,9 @@
       "deadline": "Deadline",
       "today": "Today,",
       "addButton": "Add",
-      "editButton": "Edit"
+      "editButton": "Edit",
+      "toast.error": "Please enter all fields to create a task ❗️",
+      "toast.success": "Card is added successfully ✅"
     },
     "popup": {
       "progress": "In progress",
@@ -90,14 +97,19 @@
     }
   },
   "404": {
-    "title": "Oops! Page Not Found",
+    "ops": "Oooops...",
+    "title": "Page is not found",
     "text": "It seems like you've stumbled upon a page that doesn't exist. Don't worry, it happens to the best of us. Maybe you followed an outdated link, or the page has been moved.",
     "stepsTitle": "Here are a few things you can try:",
     "step1": "1. Check the URL for typos and try again.",
     "step2": "2. Return to the homepage and navigate from there.",
     "step3": "3. Contact the website administrator for assistance.",
     "stillTrouble": "If you're still having trouble, feel free to reach out. We're here to help!",
-    "homeLink": "Home",
+    "homeLink": "Back to home",
     "helpButton": "Contact Us"
+  },
+  "deleteModal": {
+    "title": "Are you sure you want to delete this?",
+    "confirm": "Confirm"
   }
 }

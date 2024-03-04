@@ -6,8 +6,8 @@ export const Aside = styled.aside`
   @media screen and (min-width: 1440px) {
     display: block;
     padding: 24px;
-    background-color: #161616;
-    color: #fff;
+    background-color: var(--bar-color);
+    color: var(--text-color);
     height: 100vh;
   }
 `;

@@ -1,44 +1,63 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-axios.defaults.baseURL = "http://localhost:3000/task-pro/"
+import { ENDPOINTS } from 'api';
 
 const setAuthorizationHeader = token => {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
 
 const unsetAuthorizationHeader = () => {
-    axios.defaults.headers.common.Authrization = '';
+  axios.defaults.headers.common.Authrization = '';
 }
 
-export const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
-    try {
-        const { data } = await axios.post('auth/register', credentials);
+export const register = createAsyncThunk(ENDPOINTS.auth.register, async (credentials, thunkAPI) => {
+  try {
+    const { data } = await axios.post(ENDPOINTS.auth.register, credentials);
 
-        setAuthorizationHeader(data.token);
-    } catch ({ message }) {
-        thunkAPI.rejectWithValue(message);
-    }
+    setAuthorizationHeader(data.token);
+
+    return data;
+  } catch ({ message }) {
+    thunkAPI.rejectWithValue(message);
+  }
 })
 
-export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
-    try {
-        const { data } = await axios.post('auth/login', credentials);
+export const logIn = createAsyncThunk(ENDPOINTS.auth.login, async (credentials, thunkAPI) => {
+  try {
+    const { data } = await axios.post(ENDPOINTS.auth.login, credentials);
 
-        setAuthorizationHeader(data.token);
+    setAuthorizationHeader(data.token);
 
-        return data;
-    } catch ({ message }) {
-        thunkAPI.rejectWithValue(message);
-    }
+    return data;
+  } catch ({ message }) {
+    thunkAPI.rejectWithValue(message);
+  }
 })
 
-export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
-    try {
-        await axios.post('auth/logout');
+export const logOut = createAsyncThunk(ENDPOINTS.auth.logout, async (_, thunkAPI) => {
+  try {
+    await axios.post(ENDPOINTS.auth.logout);
 
-        unsetAuthorizationHeader();
-    } catch ({ message }) {
-        thunkAPI.rejectWithValue(message);
-    }
+    unsetAuthorizationHeader();
+  } catch ({ message }) {
+    thunkAPI.rejectWithValue(message);
+  }
+})
+
+export const getCurrentUser = createAsyncThunk(ENDPOINTS.users.current, async (_, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const persistedToken = state.auth.token;
+
+  if (persistedToken === null) {
+    return thunkAPI.rejectWithValue('There is no user token');
+  }
+
+  setAuthorizationHeader(persistedToken);
+  try {
+    const { data } = await axios.get(ENDPOINTS.users.current);
+
+    return data;
+  } catch ({ message }) {
+    thunkAPI.rejectWithValue(message);
+  }
 })

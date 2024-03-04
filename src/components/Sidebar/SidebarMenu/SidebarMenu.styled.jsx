@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 export const AsideBackdrop = styled.div`
   display: none;
 
-  @media screen and (max-width: 1439px) {
+  @media screen and (max-width: 1440px) {
     display: block;
     position: fixed;
     top: 0;
@@ -17,16 +17,24 @@ export const AsideBackdrop = styled.div`
 `;
 
 export const AsideMenu = styled.div`
+  @media screen and (min-width: 1440px) {
+    display: none;
+  }
+
   @media screen and (max-width: 1439px) {
+    display: block;
     position: absolute;
     top: 0;
     left: -100%;
+    bottom: 0;
     width: 210px;
     height: 100vh;
-    padding: 24px;
-    background-color: #121212;
-    color: #fff;
+    padding: 14px;
+    background-color: var(--bar-color);
+    color: var(--text-color);
     transition: left 250ms linear;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     &.is-open {
       left: 0;

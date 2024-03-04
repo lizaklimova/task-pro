@@ -10,7 +10,7 @@ const ShownModal = () => {
         Open Modal
       </button>
       {shownModal && (
-        <ModalWrapper width="400px" onClose={() => setShownModal(false)}>
+        <ModalWrapper width={350} onClose={() => setShownModal(false)}>
           <p>Children Info</p>
         </ModalWrapper>
       )}

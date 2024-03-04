@@ -1,6 +1,8 @@
-import { Suspense, lazy } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Suspense, lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { getCurrentUser } from '../../redux/auth/authOperations';
 import GlobalStyles from 'assets/styles';
 import { PublicRoute } from 'routes';
 import SharedLayout from 'layouts/SharedLayout';
@@ -13,22 +15,16 @@ const ScreensPage = lazy(() => import('pages/ScreensPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
       <GlobalStyles />
       <Toaster position="top-center" />
-
-      <ul style={{ display: 'flex', justifyContent: 'center', gap: '15px' }}>
-        <li>
-          <Link to="/">Welcome</Link>
-        </li>
-        <li>
-          <Link to="/auth">Auth</Link>
-        </li>
-        <li>
-          <Link to="/home">Home</Link>
-        </li>
-      </ul>
 
       <Suspense fallback={<Loader />}>
         <Routes>
@@ -36,7 +32,7 @@ const App = () => {
             <Route
               index
               // element={
-              //   <PrivateRoute component={<HomePage />} redirectTo={'/auth'} />
+              //   <PrivateRoute component={<HomePage />} redirectTo={'/auth/login'} />
               // }
               element={<HomePage />}
             />
@@ -45,7 +41,7 @@ const App = () => {
               // element={
               //   <PrivateRoute
               //     component={<ScreensPage />}
-              //     redirectTo={'/auth'}
+              //     redirectTo={'/auth/login'}
               //   />
               // }
               element={<ScreensPage />}
