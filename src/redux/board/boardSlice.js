@@ -3,6 +3,7 @@ import {
   getBackgroundIcons,
   getAllBoards,
   createBoard,
+  filterBoard,
 } from './boardOperations';
 import { handlePending, handleRejected } from './helpers';
 
@@ -38,7 +39,14 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(createBoard.rejected, handleRejected);
+      .addCase(createBoard.rejected, handleRejected)
+      .addCase(filterBoard.pending, handlePending)
+      .addCase(filterBoard.fulfilled, (state, action) => {
+        state.boards = action.payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(filterBoard.rejected, handleRejected);
   },
 });
 

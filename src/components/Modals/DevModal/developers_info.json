@@ -7,8 +7,8 @@
       "photo": "./images/Elizabeth.jpg",
       "LinkedIn": "https://www.linkedin.com/in/elizabeth-klymova-frontend-dev/",
       "GitHub": "https://github.com/lizaklimova",
-      "resume": "",
-      "role": "Team Leader (Frontend)"
+      "roleEn": "Team Leader (Frontend)",
+      "roleUk": "Team Leader (Frontend)"
     },
     {
       "id": 2,
@@ -17,8 +17,8 @@
       "photo": "./images/Anton.jpg",
       "LinkedIn": "https://www.linkedin.com/in/chanankuan/",
       "GitHub": "https://github.com/chanankuan",
-      "resume": "",
-      "role": "Team Leader (Backend)"
+      "roleEn": "Team Leader (Backend)",
+      "roleUk": "Team Leader (Backend)"
     },
     {
       "id": 3,
@@ -27,8 +27,8 @@
       "photo": "./images/Iryna.jpg",
       "LinkedIn": "https://www.linkedin.com/in/slavinska-iryna/",
       "GitHub": "https://github.com/IrynaSlavinska",
-      "resume": "",
-      "role": "Scrum Master"
+      "roleEn": "Scrum Master",
+      "roleUk": "Scrum Master"
     },
     {
       "id": 4,
@@ -37,8 +37,8 @@
       "photo": "./images/Alisa.jpg",
       "LinkedIn": "https://www.linkedin.com/in/alisa-bondarenko/",
       "GitHub": "https://github.com/AliceBondMe",
-      "resume": "",
-      "role": "Developer"
+      "roleEn": "Developer",
+      "roleUk": "Розробник"
     },
     {
       "id": 5,
@@ -47,8 +47,8 @@
       "photo": "./images/Anastasiia.jpg",
       "LinkedIn": "https://www.linkedin.com/in/anastasiia-motsukh-a5859b283/",
       "GitHub": "https://github.com/Elostay",
-      "resume": "",
-      "role": "Developer"
+      "roleEn": "Developer",
+      "roleUk": "Розробник"
     },
     {
       "id": 6,
@@ -57,8 +57,8 @@
       "photo": "./images/Denys.jpg",
       "LinkedIn": "https://www.linkedin.com/in/denys-nalyvaiko-1ba8ab283",
       "GitHub": "https://github.com/Denys-Nalyvaiko",
-      "resume": "",
-      "role": "Developer"
+      "roleEn": "Developer",
+      "roleUk": "Розробник"
     },
     {
       "id": 7,
@@ -67,8 +67,8 @@
       "photo": "./images/Ihor.jpg",
       "LinkedIn": "https://www.linkedin.com/in/ihor-pozhematkin/",
       "GitHub": "https://github.com/IhorPozhematkin",
-      "resume": "",
-      "role": "Developer"
+      "roleEn": "Developer",
+      "roleUk": "Розробник"
     },
     {
       "id": 8,
@@ -77,8 +77,8 @@
       "photo": "./images/Kateryna.jpg",
       "LinkedIn": "https://www.linkedin.com/in/lubenets-kateryna/",
       "GitHub": "https://github.com/dn280786lea",
-      "resume": "",
-      "role": "Developer"
+      "roleEn": "Developer",
+      "roleUk": "Розробник"
     },
     {
       "id": 9,
@@ -87,8 +87,8 @@
       "photo": "./images/Konstantin.jpg",
       "LinkedIn": "https://www.linkedin.com/in/constantine-it-lysenko/",
       "GitHub": "https://github.com/konstantin-it-lysenko",
-      "resume": "",
-      "role": "Developer"
+      "roleEn": "Developer",
+      "roleUk": "Розробник"
     },
     {
       "id": 10,
@@ -97,8 +97,8 @@
       "photo": "./images/Nadiia.jpg",
       "LinkedIn": "https://www.linkedin.com/in/nadiia-paliichuk/",
       "GitHub": "https://github.com/Nadin2611",
-      "resume": "",
-      "role": "Developer"
+      "roleEn": "Developer",
+      "roleUk": "Розробник"
     },
     {
       "id": 11,
@@ -107,8 +107,8 @@
       "photo": "./images/Serhii.jpg",
       "LinkedIn": "https://www.linkedin.com/in/havryliuk-serhii-frontenddeveloper/",
       "GitHub": "https://github.com/Serhii-Ruhtik",
-      "resume": "",
-      "role": "Developer"
+      "roleEn": "Developer",
+      "roleUk": "Розробник"
     },
     {
       "id": 12,
@@ -117,8 +117,8 @@
       "photo": "./images/Valentyna.jpg",
       "LinkedIn": "https://www.linkedin.com/in/valentyna-dumbrava/",
       "GitHub": "https://github.com/valyadum",
-      "resume": "",
-      "role": "Developer"
+      "roleEn": "Developer",
+      "roleUk": "Розробник"
     }
   ]
 }
