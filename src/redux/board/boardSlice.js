@@ -49,7 +49,14 @@ const boardsSlice = createSlice({
       .addCase(getBackgroundIcons.rejected, handleRejected)
       .addCase(getAllBoards.rejected, handleRejected)
       .addCase(getOneBoard.rejected, handleRejected)
-      .addCase(createBoard.rejected, handleRejected);
+      .addCase(createBoard.rejected, handleRejected)
+      .addCase(filterBoard.pending, handlePending)
+      .addCase(filterBoard.fulfilled, (state, action) => {
+        state.boards = action.payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(filterBoard.rejected, handleRejected);
   },
 });
 
