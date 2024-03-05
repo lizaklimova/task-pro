@@ -14,10 +14,11 @@ import {
   BackInputRadio,
   BackImage,
 } from './BoardModal.styled';
-// import Loader from 'components/Loader/Loader';
 
 export const BacksList = () => {
-  const [selectedBackId, setSelectedBackId] = useState(0);
+  const [selectedBackId, setSelectedBackId] = useState(
+    '65e717589898b0e904e16734'
+  );
   const isLoading = useSelector(selectIsLoading);
   const backgroundIcons = useSelector(selectBackgroundIcons);
 
