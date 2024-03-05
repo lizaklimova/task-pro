@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { register } from '../../../redux/auth/authOperations';
+import { useAuth } from 'hooks';
 import { registerSchema } from 'schemas';
+import SmallLoader from 'components/Loader/SmallLoader';
 import {
   Background,
   FormWrap,
@@ -15,6 +17,7 @@ import {
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
+  const { isLoading } = useAuth();
 
   const onSubmit = async (values, actions) => {
     const formData = {
@@ -34,23 +37,16 @@ const RegisterForm = () => {
     actions.resetForm();
   };
 
-  const {
-    values,
-    errors,
-    touched,
-    isSubmitting,
-    handleBlur,
-    handleChange,
-    handleSubmit,
-  } = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      password: '',
-    },
-    validationSchema: registerSchema,
-    onSubmit,
-  });
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues: {
+        name: '',
+        email: '',
+        password: '',
+      },
+      validationSchema: registerSchema,
+      onSubmit,
+    });
 
   return (
     <Background>
@@ -98,8 +94,12 @@ const RegisterForm = () => {
           {errors.password && touched.password && (
             <ErrorPara>{errors.password}</ErrorPara>
           )}
-          <SubmitBtn type="submit" disabled={isSubmitting}>
-            Register Now
+          <SubmitBtn type="submit" disabled={isLoading}>
+            {isLoading ? (
+              <SmallLoader width="25" height="25" />
+            ) : (
+              'Register Now'
+            )}
           </SubmitBtn>
         </FormUi>
       </FormWrap>

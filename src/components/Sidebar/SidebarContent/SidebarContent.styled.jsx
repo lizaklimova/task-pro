@@ -20,7 +20,7 @@ export const Logo = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: var(--sidebar-text);
   font-weight: 600;
   /* @media screen and (min-width: 1440px) {
@@ -53,6 +53,25 @@ export const AddBtn = styled.button`
   border-radius: 6px;
   width: 40px;
   height: 36px;
+  transition: background-color var(--easedTransition),
+    border var(--easedTransition);
+
+  @media screen and (min-width: 1440px) {
+    &:hover,
+    &:focus {
+      background-color: var(--background-color);
+      border: 1px solid var(--text-color);
+    }
+
+    svg {
+      transition: stroke var(--easedTransition);
+    }
+
+    &:hover svg,
+    &:focus svg {
+      stroke: var(--text-color);
+    }
+  }
 `;
 
 export const CreateText = styled.p`
@@ -77,18 +96,15 @@ export const CreateBox = styled.div`
 
 export const DevsBtn = styled.button`
   font-size: 12px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   background-color: transparent;
-  color: var(--text-color);
-  opacity: 0.5;
-  transition: color 350ms linear, filter 350ms linear, opacity 350ms linear;
+  color: var(--sidebar-myboard-text);
+  transition: filter 350ms linear;
 
   @media screen and (min-width: 1440px) {
     &:hover,
     &:focus {
-      color: var(--accent-color);
-      filter: drop-shadow(1px 1px 7px var(--accent-color));
-      opacity: 1;
+      filter: drop-shadow(1px 1px 4px var(--sidebar-logout));
     }
   }
 `;
@@ -161,12 +177,17 @@ export const HelpBtn = styled.button`
   align-items: center;
 `;
 
-export const LogoutContainer = styled.button`
+export const LogoutBtn = styled.button`
   display: flex;
   gap: 14px;
   align-items: center;
   padding-left: 10px;
   background: transparent;
+  margin-bottom: 30px;
+
+  @media screen and (min-width: 1440px) {
+    margin-bottom: unset;
+  }
 `;
 
 export const LogoutText = styled.p`

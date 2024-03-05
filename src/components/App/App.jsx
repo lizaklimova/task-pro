@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { getCurrentUser } from '../../redux/auth/authOperations';
 import GlobalStyles from 'assets/styles';
-import { PublicRoute } from 'routes';
+import { PrivateRoute, PublicRoute } from 'routes';
 import SharedLayout from 'layouts/SharedLayout';
 import Loader from 'components/Loader/Loader';
 
@@ -31,20 +31,21 @@ const App = () => {
           <Route path="/home" element={<SharedLayout />}>
             <Route
               index
-              // element={
-              //   <PrivateRoute component={<HomePage />} redirectTo={'/auth/login'} />
-              // }
-              element={<HomePage />}
+              element={
+                <PrivateRoute
+                  component={<HomePage />}
+                  redirectTo={'/auth/login'}
+                />
+              }
             />
             <Route
               path=":boardId"
-              // element={
-              //   <PrivateRoute
-              //     component={<ScreensPage />}
-              //     redirectTo={'/auth/login'}
-              //   />
-              // }
-              element={<ScreensPage />}
+              element={
+                <PrivateRoute
+                  component={<ScreensPage />}
+                  redirectTo={'/auth/login'}
+                />
+              }
             />
           </Route>
 
