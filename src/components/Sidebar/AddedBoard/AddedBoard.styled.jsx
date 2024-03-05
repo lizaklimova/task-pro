@@ -10,7 +10,7 @@ export const BoardBoxInfo = styled.div`
 
 export const NameBox = styled.div`
   display: flex;
-  gap: 4px;
+  gap: 10px;
   font-weight: 500;
   color: var(--sidebar-text);
 `;

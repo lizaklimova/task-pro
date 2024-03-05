@@ -26,7 +26,7 @@ const BoardModal = ({ variant, closeModal }) => {
     } else {
     }
 
-    closeModal();
+    return closeModal();
   };
 
   return (
@@ -49,6 +49,7 @@ const BoardModal = ({ variant, closeModal }) => {
 
         <Text>{t('boards.modals.background')}</Text>
         <BacksList />
+
         <Button type="submit">
           <Span>
             <Plus

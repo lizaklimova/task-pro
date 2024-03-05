@@ -20,7 +20,7 @@ export const register = createAsyncThunk(
         credentials
       );
 
-      setAuthorizationHeader(data.token);
+      setAuthorizationHeader(data.user.token);
 
       return data;
     } catch (error) {
@@ -39,7 +39,7 @@ export const logIn = createAsyncThunk(
         credentials
       );
 
-      setAuthorizationHeader(data.token);
+      setAuthorizationHeader(data.user.token);
 
       return data;
     } catch (error) {
@@ -57,13 +57,14 @@ export const logOut = createAsyncThunk(
 
       unsetAuthorizationHeader();
     } catch (error) {
+      console.log(error);
       toast.error(error.response.data.message, TOASTER_CONFIG);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const getCurrentUser = createAsyncThunk(
+export const refreshUser = createAsyncThunk(
   ENDPOINTS.users.current,
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
@@ -73,13 +74,13 @@ export const getCurrentUser = createAsyncThunk(
       return thunkAPI.rejectWithValue('There is no user token');
     }
 
-    setAuthorizationHeader(persistedToken);
     try {
+      setAuthorizationHeader(persistedToken);
       const { data } = await axiosInstance.get(ENDPOINTS.users.current);
-
+      console.log(data);
       return data;
     } catch ({ message }) {
-      thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );

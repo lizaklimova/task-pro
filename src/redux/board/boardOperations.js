@@ -18,7 +18,7 @@ export const getAllBoards = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(ENDPOINTS.boards.allBoards);
-      return data;
+      return data.boards;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -33,7 +33,8 @@ export const createBoard = createAsyncThunk(
         ENDPOINTS.boards.allBoards,
         newBoard
       );
-      return data;
+
+      return data.board;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
