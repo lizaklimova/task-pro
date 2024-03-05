@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/task-pro/static/css/main.d59ffda1.css",
-    "main.js": "/task-pro/static/js/main.7d42e38e.js",
+    "main.js": "/task-pro/static/js/main.c03ef81e.js",
     "static/js/955.0bc27f06.chunk.js": "/task-pro/static/js/955.0bc27f06.chunk.js",
     "static/js/333.b5669644.chunk.js": "/task-pro/static/js/333.b5669644.chunk.js",
     "static/js/598.d72f3c28.chunk.js": "/task-pro/static/js/598.d72f3c28.chunk.js",
@@ -12,15 +12,28 @@
     "static/js/306.670133bc.chunk.js": "/task-pro/static/js/306.670133bc.chunk.js",
     "static/media/flag-british.png": "/task-pro/static/media/flag-british.d005570f722a4f07c656.png",
     "static/media/404.png": "/task-pro/static/media/404.0b2596d0bcb7151a2c4c.png",
+    "static/media/Nadiia.jpg": "/task-pro/static/media/Nadiia.411922f1f705f1b06543.jpg",
+    "static/media/Elizabeth.jpg": "/task-pro/static/media/Elizabeth.7c9082901308fcc99690.jpg",
+    "static/media/Serhii.jpg": "/task-pro/static/media/Serhii.326e5b45891cbd451f99.jpg",
+    "static/media/Anton.jpg": "/task-pro/static/media/Anton.ef6d83a2dc338d87e324.jpg",
+    "static/media/Anastasiia.jpg": "/task-pro/static/media/Anastasiia.d6f862a9d519d8a57da1.jpg",
+    "static/media/Kateryna.jpg": "/task-pro/static/media/Kateryna.84110dbc628f4ec1b822.jpg",
     "static/media/Poppins-Regular.ttf": "/task-pro/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Poppins-Medium.ttf": "/task-pro/static/media/Poppins-Medium.673ed42382ab264e0bf5.ttf",
     "static/media/Poppins-SemiBold.ttf": "/task-pro/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
+    "static/media/Valentyna.jpg": "/task-pro/static/media/Valentyna.19bec71fa61657c23caa.jpg",
+    "static/media/Alisa.jpg": "/task-pro/static/media/Alisa.81c0f99596c1b706968e.jpg",
     "static/media/welcome-desk-2x.png": "/task-pro/static/media/welcome-desk-2x.47352d931ddfe9011871.png",
     "static/media/welcome-tab-2x.png": "/task-pro/static/media/welcome-tab-2x.47352d931ddfe9011871.png",
+    "static/media/Ihor.jpg": "/task-pro/static/media/Ihor.da067192a8a147c63a70.jpg",
+    "static/media/no-photo.png": "/task-pro/static/media/no-photo.8ed9e5868a3feeb4f2db.png",
+    "static/media/Konstantin.jpg": "/task-pro/static/media/Konstantin.f93f93f0affe8f3cf82f.jpg",
     "static/media/welcome-mob-2x.png": "/task-pro/static/media/welcome-mob-2x.dbdef087e71e45db1268.png",
     "static/media/GolosText-SemiBold.ttf": "/task-pro/static/media/GolosText-SemiBold.7c0884114cefe06435e2.ttf",
     "static/media/GolosText-Regular.ttf": "/task-pro/static/media/GolosText-Regular.6e4f82c2d2f3ff984bc6.ttf",
     "static/media/GolosText-Medium.ttf": "/task-pro/static/media/GolosText-Medium.bc3d268f78b2682fb11c.ttf",
+    "static/media/Iryna.jpg": "/task-pro/static/media/Iryna.78152cf8ee02f933274b.jpg",
+    "static/media/Denys.jpg": "/task-pro/static/media/Denys.96b365ae8a4b85289fd9.jpg",
     "static/media/welcome-desk-1x.png": "/task-pro/static/media/welcome-desk-1x.324d085f23796df69bd8.png",
     "static/media/welcome-tab-1x.png": "/task-pro/static/media/welcome-tab-1x.324d085f23796df69bd8.png",
     "static/media/ukraine-flag.png": "/task-pro/static/media/ukraine-flag.e0ca2a8aeca5aff5deaa.png",
@@ -30,7 +43,7 @@
     "index.html": "/task-pro/index.html",
     "static/media/getFetch.cjs": "/task-pro/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.d59ffda1.css.map": "/task-pro/static/css/main.d59ffda1.css.map",
-    "main.7d42e38e.js.map": "/task-pro/static/js/main.7d42e38e.js.map",
+    "main.c03ef81e.js.map": "/task-pro/static/js/main.c03ef81e.js.map",
     "955.0bc27f06.chunk.js.map": "/task-pro/static/js/955.0bc27f06.chunk.js.map",
     "333.b5669644.chunk.js.map": "/task-pro/static/js/333.b5669644.chunk.js.map",
     "598.d72f3c28.chunk.js.map": "/task-pro/static/js/598.d72f3c28.chunk.js.map",
@@ -42,6 +55,6 @@
   },
   "entrypoints": [
     "static/css/main.d59ffda1.css",
-    "static/js/main.7d42e38e.js"
+    "static/js/main.c03ef81e.js"
   ]
 }
