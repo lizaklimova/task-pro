@@ -8,7 +8,6 @@ import UserDefault from 'components/Icons/UserDefault';
 const Profile = () => {
   const [shownModal, setShownModal] = useState(false);
   const { username } = useAuth();
-  console.log(username);
 
   return (
     <UserContainer>

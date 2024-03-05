@@ -34,7 +34,7 @@ const BoardModal = ({ variant, closeModal }) => {
     }
     // console.log(data);
 
-    closeModal();
+    return closeModal();
   };
 
   console.log(OneBoard);
@@ -59,7 +59,7 @@ const BoardModal = ({ variant, closeModal }) => {
 
         <Text>{t('boards.modals.background')}</Text>
         <BacksList />
-        {/* <Loader width={50} /> */}
+
         <Button type="submit">
           <Span>
             <Plus

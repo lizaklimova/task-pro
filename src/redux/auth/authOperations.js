@@ -79,7 +79,7 @@ export const refreshUser = createAsyncThunk(
 
       return data;
     } catch ({ message }) {
-      thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
