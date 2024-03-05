@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { getCurrentUser } from '../../redux/auth/authOperations';
+import { refreshUser } from '../../redux/auth/authOperations';
 import { PrivateRoute, PublicRoute } from 'routes';
 import SharedLayout from 'layouts/SharedLayout';
 import Loader from 'components/Loader';
@@ -19,7 +19,7 @@ const App = () => {
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(getCurrentUser());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return isRefreshing ? (
