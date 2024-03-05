@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import ModalWrapper from 'components/Modals/ModalWrapper/ModalWrapper';
 import developers from './developers_info.json';
 import DevList from './DevList';
