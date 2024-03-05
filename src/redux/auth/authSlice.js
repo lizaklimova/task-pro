@@ -16,15 +16,15 @@ export const authSlice = createSlice({
     builder
       .addCase(register.fulfilled, (state, { payload }) => {
         state.user = payload.user;
-        state.token = payload.token;
+        state.token = payload.user.token;
         state.isLoggedIn = true;
       })
       .addCase(logIn.fulfilled, (state, { payload }) => {
         state.user = payload.user;
-        state.token = payload.token;
+        state.token = payload.user.token;
         state.isLoggedIn = true;
       })
-      .addCase(logOut.fulfilled, (state, { payload }) => {
+      .addCase(logOut.fulfilled, (state, _) => {
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
@@ -32,7 +32,7 @@ export const authSlice = createSlice({
       .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
         state.user = { ...payload };
         state.isLoggedIn = true;
-      })
+      });
   },
 });
 

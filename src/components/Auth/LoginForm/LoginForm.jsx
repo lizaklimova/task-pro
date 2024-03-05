@@ -67,7 +67,7 @@ const LoginForm = () => {
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={errors.email && touched.email}
+            $error={errors.email && touched.email}
             name="email"
             placeholder="Enter your email"
             type="email"
@@ -79,7 +79,7 @@ const LoginForm = () => {
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={errors.password && touched.password}
+            $error={errors.password && touched.password}
             name="password"
             placeholder="Confirm a password"
             type="password"
