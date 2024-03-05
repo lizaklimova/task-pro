@@ -1,13 +1,12 @@
-import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ENDPOINTS, axiosInstance } from 'api';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const setAuthorizationHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 const unsetAuthorizationHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
+  axiosInstance.defaults.headers.common.Authorization = '';
 };
 
 export const register = createAsyncThunk(
@@ -18,7 +17,7 @@ export const register = createAsyncThunk(
         ENDPOINTS.auth.register,
         credentials
       );
-      console.log(data);
+
       setAuthorizationHeader(data.token);
 
       return data;
@@ -50,7 +49,7 @@ export const logOut = createAsyncThunk(
   ENDPOINTS.auth.logout,
   async (_, thunkAPI) => {
     try {
-      await axios.post(ENDPOINTS.auth.logout);
+      await axiosInstance.post(ENDPOINTS.auth.logout);
 
       unsetAuthorizationHeader();
     } catch ({ message }) {
@@ -71,7 +70,7 @@ export const getCurrentUser = createAsyncThunk(
 
     setAuthorizationHeader(persistedToken);
     try {
-      const { data } = await axios.get(ENDPOINTS.users.current);
+      const { data } = await axiosInstance.get(ENDPOINTS.users.current);
 
       return data;
     } catch ({ message }) {
