@@ -1,8 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
+import PasswordStrengthBar from 'react-password-strength-bar';
 import { register } from '../../../redux/auth/authOperations';
 import { useAuth } from 'hooks';
 import { registerSchema } from 'schemas';
+import { PROGRESS_BAR_COLORS } from 'constants';
 import SmallLoader from 'components/Loader/SmallLoader';
 import {
   Background,
@@ -14,8 +16,10 @@ import {
   SubmitBtn,
   ErrorPara,
 } from './RegisterForm.styled';
-
+import { useState } from 'react';
+console.log(PROGRESS_BAR_COLORS);
 const RegisterForm = () => {
+  const [pwd, setPwd] = useState('');
   const dispatch = useDispatch();
   const { isLoading } = useAuth();
 
@@ -63,8 +67,8 @@ const RegisterForm = () => {
         <FormUi onSubmit={handleSubmit} autoComplete="off">
           <Input
             value={values.name}
-            onChange={handleChange}
             onBlur={handleBlur}
+            onChange={handleChange}
             $error={errors.name && touched.name}
             name="name"
             placeholder="Enter your name"
@@ -72,8 +76,8 @@ const RegisterForm = () => {
           {errors.name && touched.name && <ErrorPara>{errors.name}</ErrorPara>}
           <Input
             value={values.email}
-            onChange={handleChange}
             onBlur={handleBlur}
+            onChange={handleChange}
             $error={errors.email && touched.email}
             name="email"
             placeholder="Enter your email"
@@ -82,18 +86,30 @@ const RegisterForm = () => {
           {errors.email && touched.email && (
             <ErrorPara>{errors.email}</ErrorPara>
           )}
+
           <Input
             value={values.password}
-            onChange={handleChange}
             onBlur={handleBlur}
+            onChange={e => {
+              setPwd(e.target.value);
+              handleChange(e);
+            }}
             $error={errors.password && touched.password}
             name="password"
             placeholder="Create a password"
             type="password"
           />
+
+          <PasswordStrengthBar
+            password={pwd}
+            minLength={6}
+            barColors={PROGRESS_BAR_COLORS}
+          />
+
           {errors.password && touched.password && (
             <ErrorPara>{errors.password}</ErrorPara>
           )}
+
           <SubmitBtn type="submit" disabled={isLoading}>
             {isLoading ? (
               <SmallLoader width="25" height="25" />
