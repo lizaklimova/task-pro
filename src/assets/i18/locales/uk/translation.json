@@ -111,5 +111,8 @@
   "deleteModal": {
     "title": "Ви впевнені, що хочете видалити це?",
     "confirm": "Підтвердити"
+  },
+  "developersModal": {
+    "text": "Розроблено DreamTeam"
   }
 }

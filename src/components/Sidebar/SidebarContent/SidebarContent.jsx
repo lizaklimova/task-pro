@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { nanoid } from '@reduxjs/toolkit';
 import plantImg from 'assets/images/sidebar/plant.png';
 import Lightning from 'components/Icons/Lightning';
 import LogOut from 'components/Icons/LogOut';
@@ -13,7 +14,7 @@ import {
   Content,
   CreateBox,
   CreateText,
-  BoardBox,
+  BoardLink,
   BoardContainer,
   Footer,
   HelpContainer,
@@ -24,11 +25,14 @@ import {
   LogoutContainer,
   LogoutText,
   MyBoard,
+  DevsBtn,
 } from './SidebarContent.styled';
+import DevModal from 'components/Modals/DevModal/DevModal';
 
 const SidebarContent = () => {
   const [isAddBoardModalShown, setIsAddBoardModalShown] = useState(false);
   const [isEditBoardModalShown, setIsEditBoardModalShown] = useState(false);
+  const [isDevModalOpen, setIsDevModalOpen] = useState(false);
 
   const { t } = useTranslation();
 
@@ -47,6 +51,14 @@ const SidebarContent = () => {
           <p>Task Pro</p>
         </Logo>
 
+        <DevsBtn
+          type="button"
+          aria-label="Open developers modal"
+          onClick={() => setIsDevModalOpen(true)}
+        >
+          © {t('developersModal.text')}
+        </DevsBtn>
+
         <MyBoard>{t('sidebar.boards')}</MyBoard>
 
         <CreateBox>
@@ -61,30 +73,30 @@ const SidebarContent = () => {
         </CreateBox>
 
         <BoardContainer>
-          <BoardBox>
+          <BoardLink to={`/home/${nanoid()}`}>
             <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardBox>
-          <BoardBox>
+          </BoardLink>
+          <BoardLink to={`/home/${nanoid()}`}>
             <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardBox>
-          <BoardBox>
+          </BoardLink>
+          <BoardLink to={`/home/${nanoid()}`}>
             <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardBox>
-          <BoardBox>
+          </BoardLink>
+          <BoardLink to={`/home/${nanoid()}`}>
             <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardBox>
-          <BoardBox>
+          </BoardLink>
+          <BoardLink to={`/home/${nanoid()}`}>
             <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardBox>
-          <BoardBox>
+          </BoardLink>
+          <BoardLink to={`/home/${nanoid()}`}>
             <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardBox>
-          <BoardBox>
+          </BoardLink>
+          <BoardLink to={`/home/${nanoid()}`}>
             <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardBox>
-          <BoardBox>
+          </BoardLink>
+          <BoardLink to={`/home/${nanoid()}`}>
             <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardBox>
+          </BoardLink>
         </BoardContainer>
       </Content>
 
@@ -122,6 +134,10 @@ const SidebarContent = () => {
           closeModal={() => setIsEditBoardModalShown(false)}
         />
       )}
+      <DevModal
+        isOpen={isDevModalOpen}
+        onClose={() => setIsDevModalOpen(false)}
+      />
     </Container>
   );
 };

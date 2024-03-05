@@ -20,7 +20,7 @@ export const Logo = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
-  margin-bottom: 70px;
+  margin-bottom: 20px;
   color: var(--sidebar-text);
   font-weight: 600;
   /* @media screen and (min-width: 1440px) {
@@ -75,7 +75,28 @@ export const CreateBox = styled.div`
   margin-bottom: 20px;
 `;
 
+export const DevsBtn = styled.button`
+  font-size: 12px;
+  margin-bottom: 30px;
+  background-color: transparent;
+  color: var(--text-color);
+  opacity: 0.5;
+  transition: color 350ms linear, filter 350ms linear, opacity 350ms linear;
+
+  @media screen and (min-width: 1440px) {
+    &:hover,
+    &:focus {
+      color: var(--accent-color);
+      filter: drop-shadow(1px 1px 7px var(--accent-color));
+      opacity: 1;
+    }
+  }
+`;
+
 export const BoardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin-left: -14px;
   margin-right: -14px;
 
@@ -92,9 +113,11 @@ export const BoardContainer = styled.div`
   }
 `;
 
-export const BoardBox = styled(NavLink)`
+export const BoardLink = styled(NavLink)`
   display: flex;
   align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 
   &.active {
     &::before {
@@ -105,7 +128,7 @@ export const BoardBox = styled(NavLink)`
       height: 61px;
       background: var(--sidebar-before);
     }
-
+    padding: 0;
     background-color: var(--sidebar-active-board);
   }
 `;
