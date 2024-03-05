@@ -1,4 +1,3 @@
-import LinkedInIcon from 'components/icons/Linkedin';
 import {
   DevContainer,
   DevName,
@@ -7,7 +6,8 @@ import {
   DevRole,
   DevLinkContainer,
 } from './DevItem.styled';
-import GitHubIcon from 'components/icons/GitHub';
+import LinkedInIcon from 'components/Icons/Linkedin';
+import GitHubIcon from 'components/Icons/GitHub';
 // import defaultImage from './no-photo.png';
 
 const DevItem = ({ developer }) => {
