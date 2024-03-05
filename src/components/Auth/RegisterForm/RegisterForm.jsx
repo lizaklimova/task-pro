@@ -100,11 +100,13 @@ const RegisterForm = () => {
             type="password"
           />
 
-          <PasswordStrengthBar
-            password={pwd}
-            minLength={6}
-            barColors={PROGRESS_BAR_COLORS}
-          />
+          {pwd && (
+            <PasswordStrengthBar
+              password={pwd}
+              minLength={6}
+              barColors={PROGRESS_BAR_COLORS}
+            />
+          )}
 
           {errors.password && touched.password && (
             <ErrorPara>{errors.password}</ErrorPara>
