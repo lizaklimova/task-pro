@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { Container, Title, ConfirmButton } from './DeleteModal.styled';
 
-const DeleteModal = ({ onClose, handleBoardDelete }) => {
+const DeleteModal = ({ onClose, onConfirm }) => {
   const { t } = useTranslation();
 
   return (
@@ -10,11 +10,7 @@ const DeleteModal = ({ onClose, handleBoardDelete }) => {
       <Container>
         <Title>{t('deleteModal.title')}</Title>
 
-        <ConfirmButton
-          id="board-delete"
-          type="button"
-          onClick={handleBoardDelete}
-        >
+        <ConfirmButton type="button" onClick={onConfirm}>
           {t('deleteModal.confirm')}
         </ConfirmButton>
       </Container>

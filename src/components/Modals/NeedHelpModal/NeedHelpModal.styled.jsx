@@ -6,9 +6,10 @@ export const Modalform = styled.form`
   &:hover {
     border-color: #9dc888;
   }
+
   @media screen and (min-width: 1440px) {
-    Emailinput,
-    Commenttextarea {
+    input,
+    textarea {
       width: 100%;
     }
   }
@@ -30,7 +31,7 @@ export const Emailinput = styled.input`
   height: 49px;
   opacity: 0.4;
   margin-bottom: 24px;
-  color: var(--text-color);
+  color: var(--text-color) !important;
   padding: 14px 18px;
   background-color: transparent;
   transition: opacity var(--easedTransition);
@@ -39,8 +40,9 @@ export const Emailinput = styled.input`
     outline: none;
     opacity: 1;
   }
+
   &:hover {
-    border-color: #9dc888;
+    opacity: 1;
   }
 `;
 
@@ -57,11 +59,13 @@ export const Commenttextarea = styled.textarea`
   margin-right: 18px;
   padding: 14px 18px;
   transition: opacity var(--easedTransition);
-  &:hover {
-    border-color: #9dc888;
-  }
+
   &:focus {
     outline: none;
+    opacity: 1;
+  }
+
+  &:hover {
     opacity: 1;
   }
 `;

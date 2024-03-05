@@ -18,8 +18,8 @@ const columnsSlice = createSlice({
   name: 'columns',
   initialState: columnsInitialState,
   reducers: {
-    setColumnToEditAction(state, action) {
-      state.columnToEdit = action.payload;
+    setColumnToEditAction(state, { payload }) {
+      state.columnToEdit = payload;
     },
   },
   extraReducers: builder => {
@@ -28,30 +28,28 @@ const columnsSlice = createSlice({
       .addCase(addColumn.pending, handlePending)
       .addCase(editColumn.pending, handlePending)
       .addCase(deleteColumn.pending, handlePending)
-      .addCase(fetchColumnsOfBoard.fulfilled, (state, action) => {
+      .addCase(fetchColumnsOfBoard.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.columns = action.payload;
+        state.columns = payload;
       })
-      .addCase(addColumn.fulfilled, (state, action) => {
+      .addCase(addColumn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.columns.unshift(action.payload);
+        state.columns.unshift(payload);
       })
-      .addCase(editColumn.fulfilled, (state, action) => {
+      .addCase(editColumn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
         const editedItemIndex = state.columns.findIndex(
-          ({ id }) => id === action.payload.id
+          ({ _id }) => _id === payload._id
         );
-        state.columns = state.columns.with(editedItemIndex, action.payload);
+        state.columns = state.columns.with(editedItemIndex, payload);
       })
-      .addCase(deleteColumn.fulfilled, (state, action) => {
+      .addCase(deleteColumn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.columns = state.columns.filter(
-          ({ id }) => id !== action.payload.id
-        );
+        state.columns = state.columns.filter(({ _id }) => _id !== payload._id);
       })
       .addCase(fetchColumnsOfBoard.rejected, handleRejected)
       .addCase(addColumn.rejected, handleRejected)

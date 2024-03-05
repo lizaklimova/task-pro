@@ -29,7 +29,7 @@ const cardsSlice = createSlice({
       .addCase(editCard.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        const card = state.cards.find(card => card.id === payload);
+        const card = state.cards.find(card => card._id === payload);
         const newCard = { ...card, ...payload };
         state.cards = [...state.cards, newCard];
       })

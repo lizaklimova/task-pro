@@ -26,6 +26,8 @@ export const Text = styled.h2`
   }
 `;
 
-export const TextAccent = styled.span`
+export const TextAccent = styled.button`
+  padding: 0;
+  background-color: transparent;
   color: var(--accent-color);
 `;

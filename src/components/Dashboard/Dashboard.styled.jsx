@@ -63,7 +63,6 @@ export const AddButton = styled.button`
   background-color: var(--card-bg);
   color: inherit;
   font-weight: 500;
-
   transition: all var(--easedTransition);
 
   &:hover {

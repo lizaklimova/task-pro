@@ -12,7 +12,7 @@ const unsetAuthorizationHeader = () => {
 };
 
 export const register = createAsyncThunk(
-  ENDPOINTS.auth.register,
+  'auth/register',
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axiosInstance.post(
@@ -31,7 +31,7 @@ export const register = createAsyncThunk(
 );
 
 export const logIn = createAsyncThunk(
-  ENDPOINTS.auth.login,
+  'auth/login',
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axiosInstance.post(
@@ -49,23 +49,19 @@ export const logIn = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk(
-  ENDPOINTS.auth.logout,
-  async (_, thunkAPI) => {
-    try {
-      await axiosInstance.post(ENDPOINTS.auth.logout);
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  try {
+    await axiosInstance.post(ENDPOINTS.auth.logout);
 
-      unsetAuthorizationHeader();
-    } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.message, TOASTER_CONFIG);
-      return thunkAPI.rejectWithValue(error.message);
-    }
+    unsetAuthorizationHeader();
+  } catch (error) {
+    toast.error(error.response.data.message, TOASTER_CONFIG);
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
 export const refreshUser = createAsyncThunk(
-  ENDPOINTS.users.current,
+  'auth/current',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -77,7 +73,6 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthorizationHeader(persistedToken);
       const { data } = await axiosInstance.get(ENDPOINTS.users.current);
-      console.log(data);
       return data;
     } catch ({ message }) {
       return thunkAPI.rejectWithValue(message);

@@ -52,6 +52,7 @@ const BoardModal = ({ variant, closeModal }) => {
           placeholder={t('boards.modals.input')}
           name="boardTitle"
           defaultValue={''}
+          autoComplete="off"
         />
 
         <Text>{t('boards.modals.icons')}</Text>

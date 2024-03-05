@@ -6,6 +6,7 @@ export const getBackgroundIcons = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(ENDPOINTS.backgrounds);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -18,7 +19,7 @@ export const getAllBoards = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(ENDPOINTS.boards.allBoards);
-      console.log(data.boards);
+
       return data.boards;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -42,6 +43,21 @@ export const createBoard = createAsyncThunk(
   }
 );
 
+export const deleteBoard = createAsyncThunk(
+  'boards/deleteBoard',
+  async (boardId, thunkAPI) => {
+    try {
+      const { data } = await axiosInstance.delete(
+        ENDPOINTS.boards.oneBoard(boardId)
+      );
+
+      return data.board;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const getOneBoard = createAsyncThunk(
   'boards/getOneBoard',
   async (boardId, thunkAPI) => {
@@ -56,6 +72,7 @@ export const getOneBoard = createAsyncThunk(
     }
   }
 );
+
 export const filterBoard = createAsyncThunk(
   'boards/filterBoard',
   async ({ boardId, priority }, thunkAPI) => {
@@ -63,6 +80,7 @@ export const filterBoard = createAsyncThunk(
       const { data } = await axiosInstance.get(
         ENDPOINTS.boards.boardFilter(boardId, priority)
       );
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
