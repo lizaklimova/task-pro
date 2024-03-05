@@ -42,10 +42,10 @@ export const createBoard = createAsyncThunk(
 
 export const getOneBoard = createAsyncThunk(
   'boards/getOneBoard',
-  async (_, thunkAPI) => {
+  async (boardId, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(
-        ENDPOINTS.boards.oneBoard('65e73bce8eca63d933f9c137')
+        ENDPOINTS.boards.oneBoard(boardId)
       );
       return data;
     } catch (error) {

@@ -1,20 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
-
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';
 import { BacksList } from './BacksList';
 import Plus from 'components/Icons/Plus';
 import { Form, Title, Input, Text, Button, Span } from './BoardModal.styled';
-
-// 65e73bce8eca63d933f9c137
-
 import { createBoard } from '../../../redux/board/boardOperations';
-import { selectOneBoard } from '../../../redux/board/boardSelectors';
 
 const BoardModal = ({ variant, closeModal }) => {
-  const OneBoard = useSelector(selectOneBoard);
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
@@ -32,12 +25,9 @@ const BoardModal = ({ variant, closeModal }) => {
       dispatch(createBoard(data));
     } else {
     }
-    // console.log(data);
 
     closeModal();
   };
-
-  console.log(OneBoard);
 
   return (
     <ModalWrapper width={350} onClose={closeModal}>
@@ -59,7 +49,6 @@ const BoardModal = ({ variant, closeModal }) => {
 
         <Text>{t('boards.modals.background')}</Text>
         <BacksList />
-        {/* <Loader width={50} /> */}
         <Button type="submit">
           <Span>
             <Plus
