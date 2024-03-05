@@ -6,7 +6,7 @@ import {
   getOneBoard,
   filterBoard,
 } from './boardOperations';
-import { handlePending, handleRejected } from './helpers';
+import { handlePending, handleRejected } from '../helpers';
 
 const boardsSlice = createSlice({
   name: 'board',

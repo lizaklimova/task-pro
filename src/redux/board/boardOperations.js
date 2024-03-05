@@ -33,7 +33,8 @@ export const createBoard = createAsyncThunk(
         ENDPOINTS.boards.allBoards,
         newBoard
       );
-      return data;
+
+      return data.board;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
