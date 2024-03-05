@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { register } from '../../../redux/auth/authOperations';
@@ -13,11 +14,20 @@ import {
   Input,
   SubmitBtn,
   ErrorPara,
-} from './RegisterForm.styled';
+  PassInputWrap,
+  HideBtn,
+} from '../RegLogForm.styled';
+import Eye from 'components/Icons/Eye';
+import EyeCrossed from 'components/Icons/EyeCrossed';
+import { useTranslation } from 'react-i18next';
 
 const RegisterForm = () => {
+  const [visible, setVisible] = useState(false);
+
   const dispatch = useDispatch();
   const { isLoading } = useAuth();
+
+  const { t } = useTranslation();
 
   const onSubmit = async (values, actions) => {
     const formData = {
@@ -37,26 +47,33 @@ const RegisterForm = () => {
     actions.resetForm();
   };
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({
-      initialValues: {
-        name: '',
-        email: '',
-        password: '',
-      },
-      validationSchema: registerSchema,
-      onSubmit,
-    });
+  const {
+    values,
+    errors,
+    touched,
+    isSubmitting,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+  } = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
+    validationSchema: registerSchema,
+    onSubmit,
+  });
 
   return (
     <Background>
       <FormWrap>
         <AuthList>
           <li>
-            <AuthLink to={`/auth/register`}>Registration</AuthLink>
+            <AuthLink to={`/auth/register`}>{t('authForms.regTitle')}</AuthLink>
           </li>
           <li>
-            <AuthLink to={`/auth/login`}>Log In</AuthLink>
+            <AuthLink to={`/auth/login`}>{t('authForms.loginTitle')}</AuthLink>
           </li>
         </AuthList>
 
@@ -67,7 +84,7 @@ const RegisterForm = () => {
             onBlur={handleBlur}
             $error={errors.name && touched.name}
             name="name"
-            placeholder="Enter your name"
+            placeholder={t('authForms.name')}
           />
           {errors.name && touched.name && <ErrorPara>{errors.name}</ErrorPara>}
           <Input
@@ -76,29 +93,53 @@ const RegisterForm = () => {
             onBlur={handleBlur}
             $error={errors.email && touched.email}
             name="email"
-            placeholder="Enter your email"
+            placeholder={t('authForms.email')}
             type="email"
           />
           {errors.email && touched.email && (
             <ErrorPara>{errors.email}</ErrorPara>
           )}
-          <Input
-            value={values.password}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            $error={errors.password && touched.password}
-            name="password"
-            placeholder="Create a password"
-            type="password"
-          />
+          <PassInputWrap>
+            <Input
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              $error={errors.password && touched.password}
+              name="password"
+              placeholder={t('authForms.password')}
+              type={visible ? 'text' : 'password'}
+            />
+            <HideBtn
+              type="button"
+              onClick={() => {
+                setVisible(!visible);
+              }}
+            >
+              {visible ? (
+                <Eye
+                  width={20}
+                  height={20}
+                  fillColor={'none'}
+                  strokeColor={`#fff`}
+                />
+              ) : (
+                <EyeCrossed
+                  width={20}
+                  height={20}
+                  strokeColor={`#fff`}
+                  fillColor={'none'}
+                />
+              )}
+            </HideBtn>
+          </PassInputWrap>
           {errors.password && touched.password && (
             <ErrorPara>{errors.password}</ErrorPara>
           )}
-          <SubmitBtn type="submit" disabled={isLoading}>
+          <SubmitBtn type="submit" disabled={isSubmitting}>
             {isLoading ? (
               <SmallLoader width="25" height="25" />
             ) : (
-              'Register Now'
+              t('authForms.regButton')
             )}
           </SubmitBtn>
         </FormUi>
