@@ -16,18 +16,53 @@ import {
 } from './UserModal.styled';
 
 const UserModal = () => {
+
   const [visible, setVisible] = useState(false);
-  const [image, setImage] = useState(null);
+  const [state, setState] = useState({});
+  const [image, setImage] = useState(null); //те що приходить з беку
+  const [name, setName] = useState('Ivetta'); //те що приходить з беку
+  const [email, setEmail] = useState('ivetta34@gmail.com'); //те що приходить з беку
+  const [password, setPassword] = useState('ivetta1999.23'); //те що приходить з беку
+    
 
   function changeImg(event) {
     console.log(event.target.files);
     setImage(event.target.files[0]);
   }
+     const handleInputChange = event => {
+         const { name, value } = event.target;
+         switch (name) {
+           case 'name':
+             setName(value);
+             break;
+           case 'email':
+             setEmail(value);
+             break;
+           case 'password':
+             setPassword(value);
+             break;
+           default:
+             break;
+         }
+     };
+
+    function editProfile(event) {
+        event.preventDefault();
+        setState({
+            ...state,
+            image,
+            name,
+            email,
+            password
+        })
+         
+    }
+    console.log(state);
 
   return (
     <div>
       <h3>Edit profile</h3>
-      <FormUser>
+      <FormUser onSubmit={editProfile}>
         <Avatar>
           {image ? (
             <img src={image.name} alt="" /> //поки не працює
@@ -50,13 +85,30 @@ const UserModal = () => {
             </PlusButton>
           </div>
         </Avatar>
-        <InputUser type="text" placeholder="Name" autoComplete={'username'} />
-        <InputUser type="email" placeholder="Email" autoComplete={'username'} />
+        <InputUser
+          type="text"
+          placeholder="Name"
+          value={name}
+          name="name"
+          autoComplete={'username'}
+          onChange={handleInputChange}
+        />
+        <InputUser
+          type="email"
+          placeholder="Email"
+          value={email}
+          name="email"
+          autoComplete={'username'}
+          onChange={handleInputChange}
+        />
         <InputPass>
           <Input
             type={visible ? 'text' : 'password'}
             placeholder="Password"
+            value={password}
+            name="password"
             autoComplete={'current-password'}
+            onChange={handleInputChange}
           />
           <EyeBtn
             type="button"

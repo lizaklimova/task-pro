@@ -2,6 +2,7 @@ import { useTheme } from 'hooks/useTheme';
 import React from 'react';
 import Select from 'react-select';
 import './ThemeSelect.css';
+import { useTranslation } from 'react-i18next';
 
 const options = [
   { value: 'light', label: 'Light' },
@@ -14,6 +15,7 @@ function ThemeSelect() {
   const onChangeTheme = event => {
     setTheme(event.value);
   };
+   const { t } = useTranslation();
 
   return (
     <div>
@@ -23,7 +25,7 @@ function ThemeSelect() {
           onChangeTheme(event);
         }}
         options={options}
-        placeholder="Theme"
+        placeholder={t('header.theme')}
       />
     </div>
   );
