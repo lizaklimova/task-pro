@@ -18,67 +18,6 @@ const ScreensPage = () => {
     dispatch(getOneBoard(boardId));
   }, [dispatch, boardId]);
 
-  // const board = {
-  //   name: 'Not empty',
-  //   columns: [
-  //     {
-  //       title: 'TO DO',
-  //       cards: [
-  //         {
-  //           title: 'Calculate KAM teams plan',
-  //         },
-  //         {
-  //           title: 'Calculate KAM clients plan',
-  //         },
-  //         {
-  //           title: 'Calculate LR teams plan',
-  //         },
-  //         {
-  //           title: 'Prepare file for LR clients calculation',
-  //         },
-  //         {
-  //           title: 'Prepare file for LR clients calculation',
-  //         },
-  //         {
-  //           title: 'Prepare file for LR clients calculation',
-  //         },
-  //         {
-  //           title: 'Prepare file for LR clients calculation',
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       title: 'Important',
-  //       cards: [
-  //         {
-  //           title: 'Eat something',
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       title: 'Bla',
-  //       cards: [
-  //         {
-  //           title: 'Eat something',
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       title: 'Bla',
-  //       cards: [
-  //         {
-  //           title: 'Eat something',
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // };
-
-  // const board = {
-  //   name: 'Empty',
-  //   columns: [],
-  // };
-
   return (
     <MainContainer>
       <BoardHeader title={board.title} />

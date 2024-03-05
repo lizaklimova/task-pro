@@ -34,7 +34,7 @@ const boardsSlice = createSlice({
         state.error = null;
       })
       .addCase(getOneBoard.fulfilled, (state, action) => {
-        state.oneBoard = action.payload;
+        state.oneBoard = { ...action.payload };
         state.isLoading = false;
         state.error = null;
       })

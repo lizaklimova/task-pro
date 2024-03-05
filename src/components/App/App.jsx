@@ -48,7 +48,7 @@ const App = () => {
               }
             />
             <Route
-              path="/home/:boardId"
+              path=":boardId"
               element={
                 <PrivateRoute
                   component={<ScreensPage />}
