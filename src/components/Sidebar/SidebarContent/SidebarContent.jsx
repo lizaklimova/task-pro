@@ -79,27 +79,6 @@ const SidebarContent = () => {
           <BoardLink to={`/home/${nanoid()}`}>
             <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
           </BoardLink>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
         </BoardContainer>
       </Content>
 

@@ -40,7 +40,7 @@ const BoardModal = ({ variant, closeModal }) => {
       dispatch(createBoard(data));
     }
 
-    closeModal();
+    return closeModal();
   };
 
   return (
@@ -62,7 +62,7 @@ const BoardModal = ({ variant, closeModal }) => {
 
         <Text>{t('boards.modals.background')}</Text>
         <BacksList />
-        {/* <Loader width={50} /> */}
+
         <Button type="submit">
           <Span>
             <Plus

@@ -1,18 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-
+import sprite from 'assets/images/icons/icons-sprite.svg';
 import { getBackgroundIcons } from '../../../redux/board/boardOperations';
+import SmallLoader from 'components/Loader/SmallLoader';
 import {
   selectBackgroundIcons,
   selectIsLoading,
 } from '../../../redux/board/boardSelectors';
-import DefaultBack from 'components/Icons/default.svg';
 import {
   BacksUl,
   BackLi,
   BackLabel,
+  DefaultImgWrap,
   BackInputRadio,
   BackImage,
+  SmallLoaderContainer,
 } from './BoardModal.styled';
 
 export const BacksList = () => {
@@ -33,13 +35,17 @@ export const BacksList = () => {
   };
 
   return isLoading ? (
-    // <Loader />
-    <p>Loading</p>
+    <SmallLoaderContainer>
+      <SmallLoader width="20" height="20" />
+    </SmallLoaderContainer>
   ) : (
     <BacksUl>
       {backgroundIcons.map(item => {
         return (
-          <BackLi key={item._id}>
+          <BackLi
+            key={item._id}
+            id={item.backgroundMinURL ? '' : 'default-bg-img'}
+          >
             <BackLabel>
               <BackInputRadio
                 type="radio"
@@ -48,17 +54,21 @@ export const BacksList = () => {
                 checked={selectedBackId === item._id}
                 onChange={() => handleBackChange(item._id)}
               />
-              <BackImage
-                src={
-                  item.backgroundMinURL ? item.backgroundMinURL : DefaultBack
-                }
-                srcSet={`${
-                  item.backgroundMinURL ? item.backgroundMinURL : DefaultBack
-                } 1x, ${item.backgroundMin2xURL} 2x`}
-                alt="background miniature"
-                width={28}
-                height={28}
-              />
+              {item.backgroundMinURL ? (
+                <BackImage
+                  src={item.backgroundMinURL}
+                  srcSet={`${item.backgroundMinURL} 1x, ${item.backgroundMin2xURL} 2x`}
+                  alt="background miniature"
+                  width={28}
+                  height={28}
+                />
+              ) : (
+                <DefaultImgWrap>
+                  <svg width={16} height={16}>
+                    <use href={`${sprite}#icon-default-bg`}></use>
+                  </svg>
+                </DefaultImgWrap>
+              )}
             </BackLabel>
           </BackLi>
         );
