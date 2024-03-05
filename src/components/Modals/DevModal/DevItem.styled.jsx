@@ -7,14 +7,23 @@ export const DevContainer = styled.div`
   /* max-width: 180px; */
 `;
 
+// export const Wrapper = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+// `;
+
 export const DevName = styled.h2`
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
+  text-align: center;
 `;
 
 export const DevRole = styled.p`
   font-size: 12px;
   margin-bottom: 10px;
+  text-align: center;
 `;
 
 export const DevImage = styled.img`

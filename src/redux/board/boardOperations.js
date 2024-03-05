@@ -54,3 +54,16 @@ export const getOneBoard = createAsyncThunk(
     }
   }
 );
+export const filterBoard = createAsyncThunk(
+  'boards/filterBoard',
+  async ({ boardId, priority }, thunkAPI) => {
+    try {
+      const { data } = await axiosInstance.get(
+        ENDPOINTS.boards.boardFilter(boardId, priority)
+      );
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
