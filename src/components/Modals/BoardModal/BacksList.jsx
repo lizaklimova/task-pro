@@ -2,7 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 import { getBackgroundIcons } from '../../../redux/board/boardOperations';
-import { selectBackgroundIcons } from '../../../redux/board/boardSelectors';
+import {
+  selectBackgroundIcons,
+  selectIsLoading,
+} from '../../../redux/board/boardSelectors';
 import DefaultBack from 'components/Icons/default.svg';
 import {
   BacksUl,
@@ -11,9 +14,11 @@ import {
   BackInputRadio,
   BackImage,
 } from './BoardModal.styled';
+// import Loader from 'components/Loader/Loader';
 
 export const BacksList = () => {
   const [selectedBackId, setSelectedBackId] = useState(0);
+  const isLoading = useSelector(selectIsLoading);
   const backgroundIcons = useSelector(selectBackgroundIcons);
 
   const dispatch = useDispatch();
@@ -26,7 +31,10 @@ export const BacksList = () => {
     setSelectedBackId(id);
   };
 
-  return (
+  return isLoading ? (
+    // <Loader />
+    <p>Loading</p>
+  ) : (
     <BacksUl>
       {backgroundIcons.map(item => {
         return (

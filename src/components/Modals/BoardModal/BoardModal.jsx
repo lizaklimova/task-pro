@@ -14,6 +14,7 @@ import {
   createBoard,
 } from '../../../redux/board/boardOperations';
 // import { selectBoards } from '../../../redux/board/boardSelectors';
+// import Loader from 'components/Loader/Loader';
 
 const BoardModal = ({ variant, closeModal }) => {
   // const [boards, setBoards] = useState([]);
@@ -61,7 +62,7 @@ const BoardModal = ({ variant, closeModal }) => {
 
         <Text>{t('boards.modals.background')}</Text>
         <BacksList />
-
+        {/* <Loader width={50} /> */}
         <Button type="submit">
           <Span>
             <Plus
