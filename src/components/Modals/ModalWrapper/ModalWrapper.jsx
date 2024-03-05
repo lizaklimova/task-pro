@@ -15,6 +15,7 @@ import {
 const ModalWrapper = ({ children, width, onClose, developers = false }) => {
   useEffect(() => {
     const handleCloseKeyPress = event => {
+
       if (event.code === CLOSE_KEY_CODE) onClose();
     };
 
