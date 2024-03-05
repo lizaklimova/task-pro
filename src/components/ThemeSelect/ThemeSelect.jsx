@@ -3,7 +3,6 @@ import React from 'react';
 import Select from 'react-select';
 import { useTranslation } from 'react-i18next';
 import './ThemeSelect.css';
-import { useTranslation } from 'react-i18next';
 
 function ThemeSelect() {
   const { setTheme } = useTheme();
