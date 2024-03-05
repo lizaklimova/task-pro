@@ -107,6 +107,9 @@ export const Button = styled.button`
 `;
 
 export const Span = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--btn-icon-bg);
   border-radius: 6px;
   padding: 7px;

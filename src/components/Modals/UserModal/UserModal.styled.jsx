@@ -7,10 +7,6 @@ export const FormUser = styled.form`
   align-items: center;
   gap: 14px;
 `;
-// export const ImputConteiner =styled.div`
-//     margin-top: 14px;
-//     margin-bottom: 10px;
-// `
 
 export const InputUser = styled.input`
   width: 100%;

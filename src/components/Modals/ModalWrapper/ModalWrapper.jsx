@@ -12,9 +12,10 @@ import {
   ModalContainer,
 } from './ModalWrapper.styled';
 
-const ModalWrapper = ({ children, width, onClose }) => {
+const ModalWrapper = ({ children, width, onClose, developers = false }) => {
   useEffect(() => {
     const handleCloseKeyPress = event => {
+
       if (event.code === CLOSE_KEY_CODE) onClose();
     };
 
@@ -34,6 +35,7 @@ const ModalWrapper = ({ children, width, onClose }) => {
       <ModalContainer
         variants={MODAL_TRANSITION}
         $containerWidth={width}
+        $developers={developers}
         onClick={event => event.stopPropagation()}
       >
         <ModalCloseButton

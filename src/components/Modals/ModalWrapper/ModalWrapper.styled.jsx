@@ -10,7 +10,7 @@ export const ModalBackdrop = styled(motion.div)`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #706f6f99;
+  background-color: var(--backdrop-color);
 
   @media screen and (max-width: 375px) {
     padding: 15px;
@@ -26,14 +26,18 @@ export const ModalContainer = styled(motion.div)`
   color: var(--text-color);
   background: var(--modal-background);
   transition: all var(--cubicTransition);
+  height: ${({ $developers }) => ($developers ? '90%' : 'unset')};
+  overflow-y: ${({ $developers }) => ($developers ? 'scroll' : 'visible')};
 
   @media screen and (min-width: 375px) {
-    width: 335px;
+    width: ${({ $developers }) => ($developers ? '40%' : '335px')};
   }
 
   @media screen and (min-width: 768px) {
+    width: ${({ $developers }) => ($developers ? '730px' : '350px')};
     width: ${props =>
       props.$containerWidth ? `${props.$containerWidth}px` : '350px'};
+    overflow-y: visible;
   }
 `;
 
@@ -42,4 +46,16 @@ export const ModalCloseButton = styled.button`
   top: 14px;
   right: 14px;
   background-color: transparent;
+  padding: 0;
+
+  svg {
+    transition: filter var(--easedTransition);
+  }
+
+  @media screen and (min-width: 1440px) {
+    &:hover svg,
+    &:focus svg {
+      filter: drop-shadow(1px 1px 3px var(--accent-color));
+    }
+  }
 `;

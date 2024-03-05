@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { register, logIn, logOut, refreshUser } from './authOperations';
 import { handleRegLogFulfilled, handlePending, handleRejected } from '../helpers';
 
+
 const initialState = {
   user: { name: null, email: null },
   token: null,
@@ -43,7 +44,7 @@ export const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoading = false;
         state.error = payload;
-      });
+      })
   },
 });
 

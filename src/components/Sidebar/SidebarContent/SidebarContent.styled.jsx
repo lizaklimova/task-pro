@@ -20,7 +20,7 @@ export const Logo = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
-  margin-bottom: 70px;
+  margin-bottom: 15px;
   color: var(--sidebar-text);
   font-weight: 600;
   /* @media screen and (min-width: 1440px) {
@@ -53,6 +53,25 @@ export const AddBtn = styled.button`
   border-radius: 6px;
   width: 40px;
   height: 36px;
+  transition: background-color var(--easedTransition),
+    border var(--easedTransition);
+
+  @media screen and (min-width: 1440px) {
+    &:hover,
+    &:focus {
+      background-color: var(--background-color);
+      border: 1px solid var(--text-color);
+    }
+
+    svg {
+      transition: stroke var(--easedTransition);
+    }
+
+    &:hover svg,
+    &:focus svg {
+      stroke: var(--text-color);
+    }
+  }
 `;
 
 export const CreateText = styled.p`
@@ -75,31 +94,46 @@ export const CreateBox = styled.div`
   margin-bottom: 20px;
 `;
 
+export const DevsBtn = styled.button`
+  font-size: 12px;
+  margin-bottom: 25px;
+  background-color: transparent;
+  color: var(--sidebar-myboard-text);
+  transition: filter 350ms linear;
+
+  @media screen and (min-width: 1440px) {
+    &:hover,
+    &:focus {
+      filter: drop-shadow(1px 1px 4px var(--sidebar-logout));
+    }
+  }
+`;
+
 export const BoardContainer = styled.div`
-  max-height: 250px;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin-left: -14px;
   margin-right: -14px;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  @media screen and (min-width: 768px) {
-    max-height: 290px;
-  }
 
   @media screen and (min-width: 1439px) {
     max-height: 260px;
     width: 260px;
     margin-left: -24px;
     margin-right: -24px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
   }
 `;
 
-export const BoardBox = styled(NavLink)`
+export const BoardLink = styled(NavLink)`
   display: flex;
   align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 
   &.active {
     &::before {
@@ -110,7 +144,7 @@ export const BoardBox = styled(NavLink)`
       height: 61px;
       background: var(--sidebar-before);
     }
-
+    padding: 0;
     background-color: var(--sidebar-active-board);
   }
 `;
@@ -143,12 +177,17 @@ export const HelpBtn = styled.button`
   align-items: center;
 `;
 
-export const LogoutContainer = styled.button`
+export const LogoutBtn = styled.button`
   display: flex;
   gap: 14px;
   align-items: center;
   padding-left: 10px;
   background: transparent;
+  margin-bottom: 30px;
+
+  @media screen and (min-width: 1440px) {
+    margin-bottom: unset;
+  }
 `;
 
 export const LogoutText = styled.p`
