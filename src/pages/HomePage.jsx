@@ -1,19 +1,25 @@
+import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectBoards } from '../redux/board/boardSelectors';
+import { getAllBoards } from '../redux/board/boardOperations';
 import { MainContainer } from 'components/App/App.styled';
 import BeforeStart from 'components/Dashboard/BeforeStart';
-import { useSelector } from 'react-redux';
-import { selectBoards } from '../redux/board/boardSelectors';
 
 const HomePage = () => {
   const allBoards = useSelector(selectBoards);
+  const dispatch = useDispatch();
 
-  console.log(currentBoard);
+  useEffect(() => {
+    dispatch(getAllBoards());
+  }, [dispatch]);
+
   return (
     <MainContainer>
       {!allBoards.length ? (
         <BeforeStart />
       ) : (
-        <Navigate to={`/home/${allBoards[0].board._id}`} />
+        <Navigate to={`/home/${allBoards[0]._id}`} />
       )}
     </MainContainer>
   );

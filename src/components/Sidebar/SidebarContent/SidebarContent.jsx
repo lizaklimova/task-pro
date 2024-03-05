@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { nanoid } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../../redux/auth/authOperations';
-
+import { selectBoards } from '../../../redux/board/boardSelectors';
 import plantImg from 'assets/images/sidebar/plant.png';
 import Lightning from 'components/Icons/Lightning';
 import LogOut from 'components/Icons/LogOut';
@@ -37,6 +36,7 @@ const SidebarContent = () => {
   const [isEditBoardModalShown, setIsEditBoardModalShown] = useState(false);
   const [isDevModalOpen, setIsDevModalOpen] = useState(false);
 
+  const allBoards = useSelector(selectBoards);
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
@@ -77,9 +77,14 @@ const SidebarContent = () => {
         </CreateBox>
 
         <BoardContainer>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
+          {allBoards?.map(board => (
+            <BoardLink key={board._id} to={`/home/${board._id}`}>
+              <AddedBoard
+                board={board}
+                openEditModal={() => setIsEditBoardModalShown(true)}
+              />
+            </BoardLink>
+          ))}
         </BoardContainer>
       </Content>
 

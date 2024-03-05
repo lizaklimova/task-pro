@@ -24,20 +24,20 @@ const columnsSlice = createSlice({
   },
   extraReducers: builder => {
     builder
+      .addCase(fetchColumnsOfBoard.pending, handlePending)
+      .addCase(addColumn.pending, handlePending)
+      .addCase(editColumn.pending, handlePending)
+      .addCase(deleteColumn.pending, handlePending)
       .addCase(fetchColumnsOfBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.columns = action.payload;
       })
-      .addCase(fetchColumnsOfBoard.pending, handlePending)
-      .addCase(fetchColumnsOfBoard.rejected, handleRejected)
       .addCase(addColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.columns.unshift(action.payload);
       })
-      .addCase(addColumn.pending, handlePending)
-      .addCase(addColumn.rejected, handleRejected)
       .addCase(editColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -46,8 +46,6 @@ const columnsSlice = createSlice({
         );
         state.columns = state.columns.with(editedItemIndex, action.payload);
       })
-      .addCase(editColumn.pending, handlePending)
-      .addCase(editColumn.rejected, handleRejected)
       .addCase(deleteColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -55,7 +53,9 @@ const columnsSlice = createSlice({
           ({ id }) => id !== action.payload.id
         );
       })
-      .addCase(deleteColumn.pending, handlePending)
+      .addCase(fetchColumnsOfBoard.rejected, handleRejected)
+      .addCase(addColumn.rejected, handleRejected)
+      .addCase(editColumn.rejected, handleRejected)
       .addCase(deleteColumn.rejected, handleRejected);
   },
 });
