@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../../redux/auth/authOperations';
+
 import plantImg from 'assets/images/sidebar/plant.png';
 import Lightning from 'components/Icons/Lightning';
 import LogOut from 'components/Icons/LogOut';

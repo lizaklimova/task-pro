@@ -5,15 +5,15 @@ import { useSelector } from 'react-redux';
 import { selectBoards } from '../redux/board/boardSelectors';
 
 const HomePage = () => {
-  const currentBoard = useSelector(selectBoards);
+  const allBoards = useSelector(selectBoards);
 
   console.log(currentBoard);
   return (
     <MainContainer>
-      {!currentBoard.length ? (
+      {!allBoards.length ? (
         <BeforeStart />
       ) : (
-        <Navigate to={`/home/${currentBoard[0].board._id}`} />
+        <Navigate to={`/home/${allBoards[0].board._id}`} />
       )}
     </MainContainer>
   );
