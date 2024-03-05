@@ -43,9 +43,6 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-
-      .addCase(createBoard.rejected, handleRejected)
-
       .addCase(getBackgroundIcons.rejected, handleRejected)
       .addCase(getAllBoards.rejected, handleRejected)
       .addCase(getOneBoard.rejected, handleRejected)

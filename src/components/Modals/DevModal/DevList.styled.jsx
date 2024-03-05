@@ -6,6 +6,7 @@ export const DevUl = styled.ul`
   align-items: center;
   justify-content: center;
   gap: 10px;
+  height: 100%;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
