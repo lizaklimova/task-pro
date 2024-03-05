@@ -11,7 +11,7 @@ import {
 } from './AddedBoard.styled';
 import DeleteModal from 'components/Modals/DeleteModal';
 
-const AddedBoard = ({ openEditModal }) => {
+const AddedBoard = ({ board, openEditModal }) => {
   const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
   //   const dispatch = useDispatch();
 
@@ -30,7 +30,7 @@ const AddedBoard = ({ openEditModal }) => {
             height={16}
             strokeColor={'var(--sidebar-icon-color)'}
           />
-          <p>Project office</p>
+          <p>{board.title}</p>
         </NameBox>
         <ChangeBox>
           <ChangeIcons
