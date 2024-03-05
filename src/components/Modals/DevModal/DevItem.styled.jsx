@@ -4,8 +4,7 @@ export const DevContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
-  max-width: 180px;
+  /* max-width: 180px; */
 `;
 
 export const DevName = styled.h2`
@@ -32,9 +31,8 @@ export const DevLinkContainer = styled.div`
 `;
 
 export const DevLink = styled.a`
-  text-decoration: none;
-  margin-bottom: 5px;
   display: flex;
   align-items: center;
   gap: 5px;
+  margin-bottom: 5px;
 `;

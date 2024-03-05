@@ -1,15 +1,19 @@
-import { useState } from 'react';
 import ModalWrapper from 'components/Modals/ModalWrapper/ModalWrapper';
 import developers from './developers_info.json';
 import DevList from './DevList';
 
-const DevModal = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
-
+const DevModal = ({ isOpen, onClose }) => {
   return (
     <>
-      {isModalOpen && (
-        <ModalWrapper width={1000} onClose={() => setIsModalOpen(false)}>
+      {isOpen && (
+        <ModalWrapper
+          width={'900px'}
+          onClose={() => {
+            document.body.style.overflow = '';
+            onClose();
+          }}
+          developers
+        >
           <DevList developers={developers.developers} />
         </ModalWrapper>
       )}

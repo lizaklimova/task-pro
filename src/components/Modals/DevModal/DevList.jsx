@@ -1,14 +1,16 @@
 import DevItem from './DevItem';
-import { DevWrapper } from './DevList.styled';
+import { DevUl } from './DevList.styled';
 
 const DevList = ({ developers }) => {
   console.log(developers);
   return (
-    <DevWrapper>
+    <DevUl>
       {developers.map(developer => (
-        <DevItem key={developer.id} developer={developer} />
+        <li key={developer.id}>
+          <DevItem developer={developer} />
+        </li>
       ))}
-    </DevWrapper>
+    </DevUl>
   );
 };
 
