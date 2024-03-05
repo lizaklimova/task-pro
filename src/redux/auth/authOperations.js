@@ -20,7 +20,7 @@ export const register = createAsyncThunk(
         credentials
       );
 
-      setAuthorizationHeader(data.token);
+      setAuthorizationHeader(data.user.token);
 
       return data;
     } catch (error) {
@@ -39,7 +39,7 @@ export const logIn = createAsyncThunk(
         credentials
       );
 
-      setAuthorizationHeader(data.token);
+      setAuthorizationHeader(data.user.token);
 
       return data;
     } catch (error) {
