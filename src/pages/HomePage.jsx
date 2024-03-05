@@ -7,7 +7,6 @@ const HomePage = () => {
   // const currentBoard = useSelector(selectCurrentBoard);
   //temp:
   const currentBoard = null;
-
   return <MainContainer>{!currentBoard && <BeforeStart />}</MainContainer>;
 };
 

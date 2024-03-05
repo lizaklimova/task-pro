@@ -1,7 +1,10 @@
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import toast from 'react-hot-toast';
+// import { addCard, editCard } from '../../../redux/cards/cardsOperations';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
-import { LABEL_ARR } from 'constants';
+import { LABEL_ARR, TOASTER_CONFIG } from 'constants';
+import { makeValidDate } from 'helpers';
 import ModalWrapper from 'components/Modals/ModalWrapper';
 import Calendar from 'components/Calendar';
 import Plus from 'components/Icons/Plus';
@@ -16,11 +19,35 @@ import {
 } from './CardModal.styled';
 
 const CardModal = ({ variant, closeCardModal }) => {
-  const [labelColor, setLabelColor] = useState('blue');
+  const [labelColor, setLabelColor] = useState('gray');
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [selectedDate, setSelectedDay] = useState(new Date());
 
   const { t } = useTranslation();
+
   const datePickerRef = useRef(null);
+
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    const { title, description } = e.target.children;
+
+    if (!title.value.trim() || !description.value.trim()) {
+      return toast(t('cards.modals.toast.error'), TOASTER_CONFIG);
+    }
+
+    const dateForServer = makeValidDate(selectedDate);
+
+    const cardInfo = {
+      title: title.value,
+      description: description.value,
+      label: labelColor,
+      date: dateForServer,
+    };
+
+    console.log(cardInfo);
+    toast(t('cards.modals.toast.success'), TOASTER_CONFIG);
+    closeCardModal();
+  };
 
   const openDatePicker = () => {
     if (datePickerRef.current) {
@@ -43,7 +70,7 @@ const CardModal = ({ variant, closeCardModal }) => {
             : t('cards.modals.editTitle')}
         </p>
 
-        <CardForm>
+        <CardForm onSubmit={handleFormSubmit}>
           <input
             type="text"
             name="title"
@@ -92,7 +119,12 @@ const CardModal = ({ variant, closeCardModal }) => {
               </button>
             )}
 
-            <Calendar toggleCalendar={setIsCalendarOpen} ref={datePickerRef} />
+            <Calendar
+              selectedDate={selectedDate}
+              setDate={setSelectedDay}
+              toggleCalendar={setIsCalendarOpen}
+              ref={datePickerRef}
+            />
           </CalendarContainer>
 
           <SubmitBtn type="submit">

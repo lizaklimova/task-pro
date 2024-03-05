@@ -4,7 +4,8 @@ const ThreeCircles = ({ width, height, fillColor, strokeColor }) => {
       width={width || '14px'}
       height={height || '14px'}
       viewBox="0 0 18 18"
-      stroke={strokeColor || 'none'}
+      fill={fillColor || 'none'}
+      stroke={strokeColor || null}
       xmlns="http://www.w3.org/2000/svg"
     >
       <g clipPath="url(#clip0_4566_2430)">

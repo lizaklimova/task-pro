@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { formatDate } from 'helpers';
 import Status from 'components/Icons/Status';
 import Pencil from 'components/Icons/Pencil';
 import Trash from 'components/Icons/Trash';
@@ -38,7 +39,7 @@ const TaskCard = ({ card, openCardModal }) => {
 
           <div>
             <h5>Deadline</h5>
-            <span>12/05/2023</span>
+            <span>{formatDate(new Date())}</span>
           </div>
         </InfoWrap>
 
@@ -48,7 +49,7 @@ const TaskCard = ({ card, openCardModal }) => {
               <Bell
                 width={16}
                 height={16}
-                strokeColor={'rgba(16, 16, 16, 0.5)'}
+                strokeColor={'var(--icon-stroke-color)'}
               />
             </CardActionButton>
           </li>
@@ -57,7 +58,7 @@ const TaskCard = ({ card, openCardModal }) => {
               <Status
                 width={16}
                 height={16}
-                strokeColor={'rgba(16, 16, 16, 0.5)'}
+                strokeColor={'var(--icon-stroke-color)'}
               />
             </CardActionButton>
           </li>
@@ -70,7 +71,7 @@ const TaskCard = ({ card, openCardModal }) => {
               <Pencil
                 width={16}
                 height={16}
-                strokeColor={'rgba(16, 16, 16, 0.5)'}
+                strokeColor={'var(--icon-stroke-color)'}
               />
             </CardActionButton>
           </li>
@@ -79,7 +80,7 @@ const TaskCard = ({ card, openCardModal }) => {
               <Trash
                 width={16}
                 height={16}
-                strokeColor={'rgba(16, 16, 16, 0.5)'}
+                strokeColor={'var(--icon-stroke-color)'}
               />
             </CardActionButton>
           </li>

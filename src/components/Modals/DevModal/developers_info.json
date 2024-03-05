@@ -1,0 +1,124 @@
+{
+  "developers": [
+    {
+      "id": 1,
+      "nameEn": "Elizabeth Klymova",
+      "nameUk": "Єлизавета Климова",
+      "photo": "./images/Elizabeth.jpg",
+      "LinkedIn": "https://www.linkedin.com/in/elizabeth-klymova-frontend-dev/",
+      "GitHub": "https://github.com/lizaklimova",
+      "resume": "",
+      "role": "Team Leader (Frontend)"
+    },
+    {
+      "id": 2,
+      "nameEn": "Anton Chan",
+      "nameUk": "Антон Чан",
+      "photo": "./images/Anton.jpg",
+      "LinkedIn": "https://www.linkedin.com/in/chanankuan/",
+      "GitHub": "https://github.com/chanankuan",
+      "resume": "",
+      "role": "Team Leader (Backend)"
+    },
+    {
+      "id": 3,
+      "nameEn": "Iryna Slavinska",
+      "nameUk": "Ірина Славінська",
+      "photo": "./images/Iryna.jpg",
+      "LinkedIn": "https://www.linkedin.com/in/slavinska-iryna/",
+      "GitHub": "https://github.com/IrynaSlavinska",
+      "resume": "",
+      "role": "Scrum Master"
+    },
+    {
+      "id": 4,
+      "nameEn": "Alisa Bondarenko",
+      "nameUk": "Аліса Бондаренко",
+      "photo": "./images/Alisa.jpg",
+      "LinkedIn": "https://www.linkedin.com/in/alisa-bondarenko/",
+      "GitHub": "https://github.com/AliceBondMe",
+      "resume": "",
+      "role": "Developer"
+    },
+    {
+      "id": 5,
+      "nameEn": "Anastasiia Motsukh",
+      "nameUk": "Анастасія Моцух",
+      "photo": "./images/Anastasiia.jpg",
+      "LinkedIn": "https://www.linkedin.com/in/anastasiia-motsukh-a5859b283/",
+      "GitHub": "https://github.com/Elostay",
+      "resume": "",
+      "role": "Developer"
+    },
+    {
+      "id": 6,
+      "nameEn": "Denys Nalyvaiko",
+      "nameUk": "Денис Наливайко",
+      "photo": "./images/Denys.jpg",
+      "LinkedIn": "https://www.linkedin.com/in/denys-nalyvaiko-1ba8ab283",
+      "GitHub": "https://github.com/Denys-Nalyvaiko",
+      "resume": "",
+      "role": "Developer"
+    },
+    {
+      "id": 7,
+      "nameEn": "Ihor Pozhematkin",
+      "nameUk": "Ігор Пожематкін",
+      "photo": "./images/Ihor.jpg",
+      "LinkedIn": "https://www.linkedin.com/in/ihor-pozhematkin/",
+      "GitHub": "https://github.com/IhorPozhematkin",
+      "resume": "",
+      "role": "Developer"
+    },
+    {
+      "id": 8,
+      "nameEn": "Kateryna Lubenets",
+      "nameUk": "Катерина Лубенець",
+      "photo": "./images/Kateryna.jpg",
+      "LinkedIn": "https://www.linkedin.com/in/lubenets-kateryna/",
+      "GitHub": "https://github.com/dn280786lea",
+      "resume": "",
+      "role": "Developer"
+    },
+    {
+      "id": 9,
+      "nameEn": "Konstantin Lysenko",
+      "nameUk": "Костянтин Лисенко",
+      "photo": "./images/Konstantin.jpg",
+      "LinkedIn": "https://www.linkedin.com/in/constantine-it-lysenko/",
+      "GitHub": "https://github.com/konstantin-it-lysenko",
+      "resume": "",
+      "role": "Developer"
+    },
+    {
+      "id": 10,
+      "nameEn": "Nadiia Paliichuk",
+      "nameUk": "Надія Палійчук",
+      "photo": "./images/Nadiia.jpg",
+      "LinkedIn": "https://www.linkedin.com/in/nadiia-paliichuk/",
+      "GitHub": "https://github.com/Nadin2611",
+      "resume": "",
+      "role": "Developer"
+    },
+    {
+      "id": 11,
+      "nameEn": "Serhii Havrilyk",
+      "nameUk": "Сергій Гаврилюк",
+      "photo": "./images/Serhii.jpg",
+      "LinkedIn": "https://www.linkedin.com/in/havryliuk-serhii-frontenddeveloper/",
+      "GitHub": "https://github.com/Serhii-Ruhtik",
+      "resume": "",
+      "role": "Developer"
+    },
+    {
+      "id": 12,
+      "nameEn": "Valentyna Dumbrava",
+      "nameUk": "Валентина Думбрава",
+      "photo": "./images/Valentyna.jpg",
+      "LinkedIn": "https://www.linkedin.com/in/valentyna-dumbrava/",
+      "GitHub": "https://github.com/valyadum",
+      "resume": "",
+      "role": "Developer"
+    }
+  ]
+}

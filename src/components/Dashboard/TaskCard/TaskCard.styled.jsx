@@ -28,7 +28,6 @@ export const CardDescr = styled.p`
   opacity: 0.7;
   margin-bottom: 14px;
   cursor: pointer;
-  text-wrap: wrap;
 `;
 
 export const InfoWrap = styled.div`
@@ -79,14 +78,22 @@ export const BtnsList = styled.ul`
 export const CardActionButton = styled.button`
   background-color: transparent;
 
-  svg,
-  path {
-    stroke: var(--text-color);
-    transition: stroke 150ms linear;
+  svg {
+    transition: filter var(--easedTransition);
   }
 
-  &:hover svg,
-  &:hover path {
-    stroke: #8fa1d0;
+  svg path {
+    stroke: var(--icon-stroke-color);
+    opacity: 50%;
+    transition: stroke var(--easedTransition), opacity var(--easedTransition);
+  }
+
+  &:hover svg path {
+    stroke: var(--accent-color);
+    opacity: 100%;
+  }
+
+  &:hover svg {
+    filter: drop-shadow(1px 1px 5px var(--accent-color));
   }
 `;

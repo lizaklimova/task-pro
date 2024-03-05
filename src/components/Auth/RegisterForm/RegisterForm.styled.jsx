@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { Field, Form } from 'formik';
 
 export const Background = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100dvh;
-  background: linear-gradient(to bottom, #fff 0%, #bedbb0 100%);
+  width: 100vw;
+  min-height: 100vh;
+  background: var(--light-green-gradient);
 `;
 
 export const FormWrap = styled.div`
@@ -37,6 +37,7 @@ export const AuthLink = styled(NavLink)`
   color: #ffffff30;
   font-size: 18px;
   font-weight: 500;
+  transition: color var(--easedTransition);
 
   &:hover {
     color: #ffffff;
@@ -47,18 +48,25 @@ export const AuthLink = styled(NavLink)`
   }
 `;
 
-export const FormUi = styled(Form)`
+export const FormUi = styled.form`
   display: flex;
   flex-direction: column;
   gap: 14px;
 `;
 
-export const Input = styled(Field)`
+export const Input = styled.input`
+  position: relative;
   padding: 14px 18px;
   background: transparent;
   border: 1px solid #bedbb0;
   border-radius: 8px;
   color: #ffffff;
+
+  ${({ error }) =>
+    error &&
+    `
+    border-color: #fc8181;
+  `}
 `;
 
 export const SubmitBtn = styled.button`
@@ -68,8 +76,19 @@ export const SubmitBtn = styled.button`
   background: #bedbb0;
   border-radius: 8px;
   color: #161616;
+  transition: background var(--easedTransition);
 
   &:hover {
     background: #9dc888;
   }
+
+  &:disabled {
+    opacity: 0.3;
+  }
+`;
+
+export const ErrorPara = styled.span`
+  display: inline;
+  font-size: 8px;
+  color: #fc8181;
 `;

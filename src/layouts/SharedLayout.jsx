@@ -14,11 +14,10 @@ const SharedLayout = () => {
   return (
     <>
       <Header openMenu={openMenu} />
-      {window.innerWidth >= 1440 ? (
-        <Sidebar />
-      ) : (
-        <SidebarMenu isMenuOpen={isMenuOpen} closeMenu={closeMenu} />
-      )}
+
+      <Sidebar />
+      <SidebarMenu isMenuOpen={isMenuOpen} closeMenu={closeMenu} />
+
       <main>
         <Outlet />
       </main>

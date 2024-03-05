@@ -3,6 +3,12 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
 :root {
     --easedTransition: 350ms ease-in-out;
+    --cubicTransition: 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --black-color: #161616;
+    --white-color: #fff;
+    --light-green-gradient: linear-gradient(180deg, #ffffff 25%, #bedbb0 92.19%);
+    --dark-green-gradient: linear-gradient(180deg, #263238 25%, #37474F 92.19%);
+    --light-green: #92E3A9;
 }
 
 html[data-theme='dark']{
@@ -49,6 +55,8 @@ html[data-theme='dark']{
   --svg-color-user:#151515;
   --sidebar-logout-text: #fff;
   --sidebar-before: #bedbb0;
+  --default-icon-fill: rgb(31, 31, 31);
+  --default-icon-stroke: rgba(255, 255, 255, 0.1);
 }
 
 html[data-theme='light']{
@@ -75,6 +83,9 @@ html[data-theme='light']{
   --priority-gray: rgba(22, 22, 22, 0.3);
   --btn-icon-bg: #161616;
   --btn-icon-color: #fff;
+  --plus-icon-bg: #161616;
+  --plus-btn-hover: #919090;
+  --accent-btn-hover: #9DC888;
   --sidebar-add-btn:#bedbb0;
 	--sidebar-icon-color:#161616;
 	--sidebar-change-color:#1616167b;
@@ -92,6 +103,8 @@ html[data-theme='light']{
   --svg-color-user:#fff;
   --sidebar-logout-text: #161616;
   --sidebar-before: #bedbb0;
+  --default-icon-fill: rgba(22, 22, 22, 0.1);
+  --default-icon-stroke: rgb(246, 246, 247);
 }
 
 html[data-theme='violet']{
@@ -118,6 +131,9 @@ html[data-theme='violet']{
   --priority-gray: rgba(22, 22, 22, 0.3);
   --btn-icon-bg: #fcfcfc;
   --btn-icon-color: #161616;
+  --plus-icon-bg:#5255bc;
+  --plus-btn-hover: #999cd3;
+  --accent-btn-hover: #7B7EDE;
   --sidebar-add-btn:#b8bcfd;
   --sidebar-icon-color:#fff;
   --sidebar-change-color:rgba(255, 255, 255, 0.5);
@@ -135,6 +151,8 @@ html[data-theme='violet']{
   --svg-color-user:#fff;
   --sidebar-logout-text: #fff;
   --sidebar-before: #fff;
+  --default-icon-fill: rgba(22, 22, 22, 0.1);
+  --default-icon-stroke: rgb(236, 237, 253);
 }
 
 *,
@@ -243,6 +261,14 @@ img {
   max-width: 100%;
   height: auto;
   border: none;
+}
+
+.themed_toaster {
+  border: 1px solid var(--accent-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  text-align: center;
+  filter: drop-shadow(1px 1px 7px var(--accent-color));
 }
 `;
 

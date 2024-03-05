@@ -5,7 +5,7 @@ const Filter = ({ width, height, fillColor, strokeColor }) => {
       height={height || '14px'}
       viewBox="0 0 16 16"
       fill={fillColor || 'none'}
-      stroke={strokeColor || 'none'}
+      stroke={strokeColor || null}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

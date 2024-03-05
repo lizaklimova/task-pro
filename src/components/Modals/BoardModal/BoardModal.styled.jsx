@@ -65,6 +65,7 @@ export const BacksUl = styled.ul`
   flex-wrap: wrap;
   margin-bottom: 40px;
   gap: 4px;
+  width: 252px;
 `;
 export const BackLi = styled.li``;
 

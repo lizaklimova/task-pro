@@ -5,7 +5,7 @@ const Star = ({ width, height, fillColor, strokeColor }) => {
       height={height || '14px'}
       viewBox="0 0 18 18"
       fill={fillColor || 'none'}
-      stroke={strokeColor || 'none'}
+      stroke={strokeColor || null}
       xmlns="http://www.w3.org/2000/svg"
     >
       <g clipPath="url(#clip0_4566_2426)">

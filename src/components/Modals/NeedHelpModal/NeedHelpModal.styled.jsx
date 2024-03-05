@@ -39,6 +39,9 @@ export const Emailinput = styled.input`
     outline: none;
     opacity: 1;
   }
+  &:hover {
+    border-color: #9dc888;
+  }
 `;
 
 export const Commenttextarea = styled.textarea`
@@ -54,7 +57,9 @@ export const Commenttextarea = styled.textarea`
   margin-right: 18px;
   padding: 14px 18px;
   transition: opacity var(--easedTransition);
-
+  &:hover {
+    border-color: #9dc888;
+  }
   &:focus {
     outline: none;
     opacity: 1;

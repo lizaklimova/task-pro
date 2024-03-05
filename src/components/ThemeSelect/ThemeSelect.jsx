@@ -1,22 +1,23 @@
 import { useTheme } from 'hooks/useTheme';
 import React from 'react';
 import Select from 'react-select';
+import { useTranslation } from 'react-i18next';
 import './ThemeSelect.css';
 import { useTranslation } from 'react-i18next';
 
-const options = [
-  { value: 'light', label: 'Light' },
-  { value: 'dark', label: 'Dark' },
-  { value: 'violet', label: 'Violet' },
-];
-
 function ThemeSelect() {
   const { setTheme } = useTheme();
+  const { t } = useTranslation();
+
+  const THEME_OPTIONS = [
+    { value: 'light', label: `${t('header.theme1')}` },
+    { value: 'dark', label: `${t('header.theme2')}` },
+    { value: 'violet', label: `${t('header.theme3')}` },
+  ];
+
   const onChangeTheme = event => {
     setTheme(event.value);
   };
-   const { t } = useTranslation();
-
   return (
     <div>
       <Select
@@ -24,8 +25,9 @@ function ThemeSelect() {
         onChange={event => {
           onChangeTheme(event);
         }}
-        options={options}
-        placeholder={t('header.theme')}
+        options={THEME_OPTIONS}
+        placeholder={`${t('header.theme')}`}
+        isSearchable={false}
       />
     </div>
   );

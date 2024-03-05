@@ -32,7 +32,7 @@ const App = () => {
             <Route
               index
               // element={
-              //   <PrivateRoute component={<HomePage />} redirectTo={'/auth'} />
+              //   <PrivateRoute component={<HomePage />} redirectTo={'/auth/login'} />
               // }
               element={<HomePage />}
             />
@@ -41,7 +41,7 @@ const App = () => {
               // element={
               //   <PrivateRoute
               //     component={<ScreensPage />}
-              //     redirectTo={'/auth'}
+              //     redirectTo={'/auth/login'}
               //   />
               // }
               element={<ScreensPage />}

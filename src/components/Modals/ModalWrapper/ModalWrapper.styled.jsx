@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const ModalBackdrop = styled.div`
+export const ModalBackdrop = styled(motion.div)`
   position: fixed;
   display: flex;
   justify-content: center;
@@ -16,22 +17,27 @@ export const ModalBackdrop = styled.div`
   }
 `;
 
-export const ModalContainer = styled.div`
+export const ModalContainer = styled(motion.div)`
   position: relative;
-  padding: 24px;
+  width: 100%;
   min-height: 130px;
+  border-radius: 8px;
+  padding: 24px;
   color: var(--text-color);
   background: var(--modal-background);
-  border-radius: 8px;
-  width: 100%;
+  transition: all var(--cubicTransition);
+  height: ${({ $developers }) => ($developers ? '90%' : 'unset')};
+  overflow-y: ${({ $developers }) => ($developers ? 'scroll' : 'visible')};
 
   @media screen and (min-width: 375px) {
-    width: 335px;
+    width: ${({ $developers }) => ($developers ? '40%' : '335px')};
   }
 
   @media screen and (min-width: 768px) {
+    width: ${({ $developers }) => ($developers ? '730px' : '350px')};
     width: ${props =>
       props.$containerWidth ? `${props.$containerWidth}px` : '350px'};
+    overflow-y: visible;
   }
 `;
 
@@ -40,4 +46,16 @@ export const ModalCloseButton = styled.button`
   top: 14px;
   right: 14px;
   background-color: transparent;
+  padding: 0;
+
+  svg {
+    transition: filter var(--easedTransition);
+  }
+
+  @media screen and (min-width: 1440px) {
+    &:hover svg,
+    &:focus svg {
+      filter: drop-shadow(1px 1px 3px var(--accent-color));
+    }
+  }
 `;
