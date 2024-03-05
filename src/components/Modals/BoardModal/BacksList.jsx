@@ -33,7 +33,6 @@ export const BacksList = () => {
   };
 
   return isLoading ? (
-    // <Loader />
     <p>Loading</p>
   ) : (
     <BacksUl>

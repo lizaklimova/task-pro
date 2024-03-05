@@ -3,6 +3,7 @@ import {
   getBackgroundIcons,
   getAllBoards,
   createBoard,
+  getOneBoard,
 } from './boardOperations';
 import { handlePending, handleRejected } from './helpers';
 
@@ -10,6 +11,7 @@ const boardsSlice = createSlice({
   name: 'board',
   initialState: {
     boards: [],
+    oneBoard: {},
     background: [],
     isLoading: false,
     error: null,
@@ -31,6 +33,14 @@ const boardsSlice = createSlice({
         state.error = null;
       })
       .addCase(getAllBoards.rejected, handleRejected)
+
+      .addCase(getOneBoard.pending, handlePending)
+      .addCase(getOneBoard.fulfilled, (state, action) => {
+        state.oneBoard = action.payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(getOneBoard.rejected, handleRejected)
 
       .addCase(createBoard.pending, handlePending)
       .addCase(createBoard.fulfilled, (state, action) => {
