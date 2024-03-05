@@ -10,7 +10,7 @@ export const ModalBackdrop = styled(motion.div)`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #706f6f99;
+  background-color: var(--backdrop-color);
 
   @media screen and (max-width: 375px) {
     padding: 15px;

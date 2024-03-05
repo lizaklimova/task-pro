@@ -1,7 +1,9 @@
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { loginSchema } from 'schemas';
 import { logIn } from '../../../redux/auth/authOperations';
+import { useAuth } from 'hooks';
+import { loginSchema } from 'schemas';
+import SmallLoader from 'components/Loader/SmallLoader';
 import {
   Background,
   FormWrap,
@@ -15,6 +17,7 @@ import {
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const { isLoading } = useAuth();
 
   const onSubmit = async (values, actions) => {
     const formData = {
@@ -67,7 +70,7 @@ const LoginForm = () => {
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={errors.email && touched.email}
+            $error={errors.email && touched.email}
             name="email"
             placeholder="Enter your email"
             type="email"
@@ -79,7 +82,7 @@ const LoginForm = () => {
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={errors.password && touched.password}
+            $error={errors.password && touched.password}
             name="password"
             placeholder="Confirm a password"
             type="password"
@@ -89,7 +92,7 @@ const LoginForm = () => {
           )}
 
           <SubmitBtn type="submit" disabled={isSubmitting}>
-            Log In Now
+            {isLoading ? <SmallLoader width="25" height="25" /> : 'Log In Now'}
           </SubmitBtn>
         </FormUi>
       </FormWrap>

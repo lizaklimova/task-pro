@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { nanoid } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../../redux/auth/authOperations';
 import plantImg from 'assets/images/sidebar/plant.png';
 import Lightning from 'components/Icons/Lightning';
 import LogOut from 'components/Icons/LogOut';
@@ -8,6 +10,7 @@ import BoardModal from 'components/Modals/BoardModal';
 import NeedHelp from 'components/Sidebar/NeedHelp';
 import Plus from 'components/Icons/Plus';
 import AddedBoard from '../AddedBoard';
+import DevModal from 'components/Modals/DevModal';
 import {
   AddBtn,
   Container,
@@ -22,18 +25,18 @@ import {
   HelpText,
   LightningBox,
   Logo,
-  LogoutContainer,
+  LogoutBtn,
   LogoutText,
   MyBoard,
   DevsBtn,
 } from './SidebarContent.styled';
-import DevModal from 'components/Modals/DevModal/DevModal';
 
 const SidebarContent = () => {
   const [isAddBoardModalShown, setIsAddBoardModalShown] = useState(false);
   const [isEditBoardModalShown, setIsEditBoardModalShown] = useState(false);
   const [isDevModalOpen, setIsDevModalOpen] = useState(false);
 
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   return (
@@ -112,14 +115,18 @@ const SidebarContent = () => {
           <NeedHelp />
         </HelpContainer>
 
-        <LogoutContainer>
+        <LogoutBtn
+          type="button"
+          aria-label="Log out"
+          onClick={() => dispatch(logOut())}
+        >
           <LogOut
             width={32}
             height={32}
             strokeColor={'var(--sidebar-logout)'}
           />
           <LogoutText>{t('sidebar.logoutButton')}</LogoutText>
-        </LogoutContainer>
+        </LogoutBtn>
       </Footer>
 
       {isAddBoardModalShown && (

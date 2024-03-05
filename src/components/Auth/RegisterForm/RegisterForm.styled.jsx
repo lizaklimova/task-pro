@@ -62,14 +62,17 @@ export const Input = styled.input`
   border-radius: 8px;
   color: #ffffff;
 
-  ${({ error }) =>
-    error &&
+  ${({ $error }) =>
+    $error &&
     `
     border-color: #fc8181;
   `}
 `;
 
 export const SubmitBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 10px;
   padding: 14px 0;
   font-weight: 500;
@@ -84,6 +87,7 @@ export const SubmitBtn = styled.button`
 
   &:disabled {
     opacity: 0.3;
+    cursor: not-allowed;
   }
 `;
 

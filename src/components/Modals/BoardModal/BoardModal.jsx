@@ -1,6 +1,5 @@
-import { useDispatch } from 'react-redux';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
@@ -9,23 +8,19 @@ import { BacksList } from './BacksList';
 import Plus from 'components/Icons/Plus';
 import { Form, Title, Input, Text, Button, Span } from './BoardModal.styled';
 
-import {
-  // getAllBoards,
-  createBoard,
-} from '../../../redux/board/boardOperations';
-// import { selectBoards } from '../../../redux/board/boardSelectors';
+// 65e73bce8eca63d933f9c137
+
+import { createBoard } from '../../../redux/board/boardOperations';
+import { selectOneBoard } from '../../../redux/board/boardSelectors';
 
 const BoardModal = ({ variant, closeModal }) => {
-  // const [boards, setBoards] = useState([]);
+  const OneBoard = useSelector(selectOneBoard);
   const dispatch = useDispatch();
-
   const { t } = useTranslation();
 
   const handleSubmit = e => {
     e.preventDefault();
     const { boardTitle, backgroundIcon, icon } = e.target.elements;
-
-    console.log(backgroundIcon.value);
 
     const data = {
       title: boardTitle.value,
@@ -36,11 +31,13 @@ const BoardModal = ({ variant, closeModal }) => {
     if (variant === 'add') {
       dispatch(createBoard(data));
     } else {
-      dispatch(createBoard(data));
     }
+    // console.log(data);
 
     closeModal();
   };
+
+  console.log(OneBoard);
 
   return (
     <ModalWrapper width={350} onClose={closeModal}>
@@ -54,6 +51,7 @@ const BoardModal = ({ variant, closeModal }) => {
           type="text"
           placeholder={t('boards.modals.input')}
           name="boardTitle"
+          defaultValue={''}
         />
 
         <Text>{t('boards.modals.icons')}</Text>
@@ -61,7 +59,7 @@ const BoardModal = ({ variant, closeModal }) => {
 
         <Text>{t('boards.modals.background')}</Text>
         <BacksList />
-
+        {/* <Loader width={50} /> */}
         <Button type="submit">
           <Span>
             <Plus

@@ -1,12 +1,12 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { getCurrentUser } from '../../redux/auth/authOperations';
-import GlobalStyles from 'assets/styles';
-import { PublicRoute } from 'routes';
+import { refreshUser } from '../../redux/auth/authOperations';
+import { PrivateRoute, PublicRoute } from 'routes';
 import SharedLayout from 'layouts/SharedLayout';
-import Loader from 'components/Loader/Loader';
+import Loader from 'components/Loader';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage'));
 const AuthPage = lazy(() => import('pages/AuthPage'));
@@ -16,45 +16,47 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 const App = () => {
   const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(getCurrentUser());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <>
-      <GlobalStyles />
       <Toaster position="top-center" />
 
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/home" element={<SharedLayout />}>
-            <Route
-              index
-              // element={
-              //   <PrivateRoute component={<HomePage />} redirectTo={'/auth/login'} />
-              // }
-              element={<HomePage />}
-            />
-            <Route
-              path=":boardId"
-              // element={
-              //   <PrivateRoute
-              //     component={<ScreensPage />}
-              //     redirectTo={'/auth/login'}
-              //   />
-              // }
-              element={<ScreensPage />}
-            />
-          </Route>
-
           <Route path="/" element={<WelcomePage />} />
           <Route
-            path="auth/:id"
+            path="/auth/:id"
             element={
               <PublicRoute component={<AuthPage />} redirectTo="/home" />
             }
           />
+          <Route path="/home" element={<SharedLayout />}>
+            <Route
+              index
+              element={
+                <PrivateRoute
+                  component={<HomePage />}
+                  redirectTo={'/auth/login'}
+                />
+              }
+            />
+            <Route
+              path="/home/:boardId"
+              element={
+                <PrivateRoute
+                  component={<ScreensPage />}
+                  redirectTo={'/auth/login'}
+                />
+              }
+            />
+          </Route>
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
