@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { TOASTER_CONFIG } from 'constants';
 import { support } from '../../../redux/support/support';
-/* import { useAuth } from 'hooks'; */
+
 import {
   Modalform,
   ModalTitle,

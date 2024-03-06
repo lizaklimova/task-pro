@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { axiosInstance } from 'axios';
 import { ENDPOINTS } from 'api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -7,30 +7,10 @@ export const support = createAsyncThunk(
   async ({ email, text }, thunkAPI) => {
     console.log(email, text);
     try {
-      const data = await axios.post(ENDPOINTS.email.support, {
+      const data = await axiosInstance.post(ENDPOINTS.email.support, {
         email,
         comment: text,
       });
-      /*      console.log(data); */
-      return data;
-    } catch ({ message }) {
-      thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-
-/* import axios from 'axios';
-import { ENDPOINTS } from 'api';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-
-export const support = createAsyncThunk(
-  'email/support',
-  async (datahelp, thunkAPI) => {
-    try {
-      const { data } = await axios.post(ENDPOINTS.email.support, {
-        email: datahelp.email,
-        comment: datahelp.text,
-      });
 
       return data;
     } catch ({ message }) {
@@ -38,4 +18,3 @@ export const support = createAsyncThunk(
     }
   }
 );
- */
