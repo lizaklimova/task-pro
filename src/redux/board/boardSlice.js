@@ -52,7 +52,7 @@ const boardsSlice = createSlice({
         state.error = null;
       })
       .addCase(filterBoard.fulfilled, (state, { payload }) => {
-        state.boards = payload;
+        state.filterBoard = payload;
         state.isLoading = false;
         state.error = null;
       })

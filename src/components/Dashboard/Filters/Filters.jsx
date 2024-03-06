@@ -15,7 +15,7 @@ import {
   StyledMarker,
 } from './Filters.styled';
 
-const Filters = () => {
+const Filters = ({ boardId }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -23,8 +23,9 @@ const Filters = () => {
 
   const handleFilterChange = newValue => {
     setFilterValue(newValue);
-    const boardId = '';
-    dispatch(filterBoard({ boardId, priority: filterValue }));
+    console.log(newValue);
+    console.log(boardId);
+    dispatch(filterBoard({ boardId, priority: newValue }));
     setIsModalOpen(false);
   };
 
