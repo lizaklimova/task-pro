@@ -4,14 +4,17 @@ import ModalWrapper from 'components/Modals/ModalWrapper';
 import UserModal from 'components/Modals/UserModal/UserModal';
 import { Button, UserContainer, UserName } from './Profile.styled';
 import UserDefault from 'components/Icons/UserDefault';
+import { useSelector } from 'react-redux';
+import { selectUsername } from '../../redux/auth/authSelectors';
 
 const Profile = () => {
   const [shownModal, setShownModal] = useState(false);
-  const { username } = useAuth();
+  const nameUser = useSelector(selectUsername)
+  // const { username } = useAuth();
 
   return (
     <UserContainer>
-      <UserName>{username ?? 'User'}</UserName>
+      <UserName>{nameUser ?? 'User'}</UserName>
       <Button type="button" onClick={() => setShownModal(true)}>
         <UserDefault
           width={68}

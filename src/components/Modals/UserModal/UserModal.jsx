@@ -14,20 +14,25 @@ import {
   PlusButton,
   SendBtn,
 } from './UserModal.styled';
+import { selectUsername, selectUserEmail, selectUserAvatar } from '../../../redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { editUser } from '../../../redux/auth/authOperations';
 
 const UserModal = () => {
+const dispatch = useDispatch();
 
   const [visible, setVisible] = useState(false);
-  const [state, setState] = useState({});
-  const [image, setImage] = useState(null); //те що приходить з беку
-  const [name, setName] = useState('Ivetta'); //те що приходить з беку
-  const [email, setEmail] = useState('ivetta34@gmail.com'); //те що приходить з беку
-  const [password, setPassword] = useState('ivetta1999.23'); //те що приходить з беку
+  // const [state, setState] = useState({});
+  const [avatar_url, setAvatar_url] = useState(useSelector(selectUserAvatar)); //те що приходить з беку
+  const [name, setName] = useState(useSelector(selectUsername)); //те що приходить з беку
+  const [email, setEmail] = useState(useSelector(selectUserEmail)); //те що приходить з беку
+  const [password, setPassword] = useState(''); 
     
 
   function changeImg(event) {
     console.log(event.target.files);
-    setImage(event.target.files[0]);
+    setAvatar_url(event.target.files[0]);
   }
      const handleInputChange = event => {
          const { name, value } = event.target;
@@ -44,28 +49,28 @@ const UserModal = () => {
            default:
              break;
          }
+       
+       
      };
 
     function editProfile(event) {
-        event.preventDefault();
-        setState({
-            ...state,
-            image,
-            name,
-            email,
-            password
-        })
-         
+      event.preventDefault();
+      const user = { avatar_url, name, email, password };
+      if (!password) {
+        user.password = undefined;
+      }
+      dispatch(editUser(user));
     }
-    console.log(state);
+    // console.log(state);
+    // console.log(image);
 
   return (
     <div>
       <h3>Edit profile</h3>
       <FormUser onSubmit={editProfile}>
         <Avatar>
-          {image ? (
-            <img src={image.name} alt="" /> //поки не працює
+          {avatar_url !== 'default' ? (
+            <img src={avatar_url} alt="" /> //поки не працює
           ) : (
             <User
               width={68}
