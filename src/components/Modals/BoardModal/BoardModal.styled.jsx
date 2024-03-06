@@ -54,6 +54,7 @@ export const IconLabel = styled.label``;
 export const IconSVG = styled.svg`
   stroke: var(--icon-stroke-color);
   stroke-opacity: 0.5;
+  transform: scale(1.05);
 `;
 
 export const InputRadio = styled.input`
@@ -62,6 +63,7 @@ export const InputRadio = styled.input`
   &:checked + svg use {
     stroke: var(--accent-color);
     stroke-opacity: 1;
+    transform: scale(1.05);
   }
 `;
 
@@ -100,13 +102,17 @@ export const DefaultImgWrap = styled.div`
 
 export const BackInputRadio = styled.input`
   display: none;
-
-  &:checked + img {
-    border: 2px solid var(--accent-color);
+  &:hover + img {
+    outline: 1px solid var(--accent-color);
   }
-
+  &:hover + img,
+  &:hover + div {
+    outline: 1px solid var(--accent-color);
+  }
+  &:checked + img,
   &:checked + div {
-    border: 2px solid var(--accent-color);
+    outline: 1.8px solid var(--accent-color);
+    transform: scale(1.05);
   }
 `;
 
