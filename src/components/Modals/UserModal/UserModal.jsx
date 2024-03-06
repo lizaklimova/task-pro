@@ -67,7 +67,7 @@ const dispatch = useDispatch();
       //   password,
       // });
       // console.log(state);
-      dispatch(editUser({ avatar_url, name, email, password }));
+      dispatch(editUser({ user: { avatar_url, name, email, password } }));
     }
     // console.log(state);
     // console.log(image);

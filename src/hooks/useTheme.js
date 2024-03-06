@@ -4,13 +4,13 @@ import { useSelector } from 'react-redux';
 import { getTheme, updateTheme } from '../redux/theme/themeOperation';
 import { selectTheme } from '../redux/theme/themeSelector';
 
-export function getThemeSystem() {
-  if (window.matchMedia && window.matchMedia("(prefers-color-scheme:dark)").matches) {
-    return "dark";
-  } else {
-    return "light";
-  }
-}
+// export function getThemeSystem() {
+//   if (window.matchMedia && window.matchMedia("(prefers-color-scheme:dark)").matches) {
+//     return "dark";
+//   } else {
+//     return "light";
+//   }
+// }
 export const useTheme = () => {
   const dispatch = useDispatch();
 useEffect(() => {
@@ -18,6 +18,7 @@ useEffect(() => {
 }, [dispatch])
 
   const themeBack = useSelector(selectTheme);
+  console.log(themeBack);
 
 const [theme, setTheme] = useState(localStorage.getItem('app-them') || themeBack);
 
