@@ -8,10 +8,15 @@ const inputsCommonStyles = css`
   background-color: transparent;
   box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
   opacity: 0.4;
+  transition: opacity var(--easedTransition);
 
   &:focus {
     opacity: 1;
     outline: none;
+  }
+
+  &:hover {
+    opacity: 1;
   }
 `;
 

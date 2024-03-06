@@ -17,7 +17,6 @@ function ThemeSelect() {
   const onChangeTheme = event => {
     setTheme(event.value);
   };
-
   return (
     <div>
       <Select

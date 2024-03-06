@@ -24,8 +24,13 @@ export const Input = styled.input`
   margin-bottom: 24px;
   outline: transparent;
   box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
+  transition: opacity var(--easedTransition);
 
   &:focus {
+    opacity: 1;
+  }
+
+  &:hover {
     opacity: 1;
   }
 `;
@@ -60,21 +65,47 @@ export const InputRadio = styled.input`
   }
 `;
 
+export const SmallLoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+`;
+
 export const BacksUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 40px;
   gap: 4px;
   width: 252px;
+
+  & #default-bg-img {
+    order: -1;
+  }
 `;
+
 export const BackLi = styled.li``;
 
 export const BackLabel = styled.label``;
+
+export const DefaultImgWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  background-color: var(--default-icon-fill);
+  border-radius: 8px;
+`;
 
 export const BackInputRadio = styled.input`
   display: none;
 
   &:checked + img {
+    border: 2px solid var(--accent-color);
+  }
+
+  &:checked + div {
     border: 2px solid var(--accent-color);
   }
 `;
@@ -107,6 +138,9 @@ export const Button = styled.button`
 `;
 
 export const Span = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--btn-icon-bg);
   border-radius: 6px;
   padding: 7px;

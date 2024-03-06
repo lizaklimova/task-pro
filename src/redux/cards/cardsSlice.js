@@ -13,28 +13,28 @@ const cardsSlice = createSlice({
   initialState: cardsInitialState,
   extraReducers: builder => {
     builder
+      .addCase(addCard.pending, handlePending)
+      .addCase(deleteCard.pending, handlePending)
+      .addCase(editCard.pending, handlePending)
       .addCase(addCard.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
         state.cards = payload;
       })
-      .addCase(addCard.pending, handlePending)
-      .addCase(addCard.rejected, handleRejected)
       .addCase(deleteCard.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
         state.cards = state.cards.filter(card => card.id !== payload);
       })
-      .addCase(deleteCard.pending, handlePending)
-      .addCase(deleteCard.rejected, handleRejected)
       .addCase(editCard.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        const card = state.cards.find(card => card.id === payload);
+        const card = state.cards.find(card => card._id === payload);
         const newCard = { ...card, ...payload };
         state.cards = [...state.cards, newCard];
       })
-      .addCase(editCard.pending, handlePending)
+      .addCase(addCard.rejected, handleRejected)
+      .addCase(deleteCard.rejected, handleRejected)
       .addCase(editCard.rejected, handleRejected);
   },
 });

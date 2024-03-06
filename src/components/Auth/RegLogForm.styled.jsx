@@ -55,25 +55,53 @@ export const FormUi = styled.form`
 `;
 
 export const Input = styled.input`
+  width: 100%;
   padding: 14px 18px;
   background: transparent;
   border: 1px solid #bedbb0;
   border-radius: 8px;
   color: #ffffff;
+  opacity: 0.5;
+  transition: opacity var(--easedTransition);
 
-  ${({ error }) =>
-    error &&
+  &:focus {
+    opacity: 1;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  ${({ $error }) =>
+    $error &&
     `
     border-color: #fc8181;
   `}
 `;
 
+export const PassInputWrap = styled.div`
+  position: relative;
+`;
+
+export const HideBtn = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-50%, 50%);
+  opacity: 0.4;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
 export const SubmitBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 10px;
   padding: 14px 0;
+  font-weight: 500;
   background: #bedbb0;
   border-radius: 8px;
-  font-weight: 500;
   color: #161616;
   transition: background var(--easedTransition);
 
@@ -83,6 +111,7 @@ export const SubmitBtn = styled.button`
 
   &:disabled {
     opacity: 0.3;
+    cursor: not-allowed;
   }
 `;
 

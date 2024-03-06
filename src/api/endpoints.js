@@ -11,6 +11,7 @@ const ENDPOINTS = Object.freeze({
   boards: {
     allBoards: 'api/boards',
     oneBoard: boardId => `api/boards/${boardId}`,
+    boardFilter: boardId => `api/boards/${boardId}/filter`,
   },
   columns: {
     allColumns: 'api/columns',

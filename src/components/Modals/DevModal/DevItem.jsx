@@ -1,5 +1,4 @@
-import LinkedInIcon from 'components/Icons/Linkedin';
-import GitHubIcon from 'components/Icons/GitHub';
+import { useTranslation } from 'react-i18next';
 import {
   DevContainer,
   DevName,
@@ -8,15 +7,24 @@ import {
   DevRole,
   DevLinkContainer,
 } from './DevItem.styled';
+
+import LinkedInIcon from 'components/Icons/Linkedin';
+import GitHubIcon from 'components/Icons/GitHub';
+
 // import defaultImage from './no-photo.png';
 
 const DevItem = ({ developer }) => {
-  const { nameEn, photo, LinkedIn, GitHub, role } = developer;
+  const { t } = useTranslation();
+
+  const { nameEn, nameUk, photo, LinkedIn, GitHub, roleEn, roleUk } = developer;
+  const name = t('name') === 'en' ? nameEn : nameUk;
+  const role = t('role') === 'en' ? roleEn : roleUk;
 
   return (
     <DevContainer>
-      <DevImage src={require(`${photo}`)} alt={nameEn} />
-      <DevName>{nameEn}</DevName>
+      <DevImage src={require(`${photo}`)} alt={name} />
+
+      <DevName>{name}</DevName>
       <DevRole>{role}</DevRole>
       <DevLinkContainer>
         <DevLink href={LinkedIn} target="_blank">

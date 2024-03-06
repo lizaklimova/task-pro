@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { nanoid } from '@reduxjs/toolkit';
+import { useDispatch, useSelector } from 'react-redux';
+import { logOut } from '../../../redux/auth/authOperations';
+import { selectBoards } from '../../../redux/board/boardSelectors';
 import plantImg from 'assets/images/sidebar/plant.png';
 import Lightning from 'components/Icons/Lightning';
 import LogOut from 'components/Icons/LogOut';
@@ -8,6 +10,7 @@ import BoardModal from 'components/Modals/BoardModal';
 import NeedHelp from 'components/Sidebar/NeedHelp';
 import Plus from 'components/Icons/Plus';
 import AddedBoard from '../AddedBoard';
+import DevModal from 'components/Modals/DevModal';
 import {
   AddBtn,
   Container,
@@ -22,18 +25,19 @@ import {
   HelpText,
   LightningBox,
   Logo,
-  LogoutContainer,
+  LogoutBtn,
   LogoutText,
   MyBoard,
   DevsBtn,
 } from './SidebarContent.styled';
-import DevModal from 'components/Modals/DevModal/DevModal';
 
 const SidebarContent = () => {
   const [isAddBoardModalShown, setIsAddBoardModalShown] = useState(false);
   const [isEditBoardModalShown, setIsEditBoardModalShown] = useState(false);
   const [isDevModalOpen, setIsDevModalOpen] = useState(false);
 
+  const allBoards = useSelector(selectBoards);
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   return (
@@ -73,30 +77,15 @@ const SidebarContent = () => {
         </CreateBox>
 
         <BoardContainer>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
-          <BoardLink to={`/home/${nanoid()}`}>
-            <AddedBoard openEditModal={() => setIsEditBoardModalShown(true)} />
-          </BoardLink>
+          {allBoards?.map(board => (
+            <BoardLink key={board._id} to={`/home/${board._id}`}>
+              <AddedBoard
+                allBoards={allBoards}
+                board={board}
+                openEditModal={() => setIsEditBoardModalShown(true)}
+              />
+            </BoardLink>
+          ))}
         </BoardContainer>
       </Content>
 
@@ -112,14 +101,18 @@ const SidebarContent = () => {
           <NeedHelp />
         </HelpContainer>
 
-        <LogoutContainer>
+        <LogoutBtn
+          type="button"
+          aria-label="Log out"
+          onClick={() => dispatch(logOut())}
+        >
           <LogOut
             width={32}
             height={32}
             strokeColor={'var(--sidebar-logout)'}
           />
           <LogoutText>{t('sidebar.logoutButton')}</LogoutText>
-        </LogoutContainer>
+        </LogoutBtn>
       </Footer>
 
       {isAddBoardModalShown && (

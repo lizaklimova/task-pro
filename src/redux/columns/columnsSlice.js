@@ -18,44 +18,42 @@ const columnsSlice = createSlice({
   name: 'columns',
   initialState: columnsInitialState,
   reducers: {
-    setColumnToEditAction(state, action) {
-      state.columnToEdit = action.payload;
+    setColumnToEditAction(state, { payload }) {
+      state.columnToEdit = payload;
     },
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchColumnsOfBoard.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.columns = action.payload;
-      })
       .addCase(fetchColumnsOfBoard.pending, handlePending)
-      .addCase(fetchColumnsOfBoard.rejected, handleRejected)
-      .addCase(addColumn.fulfilled, (state, action) => {
+      .addCase(addColumn.pending, handlePending)
+      .addCase(editColumn.pending, handlePending)
+      .addCase(deleteColumn.pending, handlePending)
+      .addCase(fetchColumnsOfBoard.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.columns.unshift(action.payload);
+        state.columns = payload;
       })
-      .addCase(addColumn.pending, handlePending)
-      .addCase(addColumn.rejected, handleRejected)
-      .addCase(editColumn.fulfilled, (state, action) => {
+      .addCase(addColumn.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.columns.unshift(payload);
+      })
+      .addCase(editColumn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
         const editedItemIndex = state.columns.findIndex(
-          ({ id }) => id === action.payload.id
+          ({ _id }) => _id === payload._id
         );
-        state.columns = state.columns.with(editedItemIndex, action.payload);
+        state.columns = state.columns.with(editedItemIndex, payload);
       })
-      .addCase(editColumn.pending, handlePending)
-      .addCase(editColumn.rejected, handleRejected)
-      .addCase(deleteColumn.fulfilled, (state, action) => {
+      .addCase(deleteColumn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.columns = state.columns.filter(
-          ({ id }) => id !== action.payload.id
-        );
+        state.columns = state.columns.filter(({ _id }) => _id !== payload._id);
       })
-      .addCase(deleteColumn.pending, handlePending)
+      .addCase(fetchColumnsOfBoard.rejected, handleRejected)
+      .addCase(addColumn.rejected, handleRejected)
+      .addCase(editColumn.rejected, handleRejected)
       .addCase(deleteColumn.rejected, handleRejected);
   },
 });

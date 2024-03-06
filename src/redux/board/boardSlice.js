@@ -3,13 +3,17 @@ import {
   getBackgroundIcons,
   getAllBoards,
   createBoard,
+  deleteBoard,
+  getOneBoard,
+  filterBoard,
 } from './boardOperations';
-import { handlePending, handleRejected } from './helpers';
+import { handlePending, handleRejected } from '../helpers';
 
 const boardsSlice = createSlice({
   name: 'board',
   initialState: {
     boards: [],
+    oneBoard: {},
     background: [],
     isLoading: false,
     error: null,
@@ -17,28 +21,47 @@ const boardsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getBackgroundIcons.pending, handlePending)
-      .addCase(getBackgroundIcons.fulfilled, (state, action) => {
-        state.background = action.payload;
+      .addCase(getAllBoards.pending, handlePending)
+      .addCase(getOneBoard.pending, handlePending)
+      .addCase(createBoard.pending, handlePending)
+      .addCase(deleteBoard.pending, handlePending)
+      .addCase(filterBoard.pending, handlePending)
+      .addCase(getBackgroundIcons.fulfilled, (state, { payload }) => {
+        state.background = payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(getAllBoards.fulfilled, (state, { payload }) => {
+        state.boards = payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(getOneBoard.fulfilled, (state, { payload }) => {
+        state.oneBoard = { ...payload };
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(createBoard.fulfilled, (state, { payload }) => {
+        state.boards.push(payload);
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(deleteBoard.fulfilled, (state, { payload }) => {
+        state.boards = state.boards.filter(board => board._id !== payload._id);
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(filterBoard.fulfilled, (state, { payload }) => {
+        state.boards = payload;
         state.isLoading = false;
         state.error = null;
       })
       .addCase(getBackgroundIcons.rejected, handleRejected)
-
-      .addCase(getAllBoards.pending, handlePending)
-      .addCase(getAllBoards.fulfilled, (state, action) => {
-        state.boards = action.payload;
-        state.isLoading = false;
-        state.error = null;
-      })
       .addCase(getAllBoards.rejected, handleRejected)
-
-      .addCase(createBoard.pending, handlePending)
-      .addCase(createBoard.fulfilled, (state, action) => {
-        state.boards.push(action.payload);
-        state.isLoading = false;
-        state.error = null;
-      })
-      .addCase(createBoard.rejected, handleRejected);
+      .addCase(getOneBoard.rejected, handleRejected)
+      .addCase(createBoard.rejected, handleRejected)
+      .addCase(deleteBoard.rejected, handleRejected)
+      .addCase(filterBoard.rejected, handleRejected);
   },
 });
 

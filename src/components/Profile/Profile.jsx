@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import UserDefault from 'components/Icons/UserDefault';
+import { useAuth } from 'hooks';
 import ModalWrapper from 'components/Modals/ModalWrapper';
 import UserModal from 'components/Modals/UserModal/UserModal';
 import { Button, UserContainer, UserName } from './Profile.styled';
+import UserDefault from 'components/Icons/UserDefault';
 
 const Profile = () => {
   const [shownModal, setShownModal] = useState(false);
+  const { username } = useAuth();
 
   return (
     <UserContainer>
-      <UserName>Name</UserName>
+      <UserName>{username ?? 'User'}</UserName>
       <Button type="button" onClick={() => setShownModal(true)}>
         <UserDefault
           width={68}
