@@ -13,12 +13,13 @@ const BoardModal = ({ variant, closeModal }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const { boardTitle, backgroundIcon, icon } = e.target.elements;
+    const { title, iconId } = e.target.elements;
+    // const { title, backgroundIcon, iconId } = e.target.elements;
 
     const data = {
-      title: boardTitle.value,
-      iconId: icon.value,
-      backgroundId: backgroundIcon.value,
+      title: title.value,
+      iconId: iconId.value,
+      // backgroundId: backgroundIcon.value,
     };
 
     if (variant === 'add') {
@@ -40,8 +41,8 @@ const BoardModal = ({ variant, closeModal }) => {
         <Input
           type="text"
           placeholder={t('boards.modals.input')}
-          name="boardTitle"
-          defaultValue={''}
+          name="title"
+          autoComplete="off"
         />
 
         <Text>{t('boards.modals.icons')}</Text>
