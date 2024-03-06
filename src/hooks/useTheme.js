@@ -1,6 +1,10 @@
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { getTheme, updateTheme } from '../redux/theme/themeOperation';
+import { selectTheme } from '../redux/theme/themeSelector';
 
-function getTheme() {
+export function getThemeSystem() {
   if (window.matchMedia && window.matchMedia("(prefers-color-scheme:dark)").matches) {
     return "dark";
   } else {
@@ -8,12 +12,20 @@ function getTheme() {
   }
 }
 export const useTheme = () => {
-  const [theme, setTheme] = useState(localStorage.getItem('app-them') || getTheme());
+  const dispatch = useDispatch();
+useEffect(() => {
+  dispatch(getTheme());
+}, [dispatch])
+
+  const themeBack = useSelector(selectTheme);
+
+const [theme, setTheme] = useState(localStorage.getItem('app-them') || themeBack);
 
   useLayoutEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
+    dispatch(updateTheme({theme}));
     localStorage.setItem('app-them', theme);
-  }, [theme]);
+  }, [theme,dispatch]);
 
   return { theme, setTheme };
 };

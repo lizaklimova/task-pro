@@ -79,3 +79,15 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+export const editUser = createAsyncThunk(
+  ' user/editUser',
+  async (dataUser, thunkAPI) => {
+    try {
+      console.log(dataUser);
+      const { data } = await axiosInstance.patch(ENDPOINTS.users.current, dataUser);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+)
