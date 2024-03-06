@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { TOASTER_CONFIG } from 'constants';
 import { support } from '../../../redux/support/support';
-import { useAuth } from 'hooks';
+/* import { useAuth } from 'hooks'; */
 import {
   Modalform,
   ModalTitle,
@@ -19,10 +19,11 @@ const NeedHelpModal = ({ showModal }) => {
   const [text, setText] = useState('');
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { user } = useAuth();
+  /*  const { user } = useAuth(); */
 
   const handleSubmit = async evt => {
     evt.preventDefault();
+    console.log(evt.target.elements);
 
     if (email.trim() === '' || text.trim() === '') {
       toast(t('sidebar.helpModal.toast.error'), TOASTER_CONFIG);
@@ -30,7 +31,7 @@ const NeedHelpModal = ({ showModal }) => {
     }
 
     try {
-      await dispatch(support({ email, text, user }));
+      dispatch(support({ email, text }));
       toast(t('sidebar.helpModal.toast.success'), TOASTER_CONFIG);
       showModal(false);
     } catch (error) {
