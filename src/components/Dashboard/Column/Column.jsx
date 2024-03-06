@@ -17,19 +17,22 @@ import {
   ColumnWrap,
   IconWrap,
 } from './Column.styled';
+import { deleteColumn } from '../../../redux/board/boardOperations';
+import { useDispatch } from 'react-redux';
 
 const Column = ({ column }) => {
-  const [isColumnModalOpen, setIsColumnModalOpen] = useState(false);
+  const [isAddColumnModalOpen, setIsAddColumnModalOpen] = useState(false);
+  const [isEditColumnModalOpen, setIsEditColumnModalOpen] = useState(false);
   const [isAddCardModalOpen, setIsAddCardModalOpen] = useState(false);
   const [isEditCardModalOpen, setIsEditCardModalOpen] = useState(false);
   const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
+  const dispatch = useDispatch();
 
   const { t } = useTranslation();
 
-  const handleBoardDelete = ({ target }) => {
-    if ((target.id = 'column-delete')) {
-      //видаляємо дошку
-    }
+  const handleColumnDelete = () => {
+    dispatch(deleteColumn(column._id));
+    setIsDeleteModalShown(false);
   };
 
   return (
@@ -42,7 +45,7 @@ const Column = ({ column }) => {
               <ColumnButton
                 type="button"
                 aria-label="Edit column title"
-                onClick={() => setIsColumnModalOpen(true)}
+                onClick={() => setIsEditColumnModalOpen(true)}
               >
                 <Pencil
                   width={16}
@@ -69,14 +72,15 @@ const Column = ({ column }) => {
         </ColumnTitleWrap>
 
         <CardsList>
-          {column.cards.map(card => (
-            <li key={nanoid()}>
-              <TaskCard
-                card={card}
-                openCardModal={() => setIsEditCardModalOpen(true)}
-              />
-            </li>
-          ))}
+          {column.cards &&
+            column.cards.map(card => (
+              <li key={nanoid()}>
+                <TaskCard
+                  card={card}
+                  openCardModal={() => setIsEditCardModalOpen(true)}
+                />
+              </li>
+            ))}
         </CardsList>
 
         <AddButton type="button" onClick={() => setIsAddCardModalOpen(true)}>
@@ -87,10 +91,19 @@ const Column = ({ column }) => {
         </AddButton>
       </ColumnWrap>
 
-      {isColumnModalOpen && (
+      {isAddColumnModalOpen && (
+        <ColumnModal
+          variant="add"
+          closeModal={() => setIsAddColumnModalOpen(false)}
+          columnId={column._id}
+        />
+      )}
+      {isEditColumnModalOpen && (
         <ColumnModal
           variant="edit"
-          closeModal={() => setIsColumnModalOpen(false)}
+          closeModal={() => setIsEditColumnModalOpen(false)}
+          columnId={column._id}
+          columnName={column.title}
         />
       )}
       {isAddCardModalOpen && (
@@ -109,7 +122,7 @@ const Column = ({ column }) => {
       {isDeleteModalShown && (
         <DeleteModal
           onClose={() => setIsDeleteModalShown(false)}
-          handleBoardDelete={handleBoardDelete}
+          onConfirm={handleColumnDelete}
         />
       )}
     </>
