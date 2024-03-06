@@ -24,8 +24,13 @@ export const Input = styled.input`
   margin-bottom: 24px;
   outline: transparent;
   box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
+  transition: opacity var(--easedTransition);
 
   &:focus {
+    opacity: 1;
+  }
+
+  &:hover {
     opacity: 1;
   }
 `;

@@ -3,6 +3,7 @@ import {
   getBackgroundIcons,
   getAllBoards,
   createBoard,
+  deleteBoard,
   getOneBoard,
   filterBoard,
 } from './boardOperations';
@@ -23,23 +24,35 @@ const boardsSlice = createSlice({
       .addCase(getAllBoards.pending, handlePending)
       .addCase(getOneBoard.pending, handlePending)
       .addCase(createBoard.pending, handlePending)
-      .addCase(getBackgroundIcons.fulfilled, (state, action) => {
-        state.background = action.payload;
+      .addCase(deleteBoard.pending, handlePending)
+      .addCase(filterBoard.pending, handlePending)
+      .addCase(getBackgroundIcons.fulfilled, (state, { payload }) => {
+        state.background = payload;
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(getAllBoards.fulfilled, (state, action) => {
-        state.boards = action.payload;
+      .addCase(getAllBoards.fulfilled, (state, { payload }) => {
+        state.boards = payload;
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(getOneBoard.fulfilled, (state, action) => {
-        state.oneBoard = action.payload;
+      .addCase(getOneBoard.fulfilled, (state, { payload }) => {
+        state.oneBoard = { ...payload };
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(createBoard.fulfilled, (state, action) => {
-        state.boards.push(action.payload);
+      .addCase(createBoard.fulfilled, (state, { payload }) => {
+        state.boards.push(payload);
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(deleteBoard.fulfilled, (state, { payload }) => {
+        state.boards = state.boards.filter(board => board._id !== payload._id);
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(filterBoard.fulfilled, (state, { payload }) => {
+        state.boards = payload;
         state.isLoading = false;
         state.error = null;
       })
@@ -47,12 +60,7 @@ const boardsSlice = createSlice({
       .addCase(getAllBoards.rejected, handleRejected)
       .addCase(getOneBoard.rejected, handleRejected)
       .addCase(createBoard.rejected, handleRejected)
-      .addCase(filterBoard.pending, handlePending)
-      .addCase(filterBoard.fulfilled, (state, action) => {
-        state.boards = action.payload;
-        state.isLoading = false;
-        state.error = null;
-      })
+      .addCase(deleteBoard.rejected, handleRejected)
       .addCase(filterBoard.rejected, handleRejected);
   },
 });

@@ -36,3 +36,11 @@ export const MODAL_TRANSITION = {
 };
 
 export const TOASTER_CONFIG = { className: 'themed_toaster' };
+
+export const PROGRESS_BAR_COLORS = [
+  '#dddddd9b',
+  '#ff1900',
+  '#f6b44d',
+  '#99dab2',
+  '#008d52',
+];

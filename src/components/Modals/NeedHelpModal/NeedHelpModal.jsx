@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
 import ModalWrapper from 'components/Modals/ModalWrapper';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from 'hooks';
 import { TOASTER_CONFIG } from 'constants';
 import {
   Modalform,
@@ -12,29 +12,21 @@ import {
 } from './NeedHelpModal.styled';
 
 const NeedHelpModal = ({ showModal }) => {
-  const [email, setEmail] = useState('');
-  const [text, setText] = useState('');
   const { t } = useTranslation();
+  const { userEmail } = useAuth();
 
-  const handleSubmit = evt => {
-    evt.preventDefault();
-    console.log(email, text);
+  const handleSubmit = e => {
+    e.preventDefault();
 
-    if (email.trim() === '' || text.trim() === '') {
+    const { email, comment } = e.target.elements;
+
+    if (email.value.trim() === '' || comment.value.trim() === '') {
       toast(t('sidebar.helpModal.toast.error'), TOASTER_CONFIG);
       return;
     }
 
     toast(t('sidebar.helpModal.toast.success'), TOASTER_CONFIG);
     showModal(false);
-  };
-
-  const handleEmailChange = evt => {
-    setEmail(evt.target.value);
-  };
-
-  const handleTextChange = evt => {
-    setText(evt.target.value);
   };
 
   return (
@@ -45,15 +37,13 @@ const NeedHelpModal = ({ showModal }) => {
           <Emailinput
             type="email"
             name="email"
-            value={email}
-            onChange={handleEmailChange}
+            autoComplete="off"
             placeholder={t('sidebar.helpModal.email')}
+            defaultValue={userEmail}
           />
           <Commenttextarea
             type="text"
             name="comment"
-            value={text}
-            onChange={handleTextChange}
             placeholder={t('sidebar.helpModal.comment')}
           />
           <ButtonSend type="submit">{t('sidebar.helpModal.button')}</ButtonSend>

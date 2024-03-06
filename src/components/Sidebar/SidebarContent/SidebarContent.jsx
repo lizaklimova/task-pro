@@ -80,6 +80,7 @@ const SidebarContent = () => {
           {allBoards?.map(board => (
             <BoardLink key={board._id} to={`/home/${board._id}`}>
               <AddedBoard
+                allBoards={allBoards}
                 board={board}
                 openEditModal={() => setIsEditBoardModalShown(true)}
               />

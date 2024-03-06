@@ -76,11 +76,13 @@ const CardModal = ({ variant, closeCardModal }) => {
             name="title"
             placeholder={t('cards.modals.title')}
             defaultValue={variant === 'add' ? '' : ''}
+            autoComplete="off"
           />
           <textarea
             name="description"
             placeholder={t('cards.modals.description')}
             defaultValue={variant === 'add' ? '' : ''}
+            autoComplete="off"
           ></textarea>
 
           <label>

@@ -42,6 +42,7 @@ const BoardModal = ({ variant, closeModal }) => {
           type="text"
           placeholder={t('boards.modals.input')}
           name="title"
+          defaultValue={''}
           autoComplete="off"
         />
 

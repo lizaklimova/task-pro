@@ -16,10 +16,10 @@ const HomePage = () => {
 
   return (
     <MainContainer>
-      {!allBoards.length ? (
-        <BeforeStart />
-      ) : (
+      {allBoards.length > 0 ? (
         <Navigate to={`/home/${allBoards[0]._id}`} />
+      ) : (
+        <BeforeStart />
       )}
     </MainContainer>
   );

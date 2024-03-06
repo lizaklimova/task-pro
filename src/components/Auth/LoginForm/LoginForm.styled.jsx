@@ -60,6 +60,16 @@ export const Input = styled.input`
   border: 1px solid #bedbb0;
   border-radius: 8px;
   color: #ffffff;
+  opacity: 0.5;
+  transition: opacity var(--easedTransition);
+
+  &:focus {
+    opacity: 1;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
 
   ${({ $error }) =>
     $error &&
