@@ -21,6 +21,9 @@ const ENDPOINTS = Object.freeze({
     allCards: 'api/cards',
     oneCard: cardId => `api/cards/${cardId}`,
   },
+  email: {
+    support: 'email/support',
+  },
 });
 
 export default ENDPOINTS;
