@@ -7,7 +7,7 @@ const ENDPOINTS = Object.freeze({
   users: {
     current: 'users/current',
   },
-  backgrounds: '/api/backgrounds',
+  backgrounds: 'api/backgrounds',
   boards: {
     allBoards: 'api/boards',
     oneBoard: boardId => `api/boards/${boardId}`,

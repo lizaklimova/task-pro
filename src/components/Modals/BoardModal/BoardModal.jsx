@@ -15,13 +15,12 @@ const BoardModal = ({ variant, closeModal }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const { title, iconId } = e.target.elements;
-    // const { title, backgroundIcon, iconId } = e.target.elements;
+    const { title, backgroundIcon, iconId } = e.target.elements;
 
     const data = {
       title: title.value,
       iconId: iconId.value,
-      // backgroundId: backgroundIcon.value,
+      backgroundId: backgroundIcon.value,
     };
 
     if (variant === 'add') {
