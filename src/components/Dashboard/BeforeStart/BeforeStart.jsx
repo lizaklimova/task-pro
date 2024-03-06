@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import BoardModal from 'components/Modals/BoardModal';
+import BoardModal from 'components/Modals/BoardModal/BoardModal';
 import { Text, TextAccent } from './BeforeStart.styled';
 
 const BeforeStart = () => {

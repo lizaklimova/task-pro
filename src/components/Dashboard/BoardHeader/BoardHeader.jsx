@@ -4,7 +4,7 @@ import { FilterButton, HeaderWrap } from './BoardHeader.styled';
 import Filter from 'components/Icons/Filter';
 import Filters from '../Filters/Filters';
 
-const BoardHeader = ({ title }) => {
+const BoardHeader = ({ title, boardId }) => {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -21,7 +21,9 @@ const BoardHeader = ({ title }) => {
           {t('boards.filterButton')}
         </FilterButton>
       </HeaderWrap>
-      {isModalOpen && <Filters onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && (
+        <Filters boardId={boardId} onClose={() => setIsModalOpen(false)} />
+      )}
     </>
   );
 };

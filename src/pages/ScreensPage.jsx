@@ -20,7 +20,7 @@ const ScreensPage = () => {
 
   return (
     <MainContainer>
-      <BoardHeader title={board.title} />
+      <BoardHeader title={board.title} boardId={boardId} />
       <Dashboard board={board} />
     </MainContainer>
   );

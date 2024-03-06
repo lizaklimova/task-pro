@@ -4,6 +4,8 @@ const GitHubIcon = ({ width, height, fillColor, strokeColor }) => {
       className="icon"
       width={width || '20px'}
       height={height || '20px'}
+      fill={fillColor || '#000000'}
+      stroke={strokeColor || 'none'}
       viewBox="0 0 32 32"
       xmlns="http://www.w3.org/2000/svg"
     >

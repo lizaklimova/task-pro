@@ -56,8 +56,8 @@ export const deleteBoard = createAsyncThunk(
       const { data } = await axiosInstance.delete(
         ENDPOINTS.boards.oneBoard(boardId)
       );
-
-      return data.board;
+      console.log(data);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -84,7 +84,7 @@ export const filterBoard = createAsyncThunk(
   async ({ boardId, priority }, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(
-        ENDPOINTS.boards.boardFilter(boardId, priority)
+        ENDPOINTS.boards.boardFilter(boardId) + `?priority=${priority}`
       );
 
       return data;
