@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import ModalWrapper from 'components/Modals/ModalWrapper';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { TOASTER_CONFIG } from 'constants';
+import { support } from '../../../redux/support/support';
+import { useAuth } from 'hooks';
 import {
   Modalform,
   ModalTitle,
@@ -15,18 +18,24 @@ const NeedHelpModal = ({ showModal }) => {
   const [email, setEmail] = useState('');
   const [text, setText] = useState('');
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const { user } = useAuth();
 
-  const handleSubmit = evt => {
+  const handleSubmit = async evt => {
     evt.preventDefault();
-    console.log(email, text);
 
     if (email.trim() === '' || text.trim() === '') {
       toast(t('sidebar.helpModal.toast.error'), TOASTER_CONFIG);
       return;
     }
 
-    toast(t('sidebar.helpModal.toast.success'), TOASTER_CONFIG);
-    showModal(false);
+    try {
+      await dispatch(support({ email, text, user }));
+      toast(t('sidebar.helpModal.toast.success'), TOASTER_CONFIG);
+      showModal(false);
+    } catch (error) {
+      toast('Failed to send email', TOASTER_CONFIG);
+    }
   };
 
   const handleEmailChange = evt => {
