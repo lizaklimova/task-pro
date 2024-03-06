@@ -51,7 +51,11 @@ export const AuthLink = styled(NavLink)`
 export const FormUi = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 20px;
+
+  label {
+    position: relative;
+  }
 `;
 
 export const Input = styled.input`
@@ -116,7 +120,9 @@ export const SubmitBtn = styled.button`
 `;
 
 export const ErrorPara = styled.span`
-  display: inline;
-  font-size: 8px;
+  position: absolute;
+  left: 0;
+  bottom: -14px;
+  font-size: 7px;
   color: #fc8181;
 `;

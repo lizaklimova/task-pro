@@ -73,67 +73,75 @@ const RegisterForm = () => {
         </AuthList>
 
         <FormUi onSubmit={handleSubmit} autoComplete="off">
-          <Input
-            value={values.name}
-            onBlur={handleBlur}
-            onChange={handleChange}
-            $error={errors.name && touched.name}
-            name="name"
-            placeholder={t('authForms.name')}
-          />
-          {errors.name && touched.name && <ErrorPara>{errors.name}</ErrorPara>}
-          <Input
-            value={values.email}
-            onBlur={handleBlur}
-            onChange={handleChange}
-            $error={errors.email && touched.email}
-            name="email"
-            placeholder={t('authForms.email')}
-            type="email"
-          />
-          {errors.email && touched.email && (
-            <ErrorPara>{errors.email}</ErrorPara>
-          )}
-
-          <PassInputWrap>
+          <label>
             <Input
-              value={values.password}
-              onChange={e => {
-                setPwd(e.target.value);
-                handleChange(e);
-              }}
+              value={values.name}
               onBlur={handleBlur}
-              $error={errors.password && touched.password}
-              name="password"
-              placeholder={t('authForms.password')}
-              type={visible ? 'text' : 'password'}
+              onChange={handleChange}
+              $error={errors.name && touched.name}
+              name="name"
+              placeholder={t('authForms.name')}
             />
-            <HideBtn
-              type="button"
-              onClick={() => {
-                setVisible(!visible);
-              }}
-            >
-              {visible ? (
-                <Eye
-                  width={20}
-                  height={20}
-                  fillColor={'none'}
-                  strokeColor={`#fff`}
-                />
-              ) : (
-                <EyeCrossed
-                  width={20}
-                  height={20}
-                  strokeColor={`#fff`}
-                  fillColor={'none'}
-                />
-              )}
-            </HideBtn>
-          </PassInputWrap>
-          {errors.password && touched.password && (
-            <ErrorPara>{errors.password}</ErrorPara>
-          )}
+            {errors.name && touched.name && (
+              <ErrorPara>{errors.name}</ErrorPara>
+            )}
+          </label>
+          <label>
+            <Input
+              value={values.email}
+              onBlur={handleBlur}
+              onChange={handleChange}
+              $error={errors.email && touched.email}
+              name="email"
+              placeholder={t('authForms.email')}
+              type="email"
+            />
+            {errors.email && touched.email && (
+              <ErrorPara>{errors.email}</ErrorPara>
+            )}
+          </label>
+
+          <label>
+            <PassInputWrap>
+              <Input
+                value={values.password}
+                onChange={e => {
+                  setPwd(e.target.value);
+                  handleChange(e);
+                }}
+                onBlur={handleBlur}
+                $error={errors.password && touched.password}
+                name="password"
+                placeholder={t('authForms.password')}
+                type={visible ? 'text' : 'password'}
+              />
+              <HideBtn
+                type="button"
+                onClick={() => {
+                  setVisible(!visible);
+                }}
+              >
+                {visible ? (
+                  <Eye
+                    width={20}
+                    height={20}
+                    fillColor={'none'}
+                    strokeColor={`#fff`}
+                  />
+                ) : (
+                  <EyeCrossed
+                    width={20}
+                    height={20}
+                    strokeColor={`#fff`}
+                    fillColor={'none'}
+                  />
+                )}
+              </HideBtn>
+            </PassInputWrap>
+            {errors.password && touched.password && (
+              <ErrorPara>{errors.password}</ErrorPara>
+            )}
+          </label>
 
           {pwd && (
             <PasswordStrengthBar
