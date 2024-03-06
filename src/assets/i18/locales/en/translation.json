@@ -73,7 +73,8 @@
       "editTitle": "Edit column",
       "input": "Title",
       "addButton": "Add",
-      "editButton": "Edit"
+      "editButton": "Edit",
+      "toast.error": "Column can't exist without a title 😕"
     }
   },
   "cards": {

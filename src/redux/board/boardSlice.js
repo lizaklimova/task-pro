@@ -6,6 +6,9 @@ import {
   deleteBoard,
   getOneBoard,
   filterBoard,
+  addColumn,
+  editColumn,
+  deleteColumn,
 } from './boardOperations';
 import { handlePending, handleRejected } from '../helpers';
 
@@ -26,6 +29,9 @@ const boardsSlice = createSlice({
       .addCase(createBoard.pending, handlePending)
       .addCase(deleteBoard.pending, handlePending)
       .addCase(filterBoard.pending, handlePending)
+      .addCase(addColumn.pending, handlePending)
+      .addCase(editColumn.pending, handlePending)
+      .addCase(deleteColumn.pending, handlePending)
       .addCase(getBackgroundIcons.fulfilled, (state, { payload }) => {
         state.background = payload;
         state.isLoading = false;
@@ -58,12 +64,38 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
+      .addCase(addColumn.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.oneBoard.columns.push(payload.column);
+      })
+      .addCase(editColumn.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        const editedItemIndex = state.oneBoard.columns.findIndex(
+          ({ _id }) => _id === payload.column._id
+        );
+        state.oneBoard.columns = state.oneBoard.columns.with(
+          editedItemIndex,
+          payload.column
+        );
+      })
+      .addCase(deleteColumn.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.oneBoard.columns = state.oneBoard.columns.filter(
+          ({ _id }) => _id !== payload
+        );
+      })
       .addCase(getBackgroundIcons.rejected, handleRejected)
       .addCase(getAllBoards.rejected, handleRejected)
       .addCase(getOneBoard.rejected, handleRejected)
       .addCase(createBoard.rejected, handleRejected)
       .addCase(deleteBoard.rejected, handleRejected)
-      .addCase(filterBoard.rejected, handleRejected);
+      .addCase(filterBoard.rejected, handleRejected)
+      .addCase(addColumn.rejected, handleRejected)
+      .addCase(editColumn.rejected, handleRejected)
+      .addCase(deleteColumn.rejected, handleRejected);
   },
 });
 
