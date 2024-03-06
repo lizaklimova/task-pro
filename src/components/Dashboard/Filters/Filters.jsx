@@ -25,7 +25,7 @@ const Filters = ({ boardId }) => {
     setFilterValue(newValue);
     console.log(newValue);
     console.log(boardId);
-    dispatch(filterBoard({ boardId, priority: newValue }));
+    dispatch(filterBoard({ boardId: boardId, priority: newValue }));
     setIsModalOpen(false);
   };
 

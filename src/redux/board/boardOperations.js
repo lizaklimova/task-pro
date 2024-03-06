@@ -84,7 +84,7 @@ export const filterBoard = createAsyncThunk(
   async ({ boardId, priority }, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(
-        ENDPOINTS.boards.boardFilter(boardId, priority)
+        ENDPOINTS.boards.boardFilter(boardId) + `?priority=${priority}`
       );
 
       return data;
