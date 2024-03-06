@@ -43,7 +43,8 @@ export const authSlice = createSlice({
       })
       .addCase(editUser.fulfilled, (state, { payload }) => {
         console.log(payload);
-        state.user = { ...state.user,...payload };
+        // const oldUser = (state.user);
+        state.user = { ...state.user, ...payload.user };
         state.isLoggedIn = true;
         state.isLoading = false;
       })

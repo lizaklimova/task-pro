@@ -69,11 +69,10 @@ export const refreshUser = createAsyncThunk(
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('There is no user token');
     }
-
     try {
       setAuthorizationHeader(persistedToken);
       const { data } = await axiosInstance.get(ENDPOINTS.users.current);
-      return data;
+      return data.user;
     } catch ({ message }) {
       return thunkAPI.rejectWithValue(message);
     }
@@ -84,7 +83,8 @@ export const editUser = createAsyncThunk(
   async (dataUser, thunkAPI) => {
     try {
       console.log(dataUser);
-      const { data } = await axiosInstance.patch(ENDPOINTS.users.current, dataUser);
+      // multipart додати для додавання аватарки
+      const { data } = await axiosInstance.patch('users/current', dataUser);
       console.log(data);
       return data;
     } catch (error) {

@@ -22,10 +22,6 @@ import { editUser } from '../../../redux/auth/authOperations';
 const UserModal = () => {
 const dispatch = useDispatch();
 
-  const data = useSelector(selectUsername);
-  
-    console.log(data);
-
   const [visible, setVisible] = useState(false);
   // const [state, setState] = useState({});
   const [avatar_url, setAvatar_url] = useState(useSelector(selectUserAvatar)); //те що приходить з беку
@@ -59,15 +55,11 @@ const dispatch = useDispatch();
 
     function editProfile(event) {
       event.preventDefault();
-      // setState({
-      //   ...state,
-      //   image,
-      //   name,
-      //   email,
-      //   password,
-      // });
-      // console.log(state);
-      dispatch(editUser({ user: { avatar_url, name, email, password } }));
+      const user = { avatar_url, name, email, password };
+      if (!password) {
+        user.password = undefined;
+      }
+      dispatch(editUser(user));
     }
     // console.log(state);
     // console.log(image);
