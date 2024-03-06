@@ -1,27 +1,3 @@
-// import ModalWrapper from 'components/Modals/ModalWrapper/ModalWrapper';
-
-// import DevSwiper from './DevList';
-
-// const DevModal = ({ isOpen, onClose }) => {
-//   return (
-//     <>
-//       {isOpen && (
-//         <ModalWrapper
-//           width={'900px'}
-//           onClose={() => {
-//             document.body.style.overflow = '';
-//             onClose();
-//           }}
-//         >
-//           <DevSwiper />
-//         </ModalWrapper>
-//       )}
-//     </>
-//   );
-// };
-
-// export default DevModal;
-
 import ModalWrapper from 'components/Modals/ModalWrapper/ModalWrapper';
 import developers from './developers_info.json';
 import DevList from './DevList';

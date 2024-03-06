@@ -7,23 +7,24 @@ import {
   DevRole,
   DevLinkContainer,
 } from './DevItem.styled';
-
 import LinkedInIcon from 'components/Icons/Linkedin';
 import GitHubIcon from 'components/Icons/GitHub';
 
 const DevItem = ({ developer }) => {
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
-  const { nameEn, nameUk, photo, LinkedIn, GitHub, roleEn, roleUk } = developer;
-  const name = t('name') === 'en' ? nameEn : nameUk;
-  const role = t('role') === 'en' ? roleEn : roleUk;
+  const { name, photo, LinkedIn, GitHub, role } = developer;
+
+  const currentLanguage = i18n.language;
+
+  const localizedName = name[currentLanguage];
+  const localizedRole = role[currentLanguage];
 
   return (
     <DevContainer>
       <DevImage src={require(`${photo}`)} alt={name} />
-
-      <DevName>{name}</DevName>
-      <DevRole>{role}</DevRole>
+      <DevName>{localizedName}</DevName>
+      <DevRole>{localizedRole}</DevRole>
       <DevLinkContainer>
         <DevLink href={LinkedIn} target="_blank">
           <LinkedInIcon width={18} height={18} />
