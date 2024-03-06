@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';
@@ -6,10 +6,12 @@ import { BacksList } from './BacksList';
 import Plus from 'components/Icons/Plus';
 import { Form, Title, Input, Text, Button, Span } from './BoardModal.styled';
 import { createBoard } from '../../../redux/board/boardOperations';
+import { selectOneBoard } from '../../../redux/board/boardSelectors';
 
 const BoardModal = ({ variant, closeModal }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const oneBoard = useSelector(selectOneBoard);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -42,7 +44,8 @@ const BoardModal = ({ variant, closeModal }) => {
           type="text"
           placeholder={t('boards.modals.input')}
           name="title"
-          defaultValue={''}
+          // value={variant === 'add' ? '' : oneBoard.title}
+          defaultValue={variant === 'add' ? '' : oneBoard.title}
           autoComplete="off"
         />
 
