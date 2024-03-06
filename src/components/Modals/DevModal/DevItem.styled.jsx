@@ -22,7 +22,7 @@ export const DevName = styled.h2`
 
 export const DevRole = styled.p`
   font-size: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   text-align: center;
 `;
 
@@ -31,7 +31,7 @@ export const DevImage = styled.img`
   height: 150px;
   border: 2px solid #ccc;
   border-radius: 50%;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 `;
 
 export const DevLinkContainer = styled.div`
@@ -43,5 +43,5 @@ export const DevLink = styled.a`
   display: flex;
   align-items: center;
   gap: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 `;

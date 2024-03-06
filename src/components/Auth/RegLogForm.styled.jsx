@@ -51,10 +51,15 @@ export const AuthLink = styled(NavLink)`
 export const FormUi = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 20px;
+
+  label {
+    position: relative;
+  }
 `;
 
 export const Input = styled.input`
+  width: 100%;
   padding: 14px 18px;
   background: transparent;
   border: 1px solid #bedbb0;
@@ -78,15 +83,29 @@ export const Input = styled.input`
   `}
 `;
 
+export const PassInputWrap = styled.div`
+  position: relative;
+`;
+
+export const HideBtn = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-50%, 50%);
+  opacity: 0.4;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
 export const SubmitBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
   padding: 14px 0;
+  font-weight: 500;
   background: #bedbb0;
   border-radius: 8px;
-  font-weight: 500;
   color: #161616;
   transition: background var(--easedTransition);
 
@@ -96,11 +115,14 @@ export const SubmitBtn = styled.button`
 
   &:disabled {
     opacity: 0.3;
+    cursor: not-allowed;
   }
 `;
 
 export const ErrorPara = styled.span`
-  display: inline;
-  font-size: 8px;
+  position: absolute;
+  left: 0;
+  bottom: -14px;
+  font-size: 7px;
   color: #fc8181;
 `;

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import PasswordStrengthBar from 'react-password-strength-bar';
@@ -15,13 +16,20 @@ import {
   Input,
   SubmitBtn,
   ErrorPara,
-} from './RegisterForm.styled';
-import { useState } from 'react';
-console.log(PROGRESS_BAR_COLORS);
+  PassInputWrap,
+  HideBtn,
+} from '../RegLogForm.styled';
+import Eye from 'components/Icons/Eye';
+import EyeCrossed from 'components/Icons/EyeCrossed';
+import { useTranslation } from 'react-i18next';
+
 const RegisterForm = () => {
+  const [visible, setVisible] = useState(false);
   const [pwd, setPwd] = useState('');
   const dispatch = useDispatch();
   const { isLoading } = useAuth();
+
+  const { t } = useTranslation();
 
   const onSubmit = async (values, actions) => {
     const formData = {
@@ -57,48 +65,83 @@ const RegisterForm = () => {
       <FormWrap>
         <AuthList>
           <li>
-            <AuthLink to={`/auth/register`}>Registration</AuthLink>
+            <AuthLink to={`/auth/register`}>{t('authForms.regTitle')}</AuthLink>
           </li>
           <li>
-            <AuthLink to={`/auth/login`}>Log In</AuthLink>
+            <AuthLink to={`/auth/login`}>{t('authForms.loginTitle')}</AuthLink>
           </li>
         </AuthList>
 
         <FormUi onSubmit={handleSubmit} autoComplete="off">
-          <Input
-            value={values.name}
-            onBlur={handleBlur}
-            onChange={handleChange}
-            $error={errors.name && touched.name}
-            name="name"
-            placeholder="Enter your name"
-          />
-          {errors.name && touched.name && <ErrorPara>{errors.name}</ErrorPara>}
-          <Input
-            value={values.email}
-            onBlur={handleBlur}
-            onChange={handleChange}
-            $error={errors.email && touched.email}
-            name="email"
-            placeholder="Enter your email"
-            type="email"
-          />
-          {errors.email && touched.email && (
-            <ErrorPara>{errors.email}</ErrorPara>
-          )}
+          <label>
+            <Input
+              value={values.name}
+              onBlur={handleBlur}
+              onChange={handleChange}
+              $error={errors.name && touched.name}
+              name="name"
+              placeholder={t('authForms.name')}
+            />
+            {errors.name && touched.name && (
+              <ErrorPara>{errors.name}</ErrorPara>
+            )}
+          </label>
+          <label>
+            <Input
+              value={values.email}
+              onBlur={handleBlur}
+              onChange={handleChange}
+              $error={errors.email && touched.email}
+              name="email"
+              placeholder={t('authForms.email')}
+              type="email"
+            />
+            {errors.email && touched.email && (
+              <ErrorPara>{errors.email}</ErrorPara>
+            )}
+          </label>
 
-          <Input
-            value={values.password}
-            onBlur={handleBlur}
-            onChange={e => {
-              setPwd(e.target.value);
-              handleChange(e);
-            }}
-            $error={errors.password && touched.password}
-            name="password"
-            placeholder="Create a password"
-            type="password"
-          />
+          <label>
+            <PassInputWrap>
+              <Input
+                value={values.password}
+                onChange={e => {
+                  setPwd(e.target.value);
+                  handleChange(e);
+                }}
+                onBlur={handleBlur}
+                $error={errors.password && touched.password}
+                name="password"
+                placeholder={t('authForms.password')}
+                type={visible ? 'text' : 'password'}
+              />
+              <HideBtn
+                type="button"
+                onClick={() => {
+                  setVisible(!visible);
+                }}
+              >
+                {visible ? (
+                  <Eye
+                    width={20}
+                    height={20}
+                    fillColor={'none'}
+                    strokeColor={`#fff`}
+                  />
+                ) : (
+                  <EyeCrossed
+                    width={20}
+                    height={20}
+                    strokeColor={`#fff`}
+                    fillColor={'none'}
+                  />
+                )}
+              </HideBtn>
+            </PassInputWrap>
+            {errors.password && touched.password && (
+              <ErrorPara>{errors.password}</ErrorPara>
+            )}
+          </label>
 
           {pwd && (
             <PasswordStrengthBar
@@ -108,15 +151,11 @@ const RegisterForm = () => {
             />
           )}
 
-          {errors.password && touched.password && (
-            <ErrorPara>{errors.password}</ErrorPara>
-          )}
-
           <SubmitBtn type="submit" disabled={isLoading}>
             {isLoading ? (
               <SmallLoader width="25" height="25" />
             ) : (
-              'Register Now'
+              t('authForms.regButton')
             )}
           </SubmitBtn>
         </FormUi>

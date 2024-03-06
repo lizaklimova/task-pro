@@ -11,8 +11,6 @@ import {
 import LinkedInIcon from 'components/Icons/Linkedin';
 import GitHubIcon from 'components/Icons/GitHub';
 
-// import defaultImage from './no-photo.png';
-
 const DevItem = ({ developer }) => {
   const { t } = useTranslation();
 
@@ -28,10 +26,10 @@ const DevItem = ({ developer }) => {
       <DevRole>{role}</DevRole>
       <DevLinkContainer>
         <DevLink href={LinkedIn} target="_blank">
-          <LinkedInIcon width={20} height={20} />
+          <LinkedInIcon width={18} height={18} />
         </DevLink>
         <DevLink href={GitHub} target="_blank">
-          <GitHubIcon width={20} height={20} />
+          <GitHubIcon width={18} height={18} fillColor="var(--text-color)" />
         </DevLink>
       </DevLinkContainer>
     </DevContainer>

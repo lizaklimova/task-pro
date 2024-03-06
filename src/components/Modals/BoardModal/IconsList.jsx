@@ -25,7 +25,7 @@ export const IconsList = () => {
             <IconLabel>
               <InputRadio
                 type="radio"
-                name="icon"
+                name="iconId"
                 value={item.id}
                 checked={selectedIconId === item.id}
                 onChange={() => handleIconChange(item.id)}

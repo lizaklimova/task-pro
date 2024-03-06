@@ -6,7 +6,6 @@ export const getBackgroundIcons = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(ENDPOINTS.backgrounds);
-
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -31,9 +30,15 @@ export const createBoard = createAsyncThunk(
   'boards/createBoard',
   async (newBoard, thunkAPI) => {
     try {
+      const formData = new FormData();
+      const { title, iconId } = newBoard;
+      formData.append('title', title);
+      formData.append('iconId', iconId);
+
       const { data } = await axiosInstance.post(
         ENDPOINTS.boards.allBoards,
-        newBoard
+        formData,
+        { headers: { 'Content-Type': 'multipart/form-data' } }
       );
 
       return data.board;
@@ -50,8 +55,8 @@ export const deleteBoard = createAsyncThunk(
       const { data } = await axiosInstance.delete(
         ENDPOINTS.boards.oneBoard(boardId)
       );
-
-      return data.board;
+      console.log(data);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -78,7 +83,7 @@ export const filterBoard = createAsyncThunk(
   async ({ boardId, priority }, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(
-        ENDPOINTS.boards.boardFilter(boardId, priority)
+        ENDPOINTS.boards.boardFilter(boardId) + `?priority=${priority}`
       );
 
       return data;
