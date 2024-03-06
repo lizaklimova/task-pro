@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from 'hooks';
+// import { useAuth } from 'hooks';
 import ModalWrapper from 'components/Modals/ModalWrapper';
 import UserModal from 'components/Modals/UserModal/UserModal';
 import { Button, UserContainer, UserName } from './Profile.styled';
@@ -9,7 +9,7 @@ import { selectUsername } from '../../redux/auth/authSelectors';
 
 const Profile = () => {
   const [shownModal, setShownModal] = useState(false);
-  const nameUser = useSelector(selectUsername)
+  const nameUser = useSelector(selectUsername);
   // const { username } = useAuth();
 
   return (
