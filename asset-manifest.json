@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/task-pro/static/css/main.ce3956dc.css",
-    "main.js": "/task-pro/static/js/main.0c770b18.js",
+    "main.js": "/task-pro/static/js/main.4260f761.js",
     "static/js/955.0bc27f06.chunk.js": "/task-pro/static/js/955.0bc27f06.chunk.js",
     "static/js/23.90a9aede.chunk.js": "/task-pro/static/js/23.90a9aede.chunk.js",
-    "static/js/598.62c45686.chunk.js": "/task-pro/static/js/598.62c45686.chunk.js",
-    "static/js/49.375f2754.chunk.js": "/task-pro/static/js/49.375f2754.chunk.js",
+    "static/js/598.ac340bc2.chunk.js": "/task-pro/static/js/598.ac340bc2.chunk.js",
+    "static/js/49.96592119.chunk.js": "/task-pro/static/js/49.96592119.chunk.js",
     "static/js/498.ef28c79f.chunk.js": "/task-pro/static/js/498.ef28c79f.chunk.js",
     "static/css/148.d230bf78.chunk.css": "/task-pro/static/css/148.d230bf78.chunk.css",
     "static/js/148.55f98634.chunk.js": "/task-pro/static/js/148.55f98634.chunk.js",
@@ -41,11 +41,11 @@
     "index.html": "/task-pro/index.html",
     "static/media/getFetch.cjs": "/task-pro/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.ce3956dc.css.map": "/task-pro/static/css/main.ce3956dc.css.map",
-    "main.0c770b18.js.map": "/task-pro/static/js/main.0c770b18.js.map",
+    "main.4260f761.js.map": "/task-pro/static/js/main.4260f761.js.map",
     "955.0bc27f06.chunk.js.map": "/task-pro/static/js/955.0bc27f06.chunk.js.map",
     "23.90a9aede.chunk.js.map": "/task-pro/static/js/23.90a9aede.chunk.js.map",
-    "598.62c45686.chunk.js.map": "/task-pro/static/js/598.62c45686.chunk.js.map",
-    "49.375f2754.chunk.js.map": "/task-pro/static/js/49.375f2754.chunk.js.map",
+    "598.ac340bc2.chunk.js.map": "/task-pro/static/js/598.ac340bc2.chunk.js.map",
+    "49.96592119.chunk.js.map": "/task-pro/static/js/49.96592119.chunk.js.map",
     "498.ef28c79f.chunk.js.map": "/task-pro/static/js/498.ef28c79f.chunk.js.map",
     "148.d230bf78.chunk.css.map": "/task-pro/static/css/148.d230bf78.chunk.css.map",
     "148.55f98634.chunk.js.map": "/task-pro/static/js/148.55f98634.chunk.js.map",
@@ -53,6 +53,6 @@
   },
   "entrypoints": [
     "static/css/main.ce3956dc.css",
-    "static/js/main.0c770b18.js"
+    "static/js/main.4260f761.js"
   ]
 }
