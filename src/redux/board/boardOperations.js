@@ -64,21 +64,6 @@ export const deleteBoard = createAsyncThunk(
   }
 );
 
-export const deleteBoard = createAsyncThunk(
-  'boards/deleteBoard',
-  async (boardId, thunkAPI) => {
-    try {
-      const { data } = await axiosInstance.delete(
-        ENDPOINTS.boards.oneBoard(boardId)
-      );
-
-      return data.board;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
 export const getOneBoard = createAsyncThunk(
   'boards/getOneBoard',
   async (boardId, thunkAPI) => {

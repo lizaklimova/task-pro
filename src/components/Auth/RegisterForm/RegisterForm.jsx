@@ -49,23 +49,16 @@ const RegisterForm = () => {
     actions.resetForm();
   };
 
-  const {
-    values,
-    errors,
-    touched,
-    isSubmitting,
-    handleBlur,
-    handleChange,
-    handleSubmit,
-  } = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      password: '',
-    },
-    validationSchema: registerSchema,
-    onSubmit,
-  });
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues: {
+        name: '',
+        email: '',
+        password: '',
+      },
+      validationSchema: registerSchema,
+      onSubmit,
+    });
 
   return (
     <Background>
