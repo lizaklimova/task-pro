@@ -6,7 +6,7 @@ import { selectBoards } from '../../../redux/board/boardSelectors';
 import plantImg from 'assets/images/sidebar/plant.png';
 import Lightning from 'components/Icons/Lightning';
 import LogOut from 'components/Icons/LogOut';
-import BoardModal from 'components/Modals/BoardModal';
+import BoardModal from 'components/Modals/BoardModal/BoardModal';
 import NeedHelp from 'components/Sidebar/NeedHelp';
 import Plus from 'components/Icons/Plus';
 import AddedBoard from '../AddedBoard';
