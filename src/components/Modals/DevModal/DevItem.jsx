@@ -27,10 +27,10 @@ const DevItem = ({ developer }) => {
       <DevRole>{localizedRole}</DevRole>
       <DevLinkContainer>
         <DevLink href={LinkedIn} target="_blank">
-          <LinkedInIcon width={18} height={18} />
+          <LinkedInIcon />
         </DevLink>
         <DevLink href={GitHub} target="_blank">
-          <GitHubIcon width={18} height={18} fillColor="var(--text-color)" />
+          <GitHubIcon fillColor="var(--text-color)" />
         </DevLink>
       </DevLinkContainer>
     </DevContainer>

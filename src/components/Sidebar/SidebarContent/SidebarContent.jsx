@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../../redux/auth/authOperations';
@@ -30,15 +30,29 @@ import {
   MyBoard,
   DevsBtn,
 } from './SidebarContent.styled';
+import SwiperDevModal from 'components/Modals/DevModal/SwiperDevModal';
 
 const SidebarContent = () => {
   const [isAddBoardModalShown, setIsAddBoardModalShown] = useState(false);
   const [isEditBoardModalShown, setIsEditBoardModalShown] = useState(false);
   const [isDevModalOpen, setIsDevModalOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const allBoards = useSelector(selectBoards);
   const dispatch = useDispatch();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <Container>
@@ -127,10 +141,23 @@ const SidebarContent = () => {
           closeModal={() => setIsEditBoardModalShown(false)}
         />
       )}
-      <DevModal
+      {/* <DevModal
         isOpen={isDevModalOpen}
         onClose={() => setIsDevModalOpen(false)}
-      />
+      /> */}
+
+      {windowWidth < 768 ? ( // Умова для відображення SwiperDevModal
+        <SwiperDevModal
+          isOpen={isDevModalOpen}
+          onClose={() => setIsDevModalOpen(false)}
+        />
+      ) : (
+        // Умова для відображення DevModal
+        <DevModal
+          isOpen={isDevModalOpen}
+          onClose={() => setIsDevModalOpen(false)}
+        />
+      )}
     </Container>
   );
 };

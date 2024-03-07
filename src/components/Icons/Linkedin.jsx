@@ -1,9 +1,10 @@
 const LinkedInIcon = ({ width, height, fillColor, strokeColor }) => {
+  const iconSize = window.innerWidth > 768 ? '18px' : '24px';
   return (
     <svg
       className="icon"
-      width={width || '20px'}
-      height={height || '20px'}
+      width={width || iconSize}
+      height={height || iconSize}
       viewBox="0 0 32 32"
       xmlns="http://www.w3.org/2000/svg"
     >

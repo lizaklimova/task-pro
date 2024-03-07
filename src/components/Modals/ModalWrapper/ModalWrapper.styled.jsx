@@ -26,14 +26,16 @@ export const ModalContainer = styled(motion.div)`
   color: var(--text-color);
   background: var(--modal-background);
   transition: all var(--cubicTransition);
-  height: ${({ $developers }) => ($developers ? '90%' : 'unset')};
-  overflow-y: ${({ $developers }) => ($developers ? 'scroll' : 'visible')};
+  height: ${({ $developers }) => ($developers ? '50%' : 'unset')};
+  width: ${({ $developers }) => ($developers ? '90%' : '300px')};
+  // overflow-y: ${({ $developers }) => ($developers ? 'scroll' : 'visible')};
 
   @media screen and (min-width: 375px) {
-    width: ${({ $developers }) => ($developers ? '40%' : '335px')};
+    width: ${({ $developers }) => ($developers ? '80%' : '335px')};
   }
 
   @media screen and (min-width: 768px) {
+    height: ${({ $developers }) => ($developers ? '90%' : 'unset')};
     width: ${({ $developers }) => ($developers ? '730px' : '350px')};
     width: ${props =>
       props.$containerWidth ? `${props.$containerWidth}px` : '350px'};
