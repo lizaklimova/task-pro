@@ -17,6 +17,7 @@ import {
   Button,
   Span,
 } from './BoardModal.styled';
+import toast from 'react-hot-toast';
 
 const BoardModal = ({ variant, closeModal }) => {
   const [errorMsg, setErrorMsg] = useState(null);
@@ -34,17 +35,24 @@ const BoardModal = ({ variant, closeModal }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const { title, backgroundIcon, iconId } = e.target.elements;
+    const { title, background, iconId } = e.target.elements;
+
+    if (!title.value.trim()) {
+      return toast(t('boards.modals.toast.error'));
+    }
 
     const data = {
       title: title.value,
       iconId: iconId.value,
-      backgroundId: backgroundIcon.value,
+      backgroundId: background.value,
     };
 
     if (variant === 'add') {
       dispatch(createBoard(data));
+      toast(t('boards.modals.toast.add.success'));
     } else {
+      // dispatch(updateBoard(data));
+      //  toast(t('boards.modals.toast.edit.success'));
     }
 
     return closeModal();

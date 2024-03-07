@@ -19,7 +19,7 @@ import {
 
 export const BacksList = () => {
   const [selectedBackId, setSelectedBackId] = useState(
-    '65e717589898b0e904e16734'
+    '65e476ee9e0727c033dddb93'
   );
   const isLoading = useSelector(selectIsLoading);
   const backgroundIcons = useSelector(selectBackgroundIcons);
@@ -49,7 +49,7 @@ export const BacksList = () => {
             <BackLabel>
               <BackInputRadio
                 type="radio"
-                name="backgroundIcon"
+                name="background"
                 value={item._id}
                 checked={selectedBackId === item._id}
                 onChange={() => handleBackChange(item._id)}
