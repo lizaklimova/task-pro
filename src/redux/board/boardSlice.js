@@ -58,6 +58,7 @@ const boardsSlice = createSlice({
         // state.oneBoard.title = payload.title;
         // state.oneBoard.backgroundId = payload.backgroundId;
         // state.oneBoard.iconId = payload.iconId;
+        console.log(payload);
         state.oneBoard = { ...state.oneBoard, ...payload };
         state.boards = state.boards.map(board =>
           board._id === payload._id ? payload : board
