@@ -34,6 +34,7 @@ const NeedHelpModal = ({ showModal }) => {
       toast(t('sidebar.helpModal.toast.long'), TOASTER_CONFIG);
       return;
     }
+
     try {
       dispatch(support({ email, text }));
       toast(t('sidebar.helpModal.toast.success'), TOASTER_CONFIG);
