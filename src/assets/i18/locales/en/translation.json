@@ -63,7 +63,10 @@
       "background": "Background",
       "input": "Title",
       "newButton": "Create",
-      "editButton": "Edit"
+      "editButton": "Edit",
+      "toast.error": "Enter title to create a board ❗️",
+      "toast.add.success": "Board was created successfully ✅",
+      "toast.edit.success": "Board was edited successfully ✅"
     }
   },
   "columns": {

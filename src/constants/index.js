@@ -44,3 +44,5 @@ export const PROGRESS_BAR_COLORS = [
   '#99dab2',
   '#008d52',
 ];
+
+export const DEFAULT_BACKGROUND_ID = '65e476ee9e0727c033dddb93';

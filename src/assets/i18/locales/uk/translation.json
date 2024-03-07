@@ -63,7 +63,10 @@
       "background": "Фон",
       "input": "Назва",
       "newButton": "Створити",
-      "editButton": "Редагувати"
+      "editButton": "Редагувати",
+      "toast.error": "Введіть назву дошки ❗️",
+      "toast.add.success": "Дошку створено успішно ✅",
+      "toast.edit.success": "Дошку відредаговано ✅"
     }
   },
   "columns": {
