@@ -134,8 +134,21 @@ export const BoardLink = styled(NavLink)`
   align-items: center;
   padding-top: 20px;
   padding-bottom: 20px;
+  opacity: 0.5;
+
+  & #change-container {
+    display: none;
+  }
 
   &.active {
+    opacity: 1;
+    padding: 0;
+    background-color: var(--sidebar-active-board);
+
+    & #change-container {
+      display: flex;
+    }
+
     &::before {
       content: '';
       display: block;
@@ -144,8 +157,6 @@ export const BoardLink = styled(NavLink)`
       height: 61px;
       background: var(--sidebar-before);
     }
-    padding: 0;
-    background-color: var(--sidebar-active-board);
   }
 `;
 

@@ -1,16 +1,17 @@
-import { useRef, useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 // import { addCard, editCard } from '../../../redux/cards/cardsOperations';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { LABEL_ARR, TOASTER_CONFIG } from 'constants';
-import { makeValidDate } from 'helpers';
+import { makeValidDate, validateInputMaxLength } from 'helpers';
 import ModalWrapper from 'components/Modals/ModalWrapper';
 import Calendar from 'components/Calendar';
 import Plus from 'components/Icons/Plus';
 import {
   CardModalContent,
   CardForm,
+  ErrorLabel,
   LabelRadioList,
   RadioBtn,
   LabelRadioLabel,
@@ -22,10 +23,17 @@ const CardModal = ({ variant, closeCardModal }) => {
   const [labelColor, setLabelColor] = useState('gray');
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [selectedDate, setSelectedDay] = useState(new Date());
-
-  const { t } = useTranslation();
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [errorClassName, setErrorClassName] = useState('');
 
   const datePickerRef = useRef(null);
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    titleRef.current.focus();
+  }, []);
+
+  const { t } = useTranslation();
 
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -71,13 +79,21 @@ const CardModal = ({ variant, closeCardModal }) => {
         </p>
 
         <CardForm onSubmit={handleFormSubmit}>
-          <input
-            type="text"
-            name="title"
-            placeholder={t('cards.modals.title')}
-            defaultValue={variant === 'add' ? '' : ''}
-            autoComplete="off"
-          />
+          <ErrorLabel>
+            <input
+              className={errorClassName}
+              type="text"
+              name="title"
+              placeholder={t('cards.modals.title')}
+              defaultValue={variant === 'add' ? '' : ''}
+              autoComplete="off"
+              maxLength={25}
+              onChange={e =>
+                validateInputMaxLength(e, setErrorMsg, setErrorClassName)
+              }
+            />
+            {errorMsg && <p>{errorMsg}</p>}
+          </ErrorLabel>
           <textarea
             name="description"
             placeholder={t('cards.modals.description')}

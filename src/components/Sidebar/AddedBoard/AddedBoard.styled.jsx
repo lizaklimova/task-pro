@@ -10,14 +10,17 @@ export const BoardBoxInfo = styled.div`
 
 export const NameBox = styled.div`
   display: flex;
+  align-items: center;
   gap: 10px;
   font-weight: 500;
   color: var(--sidebar-text);
+  word-break: break-all;
 `;
 
 export const ChangeBox = styled.div`
   display: flex;
   gap: 8px;
+  margin-left: 5px;
 `;
 
 export const ChangeIcons = styled.button`
