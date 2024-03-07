@@ -55,16 +55,13 @@ const boardsSlice = createSlice({
         state.error = null;
       })
       .addCase(updateBoard.fulfilled, (state, { payload }) => {
-        console.log(payload);
-        console.log(state);
-        state.oneBoard.title = payload.title;
-        // state.boards = state.boards.filter(item => item._id !== payload._id);
-        // state.boards = [state.boards.map(item => {
-        //   if (item._id === payload._id) {
-        //     item = payload;
-        //   }
-        //   return;
-        // });]
+        // state.oneBoard.title = payload.title;
+        // state.oneBoard.backgroundId = payload.backgroundId;
+        // state.oneBoard.iconId = payload.iconId;
+        state.oneBoard = { ...state.oneBoard, ...payload };
+        state.boards = state.boards.map(board =>
+          board._id === payload._id ? payload : board
+        );
         state.isLoading = false;
         state.error = null;
       })

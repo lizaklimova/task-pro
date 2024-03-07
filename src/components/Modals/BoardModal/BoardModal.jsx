@@ -53,7 +53,6 @@ const BoardModal = ({ variant, closeModal }) => {
       toast(t('boards.modals.toast.add.success'));
     } else {
       dispatch(updateBoard({ boardId: oneBoard._id, dataUpdate: data }));
-      console.log('blablabla');
       toast(t('boards.modals.toast.edit.success'));
     }
 
