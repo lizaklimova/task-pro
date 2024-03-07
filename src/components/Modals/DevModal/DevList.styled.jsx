@@ -5,11 +5,12 @@ export const DevUl = styled.ul`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  height: 100%;
+  gap: 15px;
+  height: auto;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
+    height: 100%;
   }
 `;

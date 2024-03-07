@@ -48,6 +48,29 @@ export const createBoard = createAsyncThunk(
   }
 );
 
+export const updateBoard = createAsyncThunk(
+  'boards/updateBoard',
+  async ({ boardId, dataUpdate }, thunkAPI) => {
+    try {
+      const formData = new FormData();
+      const { title, iconId, backgroundId } = dataUpdate;
+      formData.append('title', title);
+      formData.append('iconId', iconId);
+      formData.append('backgroundId', backgroundId);
+
+      const { data } = await axiosInstance.patch(
+        ENDPOINTS.boards.oneBoard(boardId),
+        formData,
+        { headers: { 'Content-Type': 'multipart/form-data' } }
+      );
+
+      return data.board;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const deleteBoard = createAsyncThunk(
   'boards/deleteBoard',
   async (boardId, thunkAPI) => {

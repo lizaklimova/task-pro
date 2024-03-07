@@ -1,9 +1,11 @@
 const GitHubIcon = ({ width, height, fillColor, strokeColor }) => {
+  const iconSize = window.innerWidth > 768 ? '18px' : '24px';
+
   return (
     <svg
       className="icon"
-      width={width || '20px'}
-      height={height || '20px'}
+      width={width || iconSize}
+      height={height || iconSize}
       fill={fillColor || '#000000'}
       stroke={strokeColor || 'none'}
       viewBox="0 0 32 32"
