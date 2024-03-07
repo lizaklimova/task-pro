@@ -19,6 +19,7 @@ const NeedHelpModal = ({ showModal }) => {
   const [text, setText] = useState('');
   const { t } = useTranslation();
   const dispatch = useDispatch();
+
   /*  const { user } = useAuth(); */
 
   const handleSubmit = async evt => {
@@ -29,7 +30,10 @@ const NeedHelpModal = ({ showModal }) => {
       toast(t('sidebar.helpModal.toast.error'), TOASTER_CONFIG);
       return;
     }
-
+    if (text.trim().length < 5) {
+      toast(t('sidebar.helpModal.toast.long'), TOASTER_CONFIG);
+      return;
+    }
     try {
       dispatch(support({ email, text }));
       toast(t('sidebar.helpModal.toast.success'), TOASTER_CONFIG);
