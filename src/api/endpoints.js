@@ -5,9 +5,10 @@ const ENDPOINTS = Object.freeze({
     logout: 'auth/logout',
   },
   users: {
-    current: 'users/current',
+    current: 'users/current', 
+    theme: 'users/current/theme',
   },
-  backgrounds: '/api/backgrounds',
+  backgrounds: 'api/backgrounds',
   boards: {
     allBoards: 'api/boards',
     oneBoard: boardId => `api/boards/${boardId}`,

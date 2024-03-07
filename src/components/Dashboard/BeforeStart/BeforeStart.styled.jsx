@@ -30,4 +30,8 @@ export const TextAccent = styled.button`
   padding: 0;
   background-color: transparent;
   color: var(--accent-color);
+
+  &:hover {
+    text-shadow: 0px 0px 1px var(--accent-color);
+  }
 `;

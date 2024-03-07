@@ -76,54 +76,59 @@ const LoginForm = () => {
         </AuthList>
 
         <FormUi onSubmit={handleSubmit} autoComplete="off">
-          <Input
-            value={values.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            $error={errors.email && touched.email}
-            name="email"
-            placeholder={t('authForms.email')}
-            type="email"
-          />
-          {errors.email && touched.email && (
-            <ErrorPara>{errors.email}</ErrorPara>
-          )}
-          <PassInputWrap>
+          <label>
             <Input
-              value={values.password}
+              value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
-              $error={errors.password && touched.password}
-              name="password"
-              placeholder={t('authForms.confirm')}
-              type={visible ? 'text' : 'password'}
+              $error={errors.email && touched.email}
+              name="email"
+              placeholder={t('authForms.email')}
+              type="email"
             />
-            <HideBtn
-              type="button"
-              onClick={() => {
-                setVisible(!visible);
-              }}
-            >
-              {visible ? (
-                <Eye
-                  width={20}
-                  height={20}
-                  fillColor={'none'}
-                  strokeColor={'#fff'}
-                />
-              ) : (
-                <EyeCrossed
-                  width={20}
-                  height={20}
-                  fillColor={'none'}
-                  strokeColor={'#fff'}
-                />
-              )}
-            </HideBtn>
-          </PassInputWrap>
-          {errors.password && touched.password && (
-            <ErrorPara>{errors.password}</ErrorPara>
-          )}
+            {errors.email && touched.email && (
+              <ErrorPara>{errors.email}</ErrorPara>
+            )}
+          </label>
+
+          <label>
+            <PassInputWrap>
+              <Input
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                $error={errors.password && touched.password}
+                name="password"
+                placeholder={t('authForms.confirm')}
+                type={visible ? 'text' : 'password'}
+              />
+              <HideBtn
+                type="button"
+                onClick={() => {
+                  setVisible(!visible);
+                }}
+              >
+                {visible ? (
+                  <Eye
+                    width={20}
+                    height={20}
+                    fillColor={'none'}
+                    strokeColor={'#fff'}
+                  />
+                ) : (
+                  <EyeCrossed
+                    width={20}
+                    height={20}
+                    fillColor={'none'}
+                    strokeColor={'#fff'}
+                  />
+                )}
+              </HideBtn>
+            </PassInputWrap>
+            {errors.password && touched.password && (
+              <ErrorPara>{errors.password}</ErrorPara>
+            )}
+          </label>
 
           <SubmitBtn type="submit" disabled={isSubmitting}>
             {isLoading ? (
