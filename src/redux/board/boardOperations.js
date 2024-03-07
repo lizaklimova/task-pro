@@ -18,7 +18,6 @@ export const getAllBoards = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(ENDPOINTS.boards.allBoards);
-
       return data.boards;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -79,7 +78,6 @@ export const deleteBoard = createAsyncThunk(
       const { data } = await axiosInstance.delete(
         ENDPOINTS.boards.oneBoard(boardId)
       );
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

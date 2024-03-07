@@ -10,9 +10,8 @@ import BoardHeader from 'components/Dashboard/BoardHeader';
 const ScreensPage = () => {
   const { boardId } = useParams();
   const dispatch = useDispatch();
-  const board = useSelector(selectOneBoard);
 
-  // const error = useSelector(selectError);
+  const board = useSelector(selectOneBoard);
 
   useEffect(() => {
     dispatch(getOneBoard(boardId));

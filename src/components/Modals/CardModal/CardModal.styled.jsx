@@ -107,6 +107,7 @@ export const CardForm = styled.form`
     line-height: 1.29;
     margin-bottom: 24px;
     resize: none;
+    height: 154px;
   }
 
   label {
@@ -190,12 +191,12 @@ export const SubmitBtn = styled.button`
   padding: 10px;
   background-color: var(--accent-color);
   color: var(--btn-icon-bg);
-  margin-top: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   transition: var(--easedTransition);
+  margin-top: ${({ $variant }) => ($variant === 'column' ? '24px' : '40px')};
 
   @media screen and (min-width: 1440px) {
     &:hover,
