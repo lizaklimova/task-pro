@@ -9,6 +9,7 @@ import {
   addColumn,
   editColumn,
   deleteColumn,
+  updateBoard,
 } from './boardOperations';
 import { handlePending, handleRejected } from '../helpers';
 
@@ -27,6 +28,7 @@ const boardsSlice = createSlice({
       .addCase(getAllBoards.pending, handlePending)
       .addCase(getOneBoard.pending, handlePending)
       .addCase(createBoard.pending, handlePending)
+      .addCase(updateBoard.pending, handlePending)
       .addCase(deleteBoard.pending, handlePending)
       .addCase(filterBoard.pending, handlePending)
       .addCase(addColumn.pending, handlePending)
@@ -49,6 +51,17 @@ const boardsSlice = createSlice({
       })
       .addCase(createBoard.fulfilled, (state, { payload }) => {
         state.boards.push(payload);
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(updateBoard.fulfilled, (state, { payload }) => {
+        // state.oneBoard.title = payload.title;
+        // state.oneBoard.backgroundId = payload.backgroundId;
+        // state.oneBoard.iconId = payload.iconId;
+        state.oneBoard = { ...state.oneBoard, ...payload };
+        state.boards = state.boards.map(board =>
+          board._id === payload._id ? payload : board
+        );
         state.isLoading = false;
         state.error = null;
       })

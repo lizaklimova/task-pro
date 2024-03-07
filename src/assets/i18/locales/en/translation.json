@@ -35,6 +35,7 @@
     "helpButton": "Need help?",
     "logoutButton": "Log out ",
     "helpModal": {
+      "toast.long": "Comment must be at least 5 characters long ❗️",
       "toast.error": "Please enter data to submit ❗️",
       "toast.success": "Your message was sent successfully ✅",
       "title": "Need help",
