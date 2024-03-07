@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { createBoard } from '../../../redux/board/boardOperations';
+import { createBoard, updateBoard } from '../../../redux/board/boardOperations';
 import { selectOneBoard } from '../../../redux/board/boardSelectors';
 import { validateInputMaxLength } from 'helpers';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
@@ -46,14 +46,15 @@ const BoardModal = ({ variant, closeModal }) => {
       backgroundId: background.value,
     };
 
-    console.log(data);
+    // console.log(data);
 
     if (variant === 'add') {
       dispatch(createBoard(data));
       toast(t('boards.modals.toast.add.success'));
     } else {
-      // dispatch(updateBoard(data));
-      //  toast(t('boards.modals.toast.edit.success'));
+      dispatch(updateBoard({ boardId: oneBoard._id, dataUpdate: data }));
+      console.log('blablabla');
+      toast(t('boards.modals.toast.edit.success'));
     }
 
     return closeModal();
