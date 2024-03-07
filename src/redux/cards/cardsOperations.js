@@ -9,6 +9,7 @@ export const addCard = createAsyncThunk(
         ENDPOINTS.cards.allCards,
         cardInfo
       );
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

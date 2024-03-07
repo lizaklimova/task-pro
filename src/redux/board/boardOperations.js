@@ -18,7 +18,6 @@ export const getAllBoards = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(ENDPOINTS.boards.allBoards);
-
       return data.boards;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -30,7 +29,6 @@ export const createBoard = createAsyncThunk(
   'boards/createBoard',
   async (newBoard, thunkAPI) => {
     try {
-      console.log(newBoard);
       const formData = new FormData();
       const { title, iconId, backgroundId } = newBoard;
       formData.append('title', title);
@@ -72,7 +70,7 @@ export const getOneBoard = createAsyncThunk(
       const { data } = await axiosInstance.get(
         ENDPOINTS.boards.oneBoard(boardId)
       );
-
+      console.log(data);
       return data.board[0];
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

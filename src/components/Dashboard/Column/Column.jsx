@@ -108,12 +108,14 @@ const Column = ({ column }) => {
       )}
       {isAddCardModalOpen && (
         <CardModal
+          columnId={column._id}
           variant="add"
           closeCardModal={() => setIsAddCardModalOpen(false)}
         />
       )}
       {isEditCardModalOpen && (
         <CardModal
+          columnId={column._id}
           variant="edit"
           closeCardModal={() => setIsEditCardModalOpen(false)}
         />

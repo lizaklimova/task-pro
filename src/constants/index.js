@@ -1,9 +1,9 @@
 export const CLOSE_KEY_CODE = 'Escape';
 export const LABEL_ARR = [
-  { id: 1, color: 'blue' },
-  { id: 2, color: 'pink' },
-  { id: 3, color: 'green' },
-  { id: 4, color: 'gray' },
+  { id: 0, priority: 'low', color: 'blue' },
+  { id: 1, priority: 'medium', color: 'pink' },
+  { id: 2, priority: 'high', color: 'green' },
+  { id: 3, priority: 'without priority', color: 'gray' },
 ];
 
 export const ICONS_ARRAY = [
@@ -46,3 +46,5 @@ export const PROGRESS_BAR_COLORS = [
 ];
 
 export const DEFAULT_BACKGROUND_ID = '65e476ee9e0727c033dddb93';
+
+export const MAX_DESCR_LENGTH = 90;

@@ -7,6 +7,7 @@ export const CardItem = styled.div`
   background-color: var(--card-bg);
   list-style-type: none;
   border-left: 7px solid #8fa1d0;
+  word-break: break-all;
 
   & > div {
     display: flex;
@@ -22,6 +23,7 @@ export const CardTitle = styled.h4`
 
 export const CardDescr = styled.p`
   width: 290px;
+  max-width: 100%s;
   font-size: 12px;
   line-height: 1.33333;
   color: var(--text-color);

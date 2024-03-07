@@ -8,7 +8,7 @@ import { AddButton, ColumnsList, IconWrap, Wrap } from './Dashboard.styled';
 const Dashboard = ({ board }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useTranslation();
-
+  console.log(board);
   return (
     <Wrap>
       {Object.keys(board).length > 0 && (

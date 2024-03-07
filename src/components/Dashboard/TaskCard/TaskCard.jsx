@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { formatDate } from 'helpers';
+import {
+  formatDate,
+  makeValidDate,
+  handleTextOverflow,
+  determineDeadline,
+} from 'helpers';
 import Status from 'components/Icons/Status';
 import Pencil from 'components/Icons/Pencil';
 import Trash from 'components/Icons/Trash';
@@ -15,8 +20,6 @@ import {
 
 const TaskCard = ({ card, openCardModal }) => {
   const [showFullText, setShowFullText] = useState(false);
-  const text =
-    'Create a visually stunning and eye-catching watch dial design that embodies our brands essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design.';
 
   const handleClick = () => {
     setShowFullText(!showFullText);
@@ -24,9 +27,9 @@ const TaskCard = ({ card, openCardModal }) => {
 
   return (
     <CardItem>
-      <CardTitle>The Watch Spot Design</CardTitle>
+      <CardTitle>{card.title}</CardTitle>
       <CardDescr onClick={handleClick}>
-        {showFullText ? text : `${text.slice(0, 86)}...`}
+        {showFullText ? card.description : handleTextOverflow(card.description)}
       </CardDescr>
       <hr />
 
@@ -34,25 +37,27 @@ const TaskCard = ({ card, openCardModal }) => {
         <InfoWrap>
           <div>
             <h5>Priority</h5>
-            <p>Low</p>
+            <p>{card.priority}</p>
           </div>
 
           <div>
             <h5>Deadline</h5>
-            <span>{formatDate(new Date())}</span>
+            <span>{formatDate(makeValidDate(card.deadline))}</span>
           </div>
         </InfoWrap>
 
         <BtnsList>
-          <li>
-            <CardActionButton type="button" aria-label="Deadline is today">
-              <Bell
-                width={16}
-                height={16}
-                strokeColor={'var(--icon-stroke-color)'}
-              />
-            </CardActionButton>
-          </li>
+          {determineDeadline(card.deadline) && (
+            <li>
+              <CardActionButton type="button" aria-label="Deadline is today">
+                <Bell
+                  width={16}
+                  height={16}
+                  strokeColor={'var(--icon-stroke-color)'}
+                />
+              </CardActionButton>
+            </li>
+          )}
           <li>
             <CardActionButton type="button" aria-label="Move card">
               <Status
