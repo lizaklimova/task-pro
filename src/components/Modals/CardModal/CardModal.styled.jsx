@@ -95,7 +95,11 @@ export const CardForm = styled.form`
 
   input[type='text'] {
     ${inputsCommonStyles}
-    margin-bottom: 14px;
+    margin-bottom: 20px;
+
+    &.invalid {
+      border: 2px solid red;
+    }
   }
 
   textarea {
@@ -111,6 +115,17 @@ export const CardForm = styled.form`
     color: var(--lightgrey-text-color);
     display: flex;
     flex-direction: column;
+  }
+`;
+
+export const ErrorLabel = styled.label`
+  position: relative;
+
+  p {
+    font-size: 10px;
+    position: absolute;
+    bottom: -20px;
+    color: red;
   }
 `;
 

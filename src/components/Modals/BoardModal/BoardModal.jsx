@@ -1,14 +1,33 @@
+import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { createBoard } from '../../../redux/board/boardOperations';
+import { selectOneBoard } from '../../../redux/board/boardSelectors';
+import { validateInputMaxLength } from 'helpers';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';
 import { BacksList } from './BacksList';
 import Plus from 'components/Icons/Plus';
-import { Form, Title, Input, Text, Button, Span } from './BoardModal.styled';
-import { createBoard } from '../../../redux/board/boardOperations';
-import { selectOneBoard } from '../../../redux/board/boardSelectors';
+import {
+  Form,
+  Title,
+  Label,
+  Input,
+  Text,
+  Button,
+  Span,
+} from './BoardModal.styled';
 
 const BoardModal = ({ variant, closeModal }) => {
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [errorClassName, setErrorClassName] = useState('');
+
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    titleRef.current.focus();
+  }, []);
+
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const oneBoard = useSelector(selectOneBoard);
@@ -39,14 +58,23 @@ const BoardModal = ({ variant, closeModal }) => {
             ? t('boards.modals.newTitle')
             : t('boards.modals.editTitle')}
         </Title>
-        <Input
-          type="text"
-          placeholder={t('boards.modals.input')}
-          name="title"
-          // value={variant === 'add' ? '' : oneBoard.title}
-          defaultValue={variant === 'add' ? '' : oneBoard.title}
-          autoComplete="off"
-        />
+
+        <Label>
+          <Input
+            className={errorClassName}
+            ref={titleRef}
+            type="text"
+            placeholder={t('boards.modals.input')}
+            name="title"
+            defaultValue={variant === 'add' ? '' : oneBoard.title}
+            autoComplete="off"
+            maxLength={25}
+            onChange={e =>
+              validateInputMaxLength(e, setErrorMsg, setErrorClassName)
+            }
+          />
+          {errorMsg && <p>{errorMsg}</p>}
+        </Label>
 
         <Text>{t('boards.modals.icons')}</Text>
         <IconsList />

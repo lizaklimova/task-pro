@@ -1,19 +1,24 @@
+import { useState, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import toast from 'react-hot-toast';
+import { addColumn, editColumn } from '../../../redux/board/boardOperations';
+import { TOASTER_CONFIG } from 'constants';
+import { validateInputMaxLength } from 'helpers';
 import ModalWrapper from 'components/Modals/ModalWrapper';
 import Plus from 'components/Icons/Plus';
 import {
   CardForm,
   CardModalContent,
+  ErrorLabel,
   SubmitBtn,
 } from '../CardModal/CardModal.styled';
-import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import toast from 'react-hot-toast';
-import { TOASTER_CONFIG } from 'constants';
-import { addColumn, editColumn } from '../../../redux/board/boardOperations';
-import { useEffect, useRef } from 'react';
 
 const ColumnModal = ({ variant, closeModal, columnId, columnName }) => {
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [errorClassName, setErrorClassName] = useState('');
+
   const { boardId } = useParams();
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -55,15 +60,23 @@ const ColumnModal = ({ variant, closeModal, columnId, columnName }) => {
         </p>
 
         <CardForm onSubmit={handleSubmit}>
-          <input
-            ref={titleRef}
-            type="text"
-            name="title"
-            placeholder={
-              variant === 'add' ? t('columns.modals.input') : columnName
-            }
-            defaultValue={variant === 'add' ? '' : columnName}
-          />
+          <ErrorLabel>
+            <input
+              className={errorClassName}
+              ref={titleRef}
+              type="text"
+              name="title"
+              placeholder={
+                variant === 'add' ? t('columns.modals.input') : columnName
+              }
+              defaultValue={variant === 'add' ? '' : columnName}
+              maxLength={25}
+              onChange={e =>
+                validateInputMaxLength(e, setErrorMsg, setErrorClassName)
+              }
+            />
+            {errorMsg && <p>{errorMsg}</p>}
+          </ErrorLabel>
 
           <SubmitBtn type="submit">
             <span>

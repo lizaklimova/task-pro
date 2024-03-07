@@ -33,7 +33,7 @@ const AddedBoard = ({ board, openEditModal }) => {
 
           <p>{board.title}</p>
         </NameBox>
-        <ChangeBox>
+        <ChangeBox id="change-container">
           <ChangeIcons
             type="button"
             aria-label="Edit board"

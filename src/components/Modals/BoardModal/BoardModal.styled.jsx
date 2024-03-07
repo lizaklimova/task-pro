@@ -13,7 +13,19 @@ export const Title = styled.h4`
   margin-bottom: 24px;
 `;
 
+export const Label = styled.label`
+  position: relative;
+
+  p {
+    font-size: 10px;
+    position: absolute;
+    bottom: 5px;
+    color: red;
+  }
+`;
+
 export const Input = styled.input`
+  width: 100%;
   border: 1px solid var(--input-color);
   opacity: 0.5;
   color: var(--text-color);
@@ -25,6 +37,10 @@ export const Input = styled.input`
   outline: transparent;
   box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
   transition: opacity var(--easedTransition);
+
+  &.invalid {
+    border: 2px solid red;
+  }
 
   &:focus {
     opacity: 1;
