@@ -10,8 +10,8 @@ import {
   InputRadio,
 } from './BoardModal.styled';
 
-export const IconsList = () => {
-  const [selectedIconId, setSelectedIconId] = useState(0);
+export const IconsList = ({ iconId }) => {
+  const [selectedIconId, setSelectedIconId] = useState(iconId);
 
   const handleIconChange = id => {
     setSelectedIconId(id);
@@ -26,7 +26,8 @@ export const IconsList = () => {
               <InputRadio
                 type="radio"
                 name="iconId"
-                value={item.id}
+                value={iconId}
+                defaultChecked={iconId}
                 checked={selectedIconId === item.id}
                 onChange={() => handleIconChange(item.id)}
               />

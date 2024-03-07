@@ -17,12 +17,12 @@ import {
   SmallLoaderContainer,
 } from './BoardModal.styled';
 
-export const BacksList = () => {
-  const [selectedBackId, setSelectedBackId] = useState(
-    '65e476ee9e0727c033dddb93'
-  );
+export const BacksList = ({ backgroundId }) => {
+  const [selectedBackId, setSelectedBackId] = useState(backgroundId);
   const isLoading = useSelector(selectIsLoading);
   const backgroundIcons = useSelector(selectBackgroundIcons);
+
+  console.log(backgroundId);
 
   const dispatch = useDispatch();
 
@@ -50,7 +50,9 @@ export const BacksList = () => {
               <BackInputRadio
                 type="radio"
                 name="background"
-                value={item._id}
+                value={backgroundId}
+                // value={item._id}
+                defaultChecked={backgroundId}
                 checked={selectedBackId === item._id}
                 onChange={() => handleBackChange(item._id)}
               />

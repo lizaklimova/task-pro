@@ -18,20 +18,22 @@ import {
   Span,
 } from './BoardModal.styled';
 import toast from 'react-hot-toast';
+import { DEFAULT_BACKGROUND_ID } from 'constants';
 
 const BoardModal = ({ variant, closeModal }) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [errorClassName, setErrorClassName] = useState('');
-
   const titleRef = useRef(null);
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const oneBoard = useSelector(selectOneBoard);
+
+  console.log('background', oneBoard.background);
+  // console.log(oneBoard.icon_id);
 
   useEffect(() => {
     titleRef.current.focus();
   }, []);
-
-  const dispatch = useDispatch();
-  const { t } = useTranslation();
-  const oneBoard = useSelector(selectOneBoard);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -85,10 +87,14 @@ const BoardModal = ({ variant, closeModal }) => {
         </Label>
 
         <Text>{t('boards.modals.icons')}</Text>
-        <IconsList />
+        <IconsList iconId={variant === 'add' ? 0 : oneBoard.icon_id} />
 
         <Text>{t('boards.modals.background')}</Text>
-        <BacksList />
+        <BacksList
+          backgroundId={
+            variant === 'add' ? DEFAULT_BACKGROUND_ID : oneBoard.background._id
+          }
+        />
 
         <Button type="submit">
           <Span>
