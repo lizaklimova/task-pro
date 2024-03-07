@@ -9,8 +9,7 @@ export const addCard = createAsyncThunk(
         ENDPOINTS.cards.allCards,
         cardInfo
       );
-      console.log(data);
-      return data;
+      return data.card;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -19,12 +18,10 @@ export const addCard = createAsyncThunk(
 
 export const deleteCard = createAsyncThunk(
   'cards/deleteCard',
-  async (cardId, thunkAPI) => {
+  async ({ cardId, columnId }, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.delete(
-        ENDPOINTS.cards.oneCard(cardId)
-      );
-      return data;
+      await axiosInstance.delete(ENDPOINTS.cards.oneCard(cardId));
+      return { cardId, columnId };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -33,12 +30,16 @@ export const deleteCard = createAsyncThunk(
 
 export const editCard = createAsyncThunk(
   'cards/editCard',
-  async (cardId, thunkAPI) => {
+  async ({ cardId, editedCard }, thunkAPI) => {
     try {
+      console.log(cardId);
+      console.log(editedCard);
       const { data } = await axiosInstance.patch(
-        ENDPOINTS.cards.oneCard(cardId)
+        ENDPOINTS.cards.oneCard(cardId),
+        editedCard
       );
-      return data;
+
+      return { card: data.card, columnId: editedCard.column };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -1,4 +1,5 @@
 export const CLOSE_KEY_CODE = 'Escape';
+
 export const LABEL_ARR = [
   { id: 0, priority: 'low', color: 'blue' },
   { id: 1, priority: 'medium', color: 'pink' },

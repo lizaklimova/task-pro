@@ -98,7 +98,7 @@ export const CardsList = styled.ul`
   padding-right: 8px;
   margin-bottom: 14px;
   height: calc(100vh - 144px - 130px);
-  overflow-y: scroll;
+  overflow-y: auto;
   scroll-behavior: smooth;
 
   &::-webkit-scrollbar-thumb {

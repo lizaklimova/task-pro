@@ -21,10 +21,14 @@ import {
   SubmitBtn,
 } from './CardModal.styled';
 
-const CardModal = ({ columnId, variant, closeCardModal }) => {
-  const [cardPriority, setCardPriority] = useState('without priority');
+const CardModal = ({ columnId, variant, closeCardModal, activeCard }) => {
+  const [cardPriority, setCardPriority] = useState(
+    variant === 'add' ? 'without priority' : activeCard.priority
+  );
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-  const [selectedDate, setSelectedDay] = useState(new Date());
+  const [selectedDate, setSelectedDay] = useState(
+    variant === 'add' ? new Date() : activeCard.deadline
+  );
   const [errorMsg, setErrorMsg] = useState(null);
   const [errorClassName, setErrorClassName] = useState('');
 
@@ -54,13 +58,17 @@ const CardModal = ({ columnId, variant, closeCardModal }) => {
       description: description.value,
       priority: cardPriority,
       deadline: dateForServer,
-      boardId,
-      columnId,
+      board: boardId,
+      column: columnId,
     };
 
-    console.log(cardInfo);
-    dispatch(addCard(cardInfo));
-    toast(t('cards.modals.toast.success'), TOASTER_CONFIG);
+    if (variant === 'add') {
+      dispatch(addCard(cardInfo));
+      toast(t('cards.modals.toast.add.success'), TOASTER_CONFIG);
+    } else {
+      dispatch(editCard({ cardId: activeCard._id, editedCard: cardInfo }));
+      toast(t('cards.modals.toast.edit.success'), TOASTER_CONFIG);
+    }
     closeCardModal();
   };
 
@@ -93,7 +101,7 @@ const CardModal = ({ columnId, variant, closeCardModal }) => {
               type="text"
               name="title"
               placeholder={t('cards.modals.title')}
-              defaultValue={variant === 'add' ? '' : ''}
+              defaultValue={variant === 'add' ? '' : activeCard.title}
               autoComplete="off"
               maxLength={25}
               onChange={e =>
@@ -105,7 +113,7 @@ const CardModal = ({ columnId, variant, closeCardModal }) => {
           <textarea
             name="description"
             placeholder={t('cards.modals.description')}
-            defaultValue={variant === 'add' ? '' : ''}
+            defaultValue={variant === 'add' ? '' : activeCard.description}
             autoComplete="off"
           ></textarea>
 

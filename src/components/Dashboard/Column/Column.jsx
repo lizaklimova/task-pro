@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { nanoid } from '@reduxjs/toolkit';
 import { useTranslation } from 'react-i18next';
 import Pencil from 'components/Icons/Pencil';
 import Trash from 'components/Icons/Trash';
@@ -26,6 +25,8 @@ const Column = ({ column }) => {
   const [isAddCardModalOpen, setIsAddCardModalOpen] = useState(false);
   const [isEditCardModalOpen, setIsEditCardModalOpen] = useState(false);
   const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
+  const [activeCard, setActiveCard] = useState({});
+
   const dispatch = useDispatch();
 
   const { t } = useTranslation();
@@ -74,10 +75,12 @@ const Column = ({ column }) => {
         <CardsList>
           {column.cards &&
             column.cards.map(card => (
-              <li key={nanoid()}>
+              <li key={card._id}>
                 <TaskCard
+                  columnId={column._id}
                   card={card}
                   openCardModal={() => setIsEditCardModalOpen(true)}
+                  setActiveCard={setActiveCard}
                 />
               </li>
             ))}
@@ -115,6 +118,7 @@ const Column = ({ column }) => {
       )}
       {isEditCardModalOpen && (
         <CardModal
+          activeCard={activeCard}
           columnId={column._id}
           variant="edit"
           closeCardModal={() => setIsEditCardModalOpen(false)}

@@ -98,26 +98,30 @@ const boardsSlice = createSlice({
       .addCase(addCard.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.oneBoard.columns.cards.push(payload);
+        const column = state.oneBoard.columns.find(
+          ({ _id }) => _id === payload.column
+        );
+        column.cards = [...column.cards, payload];
       })
       .addCase(deleteCard.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.oneBoard.columns.cards = state.oneBoard.columns.cards.filter(
-          ({ _id }) => _id !== payload
+        const column = state.oneBoard.columns.find(
+          ({ _id }) => _id === payload.columnId
         );
+        column.cards = column.cards.filter(({ _id }) => _id !== payload.cardId);
       })
       .addCase(editCard.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        const card = state.oneBoard.columns.cards.find(
-          ({ _id }) => _id === payload
+        const column = state.oneBoard.columns.find(
+          ({ _id }) => _id === payload.columnId
         );
-        const newCard = { ...card, ...payload };
-        state.oneBoard.columns.cards = [
-          ...state.oneBoard.columns.cards,
-          newCard,
-        ];
+
+        column.cards = column.cards.map(card => {
+          if (card._id === payload.card._id) return payload.card;
+          return card;
+        });
       })
       .addCase(getBackgroundIcons.rejected, handleRejected)
       .addCase(getAllBoards.rejected, handleRejected)

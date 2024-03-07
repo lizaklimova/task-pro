@@ -1,9 +1,15 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import { deleteCard } from '../../../redux/cards/cardsOperations';
 import {
   formatDate,
   makeValidDate,
   handleTextOverflow,
   determineDeadline,
+  determineLabelColor,
+  changePriorityLang,
 } from 'helpers';
 import Status from 'components/Icons/Status';
 import Pencil from 'components/Icons/Pencil';
@@ -14,19 +20,28 @@ import {
   CardTitle,
   CardDescr,
   InfoWrap,
+  Priority,
   BtnsList,
+  DeadlineModal,
   CardActionButton,
 } from './TaskCard.styled';
 
-const TaskCard = ({ card, openCardModal }) => {
+const TaskCard = ({ columnId, card, openCardModal, setActiveCard }) => {
   const [showFullText, setShowFullText] = useState(false);
+
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     setShowFullText(!showFullText);
   };
 
+  const deleteOneCard = cardId => {
+    dispatch(deleteCard({ cardId, columnId }));
+  };
+
   return (
-    <CardItem>
+    <CardItem $label={determineLabelColor(card.priority)}>
       <CardTitle>{card.title}</CardTitle>
       <CardDescr onClick={handleClick}>
         {showFullText ? card.description : handleTextOverflow(card.description)}
@@ -36,12 +51,16 @@ const TaskCard = ({ card, openCardModal }) => {
       <div>
         <InfoWrap>
           <div>
-            <h5>Priority</h5>
-            <p>{card.priority}</p>
+            <h5>{t('cards.priority')}</h5>
+            <Priority $label={determineLabelColor(card.priority)}>
+              {i18next.language === 'en'
+                ? card.priority
+                : changePriorityLang(card.priority)}
+            </Priority>
           </div>
 
           <div>
-            <h5>Deadline</h5>
+            <h5>{t('cards.deadline')}</h5>
             <span>{formatDate(makeValidDate(card.deadline))}</span>
           </div>
         </InfoWrap>
@@ -49,7 +68,16 @@ const TaskCard = ({ card, openCardModal }) => {
         <BtnsList>
           {determineDeadline(card.deadline) && (
             <li>
-              <CardActionButton type="button" aria-label="Deadline is today">
+              <CardActionButton
+                id="deadline-bell"
+                type="button"
+                aria-label="Deadline is today"
+                onClick={e => (e.target.style.animation = 'none')}
+              >
+                <DeadlineModal id="deadline-modal">
+                  <p>{t('cards.deadlineToday')}</p>
+                </DeadlineModal>
+
                 <Bell
                   width={16}
                   height={16}
@@ -71,7 +99,10 @@ const TaskCard = ({ card, openCardModal }) => {
             <CardActionButton
               type="button"
               aria-label="Edit card"
-              onClick={openCardModal}
+              onClick={() => {
+                openCardModal();
+                setActiveCard(card);
+              }}
             >
               <Pencil
                 width={16}
@@ -81,7 +112,11 @@ const TaskCard = ({ card, openCardModal }) => {
             </CardActionButton>
           </li>
           <li>
-            <CardActionButton type="button" aria-label="Delete card">
+            <CardActionButton
+              type="button"
+              aria-label="Delete card"
+              onClick={() => deleteOneCard(card._id)}
+            >
               <Trash
                 width={16}
                 height={16}
