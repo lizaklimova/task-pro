@@ -1,8 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { createBoard } from '../../../redux/board/boardOperations';
-import { selectOneBoard } from '../../../redux/board/boardSelectors';
+import {
+  selectBoards,
+  selectOneBoard,
+} from '../../../redux/board/boardSelectors';
 import { validateInputMaxLength } from 'helpers';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';

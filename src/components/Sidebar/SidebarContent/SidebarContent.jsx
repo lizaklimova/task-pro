@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { logOut } from '../../../redux/auth/authOperations';
 import { selectBoards } from '../../../redux/board/boardSelectors';
 import plantImg from 'assets/images/sidebar/plant.png';
@@ -37,6 +38,7 @@ const SidebarContent = () => {
   const [isDevModalOpen, setIsDevModalOpen] = useState(false);
 
   const allBoards = useSelector(selectBoards);
+
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
