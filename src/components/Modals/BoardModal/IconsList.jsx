@@ -26,9 +26,8 @@ export const IconsList = ({ iconId }) => {
               <InputRadio
                 type="radio"
                 name="iconId"
-                value={iconId}
-                defaultChecked={iconId}
-                checked={selectedIconId === item.id}
+                value={selectedIconId}
+                defaultChecked={selectedIconId === item.id}
                 onChange={() => handleIconChange(item.id)}
               />
               <IconSVG width="18" height="18">

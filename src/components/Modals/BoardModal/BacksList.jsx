@@ -21,9 +21,6 @@ export const BacksList = ({ backgroundId }) => {
   const [selectedBackId, setSelectedBackId] = useState(backgroundId);
   const isLoading = useSelector(selectIsLoading);
   const backgroundIcons = useSelector(selectBackgroundIcons);
-
-  console.log(backgroundId);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -50,10 +47,8 @@ export const BacksList = ({ backgroundId }) => {
               <BackInputRadio
                 type="radio"
                 name="background"
-                value={backgroundId}
-                // value={item._id}
-                defaultChecked={backgroundId}
-                checked={selectedBackId === item._id}
+                value={item._id}
+                defaultChecked={selectedBackId === item._id}
                 onChange={() => handleBackChange(item._id)}
               />
               {item.backgroundMinURL ? (

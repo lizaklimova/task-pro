@@ -28,9 +28,6 @@ const BoardModal = ({ variant, closeModal }) => {
   const { t } = useTranslation();
   const oneBoard = useSelector(selectOneBoard);
 
-  console.log('background', oneBoard.background);
-  // console.log(oneBoard.icon_id);
-
   useEffect(() => {
     titleRef.current.focus();
   }, []);
@@ -48,6 +45,8 @@ const BoardModal = ({ variant, closeModal }) => {
       iconId: iconId.value,
       backgroundId: background.value,
     };
+
+    console.log(data);
 
     if (variant === 'add') {
       dispatch(createBoard(data));
