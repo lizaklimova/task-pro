@@ -50,8 +50,8 @@ const TaskCard = ({
     dispatch(deleteCard({ cardId, columnId }));
   };
 
-  const moveCardToAnotherColumn = cardId => {
-    dispatch(moveCard({ cardId, columnId }));
+  const moveCardToAnotherColumn = columnId => {
+    dispatch(moveCard({ cardId: card._id, columnId }));
   };
 
   return (

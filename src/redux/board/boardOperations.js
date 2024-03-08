@@ -163,9 +163,8 @@ export const moveCard = createAsyncThunk(
     try {
       const { data } = await axiosInstance.patch(
         ENDPOINTS.cards.cardStatus(cardId),
-        columnId
+        { columnId }
       );
-      console.log(data.card);
       return { card: data.card, oldColumn: columnId };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

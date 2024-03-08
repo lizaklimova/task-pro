@@ -149,7 +149,6 @@ const boardsSlice = createSlice({
         column.cards = column.cards.filter(
           ({ _id }) => _id !== payload.card._id
         );
-
         const newColumn = state.oneBoard.columns.find(
           ({ _id }) => _id === payload.card.column
         );
