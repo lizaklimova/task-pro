@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { filterBoard } from '../../../redux/board/boardOperations';
+import { getOneBoard, filterCards } from '../../../redux/board/boardOperations';
+import { LABEL_ARR } from 'constants';
 import ModalWrapper from 'components/Modals/ModalWrapper/ModalWrapper';
 import {
   TitleContainer,
@@ -9,23 +10,34 @@ import {
   ClearFilterBox,
   ClearTitle,
   ClearButton,
-  RadioButtonBox,
+  PriorityFilterBox,
+  PriorityFilterItem,
   RadioButton,
   PriorityFilterLabel,
-  StyledMarker,
 } from './Filters.styled';
 
 const Filters = ({ boardId, onClose }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const [filterValue, setFilterValue] = useState('default');
+  const [filterValue, setFilterValue] = useState('');
+  console.log(filterValue);
+  const newLabelArr = [
+    { ...LABEL_ARR.find(item => item.id === 3), priority: 'without' },
+    ...LABEL_ARR.filter(item => item.id !== 3),
+  ];
+
+  console.log(boardId);
 
   const handleFilterChange = newValue => {
     setFilterValue(newValue);
     console.log(newValue);
-    console.log(boardId);
-    dispatch(filterBoard({ boardId: boardId, priority: newValue }));
+    dispatch(filterCards({ boardId: boardId, priority: newValue }));
+    onClose();
+  };
+
+  const handleDefaultFilter = () => {
+    dispatch(getOneBoard(boardId));
     onClose();
   };
 
@@ -36,63 +48,28 @@ const Filters = ({ boardId, onClose }) => {
       </TitleContainer>
       <ClearFilterBox>
         <ClearTitle>{t('boards.filter.label')}</ClearTitle>
-        <ClearButton
-          type="button"
-          onClick={() => handleFilterChange('default')}
-        >
+        <ClearButton type="button" onClick={handleDefaultFilter}>
           {t('boards.filter.all')}
         </ClearButton>
       </ClearFilterBox>
-      <RadioButtonBox>
-        <PriorityFilterLabel className="gray">
-          <RadioButton
-            type="radio"
-            name="priority"
-            value="without"
-            checked={filterValue === 'without'}
-            onChange={() => handleFilterChange('without')}
-            className="gray"
-          />
-          <StyledMarker className="gray"></StyledMarker>
-          {t('boards.filter.without')}
-        </PriorityFilterLabel>
-        <PriorityFilterLabel className="blue">
-          <RadioButton
-            type="radio"
-            name="priority"
-            value="low"
-            checked={filterValue === 'low'}
-            onChange={() => handleFilterChange('low')}
-            className="blue"
-          />
-          <StyledMarker className="blue"></StyledMarker>
-          {t('boards.filter.low')}
-        </PriorityFilterLabel>
-        <PriorityFilterLabel className="red">
-          <RadioButton
-            type="radio"
-            name="priority"
-            value="medium"
-            checked={filterValue === 'medium'}
-            onChange={() => handleFilterChange('medium')}
-            className="red"
-          />
-          <StyledMarker className="red"></StyledMarker>
-          {t('boards.filter.medium')}
-        </PriorityFilterLabel>
-        <PriorityFilterLabel className="green">
-          <RadioButton
-            type="radio"
-            name="priority"
-            value="high"
-            checked={filterValue === 'high'}
-            onChange={() => handleFilterChange('high')}
-            className="green"
-          />
-          <StyledMarker className="green"></StyledMarker>
-          {t('boards.filter.high')}
-        </PriorityFilterLabel>
-      </RadioButtonBox>
+      <PriorityFilterBox>
+        {newLabelArr.map(({ id, priority, color }) => (
+          <PriorityFilterItem key={id} className={color}>
+            <RadioButton
+              $color={color}
+              id="priority"
+              type="radio"
+              name="priority"
+              value={priority}
+              checked={filterValue === priority}
+              onChange={() => handleFilterChange(priority)}
+              className={color}
+            />
+            <PriorityFilterLabel $color={color} />
+            {t(`boards.filter.${priority}`)}
+          </PriorityFilterItem>
+        ))}
+      </PriorityFilterBox>
     </ModalWrapper>
   );
 };

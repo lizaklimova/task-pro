@@ -42,89 +42,51 @@ export const ClearButton = styled.button`
   }
 `;
 
-export const RadioButtonBox = styled.div`
+export const PriorityFilterBox = styled.ul`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   color: var(--lightgrey-text-color);
+  gap: 8px;
+`;
+
+export const PriorityFilterItem = styled.li`
+  display: flex;
+  position: relative;
+  gap: 8px;
+  cursor: pointer;
+  @media screen and (min-width: 768px) {
+    &:hover,
+    &:focus {
+      color: var(--text-color);
+    }
+  }
 `;
 
 export const RadioButton = styled.input`
   position: absolute;
   z-index: 999;
   cursor: pointer;
-  top: 4px;
   left: 0;
-  appearance: none;
-  font-family: inherit;
   border-radius: 50%;
-  margin: 0;
-  width: 14px;
-  height: 14px;
+  opacity: 0;
 
-  &:checked.blue {
-    border: 1px solid var(--priority-blue);
-  }
-
-  &:checked.red {
-    border: 1px solid var(--priority-pink);
-  }
-
-  &:checked.green {
-    border: 1px solid var(--priority-green);
-  }
-
-  &:checked.gray {
-    border: 1px solid var(--lightgrey-text-color);
-  }
-`;
-
-export const StyledMarker = styled.span`
-  content: '';
-  display: block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-
-  &.blue {
-    background-color: var(--priority-blue);
-  }
-
-  &.red {
-    background-color: var(--priority-pink);
-  }
-
-  &.green {
-    background-color: var(--priority-green);
-  }
-
-  &.gray {
-    background-color: var(--lightgrey-text-color);
+  &:checked::before {
+    outline: ${({ $color }) => `1px solid var(--priority-${$color})`};
+    border: 2px solid var(--modal-background);
   }
 `;
 
 export const PriorityFilterLabel = styled.label`
-  cursor: pointer;
   position: relative;
   display: inline-flex;
-  gap: 8px;
-  justify-content: center;
-  align-items: center;
-  color: var(--lightgrey-text-color);
 
-  &:not(:last-child) {
-    margin-bottom: 12px;
-  }
-  font-size: 14px;
-
-  input[type='radio']:checked + ${StyledMarker} {
-    scale: 0.5;
-  }
-
-  @media screen and (min-width: 768px) {
-    &:hover,
-    &:focus {
-      color: var(--text-color);
-    }
+  &::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: ${({ $color }) => `var(--priority-${$color})`};
+    transition: outline 50ms linear;
   }
 `;
