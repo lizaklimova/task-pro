@@ -15,7 +15,7 @@ const Dashboard = ({ board }) => {
         <ColumnsList>
           {board.columns.map(column => (
             <li key={column._id}>
-              <Column column={column} />
+              <Column allColumns={board.columns} column={column} />
             </li>
           ))}
         </ColumnsList>

@@ -102,15 +102,15 @@ export const getOneBoard = createAsyncThunk(
   }
 );
 
-export const filterBoard = createAsyncThunk(
-  'boards/filterBoard',
+export const filterCards = createAsyncThunk(
+  'boards/filterCards',
   async ({ boardId, priority }, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(
         ENDPOINTS.boards.boardFilter(boardId) + `?priority=${priority}`
       );
 
-      return data;
+      return data.board[0];
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -153,6 +153,22 @@ export const editColumn = createAsyncThunk(
         editedColumn
       );
       return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const moveCard = createAsyncThunk(
+  'cards/moveCard',
+  async ({ cardId, columnId }, thunkAPI) => {
+    try {
+      const { data } = await axiosInstance.patch(
+        ENDPOINTS.cards.cardStatus(cardId),
+        columnId
+      );
+      console.log(data.card);
+      return { card: data.card, oldColumn: columnId };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
