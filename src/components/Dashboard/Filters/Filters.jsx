@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getOneBoard, filterCards } from '../../../redux/board/boardOperations';
 import { LABEL_ARR } from 'constants';
+import { getOneBoard, filterCards } from '../../../redux/board/boardOperations';
 import ModalWrapper from 'components/Modals/ModalWrapper/ModalWrapper';
 import {
   TitleContainer,
@@ -10,10 +10,10 @@ import {
   ClearFilterBox,
   ClearTitle,
   ClearButton,
-  PriorityFilterBox,
-  PriorityFilterItem,
+  RadioButtonBox,
   RadioButton,
   PriorityFilterLabel,
+  StyledMarker,
 } from './Filters.styled';
 
 const Filters = ({ boardId, onClose }) => {
@@ -21,13 +21,11 @@ const Filters = ({ boardId, onClose }) => {
   const dispatch = useDispatch();
 
   const [filterValue, setFilterValue] = useState('');
-  console.log(filterValue);
+
   const newLabelArr = [
     { ...LABEL_ARR.find(item => item.id === 3), priority: 'without' },
     ...LABEL_ARR.filter(item => item.id !== 3),
   ];
-
-  console.log(boardId);
 
   const handleFilterChange = newValue => {
     setFilterValue(newValue);
@@ -51,24 +49,22 @@ const Filters = ({ boardId, onClose }) => {
           {t('boards.filter.all')}
         </ClearButton>
       </ClearFilterBox>
-      <PriorityFilterBox>
+      <RadioButtonBox>
         {newLabelArr.map(({ id, priority, color }) => (
-          <PriorityFilterItem key={id} className={color}>
+          <PriorityFilterLabel key={id} $color={color}>
             <RadioButton
-              $color={color}
-              id="priority"
               type="radio"
               name="priority"
               value={priority}
               checked={filterValue === priority}
+              $color={color}
               onChange={() => handleFilterChange(priority)}
-              className={color}
             />
-            <PriorityFilterLabel $color={color} />
+            <StyledMarker $color={color}></StyledMarker>
             {t(`boards.filter.${priority}`)}
-          </PriorityFilterItem>
+          </PriorityFilterLabel>
         ))}
-      </PriorityFilterBox>
+      </RadioButtonBox>
     </ModalWrapper>
   );
 };
