@@ -81,10 +81,23 @@ export const refreshUser = createAsyncThunk(
 export const editUser = createAsyncThunk(
   'user/editUser',
   async (dataUser, thunkAPI) => {
+    const formData = new FormData();
+    const { avatar_url, name, email, password } = dataUser;
+    formData.append('avatar_url', avatar_url);
+    formData.append('name', name);
+    formData.append('email', email);
+    if (password) {
+      formData.append('password', password);
+    }
+ 
     try {
-      console.log(dataUser);
+      console.log(formData);
       // multipart додати для додавання аватарки
-      const { data } = await axiosInstance.patch('users/current', dataUser);
+      const { data } = await axiosInstance.patch(
+        'users/current',
+        formData,
+        { headers: { 'Content-Type': 'multipart/form-data' } }
+      );
       console.log(data);
       return data;
     } catch (error) {
