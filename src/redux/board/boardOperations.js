@@ -100,15 +100,15 @@ export const getOneBoard = createAsyncThunk(
   }
 );
 
-export const filterBoard = createAsyncThunk(
-  'boards/filterBoard',
+export const filterCards = createAsyncThunk(
+  'boards/filterCards',
   async ({ boardId, priority }, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(
         ENDPOINTS.boards.boardFilter(boardId) + `?priority=${priority}`
       );
 
-      return data;
+      return data.board[0];
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

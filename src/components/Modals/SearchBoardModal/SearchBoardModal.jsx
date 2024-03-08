@@ -8,12 +8,7 @@ import {
   Title,
 } from '../BoardModal/BoardModal.styled';
 
-const SearchBoardModal = ({
-  onClose,
-  searchValue,
-  handleSearchChange,
-  handleSubmit,
-}) => {
+const SearchBoardModal = ({ onClose, handleSubmit }) => {
   const { t } = useTranslation();
 
   return (
@@ -23,11 +18,10 @@ const SearchBoardModal = ({
         <Label>
           <Input
             type="text"
+            name="search"
             placeholder={t('boards.modals.searchInput')}
-            value={searchValue}
             autoComplete="off"
             maxLength={25}
-            onChange={handleSearchChange}
           />
         </Label>
 
