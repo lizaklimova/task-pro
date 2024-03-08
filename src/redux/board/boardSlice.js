@@ -100,10 +100,7 @@ const boardsSlice = createSlice({
         const editedItemIndex = state.oneBoard.columns.findIndex(
           ({ _id }) => _id === payload.column._id
         );
-        state.oneBoard.columns = state.oneBoard.columns.with(
-          editedItemIndex,
-          payload.column
-        );
+        state.oneBoard.columns[editedItemIndex].title = payload.column.title;
       })
       .addCase(deleteColumn.fulfilled, (state, { payload }) => {
         state.isLoading = false;

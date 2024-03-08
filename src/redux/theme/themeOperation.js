@@ -14,14 +14,14 @@ export const getTheme = createAsyncThunk(
 );
 
 export const updateTheme = createAsyncThunk(
-  'users/updateTheme ',
-  async (theme, thunkAPI) => {
-    try {
-      const { data } = await axiosInstance.patch('users/current/theme', theme);
-      // console.log(data);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+    'users/updateTheme ',
+    async (theme, thunkAPI) => {
+        try {
+            const { data } = await axiosInstance.patch('users/current/theme',theme);
+            console.log(data);
+            return data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
     }
-  }
 );

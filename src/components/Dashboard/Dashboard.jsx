@@ -11,7 +11,7 @@ const Dashboard = ({ board }) => {
 
   return (
     <Wrap>
-      {Object.keys(board).length > 0 && (
+      {Object.keys(board).length > 0 && board.columns.length > 0 && (
         <ColumnsList>
           {board.columns.map(column => (
             <li key={column._id}>
