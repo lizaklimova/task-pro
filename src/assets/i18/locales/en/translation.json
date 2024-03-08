@@ -83,6 +83,9 @@
   },
   "cards": {
     "addButton": "Add another card",
+    "priority": "Priority",
+    "deadline": "Deadline",
+    "deadlineToday": "Today is a deadline",
     "modals": {
       "addTitle": "Add card",
       "editTitle": "Edit card",
@@ -94,7 +97,8 @@
       "addButton": "Add",
       "editButton": "Edit",
       "toast.error": "Please enter all fields to create a task ❗️",
-      "toast.success": "Card is added successfully ✅"
+      "toast.add.success": "Card is added successfully ✅",
+      "toast.edit.success": "Card is edited successfully ✅"
     },
     "popup": {
       "progress": "In progress",

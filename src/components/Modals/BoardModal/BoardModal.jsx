@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import toast from 'react-hot-toast';
 import { createBoard, updateBoard } from '../../../redux/board/boardOperations';
 import { selectOneBoard } from '../../../redux/board/boardSelectors';
+import { DEFAULT_BACKGROUND_ID } from 'constants';
 import { validateInputMaxLength } from 'helpers';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';
@@ -17,8 +19,6 @@ import {
   Button,
   Span,
 } from './BoardModal.styled';
-import toast from 'react-hot-toast';
-import { DEFAULT_BACKGROUND_ID } from 'constants';
 
 const BoardModal = ({ variant, closeModal }) => {
   const [errorMsg, setErrorMsg] = useState(null);

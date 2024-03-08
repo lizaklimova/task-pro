@@ -78,7 +78,7 @@ const ColumnModal = ({ variant, closeModal, columnId, columnName }) => {
             {errorMsg && <p>{errorMsg}</p>}
           </ErrorLabel>
 
-          <SubmitBtn type="submit">
+          <SubmitBtn type="submit" $variant="column">
             <span>
               <Plus width={14} height={14} />
             </span>
