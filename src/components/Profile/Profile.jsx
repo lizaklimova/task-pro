@@ -7,18 +7,15 @@ import { useSelector } from 'react-redux';
 import {
   selectUserAvatar,
   selectUsername,
-  selectIsLoading,
 } from '../../redux/auth/authSelectors';
+
 
 const Profile = () => {
   const [shownModal, setShownModal] = useState(false);
   const nameUser = useSelector(selectUsername);
   const avatar = useSelector(selectUserAvatar);
-  const isLoading = useSelector(selectIsLoading);
 
   return (
-    <>
-      {!isLoading && (
         <UserContainer>
           <UserName>{nameUser ?? 'User'}</UserName>
           <Button type="button" onClick={() => setShownModal(true)}>
@@ -39,8 +36,6 @@ const Profile = () => {
             </ModalWrapper>
           )}
         </UserContainer>
-      )}
-    </>
   );
 };
 
