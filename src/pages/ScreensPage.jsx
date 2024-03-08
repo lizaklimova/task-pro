@@ -12,7 +12,7 @@ const ScreensPage = () => {
   const dispatch = useDispatch();
 
   const board = useSelector(selectOneBoard);
-
+  console.log(board);
   useEffect(() => {
     dispatch(getOneBoard(boardId));
   }, [dispatch, boardId]);

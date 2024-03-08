@@ -3,31 +3,38 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getTheme, updateTheme } from '../redux/theme/themeOperation';
 import { selectTheme } from '../redux/theme/themeSelector';
+import { useAuth } from './useAuth';
 
-// export function getThemeSystem() {
-//   if (window.matchMedia && window.matchMedia("(prefers-color-scheme:dark)").matches) {
-//     return "dark";
-//   } else {
-//     return "light";
-//   }
-// }
+export function getThemeSystem() {
+  if (window.matchMedia && window.matchMedia("(prefers-color-scheme:dark)").matches) {
+    return "dark";
+  } else {
+    return "light";
+  }
+}
 export const useTheme = () => {
+
   const dispatch = useDispatch();
+  const { isLoggedIn } = useAuth();
   useEffect(() => {
-    dispatch(getTheme());
-  }, [dispatch]);
+     isLoggedIn && dispatch(getTheme());
+   
+  }, [dispatch, isLoggedIn]);
 
   const themeBack = useSelector(selectTheme);
 
   const [theme, setTheme] = useState(
-    localStorage.getItem('app-them') || themeBack
-  );
+    localStorage.getItem('app-them') || themeBack || getTheme());
 
   useLayoutEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    dispatch(updateTheme({ theme }));
-    localStorage.setItem('app-them', theme);
-  }, [theme, dispatch]);
+    
+      isLoggedIn && dispatch(updateTheme({ theme }));
+      localStorage.setItem('app-them', theme);
+    
+    
+   
+  }, [theme, dispatch, isLoggedIn]);
 
   return { theme, setTheme };
 };

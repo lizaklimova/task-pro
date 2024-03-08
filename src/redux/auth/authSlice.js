@@ -45,6 +45,7 @@ export const authSlice = createSlice({
         console.log(payload);
         // const oldUser = (state.user);
         state.user = { ...state.user, ...payload.user };
+        state.user.avatar_url = payload.user.avatar_url;
         state.isLoggedIn = true;
         state.isLoading = false;
       })

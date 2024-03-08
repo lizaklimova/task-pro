@@ -13,8 +13,7 @@ export const Title = styled.h2`
 
 export const ClearFilterBox = styled.div`
   display: flex;
-  border-top: 1px solid;
-  border-color: var(--text-color);
+  border-top: 1px solid var(--underline-color);
   margin-bottom: 14px;
   padding-top: 14px;
 `;
@@ -28,12 +27,19 @@ export const ClearTitle = styled.h3`
 `;
 
 export const ClearButton = styled.button`
-  color: var(--text-color);
+  color: var(--lightgrey-text-color);
   font-size: 12px;
   line-height: normal;
   letter-spacing: -0.24px;
   background-color: inherit;
   text-decoration-line: underline;
+
+  @media screen and (min-width: 768px) {
+    &:hover,
+    &:focus {
+      color: var(--text-color);
+    }
+  }
 `;
 
 export const RadioButtonBox = styled.div`
@@ -50,6 +56,7 @@ export const RadioButton = styled.input`
   top: 4px;
   left: 0;
   appearance: none;
+  font-family: inherit;
   border-radius: 50%;
   margin: 0;
   width: 14px;
@@ -68,7 +75,7 @@ export const RadioButton = styled.input`
   }
 
   &:checked.gray {
-    border: 1px solid var(--text-color);
+    border: 1px solid var(--lightgrey-text-color);
   }
 `;
 
@@ -92,7 +99,7 @@ export const StyledMarker = styled.span`
   }
 
   &.gray {
-    background-color: var(--text-color);
+    background-color: var(--lightgrey-text-color);
   }
 `;
 
@@ -103,20 +110,21 @@ export const PriorityFilterLabel = styled.label`
   gap: 8px;
   justify-content: center;
   align-items: center;
-  color: var(--text-color);
-
-  font-family: 'Poppins';
+  color: var(--lightgrey-text-color);
 
   &:not(:last-child) {
     margin-bottom: 12px;
   }
   font-size: 14px;
 
-  &:hover {
-    opacity: 0.7;
-  }
-
   input[type='radio']:checked + ${StyledMarker} {
     scale: 0.5;
+  }
+
+  @media screen and (min-width: 768px) {
+    &:hover,
+    &:focus {
+      color: var(--text-color);
+    }
   }
 `;

@@ -115,7 +115,11 @@ const boardsSlice = createSlice({
         const column = state.oneBoard.columns.find(
           ({ _id }) => _id === payload.column
         );
-        column.cards = [...column.cards, payload];
+        if (!column.cards) {
+          column.cards = [payload];
+        } else {
+          column.cards = [...column.cards, payload];
+        }
       })
       .addCase(deleteCard.fulfilled, (state, { payload }) => {
         state.isLoading = false;

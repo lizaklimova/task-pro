@@ -5,8 +5,8 @@ export const DevContainer = styled.div`
   align-items: center;
   margin-bottom: 32px;
 
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 20px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 10px;
   }
 `;
 
@@ -18,9 +18,6 @@ export const DevName = styled.h2`
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }
-  @media screen and (min-width: 1440px) {
-    font-size: 14px;
-  }
 `;
 
 export const DevRole = styled.p`
@@ -30,10 +27,6 @@ export const DevRole = styled.p`
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
-  }
-  @media screen and (min-width: 1440px) {
-    font-size: 12px;
-    margin-bottom: 8px;
   }
 `;
 
@@ -60,7 +53,7 @@ export const DevLink = styled.a`
   align-items: center;
   gap: 5px;
   margin-bottom: 4px;
-  transition: transform 0.3s ease;
+  transition: transform var(--easedTransition);
 
   @media screen and (min-width: 768px) {
     &:hover,
