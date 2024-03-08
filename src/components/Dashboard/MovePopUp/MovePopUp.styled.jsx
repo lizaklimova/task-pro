@@ -19,6 +19,7 @@ export const Popup = styled.div`
   visibility: hidden;
   transition: opacity var(--easedTransition), visibility var(--easedTransition),
     height var(--easedTransition);
+  z-index: 3;
 
   &:hover,
   &:focus {
@@ -43,7 +44,7 @@ export const Popup = styled.div`
     transition: color var(--easedTransition);
 
     span {
-      width: 110px;
+      max-width: 80px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;

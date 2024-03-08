@@ -18,10 +18,6 @@ const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
-  // useEffect(() => {
-  //   isLoggedIn && dispatch(refreshUser());
-  // }, [dispatch, isLoggedIn]);
-
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
