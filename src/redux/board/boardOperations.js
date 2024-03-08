@@ -159,13 +159,14 @@ export const editColumn = createAsyncThunk(
 
 export const moveCard = createAsyncThunk(
   'cards/moveCard',
-  async ({ cardId, columnId }, thunkAPI) => {
+  async ({ cardId, newColumn, oldColumn }, thunkAPI) => {
     try {
       const { data } = await axiosInstance.patch(
         ENDPOINTS.cards.cardStatus(cardId),
-        { columnId }
+        { columnId: newColumn }
       );
-      return { card: data.card, oldColumn: columnId };
+      console.log({ card: data.card, oldColumn });
+      return { card: data.card, oldColumn };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
