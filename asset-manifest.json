@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/task-pro/static/css/main.28ded0b0.css",
-    "main.js": "/task-pro/static/js/main.d8e39195.js",
+    "main.js": "/task-pro/static/js/main.3c4a859c.js",
     "static/js/955.0bc27f06.chunk.js": "/task-pro/static/js/955.0bc27f06.chunk.js",
     "static/js/23.a30e0ca9.chunk.js": "/task-pro/static/js/23.a30e0ca9.chunk.js",
     "static/js/598.875164ab.chunk.js": "/task-pro/static/js/598.875164ab.chunk.js",
-    "static/js/178.f02c651d.chunk.js": "/task-pro/static/js/178.f02c651d.chunk.js",
+    "static/js/213.23514ec6.chunk.js": "/task-pro/static/js/213.23514ec6.chunk.js",
     "static/js/498.ef28c79f.chunk.js": "/task-pro/static/js/498.ef28c79f.chunk.js",
     "static/css/148.d230bf78.chunk.css": "/task-pro/static/css/148.d230bf78.chunk.css",
     "static/js/148.55f98634.chunk.js": "/task-pro/static/js/148.55f98634.chunk.js",
@@ -41,11 +41,11 @@
     "index.html": "/task-pro/index.html",
     "static/media/getFetch.cjs": "/task-pro/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.28ded0b0.css.map": "/task-pro/static/css/main.28ded0b0.css.map",
-    "main.d8e39195.js.map": "/task-pro/static/js/main.d8e39195.js.map",
+    "main.3c4a859c.js.map": "/task-pro/static/js/main.3c4a859c.js.map",
     "955.0bc27f06.chunk.js.map": "/task-pro/static/js/955.0bc27f06.chunk.js.map",
     "23.a30e0ca9.chunk.js.map": "/task-pro/static/js/23.a30e0ca9.chunk.js.map",
     "598.875164ab.chunk.js.map": "/task-pro/static/js/598.875164ab.chunk.js.map",
-    "178.f02c651d.chunk.js.map": "/task-pro/static/js/178.f02c651d.chunk.js.map",
+    "213.23514ec6.chunk.js.map": "/task-pro/static/js/213.23514ec6.chunk.js.map",
     "498.ef28c79f.chunk.js.map": "/task-pro/static/js/498.ef28c79f.chunk.js.map",
     "148.d230bf78.chunk.css.map": "/task-pro/static/css/148.d230bf78.chunk.css.map",
     "148.55f98634.chunk.js.map": "/task-pro/static/js/148.55f98634.chunk.js.map",
@@ -53,6 +53,6 @@
   },
   "entrypoints": [
     "static/css/main.28ded0b0.css",
-    "static/js/main.d8e39195.js"
+    "static/js/main.3c4a859c.js"
   ]
 }
