@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { filterBoard } from '../../../redux/board/boardOperations';
+import { getOneBoard, filterCards } from '../../../redux/board/boardOperations';
 import ModalWrapper from 'components/Modals/ModalWrapper/ModalWrapper';
 import {
   TitleContainer,
@@ -23,9 +23,12 @@ const Filters = ({ boardId, onClose }) => {
 
   const handleFilterChange = newValue => {
     setFilterValue(newValue);
-    console.log(newValue);
-    console.log(boardId);
-    dispatch(filterBoard({ boardId: boardId, priority: newValue }));
+    dispatch(filterCards({ boardId: boardId, priority: newValue }));
+    onClose();
+  };
+
+  const handleDefaultFilter = () => {
+    dispatch(getOneBoard(boardId));
     onClose();
   };
 
@@ -36,10 +39,7 @@ const Filters = ({ boardId, onClose }) => {
       </TitleContainer>
       <ClearFilterBox>
         <ClearTitle>{t('boards.filter.label')}</ClearTitle>
-        <ClearButton
-          type="button"
-          onClick={() => handleFilterChange('default')}
-        >
+        <ClearButton type="button" onClick={handleDefaultFilter}>
           {t('boards.filter.all')}
         </ClearButton>
       </ClearFilterBox>

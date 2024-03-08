@@ -5,7 +5,7 @@ import {
   createBoard,
   deleteBoard,
   getOneBoard,
-  filterBoard,
+  filterCards,
   addColumn,
   editColumn,
   deleteColumn,
@@ -35,7 +35,7 @@ const boardsSlice = createSlice({
       .addCase(createBoard.pending, handlePending)
       .addCase(updateBoard.pending, handlePending)
       .addCase(deleteBoard.pending, handlePending)
-      .addCase(filterBoard.pending, handlePending)
+      .addCase(filterCards.pending, handlePending)
       .addCase(addColumn.pending, handlePending)
       .addCase(editColumn.pending, handlePending)
       .addCase(deleteColumn.pending, handlePending)
@@ -80,8 +80,8 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(filterBoard.fulfilled, (state, { payload }) => {
-        state.filterBoard = payload;
+      .addCase(filterCards.fulfilled, (state, { payload }) => {
+        state.oneBoard = payload;
         state.isLoading = false;
         state.error = null;
       })
@@ -142,7 +142,7 @@ const boardsSlice = createSlice({
       .addCase(getOneBoard.rejected, handleRejected)
       .addCase(createBoard.rejected, handleRejected)
       .addCase(deleteBoard.rejected, handleRejected)
-      .addCase(filterBoard.rejected, handleRejected)
+      .addCase(filterCards.rejected, handleRejected)
       .addCase(addColumn.rejected, handleRejected)
       .addCase(editColumn.rejected, handleRejected)
       .addCase(deleteColumn.rejected, handleRejected)
