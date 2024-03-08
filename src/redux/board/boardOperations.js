@@ -53,9 +53,11 @@ export const updateBoard = createAsyncThunk(
   async ({ boardId, dataUpdate }, thunkAPI) => {
     try {
       const formData = new FormData();
+      console.log(formData);
       const { title, iconId, backgroundId } = dataUpdate;
+      console.log(backgroundId);
       formData.append('title', title);
-      formData.append('iconId', iconId);
+      formData.append('icon_id', iconId);
       formData.append('backgroundId', backgroundId);
 
       const { data } = await axiosInstance.patch(

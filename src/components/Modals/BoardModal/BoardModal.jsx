@@ -9,6 +9,7 @@ import { validateInputMaxLength } from 'helpers';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';
 import { BacksList } from './BacksList';
+import { CustomBackground } from './CustomBackground';
 import Plus from 'components/Icons/Plus';
 import {
   Form,
@@ -94,6 +95,9 @@ const BoardModal = ({ variant, closeModal }) => {
             variant === 'add' ? DEFAULT_BACKGROUND_ID : oneBoard.background._id
           }
         />
+
+        <Text>Choose your custom background</Text>
+        <CustomBackground />
 
         <Button type="submit">
           <Span>
