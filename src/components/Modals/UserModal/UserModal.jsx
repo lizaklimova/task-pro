@@ -25,15 +25,21 @@ const UserModal = ({onClose}) => {
   const { t } = useTranslation();
 
   const [visible, setVisible] = useState(false);
-  const [avatar_url, setAvatar_url] = useState(useSelector(selectUserAvatar)); //те що приходить з беку
-  const [name, setName] = useState(useSelector(selectUsername)); //те що приходить з беку
-  const [email, setEmail] = useState(useSelector(selectUserEmail)); //те що приходить з беку
+  const [avatar_url, setAvatar_url] = useState(useSelector(selectUserAvatar));
+  const [name, setName] = useState(useSelector(selectUsername));
+  const [email, setEmail] = useState(useSelector(selectUserEmail)); 
   const [password, setPassword] = useState(''); 
+  const [preview, setPreview] = useState(null);
     
 
   function changeImg(event) {
     console.log(event.target.files);
     setAvatar_url(event.target.files[0]);
+    const file = new FileReader();
+    file.onload = function () {
+      setPreview (file.result);
+    }
+    file.readAsDataURL(event.target.files[0]);
   }
      const handleInputChange = event => {
          const { name, value } = event.target;
@@ -50,8 +56,6 @@ const UserModal = ({onClose}) => {
            default:
              break;
          }
-       
-       
      };
 
     function editProfile(event) {
@@ -69,7 +73,7 @@ const UserModal = ({onClose}) => {
       <FormUser onSubmit={editProfile}>
         <Avatar>
           {avatar_url !== 'default' ? (
-            <img src={avatar_url} alt='avatar' /> 
+            <img  src={ preview || avatar_url} alt='avatar' style={{width:68, height:68,objectFit:'contain'}}/> 
           ) : (
             <User
               width={68}
@@ -144,3 +148,7 @@ const UserModal = ({onClose}) => {
 };
 
 export default UserModal;
+
+
+
+      // toast(t('cards.modals.toast.add.success'), TOASTER_CONFIG); тост 
