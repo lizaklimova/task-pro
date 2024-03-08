@@ -31,7 +31,6 @@ const Filters = ({ boardId, onClose }) => {
 
   const handleFilterChange = newValue => {
     setFilterValue(newValue);
-    console.log(newValue);
     dispatch(filterCards({ boardId: boardId, priority: newValue }));
     onClose();
   };

@@ -28,6 +28,10 @@ export const CardItem = styled.div`
     align-items: flex-ends;
     justify-content: space-between;
   }
+
+  li {
+    position: relative;
+  }
 `;
 
 export const CardTitle = styled.h4`
@@ -113,12 +117,20 @@ export const DeadlineModal = styled.div`
 
 export const CardActionButton = styled.button`
   background-color: transparent;
-  position: relative;
 
-  &#deadline-bell:hover #deadline-modal,
-  &#deadline-bell:focus #deadline-modal {
+  &#deadline-bell:hover + #deadline-modal,
+  &#deadline-bell:focus + #deadline-modal {
     opacity: 1;
     visibility: visible;
+  }
+
+  &#move-card:hover + #move-popup,
+  &#move-card:focus + #move-popup {
+    background-color: var(--popup-bg);
+    border: 1px solid var(--text-color);
+    opacity: 1;
+    visibility: visible;
+    height: auto;
   }
 
   &#deadline-bell svg {

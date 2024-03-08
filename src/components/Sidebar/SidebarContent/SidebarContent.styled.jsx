@@ -23,14 +23,8 @@ export const Logo = styled.div`
   margin-bottom: 15px;
   color: var(--sidebar-text);
   font-weight: 600;
-  /* @media screen and (min-width: 1440px) {
-    display: block;
-    padding: 24px;
-    background-color: #161616;
-    color: #fff;
-    height: 100vh;
-  } */
 `;
+
 export const LightningBox = styled.div`
   width: 32px;
   height: 32px;
@@ -39,10 +33,35 @@ export const LightningBox = styled.div`
   background-color: var(--sidebar-lightning-bg);
 `;
 
+export const BoardsWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const MyBoard = styled.p`
   color: var(--sidebar-myboard-text);
   text-align: left;
   margin-bottom: 8px;
+`;
+
+export const SearchButton = styled.button`
+  background-color: transparent;
+  color: var(--text-color);
+
+  & svg {
+    opacity: 0.7;
+    stroke: 'none';
+    fill: var(--sidebar-text);
+    transition: stroke var(--easedTransition), transform var(--easedTransition);
+  }
+
+  &:hover {
+    color: var(--accent-btn-hover);
+    & svg {
+      transform: scale(1.05);
+    }
+  }
 `;
 
 export const AddBtn = styled.button`
@@ -129,12 +148,47 @@ export const BoardContainer = styled.div`
   }
 `;
 
+export const SearchResultWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+
+  @media screen and (min-width: 1440px) {
+    padding: 0 24px;
+  }
+
+  p {
+    color: var(--sidebar-myboard-text);
+    text-align: left;
+  }
+
+  button {
+    padding: 0;
+    color: var(--sidebar-myboard-text);
+    background-color: transparent;
+    transition: color var(--easedTransition);
+
+    &:hover,
+    &:focus {
+      color: var(--sidebar-text);
+      filter: drop-shadow(1px 1px 3px var(--sidebar-myboard-text));
+    }
+  }
+`;
+
 export const BoardLink = styled(NavLink)`
   display: flex;
   align-items: center;
   padding-top: 20px;
   padding-bottom: 20px;
   opacity: 0.5;
+  transition: background-color var(--easedTransition);
+
+  &:hover,
+  &:focus {
+    background-color: var(--sidebar-active-board);
+  }
 
   & #change-container {
     display: none;

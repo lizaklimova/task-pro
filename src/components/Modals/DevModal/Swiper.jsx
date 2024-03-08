@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-
+import './swiper.css';
 import DevItem from './DevItem';
 
 const SwiperElement = ({ developers }) => {
@@ -16,7 +16,9 @@ const SwiperElement = ({ developers }) => {
         disableOnInteraction: false,
       }}
       loop={true}
-      pagination={true}
+      pagination={{
+        clickable: true,
+      }}
       modules={[Autoplay, Pagination]}
       className="mySwiper"
     >

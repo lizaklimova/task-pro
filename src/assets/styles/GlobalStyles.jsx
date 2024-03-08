@@ -59,6 +59,7 @@ html[data-theme='dark']{
   --underline-color: rgba(22, 22, 22, 0.1);
   --default-icon-fill: #1F1F1F;
   --default-icon-stroke: rgba(255, 255, 255, 0.1);
+  --popup-bg: #1F1F1F;
   --box-shadow: rgba(166, 166, 187, 0.25) 0px 2px 5px -1px,
     rgba(255, 255, 255, 0.3) 0px 1px 3px -1px;
 }
@@ -110,6 +111,7 @@ html[data-theme='light']{
   --underline-color: rgba(22, 22, 22, 0.1);
   --default-icon-fill: #F6F6F7;
   --default-icon-stroke: rgba(16, 16, 16, 0.1);
+  --popup-bg: #FCFCFC;
   --box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
@@ -161,6 +163,7 @@ html[data-theme='violet']{
   --underline-color: rgba(22, 22, 22, 0.1);
   --default-icon-fill: #ECEDFD;
   --default-icon-stroke:rgba(16, 16, 16, 0.1);
+  --popup-bg: #FCFCFC;
   --box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }

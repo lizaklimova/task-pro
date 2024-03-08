@@ -19,7 +19,7 @@ import {
 import { deleteColumn } from '../../../redux/board/boardOperations';
 import { useDispatch } from 'react-redux';
 
-const Column = ({ column }) => {
+const Column = ({ allColumns, column }) => {
   const [isAddColumnModalOpen, setIsAddColumnModalOpen] = useState(false);
   const [isEditColumnModalOpen, setIsEditColumnModalOpen] = useState(false);
   const [isAddCardModalOpen, setIsAddCardModalOpen] = useState(false);
@@ -77,6 +77,7 @@ const Column = ({ column }) => {
             column.cards.map(card => (
               <li key={card._id}>
                 <TaskCard
+                  allColumns={allColumns}
                   columnId={column._id}
                   card={card}
                   openCardModal={() => setIsEditCardModalOpen(true)}
