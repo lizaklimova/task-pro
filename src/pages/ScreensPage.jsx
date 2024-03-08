@@ -18,7 +18,7 @@ const ScreensPage = () => {
   }, [dispatch, boardId]);
 
   return (
-    <MainContainer>
+    <MainContainer $bg={board.background}>
       <BoardHeader title={board.title} boardId={boardId} />
       <Dashboard board={board} />
     </MainContainer>
