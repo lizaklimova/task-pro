@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import { createBoard, updateBoard } from '../../../redux/board/boardOperations';
 import { selectOneBoard } from '../../../redux/board/boardSelectors';
-import { DEFAULT_BACKGROUND_ID } from 'constants';
+import { DEFAULT_BACKGROUND_ID, TOASTER_CONFIG } from 'constants';
 import { validateInputMaxLength } from 'helpers';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';
@@ -37,7 +37,7 @@ const BoardModal = ({ variant, closeModal }) => {
     const { title, background, iconId } = e.target.elements;
 
     if (!title.value.trim()) {
-      return toast(t('boards.modals.toast.error'));
+      return toast(t('boards.modals.toast.error'), TOASTER_CONFIG);
     }
 
     const data = {
@@ -50,10 +50,10 @@ const BoardModal = ({ variant, closeModal }) => {
 
     if (variant === 'add') {
       dispatch(createBoard(data));
-      toast(t('boards.modals.toast.add.success'));
+      toast(t('boards.modals.toast.add.success'), TOASTER_CONFIG);
     } else {
       dispatch(updateBoard({ boardId: oneBoard._id, dataUpdate: data }));
-      toast(t('boards.modals.toast.edit.success'));
+      toast(t('boards.modals.toast.edit.success'), TOASTER_CONFIG);
     }
 
     return closeModal();
