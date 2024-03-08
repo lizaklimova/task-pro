@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
-// import { addCard, editCard } from '../../../redux/cards/cardsOperations';
+import { addCard, editCard } from '../../../redux/cards/cardsOperations';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { LABEL_ARR, TOASTER_CONFIG } from 'constants';
 import { makeValidDate, validateInputMaxLength } from 'helpers';
@@ -19,10 +21,14 @@ import {
   SubmitBtn,
 } from './CardModal.styled';
 
-const CardModal = ({ variant, closeCardModal }) => {
-  const [labelColor, setLabelColor] = useState('gray');
+const CardModal = ({ columnId, variant, closeCardModal, activeCard }) => {
+  const [cardPriority, setCardPriority] = useState(
+    variant === 'add' ? 'without priority' : activeCard.priority
+  );
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-  const [selectedDate, setSelectedDay] = useState(new Date());
+  const [selectedDate, setSelectedDay] = useState(
+    variant === 'add' ? new Date() : activeCard.deadline
+  );
   const [errorMsg, setErrorMsg] = useState(null);
   const [errorClassName, setErrorClassName] = useState('');
 
@@ -33,11 +39,13 @@ const CardModal = ({ variant, closeCardModal }) => {
     titleRef.current.focus();
   }, []);
 
+  const { boardId } = useParams();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const handleFormSubmit = e => {
     e.preventDefault();
-    const { title, description } = e.target.children;
+    const { title, description } = e.target.elements;
 
     if (!title.value.trim() || !description.value.trim()) {
       return toast(t('cards.modals.toast.error'), TOASTER_CONFIG);
@@ -48,12 +56,19 @@ const CardModal = ({ variant, closeCardModal }) => {
     const cardInfo = {
       title: title.value,
       description: description.value,
-      label: labelColor,
-      date: dateForServer,
+      priority: cardPriority,
+      deadline: dateForServer,
+      board: boardId,
+      column: columnId,
     };
 
-    console.log(cardInfo);
-    toast(t('cards.modals.toast.success'), TOASTER_CONFIG);
+    if (variant === 'add') {
+      dispatch(addCard(cardInfo));
+      toast(t('cards.modals.toast.add.success'), TOASTER_CONFIG);
+    } else {
+      dispatch(editCard({ cardId: activeCard._id, editedCard: cardInfo }));
+      toast(t('cards.modals.toast.edit.success'), TOASTER_CONFIG);
+    }
     closeCardModal();
   };
 
@@ -82,10 +97,11 @@ const CardModal = ({ variant, closeCardModal }) => {
           <ErrorLabel>
             <input
               className={errorClassName}
+              ref={titleRef}
               type="text"
               name="title"
               placeholder={t('cards.modals.title')}
-              defaultValue={variant === 'add' ? '' : ''}
+              defaultValue={variant === 'add' ? '' : activeCard.title}
               autoComplete="off"
               maxLength={25}
               onChange={e =>
@@ -97,7 +113,7 @@ const CardModal = ({ variant, closeCardModal }) => {
           <textarea
             name="description"
             placeholder={t('cards.modals.description')}
-            defaultValue={variant === 'add' ? '' : ''}
+            defaultValue={variant === 'add' ? '' : activeCard.description}
             autoComplete="off"
           ></textarea>
 
@@ -105,17 +121,17 @@ const CardModal = ({ variant, closeCardModal }) => {
             {t('cards.modals.label')}
 
             <LabelRadioList>
-              {LABEL_ARR.map(({ id, color }) => {
+              {LABEL_ARR.map(({ id, priority, color }) => {
                 return (
                   <li key={id}>
                     <RadioBtn
                       $color={color}
-                      id="label"
+                      id="priority"
                       type="radio"
-                      name="label"
-                      value={color}
-                      checked={labelColor === color}
-                      onChange={e => setLabelColor(e.target.value)}
+                      name="priority"
+                      value={priority}
+                      checked={priority === cardPriority}
+                      onChange={e => setCardPriority(e.target.value)}
                     />
                     <LabelRadioLabel htmlFor="label" $color={color} />
                   </li>

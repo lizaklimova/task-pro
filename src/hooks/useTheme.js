@@ -13,20 +13,21 @@ import { selectTheme } from '../redux/theme/themeSelector';
 // }
 export const useTheme = () => {
   const dispatch = useDispatch();
-useEffect(() => {
-  dispatch(getTheme());
-}, [dispatch])
+  useEffect(() => {
+    dispatch(getTheme());
+  }, [dispatch]);
 
   const themeBack = useSelector(selectTheme);
-  console.log(themeBack);
 
-const [theme, setTheme] = useState(localStorage.getItem('app-them') || themeBack);
+  const [theme, setTheme] = useState(
+    localStorage.getItem('app-them') || themeBack
+  );
 
   useLayoutEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    dispatch(updateTheme({theme}));
+    dispatch(updateTheme({ theme }));
     localStorage.setItem('app-them', theme);
-  }, [theme,dispatch]);
+  }, [theme, dispatch]);
 
   return { theme, setTheme };
 };

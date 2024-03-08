@@ -18,12 +18,13 @@ import { selectUsername, selectUserEmail, selectUserAvatar } from '../../../redu
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { editUser } from '../../../redux/auth/authOperations';
+import { useTranslation } from 'react-i18next';
 
-const UserModal = () => {
-const dispatch = useDispatch();
+const UserModal = ({onClose}) => {
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const [visible, setVisible] = useState(false);
-  // const [state, setState] = useState({});
   const [avatar_url, setAvatar_url] = useState(useSelector(selectUserAvatar)); //те що приходить з беку
   const [name, setName] = useState(useSelector(selectUsername)); //те що приходить з беку
   const [email, setEmail] = useState(useSelector(selectUserEmail)); //те що приходить з беку
@@ -60,17 +61,15 @@ const dispatch = useDispatch();
         user.password = undefined;
       }
       dispatch(editUser(user));
+      onClose();
     }
-    // console.log(state);
-    // console.log(image);
-
   return (
     <div>
-      <h3>Edit profile</h3>
+      <h3>{t('editUser.title')}</h3>
       <FormUser onSubmit={editProfile}>
         <Avatar>
           {avatar_url !== 'default' ? (
-            <img src={avatar_url} alt="" /> //поки не працює
+            <img src={avatar_url} alt='avatar' /> 
           ) : (
             <User
               width={68}
@@ -138,7 +137,7 @@ const dispatch = useDispatch();
             )}
           </EyeBtn>
         </InputPass>
-        <SendBtn type="submit">Send</SendBtn>
+        <SendBtn type="submit">{t('editUser.button')}</SendBtn>
       </FormUser>
     </div>
   );

@@ -7,6 +7,9 @@ export const HeaderWrap = styled.div`
   & h2 {
     font-weight: 500;
     font-size: 14px;
+    background-color: var(--background-color);
+    padding: 0 20px;
+    border-radius: 8px;
 
     @media screen and (min-width: 768px) {
       font-size: 18px;
@@ -18,7 +21,9 @@ export const FilterButton = styled.button`
   display: flex;
   gap: 8px;
   align-items: center;
-  background-color: transparent;
+  background-color: var(--background-color);
+  padding: 0 20px;
+  border-radius: 8px;
   font-weight: 500;
   font-size: 14px;
   color: var(--text-color);

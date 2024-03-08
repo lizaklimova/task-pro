@@ -58,6 +58,8 @@ html[data-theme='dark']{
   --sidebar-before: #bedbb0;
   --default-icon-fill: #1F1F1F;
   --default-icon-stroke: rgba(255, 255, 255, 0.1);
+  --box-shadow: rgba(166, 166, 187, 0.25) 0px 2px 5px -1px,
+    rgba(255, 255, 255, 0.3) 0px 1px 3px -1px;
 }
 
 html[data-theme='light']{
@@ -106,6 +108,8 @@ html[data-theme='light']{
   --sidebar-before: #bedbb0;
   --default-icon-fill: #F6F6F7;
   --default-icon-stroke: rgba(16, 16, 16, 0.1);
+  --box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 html[data-theme='violet']{
@@ -153,7 +157,9 @@ html[data-theme='violet']{
   --sidebar-logout-text: #fff;
   --sidebar-before: #fff;
   --default-icon-fill: #ECEDFD;
-  --default-icon-stroke:rgba(16, 16, 16, 0.1) ;
+  --default-icon-stroke:rgba(16, 16, 16, 0.1);
+  --box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 *,

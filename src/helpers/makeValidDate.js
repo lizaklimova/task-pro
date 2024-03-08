@@ -1,7 +1,5 @@
-import formatDate from './formatDate';
-
 const makeValidDate = date => {
-  return new Date(formatDate(date).split('/').reverse().join('/'));
+  return new Date(date);
 };
 
 export default makeValidDate;
