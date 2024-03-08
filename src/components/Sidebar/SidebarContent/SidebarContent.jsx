@@ -39,14 +39,12 @@ import {
   DevsBtn,
 } from './SidebarContent.styled';
 
-const SidebarContent = () => {
+const SidebarContent = ({ menu, closeMenu }) => {
   const [isAddBoardModalShown, setIsAddBoardModalShown] = useState(false);
   const [isEditBoardModalShown, setIsEditBoardModalShown] = useState(false);
   const [isDevModalOpen, setIsDevModalOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  // const [searchValue, setSearchValue] = useState('');
-  // const [filteredBoards, setFilteredBoards] = useState(allBoards);
   const [showSearchResult, setShowSearchResult] = useState(false);
 
   const dispatch = useDispatch();
@@ -183,6 +181,8 @@ const SidebarContent = () => {
         <BoardModal
           variant="add"
           closeModal={() => setIsAddBoardModalShown(false)}
+          menu={menu}
+          closeMenu={closeMenu}
         />
       )}
       {isEditBoardModalShown && (
