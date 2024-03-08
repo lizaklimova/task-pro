@@ -31,14 +31,21 @@ import {
   DevsBtn,
 } from './SidebarContent.styled';
 import SwiperDevModal from 'components/Modals/DevModal/SwiperDevModal';
+import SearchBoardModal from 'components/Modals/SearchBoardModal/SearchBoardModal';
+import Search from 'components/Icons/Search';
+import { FilterButton } from 'components/Dashboard/BoardHeader/BoardHeader.styled';
 
 const SidebarContent = () => {
   const [isAddBoardModalShown, setIsAddBoardModalShown] = useState(false);
   const [isEditBoardModalShown, setIsEditBoardModalShown] = useState(false);
   const [isDevModalOpen, setIsDevModalOpen] = useState(false);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [searchValue, setSearchValue] = useState('');
 
   const allBoards = useSelector(selectBoards);
+
+  const allBoardsTitles = allBoards.map(board => board.title);
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -54,6 +61,24 @@ const SidebarContent = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const handleSearchClick = () => {
+    setIsSearchModalOpen(true);
+  };
+
+  const handleSearchChange = event => {
+    setSearchValue(event.target.value.trim().toLowerCase());
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log(allBoards);
+    const filteredBoards = allBoardsTitles.filter(title =>
+      title.trim().toLowerCase().includes(searchValue)
+    );
+    console.log('Filtered boards:', filteredBoards);
+    setIsSearchModalOpen(false);
+  };
 
   return (
     <Container>
@@ -79,6 +104,10 @@ const SidebarContent = () => {
         </DevsBtn>
 
         <MyBoard>{t('sidebar.boards')}</MyBoard>
+
+        <FilterButton type="button" onClick={handleSearchClick}>
+          <Search width={16} height={16} />
+        </FilterButton>
 
         <CreateBox>
           <CreateText>{t('sidebar.create')}</CreateText>
@@ -142,18 +171,22 @@ const SidebarContent = () => {
           closeModal={() => setIsEditBoardModalShown(false)}
         />
       )}
-      {/* <DevModal
-        isOpen={isDevModalOpen}
-        onClose={() => setIsDevModalOpen(false)}
-      /> */}
 
-      {windowWidth < 768 ? ( // Умова для відображення SwiperDevModal
+      {isSearchModalOpen && (
+        <SearchBoardModal
+          onClose={() => setIsSearchModalOpen(false)}
+          searchValue={searchValue}
+          handleSubmit={handleSubmit}
+          handleSearchChange={handleSearchChange}
+        />
+      )}
+
+      {windowWidth < 768 ? (
         <SwiperDevModal
           isOpen={isDevModalOpen}
           onClose={() => setIsDevModalOpen(false)}
         />
       ) : (
-        // Умова для відображення DevModal
         <DevModal
           isOpen={isDevModalOpen}
           onClose={() => setIsDevModalOpen(false)}

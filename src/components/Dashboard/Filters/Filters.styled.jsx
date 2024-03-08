@@ -50,6 +50,7 @@ export const RadioButton = styled.input`
   top: 4px;
   left: 0;
   appearance: none;
+  font-family: inherit;
   border-radius: 50%;
   margin: 0;
   width: 14px;
