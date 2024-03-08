@@ -56,6 +56,7 @@ html[data-theme='dark']{
   --svg-color-user:#151515;
   --sidebar-logout-text: #fff;
   --sidebar-before: #bedbb0;
+  --underline-color: rgba(22, 22, 22, 0.1);
   --default-icon-fill: #1F1F1F;
   --default-icon-stroke: rgba(255, 255, 255, 0.1);
   --box-shadow: rgba(166, 166, 187, 0.25) 0px 2px 5px -1px,
@@ -106,6 +107,7 @@ html[data-theme='light']{
   --svg-color-user:#fff;
   --sidebar-logout-text: #161616;
   --sidebar-before: #bedbb0;
+  --underline-color: rgba(22, 22, 22, 0.1);
   --default-icon-fill: #F6F6F7;
   --default-icon-stroke: rgba(16, 16, 16, 0.1);
   --box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
@@ -156,6 +158,7 @@ html[data-theme='violet']{
   --svg-color-user:#fff;
   --sidebar-logout-text: #fff;
   --sidebar-before: #fff;
+  --underline-color: rgba(22, 22, 22, 0.1);
   --default-icon-fill: #ECEDFD;
   --default-icon-stroke:rgba(16, 16, 16, 0.1);
   --box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
