@@ -10,6 +10,7 @@ import {
   editColumn,
   deleteColumn,
   updateBoard,
+  moveCard,
 } from './boardOperations';
 import {
   addCard,
@@ -42,6 +43,7 @@ const boardsSlice = createSlice({
       .addCase(addCard.pending, handlePending)
       .addCase(deleteCard.pending, handlePending)
       .addCase(editCard.pending, handlePending)
+      .addCase(moveCard.pending, handlePending)
       .addCase(getBackgroundIcons.fulfilled, (state, { payload }) => {
         state.background = payload;
         state.isLoading = false;
@@ -137,6 +139,23 @@ const boardsSlice = createSlice({
           return card;
         });
       })
+      .addCase(moveCard.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        const column = state.oneBoard.columns.find(
+          ({ _id }) => _id === payload.oldColumn
+        );
+
+        column.cards = column.cards.filter(
+          ({ _id }) => _id !== payload.card._id
+        );
+
+        const newColumn = state.oneBoard.columns.find(
+          ({ _id }) => _id === payload.card.column
+        );
+
+        newColumn.cards = [...newColumn.cards, payload.card];
+      })
       .addCase(getBackgroundIcons.rejected, handleRejected)
       .addCase(getAllBoards.rejected, handleRejected)
       .addCase(getOneBoard.rejected, handleRejected)
@@ -148,7 +167,8 @@ const boardsSlice = createSlice({
       .addCase(deleteColumn.rejected, handleRejected)
       .addCase(addCard.rejected, handleRejected)
       .addCase(deleteCard.rejected, handleRejected)
-      .addCase(editCard.rejected, handleRejected);
+      .addCase(editCard.rejected, handleRejected)
+      .addCase(moveCard.rejected, handleRejected);
   },
 });
 

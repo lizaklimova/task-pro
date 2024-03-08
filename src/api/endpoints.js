@@ -5,7 +5,7 @@ const ENDPOINTS = Object.freeze({
     logout: 'auth/logout',
   },
   users: {
-    current: 'users/current', 
+    current: 'users/current',
     theme: 'users/current/theme',
   },
   backgrounds: 'api/backgrounds',
@@ -21,6 +21,7 @@ const ENDPOINTS = Object.freeze({
   cards: {
     allCards: 'api/cards',
     oneCard: cardId => `api/cards/${cardId}`,
+    cardStatus: cardId => `api/cards/${cardId}/status`,
   },
   email: {
     support: 'email/support',
