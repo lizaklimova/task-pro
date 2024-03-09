@@ -14,11 +14,11 @@ export const Popup = styled.div`
   border: none;
   border-radius: 8px;
   background-color: transparent;
-  color: var(--text-color);
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--easedTransition), visibility var(--easedTransition),
     height var(--easedTransition);
+  z-index: 3;
 
   &:hover,
   &:focus {
@@ -36,6 +36,7 @@ export const Popup = styled.div`
     gap: 18px;
     row-gap: 10px;
     font-size: 11px;
+    color: var(--text-color);
     background-color: transparent;
     padding: 0;
     width: 100%;
@@ -43,7 +44,7 @@ export const Popup = styled.div`
     transition: color var(--easedTransition);
 
     span {
-      width: 110px;
+      max-width: 80px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;

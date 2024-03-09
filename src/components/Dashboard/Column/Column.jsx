@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { deleteColumn } from '../../../redux/board/boardOperations';
 import Pencil from 'components/Icons/Pencil';
 import Trash from 'components/Icons/Trash';
 import ColumnModal from 'components/Modals/ColumnModal';
@@ -16,8 +18,6 @@ import {
   ColumnWrap,
   IconWrap,
 } from './Column.styled';
-import { deleteColumn } from '../../../redux/board/boardOperations';
-import { useDispatch } from 'react-redux';
 
 const Column = ({ allColumns, column }) => {
   const [isAddColumnModalOpen, setIsAddColumnModalOpen] = useState(false);
@@ -28,7 +28,6 @@ const Column = ({ allColumns, column }) => {
   const [activeCard, setActiveCard] = useState({});
 
   const dispatch = useDispatch();
-
   const { t } = useTranslation();
 
   const handleColumnDelete = () => {

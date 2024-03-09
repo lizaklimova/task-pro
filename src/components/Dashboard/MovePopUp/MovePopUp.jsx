@@ -11,6 +11,7 @@ const MovePopUp = ({ allColumns, columnId, moveCard }) => {
             <button
               key={column._id}
               type="button"
+              title={`${column.title}`}
               onClick={() => moveCard(column._id)}
             >
               <span> {column.title}</span>

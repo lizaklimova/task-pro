@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
@@ -21,9 +22,11 @@ import {
   Span,
 } from './BoardModal.styled';
 
-const BoardModal = ({ variant, closeModal }) => {
+const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [errorClassName, setErrorClassName] = useState('');
+
+  const navigate = useNavigate();
   const titleRef = useRef(null);
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -33,7 +36,7 @@ const BoardModal = ({ variant, closeModal }) => {
     titleRef.current.focus();
   }, []);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const { title, background, iconId } = e.target.elements;
 
@@ -47,17 +50,18 @@ const BoardModal = ({ variant, closeModal }) => {
       backgroundId: background.value,
     };
 
-    // console.log(data);
-
     if (variant === 'add') {
-      dispatch(createBoard(data));
+      const res = await dispatch(createBoard(data));
+      navigate(`/home/${res.payload._id}`);
       toast(t('boards.modals.toast.add.success'), TOASTER_CONFIG);
     } else {
       dispatch(updateBoard({ boardId: oneBoard._id, dataUpdate: data }));
       toast(t('boards.modals.toast.edit.success'), TOASTER_CONFIG);
     }
 
-    return closeModal();
+    closeModal();
+    if (menu) closeMenu();
+    return;
   };
 
   return (

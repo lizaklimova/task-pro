@@ -22,7 +22,7 @@ const SidebarMenu = ({ isMenuOpen, closeMenu }) => {
     <>
       {isMenuOpen && <AsideBackdrop onClick={onBackdropClose} />}
       <AsideMenu className={isMenuOpen ? 'is-open' : ''}>
-        <SidebarContent />
+        <SidebarContent menu closeMenu={closeMenu} />
       </AsideMenu>
     </>,
     document.getElementById('menu-root')
