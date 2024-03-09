@@ -129,5 +129,11 @@
   },
   "developersModal": {
     "text": "Розроблено DreamTeam"
+  },
+  "stats": {
+    "header": "Статистика моїх завдань"
+  },
+  "schedule": {
+    "header": "Мій розклад"
   }
 }
