@@ -1,6 +1,6 @@
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { getOneBoard, filterCards } from '../../../redux/board/boardOperations';
 import ModalWrapper from 'components/Modals/ModalWrapper/ModalWrapper';
 import {
@@ -16,10 +16,9 @@ import {
 } from './Filters.styled';
 
 const Filters = ({ boardId, onClose }) => {
+  const [filterValue, setFilterValue] = useState('default');
   const { t } = useTranslation();
   const dispatch = useDispatch();
-
-  const [filterValue, setFilterValue] = useState('default');
 
   const handleFilterChange = newValue => {
     setFilterValue(newValue);
@@ -48,9 +47,9 @@ const Filters = ({ boardId, onClose }) => {
           <RadioButton
             type="radio"
             name="priority"
-            value="without"
-            checked={filterValue === 'without'}
-            onChange={() => handleFilterChange('without')}
+            value="without priority"
+            checked={filterValue === 'without priority'}
+            onChange={() => handleFilterChange('without priority')}
             className="gray"
           />
           <StyledMarker className="gray"></StyledMarker>

@@ -103,24 +103,26 @@ const TaskCard = ({
                 </DeadlineModal>
               </li>
             )}
-            <li>
-              <CardActionButton
-                id="move-card"
-                type="button"
-                aria-label="Move card"
-              >
-                <Status
-                  width={16}
-                  height={16}
-                  strokeColor={'var(--icon-stroke-color)'}
+            {allColumns.length >= 2 && (
+              <li>
+                <CardActionButton
+                  id="move-card"
+                  type="button"
+                  aria-label="Move card"
+                >
+                  <Status
+                    width={16}
+                    height={16}
+                    strokeColor={'var(--icon-stroke-color)'}
+                  />
+                </CardActionButton>
+                <MovePopUp
+                  allColumns={allColumns}
+                  columnId={columnId}
+                  moveCard={moveCardToAnotherColumn}
                 />
-              </CardActionButton>
-              <MovePopUp
-                allColumns={allColumns}
-                columnId={columnId}
-                moveCard={moveCardToAnotherColumn}
-              />
-            </li>
+              </li>
+            )}
             <li>
               <CardActionButton
                 type="button"

@@ -153,7 +153,12 @@ const boardsSlice = createSlice({
         const newColumn = state.oneBoard.columns.find(
           ({ _id }) => _id === payload.card.column
         );
-        newColumn.cards = [...newColumn.cards, payload.card];
+
+        if (!newColumn.cards) {
+          newColumn.cards = [payload.card];
+        } else {
+          newColumn.cards = [...newColumn.cards, payload.card];
+        }
       })
       .addCase(getBackgroundIcons.rejected, handleRejected)
       .addCase(getAllBoards.rejected, handleRejected)

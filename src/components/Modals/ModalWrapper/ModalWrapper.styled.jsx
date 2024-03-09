@@ -34,7 +34,7 @@ export const ModalContainer = styled(motion.div)`
   }
 
   @media screen and (min-width: 768px) {
-    height: ${({ $developers }) => ($developers ? '95%' : 'unset')};
+    height: ${({ $developers }) => ($developers ? '800px' : 'unset')};
     width: ${({ $developers }) => ($developers ? '730px' : '350px')};
     width: ${props =>
       props.$containerWidth ? `${props.$containerWidth}px` : '350px'};
