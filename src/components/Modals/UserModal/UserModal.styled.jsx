@@ -105,6 +105,11 @@ export const Avatar = styled.div`
   position: relative;
   margin-bottom: 14px;
   margin-top: 24px;
+
+  img {
+    border-radius: 50%;
+    border: 1px solid var(--text-color);
+  }
 `;
 
 export const Text = styled.h4`

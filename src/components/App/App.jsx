@@ -30,7 +30,12 @@ const App = () => {
 
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<WelcomePage />} />
+          <Route
+            path="/"
+            element={
+              <PublicRoute component={<WelcomePage />} redirectTo="/home" />
+            }
+          />
           <Route
             path="/auth/:id"
             element={

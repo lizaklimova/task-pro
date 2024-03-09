@@ -74,8 +74,8 @@ const SidebarContent = ({ menu, closeMenu }) => {
   };
 
   const handleLogOut = () => {
-    localStorage.removeItem('app-theme');
     dispatch(logOut());
+    localStorage.removeItem('app-them');
   };
 
   const filteredBoards = allBoards.filter(({ title }) => {

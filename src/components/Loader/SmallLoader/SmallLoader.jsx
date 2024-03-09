@@ -7,6 +7,7 @@ const SmallLoader = ({ width = '30', height = '30', color = '#161616' }) => {
       height={height}
       width={width}
       color={color}
+      secondaryColor={color}
       ariaLabel="oval-loading"
     />
   );
