@@ -101,7 +101,7 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
         />
 
         <Text>Choose your custom background</Text>
-        <CustomBackground />
+        {/* <CustomBackground /> */}
 
         <Button type="submit">
           <Span>
