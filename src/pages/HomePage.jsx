@@ -5,6 +5,8 @@ import { selectBoards } from '../redux/board/boardSelectors';
 import { getAllBoards } from '../redux/board/boardOperations';
 import { MainContainer } from 'components/App/App.styled';
 import BeforeStart from 'components/Dashboard/BeforeStart';
+import { selectIsLoading } from '../redux/theme/themeSelector';
+import Loader from 'components/Loader';
 
 const HomePage = () => {
   const allBoards = useSelector(selectBoards);
@@ -14,10 +16,14 @@ const HomePage = () => {
     dispatch(getAllBoards());
   }, [dispatch]);
 
-  return (
+  const isLoading = useSelector(selectIsLoading);
+
+  return isLoading ? (
+    <Loader />
+  ) : (
     <MainContainer>
       {allBoards.length > 0 ? (
-        <Navigate to={`/home/${allBoards[0]._id}`} />
+        <Navigate to={`/home/board/${allBoards[0]._id}`} />
       ) : (
         <BeforeStart />
       )}

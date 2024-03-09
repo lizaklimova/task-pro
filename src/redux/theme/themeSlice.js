@@ -14,11 +14,15 @@ const themeSlice = createSlice({
             .addCase(getTheme.pending, handlePending)
             .addCase(updateTheme.pending, handlePending)
             .addCase(getTheme.fulfilled, (state, { payload }) => {
+                // console.log(state.theme);
+                // console.log(payload);
                 state.theme = payload.theme;
                 state.isLoading = false;
                 state.error = null;
             })
             .addCase(updateTheme.fulfilled, (state, { payload }) => {
+                // console.log(state.theme);
+                // console.log(payload);
                 state.isLoading = false;
                 state.error = null;
                 state.theme = payload.theme;

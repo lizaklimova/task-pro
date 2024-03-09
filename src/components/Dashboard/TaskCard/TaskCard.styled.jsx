@@ -34,6 +34,10 @@ export const CardItem = styled.div`
   li {
     position: relative;
   }
+
+  @media screen and (min-width: 375px) {
+    min-width: 334px;
+  }
 `;
 
 export const CardTitle = styled.h4`
@@ -43,7 +47,7 @@ export const CardTitle = styled.h4`
 
 export const CardDescr = styled.p`
   width: 290px;
-  max-width: 100%s;
+  max-width: 100%;
   font-size: 12px;
   line-height: 1.33333;
   color: var(--text-color);

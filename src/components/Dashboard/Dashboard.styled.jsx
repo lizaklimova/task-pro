@@ -48,8 +48,12 @@ export const EmptyMsg = styled.div`
 
 export const ColumnsList = styled.ul`
   display: flex;
-  gap: 34px;
+  gap: 12px;
   margin-right: 34px;
+
+  @media screen and (min-width: 375px) {
+    gap: 34px;
+  }
 `;
 
 export const IconWrap = styled.span`
@@ -70,7 +74,7 @@ export const IconWrap = styled.span`
 `;
 
 export const AddButton = styled.button`
-  min-width: 335px;
+  min-width: 100%;
   height: 56px;
   border: none;
   border-radius: 8px;
@@ -88,5 +92,9 @@ export const AddButton = styled.button`
         stroke: var(--plus-icon-bg);
       }
     }
+  }
+
+  @media screen and (min-width: 375px) {
+    min-width: 335px;
   }
 `;

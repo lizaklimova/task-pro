@@ -37,6 +37,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
     "react-toastify": "^10.0.4",
+    "recharts": "^2.12.2",
     "redux-persist": "^6.0.0",
     "styled-components": "^6.1.8",
     "swiper": "^11.0.7",

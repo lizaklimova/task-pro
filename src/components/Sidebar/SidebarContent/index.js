@@ -1,1 +1,1 @@
-export { default } from './SidebarContent';
+export { default } from './SidebarContent.jsx';
