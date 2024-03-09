@@ -4,12 +4,16 @@ export const MainContainer = styled.div`
   height: calc(100vh - 60px);
   /* width: calc(100vw - 10px); */
   width: 100vw;
-  padding: 14px 20px 24px 20px;
+  padding: 14px 10px 24px 10px;
   background: ${({ $bg }) =>
     $bg
       ? `center / cover no-repeat
     url(${$bg.backgroundMobileURL})`
       : 'unset'};
+
+  @media screen and (min-width: 375px) {
+    padding: 14px 20px 24px 20px;
+  }
 
   @media screen and (-webkit-min-device-pixel-ratio: 2) {
     background: ${({ $bg }) =>
