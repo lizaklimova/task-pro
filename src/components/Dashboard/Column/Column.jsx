@@ -18,6 +18,7 @@ import {
   ColumnWrap,
   IconWrap,
 } from './Column.styled';
+import { Droppable } from 'react-beautiful-dnd';
 
 const Column = ({ allColumns, column }) => {
   const [isAddColumnModalOpen, setIsAddColumnModalOpen] = useState(false);
@@ -71,20 +72,26 @@ const Column = ({ allColumns, column }) => {
           </ButtonsList>
         </ColumnTitleWrap>
 
-        <CardsList>
-          {column.cards &&
-            column.cards.map(card => (
-              <li key={card._id}>
-                <TaskCard
-                  allColumns={allColumns}
-                  columnId={column._id}
-                  card={card}
-                  openCardModal={() => setIsEditCardModalOpen(true)}
-                  setActiveCard={setActiveCard}
-                />
-              </li>
-            ))}
-        </CardsList>
+        <Droppable droppableId={column._id}>
+          {provided => (
+            <CardsList ref={provided.innerRef} {...provided.droppableProps}>
+              {column.cards &&
+                column.cards.map((card, index) => (
+                  <li key={card._id}>
+                    <TaskCard
+                      allColumns={allColumns}
+                      columnId={column._id}
+                      card={card}
+                      index={index}
+                      openCardModal={() => setIsEditCardModalOpen(true)}
+                      setActiveCard={setActiveCard}
+                    />
+                  </li>
+                ))}
+              {provided.placeholder}
+            </CardsList>
+          )}
+        </Droppable>
 
         <AddButton type="button" onClick={() => setIsAddCardModalOpen(true)}>
           <IconWrap>

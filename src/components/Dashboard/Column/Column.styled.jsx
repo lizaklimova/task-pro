@@ -97,6 +97,7 @@ export const CardsList = styled.ul`
   gap: 8px;
   padding-right: 8px;
   margin-bottom: 14px;
+  border-radius: 8px;
   height: calc(100vh - 144px - 130px);
   overflow-y: auto;
   scroll-behavior: smooth;

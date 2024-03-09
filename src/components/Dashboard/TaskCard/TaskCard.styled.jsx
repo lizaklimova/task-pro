@@ -18,10 +18,12 @@ export const CardItem = styled.div`
   width: 334px;
   border-radius: 10px;
   padding: 24px 14px;
+  margin-bottom: 5px;
   background-color: var(--card-bg);
   list-style-type: none;
   border-left: ${({ $label }) => `7px solid var(--priority-${$label})`};
   word-break: break-all;
+  cursor: grab;
 
   & > div {
     display: flex;

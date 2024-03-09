@@ -23,6 +23,7 @@ html[data-theme='dark']{
   --input-color:#bedbb0;
   --chose-color:#1f1f1f;
   --card-bg: #121212;
+  --card-list-bg: rgba(255, 255, 255, 0.1);
   --scroll-bar-color: #121212;
   --scroll-bar-bg: rgba(255, 255, 255, 0.08);
   --svg-back-color:#1f1f1f;
@@ -76,6 +77,7 @@ html[data-theme='light']{
   --input-color:#bedbb0;
   --chose-color:#f6f6f7;
   --card-bg: #fff;
+  --card-list-bg: rgba(190, 219, 176, 0.3);
   --scroll-bar-color: rgba(22, 22, 22, 0.1);
   --scroll-bar-bg: #e8e8e8;
   --svg-back-color:#FFFFFF;
@@ -129,6 +131,7 @@ html[data-theme='violet']{
   --input-color:#5255bc;
   --chose-color:rgba(255, 255, 255, 0.5);
   --card-bg: #fff;
+  --card-list-bg: rgba(82, 85, 188, 0.3);
   --scroll-bar-color: #b8bcfd;
   --scroll-bar-bg: #fff;
   --svg-back-color:#ecedfd;
