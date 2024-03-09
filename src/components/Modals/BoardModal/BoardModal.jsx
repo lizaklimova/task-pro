@@ -52,7 +52,7 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
 
     if (variant === 'add') {
       const res = dispatch(createBoard(data));
-      navigate(`/home/${res.payload._id}`);
+      navigate(`/home/board/${res.payload._id}`);
       toast(t('boards.modals.toast.add.success'), TOASTER_CONFIG);
     } else {
       dispatch(updateBoard({ boardId: oneBoard._id, dataUpdate: data }));

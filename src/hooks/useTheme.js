@@ -1,40 +1,64 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { getTheme, updateTheme } from '../redux/theme/themeOperation';
+import { getTheme} from '../redux/theme/themeOperation';
 import { selectTheme } from '../redux/theme/themeSelector';
 import { useAuth } from './useAuth';
 
-export function getThemeSystem() {
-  if (window.matchMedia && window.matchMedia("(prefers-color-scheme:dark)").matches) {
-    return "dark";
-  } else {
-    return "light";
-  }
-}
+// export function getThemeSystem() {
+//   if (window.matchMedia && window.matchMedia("(prefers-color-scheme:dark)").matches) {
+//     return "dark";
+//   } else {
+//     return "light";
+//   }
+// }
+// export const useTheme = () => {
+
+//   const dispatch = useDispatch();
+//   const { isLoggedIn } = useAuth();
+
+//   useEffect(() => {
+//     isLoggedIn && dispatch(getTheme());
+//     console.log('effect');
+//     console.log('theme', theme);
+//   }, [dispatch, isLoggedIn]);
+
+//   const themeBack = useSelector(selectTheme);
+//   console.log(themeBack);
+//   const [theme, setTheme] = useState(localStorage.getItem('app-them') || themeBack);
+
+//   useLayoutEffect(() => {
+//     // console.log('theme', theme);
+//     // console.log('layuot');
+//     document.documentElement.setAttribute('data-theme', theme);
+//     localStorage.setItem('app-them', theme);
+//   }, [theme]);
+
+
+//   return { theme, setTheme, themeBack };
+// };
+
 export const useTheme = () => {
 
   const dispatch = useDispatch();
   const { isLoggedIn } = useAuth();
-  useEffect(() => {
-     isLoggedIn && dispatch(getTheme());
-   
-  }, [dispatch, isLoggedIn]);
-
   const themeBack = useSelector(selectTheme);
 
-  const [theme, setTheme] = useState(
-    localStorage.getItem('app-them') || themeBack || getTheme());
+  useEffect(() => {
+    isLoggedIn && dispatch(getTheme());
 
-  useLayoutEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    
-      isLoggedIn && dispatch(updateTheme({ theme }));
-      localStorage.setItem('app-them', theme);
-    
-    
-   
-  }, [theme, dispatch, isLoggedIn]);
+  }, [dispatch, isLoggedIn, themeBack]);
 
-  return { theme, setTheme };
+
+useLayoutEffect(() => {
+  if (themeBack) {
+    document.documentElement.setAttribute('data-theme', themeBack);
+    localStorage.setItem('app-them', themeBack);
+  }
+}, [themeBack])
+
+
+
+
+  return {  themeBack };
 };

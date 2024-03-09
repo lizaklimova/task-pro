@@ -25,6 +25,25 @@ export const Logo = styled.div`
   font-weight: 600;
 `;
 
+export const ExtraLink = styled(NavLink)`
+  opacity: 0.5;
+  transition: opacity var(--easedTransition);
+
+  &:hover {
+    opacity: 1;
+    filter: drop-shadow(1px 1px 10px var(--sidebar-myboard-text));
+  }
+
+  &.active {
+    opacity: 1;
+    filter: drop-shadow(1px 1px 10px var(--sidebar-myboard-text));
+  }
+`;
+
+export const StatsLink = styled(ExtraLink)`
+  margin-left: auto;
+`;
+
 export const LightningBox = styled.div`
   width: 32px;
   height: 32px;
@@ -136,7 +155,7 @@ export const BoardContainer = styled.div`
   margin-right: -14px;
 
   @media screen and (min-width: 1439px) {
-    max-height: 260px;
+    max-height: 168px;
     width: 260px;
     margin-left: -24px;
     margin-right: -24px;

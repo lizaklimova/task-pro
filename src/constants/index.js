@@ -36,7 +36,7 @@ export const MODAL_TRANSITION = {
   },
 };
 
-export const TOASTER_CONFIG = { className: 'themed_toaster' };
+export const TOASTER_CONFIG = { className: 'themed_toaster', duration: 1500 };
 
 export const PROGRESS_BAR_COLORS = [
   '#dddddd9b',

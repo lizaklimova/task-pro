@@ -16,7 +16,7 @@ export const DevName = styled.h2`
   text-align: center;
 
   @media screen and (min-width: 768px) {
-    font-size: 16px;
+    font-size: 14px;
   }
 `;
 
@@ -26,7 +26,7 @@ export const DevRole = styled.p`
   text-align: center;
 
   @media screen and (min-width: 768px) {
-    font-size: 14px;
+    font-size: 12px;
   }
 `;
 
@@ -38,8 +38,8 @@ export const DevImage = styled.img`
   margin-bottom: 8px;
 
   @media screen and (min-width: 768px) {
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
   }
 `;
 
