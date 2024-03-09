@@ -2,7 +2,6 @@ import { styled } from 'styled-components';
 
 export const MainContainer = styled.div`
   height: calc(100vh - 60px);
-  /* width: calc(100vw - 10px); */
   width: 100vw;
   padding: 14px 20px 24px 20px;
   background: ${({ $bg }) =>
@@ -38,7 +37,6 @@ export const MainContainer = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    /* width: calc(100vw - 260px - 12px); */
     width: calc(100vw - 260px);
     padding: 10px 24px 36px 24px;
     background: ${({ $bg }) =>

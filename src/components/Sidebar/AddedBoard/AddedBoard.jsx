@@ -23,7 +23,7 @@ const AddedBoard = ({ allBoards, board, openEditModal }) => {
 
   const handleBoardDelete = () => {
     dispatch(deleteBoard(board._id));
-    // allBoards.length > 0 && navigate(`/home/${allBoards[0]._id}`);
+    // allBoards.length > 0 && navigate(`/home/board/${allBoards[0]._id}`);
     setIsDeleteModalShown(false);
   };
 

@@ -16,6 +16,8 @@ import DevModal from 'components/Modals/DevModal';
 import SwiperDevModal from 'components/Modals/DevModal/SwiperDevModal';
 import SearchBoardModal from 'components/Modals/SearchBoardModal';
 import Search from 'components/Icons/Search';
+import { BsBarChartLine } from 'react-icons/bs';
+import { IoCalendarOutline } from 'react-icons/io5';
 import {
   AddBtn,
   Container,
@@ -37,6 +39,8 @@ import {
   MyBoard,
   SearchButton,
   DevsBtn,
+  StatsLink,
+  ExtraLink,
 } from './SidebarContent.styled';
 
 const SidebarContent = ({ menu, closeMenu }) => {
@@ -98,8 +102,13 @@ const SidebarContent = ({ menu, closeMenu }) => {
               fillColor={'var(--sidebar-lightning-fill)'}
             />
           </LightningBox>
-
-          <p>Task Pro</p>
+          <p>Task Pro</p>{' '}
+          <StatsLink to={'stats'}>
+            <BsBarChartLine size={20} />
+          </StatsLink>
+          <ExtraLink to={'schedule'}>
+            <IoCalendarOutline size={20} />
+          </ExtraLink>
         </Logo>
 
         <DevsBtn
@@ -149,7 +158,7 @@ const SidebarContent = ({ menu, closeMenu }) => {
             </SearchResultWrap>
           )}
           {filteredBoards.map(board => (
-            <BoardLink key={board._id} to={`/home/${board._id}`}>
+            <BoardLink key={board._id} to={`/home/board/${board._id}`}>
               <AddedBoard
                 allBoards={allBoards}
                 board={board}

@@ -13,6 +13,8 @@ const AuthPage = lazy(() => import('pages/AuthPage'));
 const HomePage = lazy(() => import('pages/HomePage'));
 const ScreensPage = lazy(() => import('pages/ScreensPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
+const StatsPage = lazy(() => import('pages/StatsPage'));
+const SchedulePage = lazy(() => import('pages/SchedulePage'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -53,10 +55,28 @@ const App = () => {
               }
             />
             <Route
-              path=":boardId"
+              path="board/:boardId"
               element={
                 <PrivateRoute
                   component={<ScreensPage />}
+                  redirectTo={'/auth/login'}
+                />
+              }
+            />
+            <Route
+              path="stats"
+              element={
+                <PrivateRoute
+                  component={<StatsPage />}
+                  redirectTo={'/auth/login'}
+                />
+              }
+            />
+            <Route
+              path="schedule"
+              element={
+                <PrivateRoute
+                  component={<SchedulePage />}
                   redirectTo={'/auth/login'}
                 />
               }
