@@ -36,7 +36,7 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
     titleRef.current.focus();
   }, []);
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
     const { title, background, iconId } = e.target.elements;
 
@@ -51,7 +51,7 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
     };
 
     if (variant === 'add') {
-      const res = await dispatch(createBoard(data));
+      const res = dispatch(createBoard(data));
       navigate(`/home/${res.payload._id}`);
       toast(t('boards.modals.toast.add.success'), TOASTER_CONFIG);
     } else {

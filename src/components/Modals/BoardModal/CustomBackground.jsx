@@ -1,7 +1,9 @@
+import { nanoid } from '@reduxjs/toolkit';
 import React, { useState } from 'react';
 
 export const CustomBackground = ({ onSelectCustomBackground }) => {
   const [customBackground, setCustomBackground] = useState(null);
+  const cusomId = nanoid();
 
   const handleFileChange = event => {
     const file = event.target.files[0];
@@ -19,8 +21,8 @@ export const CustomBackground = ({ onSelectCustomBackground }) => {
       <input
         type="radio"
         name="background"
-        value={customBackground}
-        checked={customBackground}
+        value={cusomId}
+        checked={cusomId}
         onChange={handleFileChange}
       />
       <label>
