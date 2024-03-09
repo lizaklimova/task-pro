@@ -91,6 +91,7 @@
     "priority": "Priority",
     "deadline": "Deadline",
     "deadlineToday": "Today is a deadline",
+    "empty": "No cards",
     "modals": {
       "addTitle": "Add card",
       "editTitle": "Edit card",

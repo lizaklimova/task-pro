@@ -14,7 +14,6 @@ export const Popup = styled.div`
   border: none;
   border-radius: 8px;
   background-color: transparent;
-  color: var(--text-color);
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--easedTransition), visibility var(--easedTransition),
@@ -37,6 +36,7 @@ export const Popup = styled.div`
     gap: 18px;
     row-gap: 10px;
     font-size: 11px;
+    color: var(--text-color);
     background-color: transparent;
     padding: 0;
     width: 100%;

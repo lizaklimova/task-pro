@@ -1,0 +1,97 @@
+.react-datepicker * {
+  font-family: 'Poppins', 'Golos Text', sans-serif;
+  background-color: var(--modal-background);
+  color: var(--text-color);
+}
+
+.react-datepicker-wrapper {
+  margin-top: 4px;
+}
+
+.react-datepicker__input-container input[type='text'] {
+  border: none !important;
+  padding: 0px !important;
+  margin-bottom: 0;
+  opacity: 1;
+  color: var(--accent-color);
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.react-datepicker-popper {
+  left: 50% !important;
+  transform: translate(-50%, 30%) !important;
+}
+
+.react-datepicker__current-month {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+  border-bottom: 1px solid var(--lightgrey-text-color);
+  padding-bottom: 14px;
+}
+
+.react-datepicker__month-container {
+  padding: 15px;
+}
+
+.react-datepicker__day-names {
+  border: none !important;
+}
+
+.react-datepicker__day-name {
+  color: var(--text-color);
+  opacity: 0.6;
+  font-weight: 500;
+}
+
+.react-datepicker__header,
+.react-datepicker__month-container,
+.react-datepicker {
+  border-radius: 8px;
+}
+
+.react-datepicker__header {
+  border: none;
+  margin-bottom: -10px;
+}
+
+.react-datepicker__navigation-icon::before,
+.react-datepicker__navigation:hover .react-datepicker__navigation-icon::before {
+  border-color: var(--accent-color);
+  border-radius: 1.5px;
+  transition: border-color var(--easedTransition);
+}
+
+.react-datepicker__day:hover:not(.react-datepicker__day--disabled) {
+  outline: 1px solid var(--text-color);
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.react-datepicker__day {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.28px;
+}
+
+.react-datepicker__day--selected {
+  background-color: var(--accent-color) !important;
+  color: var(--calendar-active-day);
+  border-radius: 50%;
+}
+
+.react-datepicker__day--selected:hover {
+  outline: 1px solid var(--text-color);
+  background-color: var(--accent-color);
+  border-radius: 50%;
+}
+
+.react-datepicker__day--disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.react-datepicker__triangle path {
+  display: none;
+}

@@ -31,6 +31,21 @@ export const Wrap = styled.div`
   }
 `;
 
+export const EmptyMsg = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  border-radius: 8px;
+  padding: 10px 30px;
+  transform: translate(-50%, -50%);
+  background-color: var(--background-color);
+
+  @media screen and (min-width: 1440px) {
+    transform: unset;
+  }
+`;
+
 export const ColumnsList = styled.ul`
   display: flex;
   gap: 34px;
@@ -74,8 +89,4 @@ export const AddButton = styled.button`
       }
     }
   }
-
-  /* @media screen and (min-width: 375px) {
-    width: 335px;
-  } */
 `;

@@ -1,7 +1,7 @@
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { LABEL_ARR } from 'constants';
+import { useTranslation } from 'react-i18next';
 import { getOneBoard, filterCards } from '../../../redux/board/boardOperations';
 import ModalWrapper from 'components/Modals/ModalWrapper/ModalWrapper';
 import {
@@ -17,10 +17,9 @@ import {
 } from './Filters.styled';
 
 const Filters = ({ boardId, onClose }) => {
+  const [filterValue, setFilterValue] = useState('default');
   const { t } = useTranslation();
   const dispatch = useDispatch();
-
-  const [filterValue, setFilterValue] = useState('');
 
   const newLabelArr = [
     { ...LABEL_ARR.find(item => item.id === 3), priority: 'without' },
@@ -30,7 +29,6 @@ const Filters = ({ boardId, onClose }) => {
   const handleFilterChange = newValue => {
     setFilterValue(newValue);
     dispatch(filterCards({ boardId: boardId, priority: newValue }));
-    onClose();
   };
 
   const handleDefaultFilter = () => {
