@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { LABEL_ARR } from 'constants';
 import { useTranslation } from 'react-i18next';
 import { getOneBoard, filterCards } from '../../../redux/board/boardOperations';
 import ModalWrapper from 'components/Modals/ModalWrapper/ModalWrapper';
@@ -16,9 +17,14 @@ import {
 } from './Filters.styled';
 
 const Filters = ({ boardId, onClose }) => {
-  const [filterValue, setFilterValue] = useState('default');
+  const [filterValue, setFilterValue] = useState('without');
   const { t } = useTranslation();
   const dispatch = useDispatch();
+
+  const newLabelArr = [
+    { ...LABEL_ARR.find(item => item.id === 3), priority: 'without' },
+    ...LABEL_ARR.filter(item => item.id !== 3),
+  ];
 
   const handleFilterChange = newValue => {
     setFilterValue(newValue);
@@ -43,54 +49,20 @@ const Filters = ({ boardId, onClose }) => {
         </ClearButton>
       </ClearFilterBox>
       <RadioButtonBox>
-        <PriorityFilterLabel className="gray">
-          <RadioButton
-            type="radio"
-            name="priority"
-            value="without priority"
-            checked={filterValue === 'without priority'}
-            onChange={() => handleFilterChange('without priority')}
-            className="gray"
-          />
-          <StyledMarker className="gray"></StyledMarker>
-          {t('boards.filter.without')}
-        </PriorityFilterLabel>
-        <PriorityFilterLabel className="blue">
-          <RadioButton
-            type="radio"
-            name="priority"
-            value="low"
-            checked={filterValue === 'low'}
-            onChange={() => handleFilterChange('low')}
-            className="blue"
-          />
-          <StyledMarker className="blue"></StyledMarker>
-          {t('boards.filter.low')}
-        </PriorityFilterLabel>
-        <PriorityFilterLabel className="red">
-          <RadioButton
-            type="radio"
-            name="priority"
-            value="medium"
-            checked={filterValue === 'medium'}
-            onChange={() => handleFilterChange('medium')}
-            className="red"
-          />
-          <StyledMarker className="red"></StyledMarker>
-          {t('boards.filter.medium')}
-        </PriorityFilterLabel>
-        <PriorityFilterLabel className="green">
-          <RadioButton
-            type="radio"
-            name="priority"
-            value="high"
-            checked={filterValue === 'high'}
-            onChange={() => handleFilterChange('high')}
-            className="green"
-          />
-          <StyledMarker className="green"></StyledMarker>
-          {t('boards.filter.high')}
-        </PriorityFilterLabel>
+        {newLabelArr.map(({ id, priority, color }) => (
+          <PriorityFilterLabel key={id} $color={color}>
+            <RadioButton
+              type="radio"
+              name="priority"
+              value={priority}
+              checked={filterValue === priority}
+              $color={color}
+              onChange={() => handleFilterChange(priority)}
+            />
+            <StyledMarker $color={color}></StyledMarker>
+            {t(`boards.filter.${priority}`)}
+          </PriorityFilterLabel>
+        ))}
       </RadioButtonBox>
     </ModalWrapper>
   );
