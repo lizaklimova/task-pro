@@ -136,7 +136,7 @@ export const BoardContainer = styled.div`
   margin-right: -14px;
 
   @media screen and (min-width: 1439px) {
-    max-height: 260px;
+    max-height: 168px;
     width: 260px;
     margin-left: -24px;
     margin-right: -24px;
