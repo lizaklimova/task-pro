@@ -7,7 +7,7 @@ const DevModal = ({ isOpen, onClose }) => {
     <>
       {isOpen && (
         <ModalWrapper
-          width={800}
+          width={700}
           onClose={() => {
             document.body.style.overflow = '';
             onClose();
