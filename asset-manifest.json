@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/task-pro/static/css/main.28ded0b0.css",
-    "main.js": "/task-pro/static/js/main.c64b5970.js",
+    "main.js": "/task-pro/static/js/main.173e6e81.js",
     "static/js/955.0bc27f06.chunk.js": "/task-pro/static/js/955.0bc27f06.chunk.js",
     "static/js/23.a30e0ca9.chunk.js": "/task-pro/static/js/23.a30e0ca9.chunk.js",
     "static/js/598.50ed3cc9.chunk.js": "/task-pro/static/js/598.50ed3cc9.chunk.js",
     "static/css/867.a5381095.chunk.css": "/task-pro/static/css/867.a5381095.chunk.css",
-    "static/js/867.4a63a74e.chunk.js": "/task-pro/static/js/867.4a63a74e.chunk.js",
+    "static/js/867.24cc309e.chunk.js": "/task-pro/static/js/867.24cc309e.chunk.js",
     "static/js/498.c849d710.chunk.js": "/task-pro/static/js/498.c849d710.chunk.js",
     "static/js/148.55f98634.chunk.js": "/task-pro/static/js/148.55f98634.chunk.js",
     "static/js/833.a83463ec.chunk.js": "/task-pro/static/js/833.a83463ec.chunk.js",
@@ -41,18 +41,18 @@
     "index.html": "/task-pro/index.html",
     "static/media/getFetch.cjs": "/task-pro/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.28ded0b0.css.map": "/task-pro/static/css/main.28ded0b0.css.map",
-    "main.c64b5970.js.map": "/task-pro/static/js/main.c64b5970.js.map",
+    "main.173e6e81.js.map": "/task-pro/static/js/main.173e6e81.js.map",
     "955.0bc27f06.chunk.js.map": "/task-pro/static/js/955.0bc27f06.chunk.js.map",
     "23.a30e0ca9.chunk.js.map": "/task-pro/static/js/23.a30e0ca9.chunk.js.map",
     "598.50ed3cc9.chunk.js.map": "/task-pro/static/js/598.50ed3cc9.chunk.js.map",
     "867.a5381095.chunk.css.map": "/task-pro/static/css/867.a5381095.chunk.css.map",
-    "867.4a63a74e.chunk.js.map": "/task-pro/static/js/867.4a63a74e.chunk.js.map",
+    "867.24cc309e.chunk.js.map": "/task-pro/static/js/867.24cc309e.chunk.js.map",
     "498.c849d710.chunk.js.map": "/task-pro/static/js/498.c849d710.chunk.js.map",
     "148.55f98634.chunk.js.map": "/task-pro/static/js/148.55f98634.chunk.js.map",
     "833.a83463ec.chunk.js.map": "/task-pro/static/js/833.a83463ec.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.28ded0b0.css",
-    "static/js/main.c64b5970.js"
+    "static/js/main.173e6e81.js"
   ]
 }
