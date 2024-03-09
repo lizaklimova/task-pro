@@ -1,12 +1,12 @@
-import { useTheme } from 'hooks/useTheme';
-import React from 'react';
+import { useState } from 'react';
 import Select from 'react-select';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from 'hooks/useTheme';
+import { SelectWrap } from './ThemeSelect.styled';
 import './ThemeSelect.css';
 
-
-
 function ThemeSelect() {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
   const { setTheme } = useTheme();
   const { t } = useTranslation();
 
@@ -16,11 +16,16 @@ function ThemeSelect() {
     { value: 'violet', label: `${t('header.theme3')}` },
   ];
 
+  const handleDropdownToggle = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
+
   const onChangeTheme = event => {
     setTheme(event.value);
   };
+
   return (
-    <div>
+    <SelectWrap $isMenuOpen={isDropdownOpen}>
       <Select
         classNamePrefix="custom-select"
         onChange={event => {
@@ -29,8 +34,10 @@ function ThemeSelect() {
         options={THEME_OPTIONS}
         placeholder={`${t('header.theme')}`}
         isSearchable={false}
+        onMenuOpen={handleDropdownToggle}
+        onMenuClose={handleDropdownToggle}
       />
-    </div>
+    </SelectWrap>
   );
 }
 

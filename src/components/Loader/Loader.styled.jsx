@@ -11,5 +11,5 @@ export const LoaderContainer = styled.div`
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(16, 16, 16, 0.7);
+  background-color: rgba(16, 16, 16, 0.8);
 `;
