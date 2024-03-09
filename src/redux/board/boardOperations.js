@@ -165,7 +165,7 @@ export const moveCard = createAsyncThunk(
         ENDPOINTS.cards.cardStatus(cardId),
         { columnId: newColumn }
       );
-      console.log({ card: data.card, oldColumn });
+
       return { card: data.card, oldColumn };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

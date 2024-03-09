@@ -32,8 +32,6 @@ export const editCard = createAsyncThunk(
   'cards/editCard',
   async ({ cardId, editedCard }, thunkAPI) => {
     try {
-      console.log(cardId);
-      console.log(editedCard);
       const { data } = await axiosInstance.patch(
         ENDPOINTS.cards.oneCard(cardId),
         editedCard
