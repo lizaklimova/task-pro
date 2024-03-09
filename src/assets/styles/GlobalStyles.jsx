@@ -23,6 +23,7 @@ html[data-theme='dark']{
   --input-color:#bedbb0;
   --chose-color:#1f1f1f;
   --card-bg: #121212;
+  --card-list-bg: rgba(255, 255, 255, 0.1);
   --scroll-bar-color: #121212;
   --scroll-bar-bg: rgba(255, 255, 255, 0.08);
   --svg-back-color:#1f1f1f;
@@ -60,6 +61,7 @@ html[data-theme='dark']{
   --default-icon-fill: #1F1F1F;
   --default-icon-stroke: rgba(255, 255, 255, 0.1);
   --popup-bg: #1F1F1F;
+  --calendar-active-day: #1F1F1F;
   --box-shadow: rgba(166, 166, 187, 0.25) 0px 2px 5px -1px,
     rgba(255, 255, 255, 0.3) 0px 1px 3px -1px;
 }
@@ -75,6 +77,7 @@ html[data-theme='light']{
   --input-color:#bedbb0;
   --chose-color:#f6f6f7;
   --card-bg: #fff;
+  --card-list-bg: rgba(190, 219, 176, 0.3);
   --scroll-bar-color: rgba(22, 22, 22, 0.1);
   --scroll-bar-bg: #e8e8e8;
   --svg-back-color:#FFFFFF;
@@ -112,6 +115,7 @@ html[data-theme='light']{
   --default-icon-fill: #F6F6F7;
   --default-icon-stroke: rgba(16, 16, 16, 0.1);
   --popup-bg: #FCFCFC;
+  --calendar-active-day: #161616;
   --box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
@@ -127,6 +131,7 @@ html[data-theme='violet']{
   --input-color:#5255bc;
   --chose-color:rgba(255, 255, 255, 0.5);
   --card-bg: #fff;
+  --card-list-bg: rgba(82, 85, 188, 0.3);
   --scroll-bar-color: #b8bcfd;
   --scroll-bar-bg: #fff;
   --svg-back-color:#ecedfd;
@@ -164,6 +169,7 @@ html[data-theme='violet']{
   --default-icon-fill: #ECEDFD;
   --default-icon-stroke:rgba(16, 16, 16, 0.1);
   --popup-bg: #FCFCFC;
+  --calendar-active-day: #FCFCFC;
   --box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }

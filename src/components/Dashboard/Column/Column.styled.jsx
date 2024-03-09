@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const ColumnWrap = styled.div`
-  width: 100%;
+  width: calc(100% - 50px);
+  min-width: 270px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -13,7 +14,7 @@ export const ColumnWrap = styled.div`
 `;
 
 export const ColumnTitleWrap = styled.div`
-  width: 100%;
+  min-width: 100%;
   min-height: 56px;
   display: flex;
   justify-content: space-between;
@@ -27,6 +28,10 @@ export const ColumnTitleWrap = styled.div`
   & h3 {
     font-size: 14px;
     font-weight: 500;
+  }
+
+  @media screen and (min-width: 375px) {
+    min-width: 335px;
   }
 `;
 
@@ -92,11 +97,13 @@ export const AddButton = styled.button`
 `;
 
 export const CardsList = styled.ul`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-right: 8px;
+  padding-right: 4px;
   margin-bottom: 14px;
+  border-radius: 8px;
   height: calc(100vh - 144px - 130px);
   overflow-y: auto;
   scroll-behavior: smooth;
@@ -113,7 +120,12 @@ export const CardsList = styled.ul`
     border-radius: 12px;
   }
 
+  @media screen and (min-width: 375px) {
+    min-width: 350px;
+  }
+
   @media screen and (min-width: 768px) {
+    padding-right: 8px;
     max-height: calc(100vh - 150px - 166px);
   }
 

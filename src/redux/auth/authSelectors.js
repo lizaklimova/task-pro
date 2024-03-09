@@ -1,4 +1,3 @@
-
 export const selectUsername = ({ auth }) => auth.user.name;
 export const selectUserEmail = ({ auth }) => auth.user.email;
 export const selectUserAvatar = ({ auth }) => auth.user.avatar_url;

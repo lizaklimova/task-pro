@@ -6,6 +6,7 @@ import ReactDatePicker, {
 } from 'react-datepicker';
 import { uk } from 'date-fns/locale/uk';
 import 'react-datepicker/dist/react-datepicker.css';
+import './styles.css';
 
 const Calendar = React.forwardRef(
   ({ selectedDate, setDate, toggleCalendar }, ref) => {
@@ -24,6 +25,7 @@ const Calendar = React.forwardRef(
         selected={selectedDate}
         onChange={date => setDate(date)}
         minDate={minDate}
+        calendarStartDay={1}
         dateFormat="EEEE, d"
         onCalendarOpen={() => toggleCalendar(true)}
         onCalendarClose={() => toggleCalendar(false)}

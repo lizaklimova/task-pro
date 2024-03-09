@@ -11,8 +11,16 @@ export const UserName = styled.p`
 `;
 
 export const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   width: 32px;
   height: 32px;
   padding: 0;
+
+  img {
+    border-radius: 50%;
+    border: 1px solid var(--text-color);
+  }
 `;

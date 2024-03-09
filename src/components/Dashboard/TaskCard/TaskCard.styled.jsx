@@ -15,13 +15,15 @@ const swingAnimation = keyframes`
 `;
 
 export const CardItem = styled.div`
-  width: 334px;
+  width: 100%;
   border-radius: 10px;
   padding: 24px 14px;
+  margin-bottom: 5px;
   background-color: var(--card-bg);
   list-style-type: none;
   border-left: ${({ $label }) => `7px solid var(--priority-${$label})`};
   word-break: break-all;
+  cursor: grab;
 
   & > div {
     display: flex;
@@ -32,6 +34,10 @@ export const CardItem = styled.div`
   li {
     position: relative;
   }
+
+  @media screen and (min-width: 375px) {
+    min-width: 334px;
+  }
 `;
 
 export const CardTitle = styled.h4`
@@ -41,7 +47,7 @@ export const CardTitle = styled.h4`
 
 export const CardDescr = styled.p`
   width: 290px;
-  max-width: 100%s;
+  max-width: 100%;
   font-size: 12px;
   line-height: 1.33333;
   color: var(--text-color);

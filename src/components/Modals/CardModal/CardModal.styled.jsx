@@ -29,64 +29,6 @@ export const CardModalContent = styled.div`
     font-size: 18px;
     margin-bottom: 24px;
   }
-
-  .react-datepicker__input-container {
-    input[type='text'] {
-      border: none !important;
-      padding: 0px !important;
-      margin-bottom: 0;
-      opacity: 1;
-      color: var(--accent-color);
-      box-shadow: none;
-    }
-  }
-
-  .react-datepicker-wrapper {
-    margin-top: 4px;
-  }
-
-  .react-datepicker-popper {
-    left: 50% !important;
-    transform: translate(-50%, 20%) !important;
-  }
-
-  .react-datepicker * {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    border-color: var(--accent-color);
-  }
-
-  .react-datepicker__navigation-icon::before {
-    border-color: var(--text-color);
-    transition: border-color var(--easedTransition);
-  }
-
-  .react-datepicker__navigation:hover
-    .react-datepicker__navigation-icon::before {
-    border-color: var(--accent-color);
-  }
-
-  .react-datepicker__day:hover:not(.react-datepicker__day--disabled) {
-    outline: 1px solid var(--text-color);
-    background-color: transparent;
-    border-radius: 50%;
-  }
-
-  .react-datepicker__day--selected {
-    background-color: var(--accent-color) !important;
-    color: var(--modal-background);
-    border-radius: 50%;
-  }
-
-  .react-datepicker__day--selected:hover {
-    outline: 1px solid var(--text-color);
-    background-color: var(--accent-color);
-    border-radius: 50%;
-  }
-
-  .react-datepicker__day--disabled {
-    cursor: not-allowed;
-  }
 `;
 
 export const CardForm = styled.form`

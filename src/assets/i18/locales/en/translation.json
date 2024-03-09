@@ -91,6 +91,7 @@
     "priority": "Priority",
     "deadline": "Deadline",
     "deadlineToday": "Today is a deadline",
+    "empty": "No cards",
     "modals": {
       "addTitle": "Add card",
       "editTitle": "Edit card",
@@ -128,5 +129,11 @@
   },
   "developersModal": {
     "text": "Developed by DreamTeam"
+  },
+  "stats": {
+    "header": "My Tasks Statistics"
+  },
+  "schedule": {
+    "header": "My Schedule"
   }
 }

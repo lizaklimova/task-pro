@@ -91,6 +91,7 @@
     "priority": "Пріоритет",
     "deadline": "Термін",
     "deadlineToday": "Дедлайн сьогодні",
+    "empty": "Карток немає",
     "modals": {
       "addTitle": "Додати картку",
       "editTitle": "Редагувати картку",
@@ -128,5 +129,11 @@
   },
   "developersModal": {
     "text": "Розроблено DreamTeam"
+  },
+  "stats": {
+    "header": "Статистика моїх завдань"
+  },
+  "schedule": {
+    "header": "Мій розклад"
   }
 }

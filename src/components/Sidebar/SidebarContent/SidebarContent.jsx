@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { logOut } from '../../../redux/auth/authOperations';
@@ -16,6 +16,8 @@ import DevModal from 'components/Modals/DevModal';
 import SwiperDevModal from 'components/Modals/DevModal/SwiperDevModal';
 import SearchBoardModal from 'components/Modals/SearchBoardModal';
 import Search from 'components/Icons/Search';
+import { BsBarChartLine } from 'react-icons/bs';
+import { IoCalendarOutline } from 'react-icons/io5';
 import {
   AddBtn,
   Container,
@@ -37,22 +39,27 @@ import {
   MyBoard,
   SearchButton,
   DevsBtn,
+  StatsLink,
+  ExtraLink,
 } from './SidebarContent.styled';
 
-const SidebarContent = () => {
+const SidebarContent = ({ menu, closeMenu }) => {
   const [isAddBoardModalShown, setIsAddBoardModalShown] = useState(false);
   const [isEditBoardModalShown, setIsEditBoardModalShown] = useState(false);
   const [isDevModalOpen, setIsDevModalOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  // const [searchValue, setSearchValue] = useState('');
-  // const [filteredBoards, setFilteredBoards] = useState(allBoards);
   const [showSearchResult, setShowSearchResult] = useState(false);
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const searchValue = useSelector(selectBoardSearch);
   const allBoards = useSelector(selectBoards);
+  const boardsContainer = useRef(null);
+
+  useEffect(() => {
+    boardsContainer.current.scrollTop = boardsContainer.current.scrollHeight;
+  }, [allBoards]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -76,8 +83,8 @@ const SidebarContent = () => {
   };
 
   const handleLogOut = () => {
-    localStorage.removeItem('app-theme');
     dispatch(logOut());
+    localStorage.removeItem('app-them');
   };
 
   const filteredBoards = allBoards.filter(({ title }) => {
@@ -95,8 +102,13 @@ const SidebarContent = () => {
               fillColor={'var(--sidebar-lightning-fill)'}
             />
           </LightningBox>
-
-          <p>Task Pro</p>
+          <p>Task Pro</p>{' '}
+          <StatsLink to={'stats'}>
+            <BsBarChartLine size={20} />
+          </StatsLink>
+          <ExtraLink to={'schedule'}>
+            <IoCalendarOutline size={20} />
+          </ExtraLink>
         </Logo>
 
         <DevsBtn
@@ -129,7 +141,7 @@ const SidebarContent = () => {
           </AddBtn>
         </CreateBox>
 
-        <BoardContainer>
+        <BoardContainer ref={boardsContainer}>
           {showSearchResult && (
             <SearchResultWrap>
               <p>{`${t('sidebar.search')}: ${filteredBoards.length}`} </p>
@@ -146,7 +158,7 @@ const SidebarContent = () => {
             </SearchResultWrap>
           )}
           {filteredBoards.map(board => (
-            <BoardLink key={board._id} to={`/home/${board._id}`}>
+            <BoardLink key={board._id} to={`/home/board/${board._id}`}>
               <AddedBoard
                 allBoards={allBoards}
                 board={board}
@@ -183,6 +195,8 @@ const SidebarContent = () => {
         <BoardModal
           variant="add"
           closeModal={() => setIsAddBoardModalShown(false)}
+          menu={menu}
+          closeMenu={closeMenu}
         />
       )}
       {isEditBoardModalShown && (
