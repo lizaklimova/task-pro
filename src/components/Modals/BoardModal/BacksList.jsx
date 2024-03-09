@@ -17,7 +17,7 @@ import {
   SmallLoaderContainer,
 } from './BoardModal.styled';
 
-export const BacksList = ({ backgroundId }) => {
+export const BacksList = ({ onSelectBackground, backgroundId }) => {
   const [selectedBackId, setSelectedBackId] = useState(backgroundId);
   const isLoading = useSelector(selectIsLoading);
   const backgroundIcons = useSelector(selectBackgroundIcons);
@@ -29,6 +29,7 @@ export const BacksList = ({ backgroundId }) => {
 
   const handleBackChange = id => {
     setSelectedBackId(id);
+    onSelectBackground(id);
   };
 
   return isLoading ? (
@@ -49,6 +50,7 @@ export const BacksList = ({ backgroundId }) => {
                 name="background"
                 value={item._id}
                 defaultChecked={selectedBackId === item._id}
+                checked={selectedBackId === item._id}
                 onChange={() => handleBackChange(item._id)}
               />
               {item.backgroundMinURL ? (
