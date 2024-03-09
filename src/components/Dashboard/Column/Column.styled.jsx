@@ -101,7 +101,7 @@ export const CardsList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-right: 8px;
+  padding-right: 4px;
   margin-bottom: 14px;
   height: calc(100vh - 144px - 130px);
   overflow-y: auto;
@@ -124,6 +124,7 @@ export const CardsList = styled.ul`
   }
 
   @media screen and (min-width: 768px) {
+    padding-right: 8px;
     max-height: calc(100vh - 150px - 166px);
   }
 
