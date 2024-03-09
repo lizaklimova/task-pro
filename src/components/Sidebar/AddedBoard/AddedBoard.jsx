@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteBoard } from '../../../redux/board/boardOperations';
 import { ICONS_ARRAY } from 'constants';
@@ -13,14 +14,17 @@ import {
 } from './AddedBoard.styled';
 import DeleteModal from 'components/Modals/DeleteModal';
 
-const AddedBoard = ({ board, openEditModal }) => {
+const AddedBoard = ({ allBoards, board, openEditModal }) => {
   const boardIcon = ICONS_ARRAY[board.icon_id];
   const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleBoardDelete = () => {
     dispatch(deleteBoard(board._id));
+    // allBoards.length > 0 && navigate(`/home/${allBoards[0]._id}`);
+    setIsDeleteModalShown(false);
   };
 
   return (
