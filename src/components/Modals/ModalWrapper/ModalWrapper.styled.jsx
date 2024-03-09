@@ -30,11 +30,11 @@ export const ModalContainer = styled(motion.div)`
   width: ${({ $developers }) => ($developers ? '90%' : '300px')};
 
   @media screen and (min-width: 375px) {
-    width: ${({ $developers }) => ($developers ? '80%' : '335px')};
+    width: ${({ $developers }) => ($developers ? '60%' : '335px')};
   }
 
   @media screen and (min-width: 768px) {
-    height: ${({ $developers }) => ($developers ? '800px' : 'unset')};
+    height: ${({ $developers }) => ($developers ? '95dvh' : 'unset')};
     width: ${({ $developers }) => ($developers ? '730px' : '350px')};
     width: ${props =>
       props.$containerWidth ? `${props.$containerWidth}px` : '350px'};

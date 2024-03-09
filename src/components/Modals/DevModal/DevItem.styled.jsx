@@ -38,8 +38,8 @@ export const DevImage = styled.img`
   margin-bottom: 8px;
 
   @media screen and (min-width: 768px) {
-    width: 130px;
-    height: 130px;
+    width: 100px;
+    height: 100px;
   }
 `;
 

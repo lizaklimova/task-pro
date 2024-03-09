@@ -15,10 +15,10 @@ const swingAnimation = keyframes`
 `;
 
 export const CardItem = styled.div`
-  width: 334px;
+  width: 100%;
   border-radius: 10px;
   padding: 24px 14px;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   background-color: var(--card-bg);
   list-style-type: none;
   border-left: ${({ $label }) => `7px solid var(--priority-${$label})`};

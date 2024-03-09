@@ -94,12 +94,16 @@ export const AddButton = styled.button`
 export const CardsList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding-right: 8px;
+  gap: 5px;
+  /* padding-right: 8px; */
   margin-bottom: 14px;
   border-radius: 8px;
+  padding: 8px;
+  background-color: var(--card-list-bg);
+  width: 100%;
   height: calc(100vh - 144px - 130px);
   overflow-y: auto;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 
   &::-webkit-scrollbar-thumb {
