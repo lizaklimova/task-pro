@@ -17,7 +17,7 @@ import {
 } from './Filters.styled';
 
 const Filters = ({ boardId, onClose }) => {
-  const [filterValue, setFilterValue] = useState('default');
+  const [filterValue, setFilterValue] = useState('without');
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -29,6 +29,7 @@ const Filters = ({ boardId, onClose }) => {
   const handleFilterChange = newValue => {
     setFilterValue(newValue);
     dispatch(filterCards({ boardId: boardId, priority: newValue }));
+    onClose();
   };
 
   const handleDefaultFilter = () => {

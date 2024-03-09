@@ -60,15 +60,9 @@ export const RadioButton = styled.input`
   width: 14px;
   height: 14px;
   opacity: 0;
-
-  &:checked {
-    outline: ${({ $color }) => `1px solid var(--priority-${$color})`};
-    border: 2px solid var(--modal-background);
-  }
 `;
 
 export const StyledMarker = styled.span`
-  content: '';
   width: 14px;
   height: 14px;
   border-radius: 50%;
@@ -78,21 +72,22 @@ export const StyledMarker = styled.span`
 `;
 
 export const PriorityFilterLabel = styled.label`
-  cursor: pointer;
+  font-size: 14px;
   position: relative;
   display: inline-flex;
   gap: 8px;
   justify-content: center;
   align-items: center;
   color: var(--lightgrey-text-color);
+  cursor: pointer;
 
   &:not(:last-child) {
     margin-bottom: 12px;
   }
-  font-size: 14px;
 
   input[type='radio']:checked + ${StyledMarker} {
-    scale: 0.5;
+    outline: ${({ $color }) => `1px solid var(--priority-${$color})`};
+    border: 2px solid var(--modal-background);
   }
 
   @media screen and (min-width: 768px) {
