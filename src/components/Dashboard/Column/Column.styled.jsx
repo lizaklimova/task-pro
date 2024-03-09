@@ -100,12 +100,17 @@ export const CardsList = styled.ul`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding-right: 4px;
+  gap: 5px;
+  /* padding-right: 8px; */
   margin-bottom: 14px;
   border-radius: 8px;
+  padding: 5px;
+  background-color: ${({ $isDraggingOver }) =>
+    $isDraggingOver ? 'var(--card-list-bg)' : 'transparent'};
+  width: 100%;
   height: calc(100vh - 144px - 130px);
   overflow-y: auto;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 
   &::-webkit-scrollbar-thumb {

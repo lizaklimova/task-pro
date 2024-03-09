@@ -87,8 +87,12 @@ const Column = ({ allColumns, column }) => {
           <EmptyMsg>{t('cards.empty')}</EmptyMsg>
         ) : (
           <Droppable droppableId={column._id}>
-            {provided => (
-              <CardsList ref={provided.innerRef} {...provided.droppableProps}>
+            {(provided, snapshot) => (
+              <CardsList
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+                $isDraggingOver={snapshot.isDraggingOver}
+              >
                 {column.cards &&
                   column.cards.map((card, index) => (
                     <li key={card._id}>

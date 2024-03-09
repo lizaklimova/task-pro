@@ -65,6 +65,7 @@ const TaskCard = ({
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             $label={determineLabelColor(card.priority)}
+            $isDragging={snapshot.isDragging}
           >
             <CardTitle>{card.title}</CardTitle>
             <CardDescr onClick={handleClick}>
