@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { logOut } from '../../../redux/auth/authOperations';
 import { selectBoards } from '../../../redux/board/boardSelectors';
+import { selectBoardSearch } from '../../../redux/search/searchSelectors';
+import { boardSearch } from '../../../redux/search/searchSlice';
 import plantImg from 'assets/images/sidebar/plant.png';
 import Lightning from 'components/Icons/Lightning';
 import LogOut from 'components/Icons/LogOut';
@@ -11,6 +13,9 @@ import NeedHelp from 'components/Sidebar/NeedHelp';
 import Plus from 'components/Icons/Plus';
 import AddedBoard from '../AddedBoard';
 import DevModal from 'components/Modals/DevModal';
+import SwiperDevModal from 'components/Modals/DevModal/SwiperDevModal';
+import SearchBoardModal from 'components/Modals/SearchBoardModal';
+import Search from 'components/Icons/Search';
 import {
   AddBtn,
   Container,
@@ -19,6 +24,7 @@ import {
   CreateText,
   BoardLink,
   BoardContainer,
+  SearchResultWrap,
   Footer,
   HelpContainer,
   HelpSpan,
@@ -27,13 +33,11 @@ import {
   Logo,
   LogoutBtn,
   LogoutText,
+  BoardsWrap,
   MyBoard,
+  SearchButton,
   DevsBtn,
 } from './SidebarContent.styled';
-import SwiperDevModal from 'components/Modals/DevModal/SwiperDevModal';
-import SearchBoardModal from 'components/Modals/SearchBoardModal/SearchBoardModal';
-import Search from 'components/Icons/Search';
-import { FilterButton } from 'components/Dashboard/BoardHeader/BoardHeader.styled';
 
 const SidebarContent = () => {
   const [isAddBoardModalShown, setIsAddBoardModalShown] = useState(false);
@@ -41,14 +45,14 @@ const SidebarContent = () => {
   const [isDevModalOpen, setIsDevModalOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [searchValue, setSearchValue] = useState('');
-
-  const allBoards = useSelector(selectBoards);
-
-  const allBoardsTitles = allBoards.map(board => board.title);
+  // const [searchValue, setSearchValue] = useState('');
+  // const [filteredBoards, setFilteredBoards] = useState(allBoards);
+  const [showSearchResult, setShowSearchResult] = useState(false);
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const searchValue = useSelector(selectBoardSearch);
+  const allBoards = useSelector(selectBoards);
 
   useEffect(() => {
     const handleResize = () => {
@@ -62,23 +66,23 @@ const SidebarContent = () => {
     };
   }, []);
 
-  const handleSearchClick = () => {
-    setIsSearchModalOpen(true);
-  };
-
-  const handleSearchChange = event => {
-    setSearchValue(event.target.value.trim().toLowerCase());
-  };
-
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(allBoards);
-    const filteredBoards = allBoardsTitles.filter(title =>
-      title.trim().toLowerCase().includes(searchValue)
-    );
-    console.log('Filtered boards:', filteredBoards);
+    const { search } = event.target.elements;
+
+    dispatch(boardSearch(search.value.trim().toLowerCase()));
+    setShowSearchResult(true);
     setIsSearchModalOpen(false);
   };
+
+  const handleLogOut = () => {
+    localStorage.removeItem('app-theme');
+    dispatch(logOut());
+  };
+
+  const filteredBoards = allBoards.filter(({ title }) => {
+    return title && title.toLowerCase().trim().includes(searchValue);
+  });
 
   return (
     <Container>
@@ -103,11 +107,16 @@ const SidebarContent = () => {
           © {t('developersModal.text')}
         </DevsBtn>
 
-        <MyBoard>{t('sidebar.boards')}</MyBoard>
+        <BoardsWrap>
+          <MyBoard>{`${t('sidebar.boards')}: ${allBoards.length}`}</MyBoard>
 
-        <FilterButton type="button" onClick={handleSearchClick}>
-          <Search width={16} height={16} />
-        </FilterButton>
+          <SearchButton
+            type="button"
+            onClick={() => setIsSearchModalOpen(true)}
+          >
+            <Search width={16} height={16} />
+          </SearchButton>
+        </BoardsWrap>
 
         <CreateBox>
           <CreateText>{t('sidebar.create')}</CreateText>
@@ -121,7 +130,22 @@ const SidebarContent = () => {
         </CreateBox>
 
         <BoardContainer>
-          {allBoards?.map(board => (
+          {showSearchResult && (
+            <SearchResultWrap>
+              <p>{`${t('sidebar.search')}: ${filteredBoards.length}`} </p>
+              <button
+                aria-label="show all boards"
+                type="button"
+                onClick={() => {
+                  dispatch(boardSearch(''));
+                  setShowSearchResult(false);
+                }}
+              >
+                {t('sidebar.showAll')}
+              </button>
+            </SearchResultWrap>
+          )}
+          {filteredBoards.map(board => (
             <BoardLink key={board._id} to={`/home/${board._id}`}>
               <AddedBoard
                 allBoards={allBoards}
@@ -145,11 +169,7 @@ const SidebarContent = () => {
           <NeedHelp />
         </HelpContainer>
 
-        <LogoutBtn
-          type="button"
-          aria-label="Log out"
-          onClick={() => dispatch(logOut())}
-        >
+        <LogoutBtn type="button" aria-label="Log out" onClick={handleLogOut}>
           <LogOut
             width={32}
             height={32}
@@ -175,9 +195,7 @@ const SidebarContent = () => {
       {isSearchModalOpen && (
         <SearchBoardModal
           onClose={() => setIsSearchModalOpen(false)}
-          searchValue={searchValue}
           handleSubmit={handleSubmit}
-          handleSearchChange={handleSearchChange}
         />
       )}
 

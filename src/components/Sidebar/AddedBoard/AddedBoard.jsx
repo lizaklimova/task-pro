@@ -14,7 +14,7 @@ import {
 import DeleteModal from 'components/Modals/DeleteModal';
 
 const AddedBoard = ({ board, openEditModal }) => {
-  const [boardIcon] = useState(ICONS_ARRAY[board.icon_id]);
+  const boardIcon = ICONS_ARRAY[board.icon_id];
   const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
 
   const dispatch = useDispatch();

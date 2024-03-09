@@ -5,11 +5,12 @@ import {
   createBoard,
   deleteBoard,
   getOneBoard,
-  filterBoard,
+  filterCards,
   addColumn,
   editColumn,
   deleteColumn,
   updateBoard,
+  moveCard,
 } from './boardOperations';
 import {
   addCard,
@@ -35,13 +36,14 @@ const boardsSlice = createSlice({
       .addCase(createBoard.pending, handlePending)
       .addCase(updateBoard.pending, handlePending)
       .addCase(deleteBoard.pending, handlePending)
-      .addCase(filterBoard.pending, handlePending)
+      .addCase(filterCards.pending, handlePending)
       .addCase(addColumn.pending, handlePending)
       .addCase(editColumn.pending, handlePending)
       .addCase(deleteColumn.pending, handlePending)
       .addCase(addCard.pending, handlePending)
       .addCase(deleteCard.pending, handlePending)
       .addCase(editCard.pending, handlePending)
+      .addCase(moveCard.pending, handlePending)
       .addCase(getBackgroundIcons.fulfilled, (state, { payload }) => {
         state.background = payload;
         state.isLoading = false;
@@ -80,8 +82,8 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(filterBoard.fulfilled, (state, { payload }) => {
-        state.filterBoard = payload;
+      .addCase(filterCards.fulfilled, (state, { payload }) => {
+        state.oneBoard = payload;
         state.isLoading = false;
         state.error = null;
       })
@@ -111,7 +113,11 @@ const boardsSlice = createSlice({
         const column = state.oneBoard.columns.find(
           ({ _id }) => _id === payload.column
         );
-        column.cards = [...column.cards, payload];
+        if (!column.cards) {
+          column.cards = [payload];
+        } else {
+          column.cards = [...column.cards, payload];
+        }
       })
       .addCase(deleteCard.fulfilled, (state, { payload }) => {
         state.isLoading = false;
@@ -133,18 +139,36 @@ const boardsSlice = createSlice({
           return card;
         });
       })
+      .addCase(moveCard.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        const column = state.oneBoard.columns.find(
+          ({ _id }) => _id === payload.oldColumn
+        );
+
+        column.cards = column.cards.filter(
+          ({ _id }) => _id !== payload.card._id
+        );
+
+        const newColumn = state.oneBoard.columns.find(
+          ({ _id }) => _id === payload.card.column
+        );
+
+        newColumn.cards = [...newColumn.cards, payload.card];
+      })
       .addCase(getBackgroundIcons.rejected, handleRejected)
       .addCase(getAllBoards.rejected, handleRejected)
       .addCase(getOneBoard.rejected, handleRejected)
       .addCase(createBoard.rejected, handleRejected)
       .addCase(deleteBoard.rejected, handleRejected)
-      .addCase(filterBoard.rejected, handleRejected)
+      .addCase(filterCards.rejected, handleRejected)
       .addCase(addColumn.rejected, handleRejected)
       .addCase(editColumn.rejected, handleRejected)
       .addCase(deleteColumn.rejected, handleRejected)
       .addCase(addCard.rejected, handleRejected)
       .addCase(deleteCard.rejected, handleRejected)
-      .addCase(editCard.rejected, handleRejected);
+      .addCase(editCard.rejected, handleRejected)
+      .addCase(moveCard.rejected, handleRejected);
   },
 });
 
