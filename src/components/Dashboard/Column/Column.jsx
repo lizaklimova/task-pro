@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { Droppable } from 'react-beautiful-dnd';
 import { deleteColumn } from '../../../redux/board/boardOperations';
 import Pencil from 'components/Icons/Pencil';
 import Trash from 'components/Icons/Trash';
@@ -9,6 +10,7 @@ import CardModal from 'components/Modals/CardModal';
 import Plus from 'components/Icons/Plus';
 import DeleteModal from 'components/Modals/DeleteModal/DeleteModal';
 import TaskCard from '../TaskCard';
+import { EmptyMsg } from '../Dashboard.styled';
 import {
   AddButton,
   ButtonsList,
@@ -26,6 +28,17 @@ const Column = ({ allColumns, column }) => {
   const [isEditCardModalOpen, setIsEditCardModalOpen] = useState(false);
   const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
   const [activeCard, setActiveCard] = useState({});
+  const [showEmptyMsg, setShowEmptyMsg] = useState(false);
+
+  useEffect(() => {
+    const columns = allColumns?.filter(column => column?.cards?.length !== 0);
+
+    if (!columns?.length) {
+      setShowEmptyMsg(true);
+    } else {
+      setShowEmptyMsg(false);
+    }
+  }, [setShowEmptyMsg, allColumns]);
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -70,21 +83,30 @@ const Column = ({ allColumns, column }) => {
             </li>
           </ButtonsList>
         </ColumnTitleWrap>
-
-        <CardsList>
-          {column.cards &&
-            column.cards.map(card => (
-              <li key={card._id}>
-                <TaskCard
-                  allColumns={allColumns}
-                  columnId={column._id}
-                  card={card}
-                  openCardModal={() => setIsEditCardModalOpen(true)}
-                  setActiveCard={setActiveCard}
-                />
-              </li>
-            ))}
-        </CardsList>
+        {showEmptyMsg ? (
+          <EmptyMsg>{t('cards.empty')}</EmptyMsg>
+        ) : (
+          <Droppable droppableId={column._id}>
+            {provided => (
+              <CardsList ref={provided.innerRef} {...provided.droppableProps}>
+                {column.cards &&
+                  column.cards.map((card, index) => (
+                    <li key={card._id}>
+                      <TaskCard
+                        allColumns={allColumns}
+                        columnId={column._id}
+                        card={card}
+                        index={index}
+                        openCardModal={() => setIsEditCardModalOpen(true)}
+                        setActiveCard={setActiveCard}
+                      />
+                    </li>
+                  ))}
+                {provided.placeholder}
+              </CardsList>
+            )}
+          </Droppable>
+        )}
 
         <AddButton type="button" onClick={() => setIsAddCardModalOpen(true)}>
           <IconWrap>

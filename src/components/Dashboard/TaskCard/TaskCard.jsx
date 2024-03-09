@@ -28,11 +28,13 @@ import {
   DeadlineModal,
   CardActionButton,
 } from './TaskCard.styled';
+import { Draggable } from 'react-beautiful-dnd';
 
 const TaskCard = ({
   allColumns,
   columnId,
   card,
+  index,
   openCardModal,
   setActiveCard,
 }) => {
@@ -56,106 +58,115 @@ const TaskCard = ({
 
   return (
     <>
-      <CardItem $label={determineLabelColor(card.priority)}>
-        <CardTitle>{card.title}</CardTitle>
-        <CardDescr onClick={handleClick}>
-          {showFullText
-            ? card.description
-            : handleTextOverflow(card.description)}
-        </CardDescr>
-        <hr />
-
-        <div>
-          <InfoWrap>
-            <div>
-              <h5>{t('cards.priority')}</h5>
-              <Priority $label={determineLabelColor(card.priority)}>
-                {i18next.language === 'en'
-                  ? card.priority
-                  : changePriorityLang(card.priority)}
-              </Priority>
-            </div>
+      <Draggable draggableId={card._id} index={index}>
+        {(provided, snapshot) => (
+          <CardItem
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            $label={determineLabelColor(card.priority)}
+          >
+            <CardTitle>{card.title}</CardTitle>
+            <CardDescr onClick={handleClick}>
+              {showFullText
+                ? card.description
+                : handleTextOverflow(card.description)}
+            </CardDescr>
+            <hr />
 
             <div>
-              <h5>{t('cards.deadline')}</h5>
-              <span>{formatDate(makeValidDate(card.deadline))}</span>
+              <InfoWrap>
+                <div>
+                  <h5>{t('cards.priority')}</h5>
+                  <Priority $label={determineLabelColor(card.priority)}>
+                    {i18next.language === 'en'
+                      ? card.priority
+                      : changePriorityLang(card.priority)}
+                  </Priority>
+                </div>
+
+                <div>
+                  <h5>{t('cards.deadline')}</h5>
+                  <span>{formatDate(makeValidDate(card.deadline))}</span>
+                </div>
+              </InfoWrap>
+
+              <BtnsList>
+                {determineDeadline(card.deadline) && (
+                  <li>
+                    <CardActionButton
+                      id="deadline-bell"
+                      type="button"
+                      aria-label="Deadline is today"
+                      onClick={e => (e.target.style.animation = 'none')}
+                    >
+                      <Bell
+                        width={16}
+                        height={16}
+                        strokeColor={'var(--icon-stroke-color)'}
+                      />
+                    </CardActionButton>
+
+                    <DeadlineModal id="deadline-modal">
+                      <p>{t('cards.deadlineToday')}</p>
+                    </DeadlineModal>
+                  </li>
+                )}
+                {allColumns.length >= 2 && (
+                  <li>
+                    <CardActionButton
+                      id="move-card"
+                      type="button"
+                      aria-label="Move card"
+                    >
+                      <Status
+                        width={16}
+                        height={16}
+                        strokeColor={'var(--icon-stroke-color)'}
+                      />
+                    </CardActionButton>
+                    <MovePopUp
+                      allColumns={allColumns}
+                      columnId={columnId}
+                      moveCard={moveCardToAnotherColumn}
+                    />
+                  </li>
+                )}
+                <li>
+                  <CardActionButton
+                    type="button"
+                    aria-label="Edit card"
+                    onClick={() => {
+                      openCardModal();
+                      setActiveCard(card);
+                    }}
+                  >
+                    <Pencil
+                      width={16}
+                      height={16}
+                      strokeColor={'var(--icon-stroke-color)'}
+                    />
+                  </CardActionButton>
+                </li>
+                <li>
+                  <CardActionButton
+                    type="button"
+                    aria-label="Delete card"
+                    onClick={() => setIsDeleteModalOpen(true)}
+                  >
+                    <Trash
+                      width={16}
+                      height={16}
+                      strokeColor={'var(--icon-stroke-color)'}
+                    />
+                  </CardActionButton>
+                </li>
+              </BtnsList>
             </div>
-          </InfoWrap>
-
-          <BtnsList>
-            {determineDeadline(card.deadline) && (
-              <li>
-                <CardActionButton
-                  id="deadline-bell"
-                  type="button"
-                  aria-label="Deadline is today"
-                  onClick={e => (e.target.style.animation = 'none')}
-                >
-                  <Bell
-                    width={16}
-                    height={16}
-                    strokeColor={'var(--icon-stroke-color)'}
-                  />
-                </CardActionButton>
-
-                <DeadlineModal id="deadline-modal">
-                  <p>{t('cards.deadlineToday')}</p>
-                </DeadlineModal>
-              </li>
-            )}
-            {allColumns.length >= 2 && (
-              <li>
-                <CardActionButton
-                  id="move-card"
-                  type="button"
-                  aria-label="Move card"
-                >
-                  <Status
-                    width={16}
-                    height={16}
-                    strokeColor={'var(--icon-stroke-color)'}
-                  />
-                </CardActionButton>
-                <MovePopUp
-                  allColumns={allColumns}
-                  columnId={columnId}
-                  moveCard={moveCardToAnotherColumn}
-                />
-              </li>
-            )}
-            <li>
-              <CardActionButton
-                type="button"
-                aria-label="Edit card"
-                onClick={() => {
-                  openCardModal();
-                  setActiveCard(card);
-                }}
-              >
-                <Pencil
-                  width={16}
-                  height={16}
-                  strokeColor={'var(--icon-stroke-color)'}
-                />
-              </CardActionButton>
-            </li>
-            <li>
-              <CardActionButton
-                type="button"
-                aria-label="Delete card"
-                onClick={() => setIsDeleteModalOpen(true)}
-              >
-                <Trash
-                  width={16}
-                  height={16}
-                  strokeColor={'var(--icon-stroke-color)'}
-                />
-              </CardActionButton>
-            </li>
-          </BtnsList>
-        </div>
-      </CardItem>
-
+            {provided.placeholder}
+          </CardItem>
+        )}
+      </Draggable>
       {isDeleteModalOpen && (
         <DeleteModal
           onClose={() => setIsDeleteModalOpen(false)}
