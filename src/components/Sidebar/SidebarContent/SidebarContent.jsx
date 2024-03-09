@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { logOut } from '../../../redux/auth/authOperations';
@@ -51,6 +51,11 @@ const SidebarContent = ({ menu, closeMenu }) => {
   const { t } = useTranslation();
   const searchValue = useSelector(selectBoardSearch);
   const allBoards = useSelector(selectBoards);
+  const boardsContainer = useRef(null);
+
+  useEffect(() => {
+    boardsContainer.current.scrollTop = boardsContainer.current.scrollHeight;
+  }, [allBoards]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -127,7 +132,7 @@ const SidebarContent = ({ menu, closeMenu }) => {
           </AddBtn>
         </CreateBox>
 
-        <BoardContainer>
+        <BoardContainer ref={boardsContainer}>
           {showSearchResult && (
             <SearchResultWrap>
               <p>{`${t('sidebar.search')}: ${filteredBoards.length}`} </p>
