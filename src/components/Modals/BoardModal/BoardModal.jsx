@@ -10,7 +10,9 @@ import { validateInputMaxLength } from 'helpers';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';
 import { BacksList } from './BacksList';
-import { CustomBackground } from './CustomBackground';
+// import { CustomBackground } from './CustomBackground';
+// import { nanoid } from '@reduxjs/toolkit';
+
 import Plus from 'components/Icons/Plus';
 import {
   Form,
@@ -32,6 +34,17 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
   const { t } = useTranslation();
   const oneBoard = useSelector(selectOneBoard);
 
+  // ?
+
+  const [customBackground, setCustomBackground] = useState(null);
+
+  const handleUpload = event => {
+    const file = event.target.files[0];
+    setCustomBackground(file);
+  };
+
+  // ?
+
   useEffect(() => {
     titleRef.current.focus();
   }, []);
@@ -47,7 +60,7 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
     const data = {
       title: title.value,
       iconId: iconId.value,
-      backgroundId: background.value,
+      background: customBackground ?? background.value,
     };
 
     if (variant === 'add') {
@@ -102,6 +115,21 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
 
         <Text>Choose your custom background</Text>
         {/* <CustomBackground /> */}
+        {/* <label>
+          <input
+            type="radio"
+            name="background"
+            // value={cusomId}
+            // checked={cusomId}
+            // onChange={handleFileChange}
+          /> */}
+        <label>
+          <input type="file" name="background" onChange={handleUpload} />
+          {/* <button type="button" onClick={handleUpload}>
+              Upload
+            </button> */}
+        </label>
+        {/* </label> */}
 
         <Button type="submit">
           <Span>

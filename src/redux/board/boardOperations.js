@@ -30,10 +30,13 @@ export const createBoard = createAsyncThunk(
   async (newBoard, thunkAPI) => {
     try {
       const formData = new FormData();
-      const { title, iconId, backgroundId } = newBoard;
+      const { title, iconId, background } = newBoard;
       formData.append('title', title);
       formData.append('iconId', iconId);
-      formData.append('backgroundId', backgroundId);
+
+      !background.type?.startsWith('image')
+        ? formData.append('backgroundId', background)
+        : formData.append('background', background);
 
       const { data } = await axiosInstance.post(
         ENDPOINTS.boards.allBoards,
