@@ -36,7 +36,11 @@ export const CardItem = styled.div`
   }
 
   @media screen and (min-width: 375px) {
-    min-width: 334px;
+    width: 330px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 335px;
   }
 `;
 
@@ -80,7 +84,7 @@ export const Deadline = styled.span`
   text-decoration: ${({ $isDeadlinePassed }) =>
     $isDeadlinePassed ? 'line-through' : 'none'};
   color: ${({ $isDeadlinePassed }) =>
-    $isDeadlinePassed ? 'red' : 'var(--text-color)'};
+    $isDeadlinePassed ? 'var(--error-color)' : 'var(--text-color)'};
 
   @media screen and (min-width: 768px) {
     font-size: 10px;
@@ -112,11 +116,7 @@ export const Priority = styled.p`
 export const BtnsList = styled.ul`
   display: flex;
   align-items: flex-end;
-  gap: 5px;
-
-  @media screen and (min-width: 768px) {
-    gap: 7px;
-  }
+  gap: 7px;
 `;
 
 export const DeadlineModal = styled.div`

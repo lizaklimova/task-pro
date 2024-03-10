@@ -15,8 +15,8 @@ export const UserNameLabel = styled.label`
   p {
     font-size: 8px;
     position: absolute;
-    bottom: -10px;
-    color: red;
+    bottom: -12px;
+    color: var(--error-color);
   }
 `;
 
@@ -33,7 +33,7 @@ export const InputUser = styled.input`
   transition: opacity var(--easedTransition);
 
   &.invalid {
-    border: 2px solid red;
+    border: 2px solid var(--error-color);
   }
 
   &:hover,

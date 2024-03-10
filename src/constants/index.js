@@ -50,7 +50,7 @@ export const PROGRESS_BAR_COLORS = [
 
 export const DEFAULT_BACKGROUND_ID = '65e476ee9e0727c033dddb93';
 
-export const MAX_DESCR_LENGTH = 90;
+export const MAX_DESCR_LENGTH = 80;
 
 export const SCORE_WORDS =
   i18next.language === 'en'

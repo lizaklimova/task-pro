@@ -3,7 +3,10 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
-import { addColumn, editColumn } from '../../../redux/board/boardOperations';
+import {
+  addColumn,
+  editColumn,
+} from '../../../redux/columns/columnsOperations';
 import { TOASTER_CONFIG } from 'constants';
 import { validateInputMaxLength } from 'helpers';
 import ModalWrapper from 'components/Modals/ModalWrapper';

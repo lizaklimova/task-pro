@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
     --dark-green-gradient: linear-gradient(180deg, #263238 25%, #37474F 92.19%);
     --light-green: #92E3A9;
     --backdrop-color: #706f6f99;
+    --error-color: #fc8181;
 }
 
 html[data-theme='dark']{

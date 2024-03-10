@@ -111,7 +111,6 @@ export const CardsList = styled.ul`
   height: calc(100vh - 144px - 130px);
   overflow-y: auto;
   overflow-x: hidden;
-  scroll-behavior: smooth;
 
   &::-webkit-scrollbar-thumb {
     border-radius: 12px;
@@ -130,6 +129,7 @@ export const CardsList = styled.ul`
   }
 
   @media screen and (min-width: 768px) {
+    min-width: 355px;
     padding-right: 8px;
     max-height: calc(100vh - 150px - 166px);
   }

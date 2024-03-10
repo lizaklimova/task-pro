@@ -4,7 +4,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 export const support = createAsyncThunk(
   'email/support',
   async ({ email, text }, thunkAPI) => {
-    console.log(email, text);
     try {
       const data = await axiosInstance.post(ENDPOINTS.email.support, {
         email,

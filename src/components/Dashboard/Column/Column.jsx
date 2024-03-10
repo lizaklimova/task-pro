@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Droppable } from 'react-beautiful-dnd';
-import { deleteColumn } from '../../../redux/board/boardOperations';
+import { deleteColumn } from '../../../redux/columns/columnsOperations';
 import Pencil from 'components/Icons/Pencil';
 import Trash from 'components/Icons/Trash';
 import ColumnModal from 'components/Modals/ColumnModal';

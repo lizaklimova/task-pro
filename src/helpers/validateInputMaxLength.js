@@ -3,6 +3,7 @@ const validateInputMaxLength = (event, setError, setClassName) => {
   if (value.length >= 25) {
     setError(true);
     setClassName('invalid');
+    return;
   } else {
     setError(false);
     setClassName('');

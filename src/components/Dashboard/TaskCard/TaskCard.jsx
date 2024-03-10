@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Draggable } from 'react-beautiful-dnd';
 import i18next from 'i18next';
-import { deleteCard } from '../../../redux/cards/cardsOperations';
-import { moveCard } from '../../../redux/board/boardOperations';
+import { deleteCard, moveCard } from '../../../redux/cards/cardsOperations';
 import {
   formatDate,
   makeValidDate,

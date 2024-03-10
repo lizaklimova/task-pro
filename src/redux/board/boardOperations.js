@@ -56,7 +56,6 @@ export const updateBoard = createAsyncThunk(
   async ({ boardId, dataUpdate }, thunkAPI) => {
     try {
       const formData = new FormData();
-      console.log(formData);
       const { title, iconId, background } = dataUpdate;
       formData.append('title', title);
       formData.append('iconId', iconId);
@@ -101,79 +100,6 @@ export const getOneBoard = createAsyncThunk(
       );
 
       return data.board[0];
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const filterCards = createAsyncThunk(
-  'boards/filterCards',
-  async ({ boardId, priority }, thunkAPI) => {
-    try {
-      const { data } = await axiosInstance.get(
-        ENDPOINTS.boards.boardFilter(boardId) + `?priority=${priority}`
-      );
-
-      return data.board[0];
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const addColumn = createAsyncThunk(
-  'columns/addColumn',
-  async (newColumn, thunkAPI) => {
-    try {
-      const response = await axiosInstance.post(
-        ENDPOINTS.columns.allColumns,
-        newColumn
-      );
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const deleteColumn = createAsyncThunk(
-  'columns/deleteColumn',
-  async (columnId, thunkAPI) => {
-    try {
-      await axiosInstance.delete(ENDPOINTS.columns.oneColumn(columnId));
-      return columnId;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const editColumn = createAsyncThunk(
-  'columns/editColumn',
-  async ({ editedColumn, id }, thunkAPI) => {
-    try {
-      const response = await axiosInstance.patch(
-        ENDPOINTS.columns.oneColumn(id),
-        editedColumn
-      );
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const moveCard = createAsyncThunk(
-  'cards/moveCard',
-  async ({ cardId, newColumn, oldColumn }, thunkAPI) => {
-    try {
-      const { data } = await axiosInstance.patch(
-        ENDPOINTS.cards.cardStatus(cardId),
-        { columnId: newColumn }
-      );
-
-      return { card: data.card, oldColumn };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

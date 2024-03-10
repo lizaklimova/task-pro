@@ -1,4 +1,15 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import toast from 'react-hot-toast';
+import { useSelector, useDispatch } from 'react-redux';
+import { editUser } from '../../../redux/auth/authOperations';
+import {
+  selectUsername,
+  selectUserEmail,
+  selectUserAvatar,
+} from '../../../redux/auth/authSelectors';
+import { TOASTER_CONFIG } from 'constants';
+import { validateInputMaxLength } from 'helpers';
 import { editUserSchema } from 'schemas';
 import Eye from 'components/Icons/Eye';
 import EyeCrossed from 'components/Icons/EyeCrossed';
@@ -16,19 +27,6 @@ import {
   PlusButton,
   SendBtn,
 } from './UserModal.styled';
-import {
-  selectUsername,
-  selectUserEmail,
-  selectUserAvatar,
-} from '../../../redux/auth/authSelectors';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { editUser } from '../../../redux/auth/authOperations';
-import { useTranslation } from 'react-i18next';
-import * as yup from 'yup';
-import toast from 'react-hot-toast';
-import { TOASTER_CONFIG } from 'constants';
-import { validateInputMaxLength } from 'helpers';
 
 const UserModal = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -141,7 +139,7 @@ const UserModal = ({ onClose }) => {
           placeholder="Email"
           value={email}
           name="email"
-          autoComplete={'username'}
+          autoComplete={'email'}
           onChange={handleInputChange}
         />
         <InputPass>

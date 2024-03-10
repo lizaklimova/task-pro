@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { DragDropContext } from 'react-beautiful-dnd';
-import { moveCard } from '../../redux/board/boardOperations';
+import { moveCard } from '../../redux/cards/cardsOperations';
 import Plus from 'components/Icons/Plus';
 import ColumnModal from 'components/Modals/ColumnModal';
 import Column from './Column';
@@ -15,9 +15,6 @@ const Dashboard = ({ board }) => {
   const dispatch = useDispatch();
 
   const onDragEnd = ({ draggableId, source, destination }) => {
-    // if (destination || source === destination) return;
-    // console.log(source);
-    // console.log(destination);
     if (!destination) return;
     if (
       source.droppableId === destination.droppableId &&
@@ -36,9 +33,9 @@ const Dashboard = ({ board }) => {
   };
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Wrap>
-        {board?.columns?.length > 0 && (
+    <Wrap>
+      {board?.columns?.length > 0 && (
+        <DragDropContext onDragEnd={onDragEnd}>
           <ColumnsList>
             {board.columns.map(column => (
               <li key={column._id}>
@@ -46,18 +43,18 @@ const Dashboard = ({ board }) => {
               </li>
             ))}
           </ColumnsList>
-        )}
-        <AddButton type="button" onClick={() => setIsModalOpen(true)}>
-          <IconWrap>
-            <Plus width={14} height={14} />
-          </IconWrap>
-          {t('columns.addButton')}
-        </AddButton>
-        {isModalOpen && (
-          <ColumnModal variant="add" closeModal={() => setIsModalOpen(false)} />
-        )}
-      </Wrap>
-    </DragDropContext>
+        </DragDropContext>
+      )}
+      <AddButton type="button" onClick={() => setIsModalOpen(true)}>
+        <IconWrap>
+          <Plus width={14} height={14} />
+        </IconWrap>
+        {t('columns.addButton')}
+      </AddButton>
+      {isModalOpen && (
+        <ColumnModal variant="add" closeModal={() => setIsModalOpen(false)} />
+      )}
+    </Wrap>
   );
 };
 
