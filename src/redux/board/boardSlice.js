@@ -67,9 +67,11 @@ const boardsSlice = createSlice({
         state.error = null;
       })
       .addCase(updateBoard.fulfilled, (state, { payload }) => {
-        state.oneBoard.title = payload.title;
-        state.oneBoard.background._id = payload.background._id;
-        state.oneBoard.icon_id = payload.icon_id;
+        console.log(payload);
+        // state.oneBoard.title = payload.title;
+        // state.oneBoard.background._id = payload.background._id;
+        // state.oneBoard.icon_id = payload.icon_id;
+        state.oneBoard = { ...state.oneBoard, ...payload };
 
         state.boards = state.boards.map(board =>
           board._id === payload._id ? payload : board
