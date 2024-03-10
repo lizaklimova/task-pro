@@ -11,7 +11,7 @@ import {
   determineDeadline,
   determineLabelColor,
   changePriorityLang,
-  determineDeadlinePassed,
+  compareDates,
 } from 'helpers';
 import Status from 'components/Icons/Status';
 import Pencil from 'components/Icons/Pencil';
@@ -90,9 +90,7 @@ const TaskCard = ({
                 <div>
                   <h5>{t('cards.deadline')}</h5>
                   <Deadline
-                    $isDeadlinePassed={determineDeadlinePassed(
-                      new Date(card.deadline)
-                    )}
+                    $isDeadlinePassed={compareDates(new Date(card.deadline))}
                   >
                     {formatDate(makeValidDate(card.deadline))}
                   </Deadline>
