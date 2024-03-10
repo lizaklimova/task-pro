@@ -7,6 +7,7 @@ import determineLabelColor from './determineLabelColor';
 import changePriorityLang from './changePriorityLang';
 import getDaysInMonth from './getDaysInMonth';
 import compareDates from './compareDates';
+import isTheDateLessThanNow from './isTheDateLessThanNow';
 
 export {
   formatDate,
@@ -18,4 +19,5 @@ export {
   changePriorityLang,
   getDaysInMonth,
   compareDates,
+  isTheDateLessThanNow,
 };
