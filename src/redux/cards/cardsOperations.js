@@ -74,3 +74,27 @@ export const moveCard = createAsyncThunk(
     }
   }
 );
+
+export const getStatistics = createAsyncThunk(
+  'cards/getStatistics',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axiosInstance.get(ENDPOINTS.cards.cardsStats);
+      return data.stats;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getAllCards = createAsyncThunk(
+  'cards/getAllCards',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axiosInstance.get(ENDPOINTS.cards.allCards);
+      return data.cards;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

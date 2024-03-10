@@ -56,7 +56,7 @@
     "filter": {
       "label": "Label color",
       "all": "Show all",
-      "without": "Without priority",
+      "without priority": "Without priority",
       "low": "Low",
       "medium": "Medium",
       "high": "High"
@@ -138,9 +138,13 @@
   },
   "stats": {
     "header": "My Tasks Statistics",
-    "headerPriority": "Statisctics for Tasks Priority",
-    "headerTiming": "Statisctics for Tasks Timing",
+    "headerPriority": "Statistics for Tasks Priority",
+    "headerTiming": "Statistics for Tasks Timing",
     "selectHeader": "Statistics for board:",
+    "youHave": "You have:",
+    "boards": "boards",
+    "tasks": "tasks",
+    "has": "has",
     "priority": {
       "without": "None",
       "low": "Low",
@@ -156,7 +160,17 @@
     }
   },
   "schedule": {
-    "header": "My Schedule"
+    "header": "My Schedule",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "noTasks": "No tasks for this day",
+    "next": "Next month",
+    "current": "Current month"
   },
   "toast.maxTitle": "Maximum title length is 25 symbols"
 }

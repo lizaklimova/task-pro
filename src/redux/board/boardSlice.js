@@ -13,6 +13,8 @@ import {
   deleteCard,
   filterCards,
   moveCard,
+  getStatistics,
+  getAllCards,
 } from '../cards/cardsOperations';
 import {
   addColumn,
@@ -29,6 +31,8 @@ const boardsSlice = createSlice({
     background: [],
     isLoading: false,
     error: null,
+    stats: {},
+    allCards: [],
   },
   extraReducers: builder => {
     builder
@@ -46,6 +50,8 @@ const boardsSlice = createSlice({
       .addCase(deleteCard.pending, handlePending)
       .addCase(editCard.pending, handlePending)
       .addCase(moveCard.pending, handlePending)
+      .addCase(getStatistics.pending, handlePending)
+      .addCase(getAllCards.pending, handlePending)
       .addCase(getBackgroundIcons.fulfilled, (state, { payload }) => {
         state.background = payload;
         state.isLoading = false;
@@ -164,6 +170,16 @@ const boardsSlice = createSlice({
           newColumn.cards = [...newColumn.cards, payload.card];
         }
       })
+      .addCase(getStatistics.fulfilled, (state, { payload }) => {
+        state.stats = payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(getAllCards.fulfilled, (state, { payload }) => {
+        state.allCards = payload;
+        state.isLoading = false;
+        state.error = null;
+      })
       .addCase(getBackgroundIcons.rejected, handleRejected)
       .addCase(getAllBoards.rejected, handleRejected)
       .addCase(getOneBoard.rejected, handleRejected)
@@ -176,7 +192,9 @@ const boardsSlice = createSlice({
       .addCase(addCard.rejected, handleRejected)
       .addCase(deleteCard.rejected, handleRejected)
       .addCase(editCard.rejected, handleRejected)
-      .addCase(moveCard.rejected, handleRejected);
+      .addCase(moveCard.rejected, handleRejected)
+      .addCase(getAllCards.rejected, handleRejected)
+      .addCase(getStatistics.rejected, handleRejected);
   },
 });
 
