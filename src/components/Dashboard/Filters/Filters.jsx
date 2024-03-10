@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { LABEL_ARR } from 'constants';
 import { useTranslation } from 'react-i18next';
-import { getOneBoard, filterCards } from '../../../redux/board/boardOperations';
+import { getOneBoard } from '../../../redux/board/boardOperations';
+import { filterCards } from '../../../redux/cards/cardsOperations';
 import ModalWrapper from 'components/Modals/ModalWrapper/ModalWrapper';
 import {
   TitleContainer,

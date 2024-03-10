@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
     --dark-green-gradient: linear-gradient(180deg, #263238 25%, #37474F 92.19%);
     --light-green: #92E3A9;
     --backdrop-color: #706f6f99;
+    --error-color: #fc8181;
 }
 
 html[data-theme='dark']{
@@ -64,6 +65,11 @@ html[data-theme='dark']{
   --calendar-active-day: #1F1F1F;
   --box-shadow: rgba(166, 166, 187, 0.25) 0px 2px 5px -1px,
     rgba(255, 255, 255, 0.3) 0px 1px 3px -1px;
+    --timing1:#e0adc0;
+    --timing2:#cddbc6;
+    --timing3:#bedbb0;
+    --timing4:#b4dba0;
+    --timing5:#a2de83;
 }
 
 html[data-theme='light']{
@@ -118,6 +124,11 @@ html[data-theme='light']{
   --calendar-active-day: #161616;
   --box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    --timing1:#e0adc0;
+    --timing2:#cddbc6;
+    --timing3:#bedbb0;
+    --timing4:#b4dba0;
+    --timing5:#a2de83;
 }
 
 
@@ -174,6 +185,11 @@ html[data-theme='violet']{
   --calendar-active-day: #FCFCFC;
   --box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    --timing1:#e0adc0;
+    --timing2:#8d90de;
+    --timing3:#686bc0;
+    --timing4:#5255bc;
+    --timing5:#4246bc;
 }
 
 *,
@@ -196,6 +212,10 @@ body {
 }
 
 #root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   @media screen and (min-width: 1440px){
     display: grid;
     grid-template: "sidebar header header" 68px

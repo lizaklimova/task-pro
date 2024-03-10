@@ -20,6 +20,7 @@ const ENDPOINTS = Object.freeze({
   },
   cards: {
     allCards: 'api/cards',
+    cardsStats: 'api/cards/stats',
     oneCard: cardId => `api/cards/${cardId}`,
     cardStatus: cardId => `api/cards/${cardId}/status`,
   },

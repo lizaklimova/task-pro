@@ -26,7 +26,7 @@ import {
 } from './BoardModal.styled';
 
 const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [errorMsgShown, setErrorMsgShown] = useState(false);
   const [errorClassName, setErrorClassName] = useState('');
   const navigate = useNavigate();
   const titleRef = useRef(null);
@@ -49,7 +49,7 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
     titleRef.current.focus();
   }, []);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const { title, background, iconId } = e.target.elements;
 
@@ -64,7 +64,7 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
     };
 
     if (variant === 'add') {
-      const res = dispatch(createBoard(data));
+      const res = await dispatch(createBoard(data));
       navigate(`/home/board/${res.payload._id}`);
       toast(t('boards.modals.toast.add.success'), TOASTER_CONFIG);
     } else {
@@ -96,10 +96,10 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
             autoComplete="off"
             maxLength={25}
             onChange={e =>
-              validateInputMaxLength(e, setErrorMsg, setErrorClassName)
+              validateInputMaxLength(e, setErrorMsgShown, setErrorClassName)
             }
           />
-          {errorMsg && <p>{errorMsg}</p>}
+          {errorMsgShown && <p>{t('toast.maxTitle')}</p>}
         </Label>
         <Text>{t('boards.modals.icons')}</Text>
         <IconsList iconId={variant === 'add' ? 0 : oneBoard.icon_id} />

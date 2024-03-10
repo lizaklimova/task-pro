@@ -5,18 +5,20 @@ import {
   createBoard,
   deleteBoard,
   getOneBoard,
-  filterCards,
-  addColumn,
-  editColumn,
-  deleteColumn,
   updateBoard,
-  moveCard,
 } from './boardOperations';
 import {
   addCard,
   editCard,
   deleteCard,
-} from '../../redux/cards/cardsOperations';
+  filterCards,
+  moveCard,
+} from '../cards/cardsOperations';
+import {
+  addColumn,
+  editColumn,
+  deleteColumn,
+} from '../columns/columnsOperations';
 import { handlePending, handleRejected } from '../helpers';
 
 const boardsSlice = createSlice({
@@ -65,14 +67,10 @@ const boardsSlice = createSlice({
         state.error = null;
       })
       .addCase(updateBoard.fulfilled, (state, { payload }) => {
-        // state.oneBoard.title = payload.title;
-        // state.oneBoard.backgroundId = payload.backgroundId;
-        // state.oneBoard.iconId = payload.iconId;
         state.oneBoard.title = payload.title;
         state.oneBoard.background._id = payload.background._id;
         state.oneBoard.icon_id = payload.icon_id;
-        console.log(payload);
-        // state.oneBoard = { ...state.oneBoard, ...payload };
+
         state.boards = state.boards.map(board =>
           board._id === payload._id ? payload : board
         );

@@ -29,7 +29,7 @@ const CardModal = ({ columnId, variant, closeCardModal, activeCard }) => {
   const [selectedDate, setSelectedDay] = useState(
     variant === 'add' ? new Date() : activeCard.deadline
   );
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [errorMsgShown, setErrorMsgShown] = useState(false);
   const [errorClassName, setErrorClassName] = useState('');
 
   const datePickerRef = useRef(null);
@@ -52,6 +52,10 @@ const CardModal = ({ columnId, variant, closeCardModal, activeCard }) => {
     }
 
     const dateForServer = makeValidDate(selectedDate);
+
+    if (dateForServer.getDate() < new Date().getDate()) {
+      return toast(t('cards.modals.toast.invalidDate'), TOASTER_CONFIG);
+    }
 
     const cardInfo = {
       title: title.value,
@@ -105,10 +109,10 @@ const CardModal = ({ columnId, variant, closeCardModal, activeCard }) => {
               autoComplete="off"
               maxLength={25}
               onChange={e =>
-                validateInputMaxLength(e, setErrorMsg, setErrorClassName)
+                validateInputMaxLength(e, setErrorMsgShown, setErrorClassName)
               }
             />
-            {errorMsg && <p>{errorMsg}</p>}
+            {errorMsgShown && <p>{t('toast.maxTitle')}</p>}
           </ErrorLabel>
           <textarea
             name="description"

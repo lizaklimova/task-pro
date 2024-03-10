@@ -15,6 +15,10 @@ export const NameBox = styled.div`
   font-weight: 500;
   color: var(--sidebar-text);
   word-break: break-all;
+
+  p {
+    max-width: 80%;
+  }
 `;
 
 export const ChangeBox = styled.div`

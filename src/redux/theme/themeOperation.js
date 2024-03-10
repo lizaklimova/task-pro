@@ -6,6 +6,7 @@ export const getTheme = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(ENDPOINTS.users.current);
+
       return data.user;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -14,15 +15,14 @@ export const getTheme = createAsyncThunk(
 );
 
 export const updateTheme = createAsyncThunk(
+  'users/updateTheme',
+  async (theme, thunkAPI) => {
+    try {
+      const { data } = await axiosInstance.patch('users/current/theme', theme);
 
-    'users/updateTheme',
-    async (theme, thunkAPI) => {
-        try {
-            const { data } = await axiosInstance.patch('users/current/theme',theme);
-            console.log(theme);
-            return data;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
-        }
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );

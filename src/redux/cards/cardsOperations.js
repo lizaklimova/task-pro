@@ -43,3 +43,34 @@ export const editCard = createAsyncThunk(
     }
   }
 );
+
+export const filterCards = createAsyncThunk(
+  'boards/filterCards',
+  async ({ boardId, priority }, thunkAPI) => {
+    try {
+      const { data } = await axiosInstance.get(
+        ENDPOINTS.boards.boardFilter(boardId) + `?priority=${priority}`
+      );
+
+      return data.board[0];
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const moveCard = createAsyncThunk(
+  'cards/moveCard',
+  async ({ cardId, newColumn, oldColumn }, thunkAPI) => {
+    try {
+      const { data } = await axiosInstance.patch(
+        ENDPOINTS.cards.cardStatus(cardId),
+        { columnId: newColumn }
+      );
+
+      return { card: data.card, oldColumn };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

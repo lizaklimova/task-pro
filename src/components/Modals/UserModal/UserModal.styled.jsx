@@ -5,7 +5,19 @@ export const FormUser = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
+`;
+
+export const UserNameLabel = styled.label`
+  width: 100%;
+  position: relative;
+
+  p {
+    font-size: 8px;
+    position: absolute;
+    bottom: -12px;
+    color: var(--error-color);
+  }
 `;
 
 export const InputUser = styled.input`
@@ -19,6 +31,10 @@ export const InputUser = styled.input`
   color: var(--text-color);
   outline: transparent;
   transition: opacity var(--easedTransition);
+
+  &.invalid {
+    border: 2px solid var(--error-color);
+  }
 
   &:hover,
   &:focus {

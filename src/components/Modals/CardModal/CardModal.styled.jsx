@@ -40,7 +40,7 @@ export const CardForm = styled.form`
     margin-bottom: 20px;
 
     &.invalid {
-      border: 2px solid red;
+      border: 2px solid var(--error-color);
     }
   }
 
@@ -68,7 +68,7 @@ export const ErrorLabel = styled.label`
     font-size: 10px;
     position: absolute;
     bottom: -20px;
-    color: red;
+    color: var(--error-color);
   }
 `;
 

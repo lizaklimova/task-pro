@@ -89,19 +89,15 @@ export const editUser = createAsyncThunk(
     if (password) {
       formData.append('password', password);
     }
- 
+
     try {
-      console.log(formData);
-      // multipart додати для додавання аватарки
-      const { data } = await axiosInstance.patch(
-        'users/current',
-        formData,
-        { headers: { 'Content-Type': 'multipart/form-data' } }
-      );
-      console.log(data);
+      const { data } = await axiosInstance.patch('users/current', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-)
+);
