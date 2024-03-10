@@ -33,9 +33,9 @@ const Dashboard = ({ board }) => {
   };
 
   return (
-    <Wrap>
-      {board?.columns?.length > 0 && (
-        <DragDropContext onDragEnd={onDragEnd}>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <Wrap>
+        {board?.columns?.length > 0 && (
           <ColumnsList>
             {board.columns.map(column => (
               <li key={column._id}>
@@ -43,18 +43,18 @@ const Dashboard = ({ board }) => {
               </li>
             ))}
           </ColumnsList>
-        </DragDropContext>
-      )}
-      <AddButton type="button" onClick={() => setIsModalOpen(true)}>
-        <IconWrap>
-          <Plus width={14} height={14} />
-        </IconWrap>
-        {t('columns.addButton')}
-      </AddButton>
-      {isModalOpen && (
-        <ColumnModal variant="add" closeModal={() => setIsModalOpen(false)} />
-      )}
-    </Wrap>
+        )}
+        <AddButton type="button" onClick={() => setIsModalOpen(true)}>
+          <IconWrap>
+            <Plus width={14} height={14} />
+          </IconWrap>
+          {t('columns.addButton')}
+        </AddButton>
+        {isModalOpen && (
+          <ColumnModal variant="add" closeModal={() => setIsModalOpen(false)} />
+        )}
+      </Wrap>
+    </DragDropContext>
   );
 };
 

@@ -5,7 +5,7 @@ import handleTextOverflow from './handleTextOverlflow';
 import determineDeadline from './determineDeadline';
 import determineLabelColor from './determineLabelColor';
 import changePriorityLang from './changePriorityLang';
-import determineDeadlinePassed from './determineDeadlinePassed';
+import compareDates from './compareDates';
 
 export {
   formatDate,
@@ -15,5 +15,5 @@ export {
   determineDeadline,
   determineLabelColor,
   changePriorityLang,
-  determineDeadlinePassed,
+  compareDates,
 };
