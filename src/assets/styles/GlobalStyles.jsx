@@ -195,6 +195,10 @@ body {
 }
 
 #root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   @media screen and (min-width: 1440px){
     display: grid;
     grid-template: "sidebar header header" 68px
