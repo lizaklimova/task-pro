@@ -11,6 +11,7 @@ export const Container = styled.div`
 export const Title = styled.h4`
   color: var(--text-color);
   font-size: 14px;
+  text-align: center;
   font-weight: normal;
   line-height: 1.5;
   margin-bottom: 14px;

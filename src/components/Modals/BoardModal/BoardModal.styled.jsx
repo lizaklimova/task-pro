@@ -19,8 +19,8 @@ export const Label = styled.label`
   p {
     font-size: 10px;
     position: absolute;
-    bottom: 5px;
-    color: red;
+    bottom: 10px;
+    color: var(--error-color);
   }
 `;
 
@@ -39,7 +39,7 @@ export const Input = styled.input`
   transition: opacity var(--easedTransition);
 
   &.invalid {
-    border: 2px solid red;
+    border: 2px solid var(--error-color);
   }
 
   &:focus {

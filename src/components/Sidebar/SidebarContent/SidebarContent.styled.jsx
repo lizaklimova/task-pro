@@ -199,10 +199,15 @@ export const SearchResultWrap = styled.div`
 export const BoardLink = styled(NavLink)`
   display: flex;
   align-items: center;
+  font-size: 12px;
   padding-top: 20px;
   padding-bottom: 20px;
   opacity: 0.5;
   transition: background-color var(--easedTransition);
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
 
   &:hover,
   &:focus {
@@ -253,12 +258,17 @@ export const HelpSpan = styled.span`
 `;
 
 export const HelpBtn = styled.button`
+  font-size: 12px;
   background: transparent;
   padding: 0;
   color: var(--sidebar-text);
   display: flex;
   gap: 8px;
   align-items: center;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const LogoutBtn = styled.button`

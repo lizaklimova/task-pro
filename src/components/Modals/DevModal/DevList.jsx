@@ -2,7 +2,6 @@ import DevItem from './DevItem';
 import { DevUl } from './DevList.styled';
 
 const DevList = ({ developers }) => {
-  console.log(developers);
   return (
     <DevUl>
       {developers.map(developer => (

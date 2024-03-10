@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
     --dark-green-gradient: linear-gradient(180deg, #263238 25%, #37474F 92.19%);
     --light-green: #92E3A9;
     --backdrop-color: #706f6f99;
+    --error-color: #fc8181;
 }
 
 html[data-theme='dark']{
@@ -209,6 +210,10 @@ body {
 }
 
 #root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   @media screen and (min-width: 1440px){
     display: grid;
     grid-template: "sidebar header header" 68px
