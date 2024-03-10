@@ -18,9 +18,11 @@ import {
   ErrorPara,
   PassInputWrap,
   HideBtn,
+  Google,
 } from '../RegLogForm.styled';
 import Eye from 'components/Icons/Eye';
 import EyeCrossed from 'components/Icons/EyeCrossed';
+import { FcGoogle } from 'react-icons/fc';
 import { useTranslation } from 'react-i18next';
 import { SCORE_WORDS } from 'constants';
 import { SHORT_SCORE_WORD } from 'constants';
@@ -156,7 +158,10 @@ const RegisterForm = () => {
               shortScoreWord={SHORT_SCORE_WORD}
             />
           )}
-
+          <Google to={'https://task-pro-3a4o.onrender.com/auth/google'}>
+            <FcGoogle style={{ width: '28px', height: '28px' }} />
+            <span>Register with Google</span>
+          </Google>
           <SubmitBtn type="submit" disabled={isLoading}>
             {isLoading ? (
               <SmallLoader width="25" height="25" />
