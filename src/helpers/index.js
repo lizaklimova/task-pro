@@ -6,6 +6,8 @@ import determineDeadline from './determineDeadline';
 import determineLabelColor from './determineLabelColor';
 import changePriorityLang from './changePriorityLang';
 import determineDeadlinePassed from './determineDeadlinePassed';
+import getDaysInMonth from './getDaysInMonth';
+import compareDates from './compareDates';
 
 export {
   formatDate,
@@ -16,4 +18,6 @@ export {
   determineLabelColor,
   changePriorityLang,
   determineDeadlinePassed,
+  getDaysInMonth,
+  compareDates,
 };
