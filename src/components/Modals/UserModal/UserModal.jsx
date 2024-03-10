@@ -19,6 +19,9 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { editUser } from '../../../redux/auth/authOperations';
 import { useTranslation } from 'react-i18next';
+import * as yup from 'yup';
+import toast from 'react-hot-toast';
+import { TOASTER_CONFIG } from 'constants';
 
 const UserModal = ({onClose}) => {
   const dispatch = useDispatch();
@@ -30,8 +33,17 @@ const UserModal = ({onClose}) => {
   const [email, setEmail] = useState(useSelector(selectUserEmail)); 
   const [password, setPassword] = useState(''); 
   const [preview, setPreview] = useState(null);
-    
-
+  
+  
+  const schema = yup.object().shape({
+  name:yup.string().max(12),
+  email: yup
+    .string()
+    .email('Please enter a valid email'),
+  password: yup.string().min(6).max(24),
+});
+  
+  
   function changeImg(event) {
     console.log(event.target.files);
     setAvatar_url(event.target.files[0]);
@@ -59,13 +71,26 @@ const UserModal = ({onClose}) => {
      };
 
     function editProfile(event) {
+      // toast(t('cards.modals.toast.add.success'), TOASTER_CONFIG); тост 
       event.preventDefault();
+
       const user = { avatar_url, name, email, password };
       if (!password) {
         user.password = undefined;
       }
-      dispatch(editUser(user));
-      onClose();
+      schema
+        .validate(user)
+        .then(valid => {
+          dispatch(editUser(user));
+          console.log('Success');
+          toast(t('editUser.toast.editUserSuccess'), TOASTER_CONFIG);
+          onClose();
+        })
+        .catch(error => {
+          console.log(error.name , error.message);
+          toast(error.message, TOASTER_CONFIG);});
+      
+
     }
   return (
     <div>
@@ -151,7 +176,4 @@ export default UserModal;
 
 
 
-      // toast(t('cards.modals.toast.add.success'), TOASTER_CONFIG); тост 
-
-      // ^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(?:aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$ email
-      
+  

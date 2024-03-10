@@ -24,7 +24,7 @@ const Profile = () => {
         {isLoading ? (
           <SmallLoader width="20" height="20" color="var(--accent-color)" />
         ) : avatar !== 'default' ? (
-          <img src={avatar} alt="user avatar" />
+          <img src={avatar} alt={nameUser} />
         ) : (
           <UserDefault
             width={68}

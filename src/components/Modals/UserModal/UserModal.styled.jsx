@@ -107,8 +107,8 @@ export const Avatar = styled.div`
   margin-top: 24px;
 
   img {
-    border-radius: 50%;
-    border: 1px solid var(--text-color);
+    border-radius: 8px;
+    border: 2px solid var(--background-color);
   }
 `;
 
