@@ -28,13 +28,9 @@ import { useAuth } from './useAuth';
 //   const [theme, setTheme] = useState(localStorage.getItem('app-them') || themeBack);
 
 //   useLayoutEffect(() => {
-//     // console.log('theme', theme);
-//     // console.log('layuot');
 //     document.documentElement.setAttribute('data-theme', theme);
 //     localStorage.setItem('app-them', theme);
 //   }, [theme]);
-
-
 //   return { theme, setTheme, themeBack };
 // };
 

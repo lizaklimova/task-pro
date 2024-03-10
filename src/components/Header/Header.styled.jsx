@@ -15,6 +15,8 @@ export const HeaderSection = styled.header`
   }
   @media screen and (min-width: 1440px) {
     justify-content: flex-end;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 `;
 
@@ -39,8 +41,10 @@ export const BurgerBtn = styled.button`
 export const HeaderUserWrap = styled.div`
   display: flex;
   align-items: center;
-  gap: 14px;
-
+  gap: 6px;
+  @media screen and (min-width: 768px) {
+   gap:14px;
+  }
   @media screen and (min-width: 1440px) {
     gap: 25px;
   }

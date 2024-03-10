@@ -8,6 +8,11 @@ export const UserContainer = styled.div`
 
 export const UserName = styled.p`
   font-weight: 500;
+display: none;
+    @media screen and (min-width: 768px) {
+      display: unset;
+    }
+   
 `;
 
 export const Button = styled.button`
@@ -20,7 +25,11 @@ export const Button = styled.button`
   padding: 0;
 
   img {
-    border-radius: 50%;
-    border: 1px solid var(--text-color);
+    border-radius: 8px;
+    border: 2px solid var(--background-color);
+  }
+  svg {
+    border-radius: 8px;
+   
   }
 `;

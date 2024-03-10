@@ -25,7 +25,11 @@
   },
   "editUser": {
     "title": "Редагувати профіль",
-    "button": "Надіслати"
+    "button": "Надіслати",
+    "toast": {
+      "editUserSuccess": "Зміни збереженно",
+      "editUserError": "Помилка заповнення"
+    }
   },
   "sidebar": {
     "boards": "Мої дошки",

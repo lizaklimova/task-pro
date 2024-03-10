@@ -25,7 +25,11 @@
   },
   "editUser": {
     "title": "Edit  profile",
-    "button": "Send"
+    "button": "Send",
+    "toast":{
+      "editUserSuccess": "Сhanges saved",
+      "editUserError":"Filling error"
+    }
   },
   "sidebar": {
     "boards": "My boards",
