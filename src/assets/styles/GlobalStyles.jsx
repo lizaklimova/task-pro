@@ -207,13 +207,10 @@ body {
     color: var(--text-color);
     background-color: var(--background-color);
     transition: background-color var(--easedTransition), color var(--easedTransition);
+    overflow-x: auto;
 }
 
 #root {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   @media screen and (min-width: 1440px){
     display: grid;
     grid-template: "sidebar header header" 68px
