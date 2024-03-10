@@ -126,3 +126,22 @@ export const ErrorPara = styled.span`
   font-size: 7px;
   color: #fc8181;
 `;
+
+export const Google = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 18px;
+  background: transparent;
+  border: 1px solid #bedbb0;
+  border-radius: 8px;
+  color: #bedbb0;
+  transition: border-color var(--easedTransition), color var(--easedTransition);
+
+  &:hover {
+    border-color: #fff;
+    color: #fff;
+  }
+`;
