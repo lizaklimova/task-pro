@@ -56,7 +56,7 @@
     "filter": {
       "label": "Label color",
       "all": "Show all",
-      "without": "Without priority",
+      "without priority": "Without priority",
       "low": "Low",
       "medium": "Medium",
       "high": "High"

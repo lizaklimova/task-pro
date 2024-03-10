@@ -18,12 +18,12 @@ import {
 } from './Filters.styled';
 
 const Filters = ({ boardId, onClose }) => {
-  const [filterValue, setFilterValue] = useState('without');
+  const [filterValue, setFilterValue] = useState('');
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const newLabelArr = [
-    { ...LABEL_ARR.find(item => item.id === 3), priority: 'without' },
+    { ...LABEL_ARR.find(item => item.id === 3) },
     ...LABEL_ARR.filter(item => item.id !== 3),
   ];
 
