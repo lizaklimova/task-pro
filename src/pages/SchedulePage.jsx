@@ -1,12 +1,29 @@
 import { MainContainer } from 'components/App/App.styled';
-import { useTranslation } from 'react-i18next';
+import ScheduleList from 'components/Schedule/ScheduleList/ScheduleList';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getAllCards } from '../redux/cards/cardsOperations';
+import ScheduleHeader from 'components/Schedule/ScheduleHeader';
 
 const SchedulePage = () => {
-  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const [currentMonth, setCurrentMonth] = useState(true);
+
+  const toggleCurrentMonth = () => {
+    setCurrentMonth(prevState => !prevState);
+  };
+
+  useEffect(() => {
+    dispatch(getAllCards());
+  }, [dispatch]);
 
   return (
     <MainContainer>
-      <h2>{t('schedule.header')}</h2>
+      <ScheduleHeader
+        toggleCurrentMonth={toggleCurrentMonth}
+        currentMonth={currentMonth}
+      />
+      <ScheduleList currentMonth={currentMonth} />
     </MainContainer>
   );
 };

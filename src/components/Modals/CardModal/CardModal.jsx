@@ -6,7 +6,11 @@ import toast from 'react-hot-toast';
 import { addCard, editCard } from '../../../redux/cards/cardsOperations';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { LABEL_ARR, TOASTER_CONFIG } from 'constants';
-import { makeValidDate, validateInputMaxLength, compareDates } from 'helpers';
+import {
+  makeValidDate,
+  validateInputMaxLength,
+  isTheDateLessThanNow,
+} from 'helpers';
 import ModalWrapper from 'components/Modals/ModalWrapper';
 import Calendar from 'components/Calendar';
 import Plus from 'components/Icons/Plus';
@@ -53,17 +57,10 @@ const CardModal = ({ columnId, variant, closeCardModal, activeCard }) => {
 
     const dateForServer = makeValidDate(selectedDate);
 
-    if (compareDates(dateForServer)) {
+    if (isTheDateLessThanNow(dateForServer)) {
       return toast(t('cards.modals.toast.invalidDate'), TOASTER_CONFIG);
     }
 
-    console.log(
-      new Date(
-        dateForServer.getFullYear(),
-        dateForServer.getMonth(),
-        dateForServer.getDate()
-      )
-    );
     const cardInfo = {
       title: title.value,
       description: description.value,
