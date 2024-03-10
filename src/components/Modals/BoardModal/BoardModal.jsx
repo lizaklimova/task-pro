@@ -4,15 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import { createBoard, updateBoard } from '../../../redux/board/boardOperations';
-import { selectOneBoard } from '../../../redux/board/boardSelectors';
+import {
+  selectOneBoard,
+  selectBoards,
+} from '../../../redux/board/boardSelectors';
 import { DEFAULT_BACKGROUND_ID, TOASTER_CONFIG } from 'constants';
 import { validateInputMaxLength } from 'helpers';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';
 import { BacksList } from './BacksList';
-// import { CustomBackground } from './CustomBackground';
-// import { nanoid } from '@reduxjs/toolkit';
-
+import { nanoid } from '@reduxjs/toolkit';
 import Plus from 'components/Icons/Plus';
 import {
   Form,
@@ -22,28 +23,26 @@ import {
   Text,
   Button,
   Span,
+  BackCustomInputRadio,
+  StyledFileLabel,
+  StyledFileInput,
 } from './BoardModal.styled';
 
 const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
   const [errorMsgShown, setErrorMsgShown] = useState(false);
   const [errorClassName, setErrorClassName] = useState('');
-
+  const [customBackground, setCustomBackground] = useState(null);
+  const allBoards = useSelector(selectBoards);
   const navigate = useNavigate();
   const titleRef = useRef(null);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const oneBoard = useSelector(selectOneBoard);
 
-  // ?
-
-  const [customBackground, setCustomBackground] = useState(null);
-
   const handleUpload = event => {
     const file = event.target.files[0];
     setCustomBackground(file);
   };
-
-  // ?
 
   useEffect(() => {
     titleRef.current.focus();
@@ -64,8 +63,9 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
     };
 
     if (variant === 'add') {
-      const res = await dispatch(createBoard(data));
-      navigate(`/home/board/${res.payload._id}`);
+      dispatch(createBoard(data));
+      // const res = await dispatch(createBoard(data));
+      // navigate(`/home/board/${res.payload._id}`);
       toast(t('boards.modals.toast.add.success'), TOASTER_CONFIG);
     } else {
       dispatch(updateBoard({ boardId: oneBoard._id, dataUpdate: data }));
@@ -74,6 +74,7 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
 
     closeModal();
     if (menu) closeMenu();
+
     return;
   };
 
@@ -85,7 +86,6 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
             ? t('boards.modals.newTitle')
             : t('boards.modals.editTitle')}
         </Title>
-
         <Label>
           <Input
             className={errorClassName}
@@ -102,35 +102,32 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
           />
           {errorMsgShown && <p>{t('toast.maxTitle')}</p>}
         </Label>
-
         <Text>{t('boards.modals.icons')}</Text>
         <IconsList iconId={variant === 'add' ? 0 : oneBoard.icon_id} />
-
         <Text>{t('boards.modals.background')}</Text>
         <BacksList
           backgroundId={
             variant === 'add' ? DEFAULT_BACKGROUND_ID : oneBoard.background._id
           }
+          customBackground={customBackground}
         />
-
-        <Text>Choose your custom background</Text>
-        {/* <CustomBackground /> */}
-        <label>
-          <input
+        <Text>{t('boards.modals.customBackground')}</Text>
+        <Label>
+          <BackCustomInputRadio
             type="radio"
             name="background"
-            // value={cusomId}
-            // checked={cusomId}
-            // onChange={handleFileChange}
+            defaultChecked={nanoid()}
           />
-          <label>
-            <input type="file" name="background" onChange={handleUpload} />
-            {/* <button type="button" onClick={handleUpload}>
-              Upload
-            </button> */}
-          </label>
-        </label>
+        </Label>
 
+        <StyledFileLabel>
+          {t('boards.modals.chooseFile')}
+          <StyledFileInput
+            type="file"
+            name="background"
+            onChange={handleUpload}
+          />
+        </StyledFileLabel>
         <Button type="submit">
           <Span>
             <Plus

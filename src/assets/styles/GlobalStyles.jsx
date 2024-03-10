@@ -131,6 +131,8 @@ html[data-theme='light']{
     --timing5:#a2de83;
 }
 
+
+
 html[data-theme='violet']{
   --text-color:#161616;
   --bar-color: #5255bc;

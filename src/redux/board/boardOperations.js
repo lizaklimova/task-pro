@@ -64,6 +64,8 @@ export const updateBoard = createAsyncThunk(
         ? formData.append('backgroundId', background)
         : formData.append('background', background);
 
+      // formData.append('backgroundId', background);
+
       const { data } = await axiosInstance.patch(
         ENDPOINTS.boards.oneBoard(boardId),
         formData,

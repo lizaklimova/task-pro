@@ -75,6 +75,8 @@
       "searchInput": "Enter board name",
       "newButton": "Create",
       "editButton": "Edit",
+      "customBackground": "Choose your custom background",
+      "chooseFile": "Choose File",
       "toast.error": "Enter title to create a board ❗️",
       "toast.add.success": "Board was created successfully ✅",
       "toast.edit.success": "Board was edited successfully ✅"
