@@ -75,6 +75,8 @@
       "searchInput": "Введіть назву дошки",
       "newButton": "Створити",
       "editButton": "Редагувати",
+      "customBackground": "Оберіть свій власний фон",
+      "chooseFile": "Оберіть файл",
       "toast.error": "Введіть назву дошки ❗️",
       "toast.add.success": "Дошку створено успішно ✅",
       "toast.edit.success": "Дошку відредаговано ✅"

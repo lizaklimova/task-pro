@@ -111,7 +111,7 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
           }
           customBackground={customBackground}
         />
-        <Text>Choose your custom background</Text>
+        <Text>{t('boards.modals.customBackground')}</Text>
         <Label>
           <BackCustomInputRadio
             type="radio"
@@ -121,7 +121,7 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
         </Label>
 
         <StyledFileLabel>
-          Choose File
+          {t('boards.modals.chooseFile')}
           <StyledFileInput
             type="file"
             name="background"

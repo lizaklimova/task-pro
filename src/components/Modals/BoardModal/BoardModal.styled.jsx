@@ -172,7 +172,7 @@ export const BackCustomInputRadio = styled.input`
 `;
 export const StyledFileLabel = styled.label`
   display: block;
-  width: 120px;
+  width: 124px;
   background-color: var(--accent-color);
   color: var(--btn-icon-bg);
   padding: 8px 16px;
