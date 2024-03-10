@@ -56,7 +56,7 @@ export const updateBoard = createAsyncThunk(
   async ({ boardId, dataUpdate }, thunkAPI) => {
     try {
       const formData = new FormData();
-      console.log(formData);
+      // console.log(formData);
       const { title, iconId, background } = dataUpdate;
       formData.append('title', title);
       formData.append('iconId', iconId);

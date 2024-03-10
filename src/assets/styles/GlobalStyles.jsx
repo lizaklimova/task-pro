@@ -120,6 +120,8 @@ html[data-theme='light']{
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
+
+
 html[data-theme='violet']{
   --text-color:#161616;
   --bar-color: #5255bc;

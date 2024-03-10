@@ -15,7 +15,6 @@ export const Title = styled.h4`
 
 export const Label = styled.label`
   position: relative;
-
   p {
     font-size: 10px;
     position: absolute;
@@ -37,15 +36,12 @@ export const Input = styled.input`
   outline: transparent;
   box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
   transition: opacity var(--easedTransition);
-
   &.invalid {
     border: 2px solid red;
   }
-
   &:focus {
     opacity: 1;
   }
-
   &:hover {
     opacity: 1;
   }
@@ -63,6 +59,7 @@ export const IconsUl = styled.ul`
   margin-bottom: 24px;
   gap: 8px;
 `;
+
 export const IconLi = styled.li``;
 
 export const IconLabel = styled.label``;
@@ -75,7 +72,6 @@ export const IconSVG = styled.svg`
 
 export const InputRadio = styled.input`
   display: none;
-
   &:checked + svg use {
     stroke: var(--accent-color);
     stroke-opacity: 1;
@@ -93,10 +89,9 @@ export const SmallLoaderContainer = styled.div`
 export const BacksUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   gap: 4px;
   width: 252px;
-
   & #default-bg-img {
     order: -1;
   }
@@ -143,6 +138,7 @@ export const Button = styled.button`
   font-size: 14px;
   border-radius: 8px;
   padding: 10px;
+  margin-top: 40px;
   background-color: var(--accent-color);
   color: var(--btn-icon-bg);
   display: flex;
@@ -150,7 +146,6 @@ export const Button = styled.button`
   justify-content: center;
   gap: 8px;
   transition: var(--easedTransition);
-
   @media screen and (min-width: 1440px) {
     &:hover,
     &:focus {
@@ -166,4 +161,24 @@ export const Span = styled.span`
   background-color: var(--btn-icon-bg);
   border-radius: 6px;
   padding: 7px;
+`;
+
+export const BackCustomInputRadio = styled.input`
+  display: none;
+  &:checked + label {
+    outline: 1.8px solid var(white);
+    background-color: var(--accent-btn-hover);
+  }
+`;
+export const StyledFileLabel = styled.label`
+  display: block;
+  width: 120px;
+  background-color: var(--accent-color);
+  color: var(--btn-icon-bg);
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+export const StyledFileInput = styled.input`
+  display: none;
 `;

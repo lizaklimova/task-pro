@@ -29,7 +29,7 @@ export const BacksList = ({ onSelectBackground, backgroundId }) => {
 
   const handleBackChange = id => {
     setSelectedBackId(id);
-    onSelectBackground(id);
+    // onSelectBackground(id);
   };
 
   return isLoading ? (

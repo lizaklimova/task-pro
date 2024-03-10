@@ -10,8 +10,6 @@ import { validateInputMaxLength } from 'helpers';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';
 import { BacksList } from './BacksList';
-// import { CustomBackground } from './CustomBackground';
-// import { nanoid } from '@reduxjs/toolkit';
 
 import Plus from 'components/Icons/Plus';
 import {
@@ -22,12 +20,14 @@ import {
   Text,
   Button,
   Span,
+  BackCustomInputRadio,
+  StyledFileLabel,
+  StyledFileInput,
 } from './BoardModal.styled';
 
 const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [errorClassName, setErrorClassName] = useState('');
-
   const navigate = useNavigate();
   const titleRef = useRef(null);
   const dispatch = useDispatch();
@@ -85,7 +85,6 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
             ? t('boards.modals.newTitle')
             : t('boards.modals.editTitle')}
         </Title>
-
         <Label>
           <Input
             className={errorClassName}
@@ -102,35 +101,36 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
           />
           {errorMsg && <p>{errorMsg}</p>}
         </Label>
-
         <Text>{t('boards.modals.icons')}</Text>
         <IconsList iconId={variant === 'add' ? 0 : oneBoard.icon_id} />
-
         <Text>{t('boards.modals.background')}</Text>
         <BacksList
           backgroundId={
             variant === 'add' ? DEFAULT_BACKGROUND_ID : oneBoard.background._id
           }
         />
-
         <Text>Choose your custom background</Text>
-        {/* <CustomBackground /> */}
-        <label>
-          <input
+        <Label>
+          <BackCustomInputRadio
             type="radio"
             name="background"
             // value={cusomId}
             // checked={cusomId}
             // onChange={handleFileChange}
           />
-          <label>
-            <input type="file" name="background" onChange={handleUpload} />
-            {/* <button type="button" onClick={handleUpload}>
-              Upload
-            </button> */}
-          </label>
-        </label>
+        </Label>
+        {/* <Label>
+          <FileInput type="file" name="background" onChange={handleUpload} />
+        </Label> */}
 
+        <StyledFileLabel>
+          Choose File
+          <StyledFileInput
+            type="file"
+            name="background"
+            onChange={handleUpload}
+          />
+        </StyledFileLabel>
         <Button type="submit">
           <Span>
             <Plus
