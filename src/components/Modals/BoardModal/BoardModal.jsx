@@ -115,21 +115,21 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
 
         <Text>Choose your custom background</Text>
         {/* <CustomBackground /> */}
-        {/* <label>
+        <label>
           <input
             type="radio"
             name="background"
             // value={cusomId}
             // checked={cusomId}
             // onChange={handleFileChange}
-          /> */}
-        <label>
-          <input type="file" name="background" onChange={handleUpload} />
-          {/* <button type="button" onClick={handleUpload}>
+          />
+          <label>
+            <input type="file" name="background" onChange={handleUpload} />
+            {/* <button type="button" onClick={handleUpload}>
               Upload
             </button> */}
+          </label>
         </label>
-        {/* </label> */}
 
         <Button type="submit">
           <Span>

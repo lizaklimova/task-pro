@@ -57,11 +57,13 @@ export const updateBoard = createAsyncThunk(
     try {
       const formData = new FormData();
       console.log(formData);
-      const { title, iconId, backgroundId } = dataUpdate;
-      console.log(backgroundId);
+      const { title, iconId, background } = dataUpdate;
       formData.append('title', title);
       formData.append('iconId', iconId);
-      formData.append('backgroundId', backgroundId);
+
+      !background.type?.startsWith('image')
+        ? formData.append('backgroundId', background)
+        : formData.append('background', background);
 
       const { data } = await axiosInstance.patch(
         ENDPOINTS.boards.oneBoard(boardId),
