@@ -16,7 +16,7 @@ import {
 } from '../CardModal/CardModal.styled';
 
 const ColumnModal = ({ variant, closeModal, columnId, columnName }) => {
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [errorMsgShown, setErrorMsgShown] = useState(false);
   const [errorClassName, setErrorClassName] = useState('');
 
   const { boardId } = useParams();
@@ -72,10 +72,10 @@ const ColumnModal = ({ variant, closeModal, columnId, columnName }) => {
               defaultValue={variant === 'add' ? '' : columnName}
               maxLength={25}
               onChange={e =>
-                validateInputMaxLength(e, setErrorMsg, setErrorClassName)
+                validateInputMaxLength(e, setErrorMsgShown, setErrorClassName)
               }
             />
-            {errorMsg && <p>{errorMsg}</p>}
+            {errorMsgShown && <p>{t('toast.maxTitle')}</p>}
           </ErrorLabel>
 
           <SubmitBtn type="submit" $variant="column">

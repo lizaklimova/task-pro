@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { editUserSchema } from 'schemas';
 import Eye from 'components/Icons/Eye';
 import EyeCrossed from 'components/Icons/EyeCrossed';
 import Plus from 'components/Icons/Plus';
@@ -10,11 +11,16 @@ import {
   FormUser,
   Input,
   InputPass,
+  UserNameLabel,
   InputUser,
   PlusButton,
   SendBtn,
 } from './UserModal.styled';
-import { selectUsername, selectUserEmail, selectUserAvatar } from '../../../redux/auth/authSelectors';
+import {
+  selectUsername,
+  selectUserEmail,
+  selectUserAvatar,
+} from '../../../redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { editUser } from '../../../redux/auth/authOperations';
@@ -22,83 +28,83 @@ import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import toast from 'react-hot-toast';
 import { TOASTER_CONFIG } from 'constants';
+import { validateInputMaxLength } from 'helpers';
 
-const UserModal = ({onClose}) => {
+const UserModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const [visible, setVisible] = useState(false);
   const [avatar_url, setAvatar_url] = useState(useSelector(selectUserAvatar));
   const [name, setName] = useState(useSelector(selectUsername));
-  const [email, setEmail] = useState(useSelector(selectUserEmail)); 
-  const [password, setPassword] = useState(''); 
+  const [email, setEmail] = useState(useSelector(selectUserEmail));
+  const [password, setPassword] = useState('');
   const [preview, setPreview] = useState(null);
-  
-  
-  const schema = yup.object().shape({
-  name:yup.string().max(12),
-  email: yup
-    .string()
-    .email('Please enter a valid email'),
-  password: yup.string().min(6).max(24),
-});
-  
-  
+  const [errorMsgShown, setErrorMsgShown] = useState(false);
+  const [errorClassName, setErrorClassName] = useState('');
+
   function changeImg(event) {
-    console.log(event.target.files);
     setAvatar_url(event.target.files[0]);
     const file = new FileReader();
     file.onload = function () {
-      setPreview (file.result);
-    }
+      setPreview(file.result);
+    };
     file.readAsDataURL(event.target.files[0]);
   }
-     const handleInputChange = event => {
-         const { name, value } = event.target;
-         switch (name) {
-           case 'name':
-             setName(value);
-             break;
-           case 'email':
-             setEmail(value);
-             break;
-           case 'password':
-             setPassword(value);
-             break;
-           default:
-             break;
-         }
-     };
 
-    function editProfile(event) {
-      // toast(t('cards.modals.toast.add.success'), TOASTER_CONFIG); тост 
-      event.preventDefault();
+  const handleInputChange = event => {
+    const { name, value } = event.target;
 
-      const user = { avatar_url, name, email, password };
-      if (!password) {
-        user.password = undefined;
-      }
-      schema
-        .validate(user)
-        .then(valid => {
-          dispatch(editUser(user));
-          console.log('Success');
-          toast(t('editUser.toast.editUserSuccess'), TOASTER_CONFIG);
-          onClose();
-        })
-        .catch(error => {
-          console.log(error.name , error.message);
-          toast(error.message, TOASTER_CONFIG);});
-      
-
+    if (name === 'name') {
+      validateInputMaxLength(event, setErrorMsgShown, setErrorClassName);
     }
+
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'password':
+        setPassword(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  function editProfile(event) {
+    // toast(t('cards.modals.toast.add.success'), TOASTER_CONFIG); тост
+    event.preventDefault();
+
+    const user = { avatar_url, name, email, password };
+    if (!password) {
+      user.password = undefined;
+    }
+
+    editUserSchema
+      .validate(user)
+      .then(valid => {
+        dispatch(editUser(user));
+        toast(t('editUser.toast.editUserSuccess'), TOASTER_CONFIG);
+        onClose();
+      })
+      .catch(error => {
+        toast(error.message, TOASTER_CONFIG);
+      });
+  }
   return (
     <div>
       <h3>{t('editUser.title')}</h3>
       <FormUser onSubmit={editProfile}>
         <Avatar>
           {avatar_url !== 'default' ? (
-            <img  src={ preview || avatar_url} alt='avatar' style={{width:68, height:68,objectFit:'contain'}}/> 
+            <img
+              src={preview || avatar_url}
+              alt="avatar"
+              style={{ width: 68, height: 68, objectFit: 'contain' }}
+            />
           ) : (
             <User
               width={68}
@@ -118,14 +124,18 @@ const UserModal = ({onClose}) => {
             </PlusButton>
           </div>
         </Avatar>
-        <InputUser
-          type="text"
-          placeholder="Name"
-          value={name}
-          name="name"
-          autoComplete={'username'}
-          onChange={handleInputChange}
-        />
+        <UserNameLabel>
+          <InputUser
+            className={errorClassName}
+            type="text"
+            placeholder="Name"
+            value={name}
+            name="name"
+            autoComplete={'username'}
+            onChange={handleInputChange}
+          />
+          {errorMsgShown && <p>{t('editUser.toast.maxLength')}</p>}
+        </UserNameLabel>
         <InputUser
           type="email"
           placeholder="Email"
@@ -173,7 +183,3 @@ const UserModal = ({onClose}) => {
 };
 
 export default UserModal;
-
-
-
-  

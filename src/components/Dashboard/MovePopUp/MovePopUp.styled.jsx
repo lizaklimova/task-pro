@@ -3,13 +3,13 @@ import { styled } from 'styled-components';
 export const Popup = styled.div`
   position: absolute;
   top: 20px;
-  left: -200%;
+  left: -400%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 8px;
   padding: 18px;
-  width: 150px;
+  width: 130px;
   height: 0;
   border: none;
   border-radius: 8px;

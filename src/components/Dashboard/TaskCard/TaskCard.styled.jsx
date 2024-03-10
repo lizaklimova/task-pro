@@ -73,17 +73,25 @@ export const InfoWrap = styled.div`
     opacity: 0.5;
     margin-bottom: 4px;
   }
+`;
 
-  span {
+export const Deadline = styled.span`
+  font-size: 9px;
+  text-decoration: ${({ $isDeadlinePassed }) =>
+    $isDeadlinePassed ? 'line-through' : 'none'};
+  color: ${({ $isDeadlinePassed }) =>
+    $isDeadlinePassed ? 'red' : 'var(--text-color)'};
+
+  @media screen and (min-width: 768px) {
     font-size: 10px;
-    color: var(--text-color);
   }
 `;
 
 export const Priority = styled.p`
-  font-size: 10px;
+  font-size: 9px;
   color: var(--text-color);
   display: flex;
+  align-items: center;
   gap: 4px;
   text-transform: capitalize;
 
@@ -95,17 +103,26 @@ export const Priority = styled.p`
     border-radius: 50%;
     background-color: ${({ $label }) => `var(--priority-${$label})`};
   }
+
+  @media screen and (min-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 export const BtnsList = styled.ul`
   display: flex;
   align-items: flex-end;
+  gap: 5px;
+
+  @media screen and (min-width: 768px) {
+    gap: 7px;
+  }
 `;
 
 export const DeadlineModal = styled.div`
   position: absolute;
   top: -155%;
-  left: -130%;
+  left: -270%;
   width: 110px;
   height: 30px;
   border-radius: 15px;
@@ -123,6 +140,7 @@ export const DeadlineModal = styled.div`
 
 export const CardActionButton = styled.button`
   background-color: transparent;
+  padding: 0;
 
   &#deadline-bell:hover + #deadline-modal,
   &#deadline-bell:focus + #deadline-modal {

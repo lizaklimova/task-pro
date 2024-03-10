@@ -22,10 +22,13 @@ import {
 import Eye from 'components/Icons/Eye';
 import EyeCrossed from 'components/Icons/EyeCrossed';
 import { useTranslation } from 'react-i18next';
+import { SCORE_WORDS } from 'constants';
+import { SHORT_SCORE_WORD } from 'constants';
 
 const RegisterForm = () => {
   const [visible, setVisible] = useState(false);
   const [pwd, setPwd] = useState('');
+
   const dispatch = useDispatch();
   const { isLoading } = useAuth();
 
@@ -39,6 +42,7 @@ const RegisterForm = () => {
     };
 
     const isValid = await registerSchema.isValid(formData);
+
     if (!isValid) {
       return;
     }
@@ -148,6 +152,8 @@ const RegisterForm = () => {
               password={pwd}
               minLength={6}
               barColors={PROGRESS_BAR_COLORS}
+              scoreWords={SCORE_WORDS}
+              shortScoreWord={SHORT_SCORE_WORD}
             />
           )}
 

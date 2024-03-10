@@ -26,9 +26,10 @@
   "editUser": {
     "title": "Edit  profile",
     "button": "Send",
-    "toast":{
-      "editUserSuccess": "Сhanges saved",
-      "editUserError":"Filling error"
+    "toast": {
+      "editUserSuccess": "Сhanges were successfully saved",
+      "editUserError": "Filling error",
+      "maxLength": "Username can be from 3 to 25 symbols"
     }
   },
   "sidebar": {
@@ -108,7 +109,8 @@
       "editButton": "Edit",
       "toast.error": "Please enter all fields to create a task ❗️",
       "toast.add.success": "Card is added successfully ✅",
-      "toast.edit.success": "Card is edited successfully ✅"
+      "toast.edit.success": "Card is edited successfully ✅",
+      "toast.invalidDate": "The date must be grater than today ❗️"
     },
     "popup": {
       "progress": "In progress",
@@ -139,5 +141,6 @@
   },
   "schedule": {
     "header": "My Schedule"
-  }
+  },
+  "toast.maxTitle": "Maximum title length is 25 symbols"
 }

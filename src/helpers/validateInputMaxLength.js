@@ -1,10 +1,10 @@
 const validateInputMaxLength = (event, setError, setClassName) => {
   const { value } = event.target;
   if (value.length >= 25) {
-    setError('Maximum title length is 25 symbols');
+    setError(true);
     setClassName('invalid');
   } else {
-    setError(null);
+    setError(false);
     setClassName('');
   }
 };

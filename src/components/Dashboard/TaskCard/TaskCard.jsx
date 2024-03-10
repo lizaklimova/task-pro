@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { Draggable } from 'react-beautiful-dnd';
 import i18next from 'i18next';
 import { deleteCard } from '../../../redux/cards/cardsOperations';
 import { moveCard } from '../../../redux/board/boardOperations';
@@ -11,6 +12,7 @@ import {
   determineDeadline,
   determineLabelColor,
   changePriorityLang,
+  determineDeadlinePassed,
 } from 'helpers';
 import Status from 'components/Icons/Status';
 import Pencil from 'components/Icons/Pencil';
@@ -23,12 +25,12 @@ import {
   CardTitle,
   CardDescr,
   InfoWrap,
+  Deadline,
   Priority,
   BtnsList,
   DeadlineModal,
   CardActionButton,
 } from './TaskCard.styled';
-import { Draggable } from 'react-beautiful-dnd';
 
 const TaskCard = ({
   allColumns,
@@ -88,7 +90,13 @@ const TaskCard = ({
 
                 <div>
                   <h5>{t('cards.deadline')}</h5>
-                  <span>{formatDate(makeValidDate(card.deadline))}</span>
+                  <Deadline
+                    $isDeadlinePassed={determineDeadlinePassed(
+                      new Date(card.deadline)
+                    )}
+                  >
+                    {formatDate(makeValidDate(card.deadline))}
+                  </Deadline>
                 </div>
               </InfoWrap>
 
