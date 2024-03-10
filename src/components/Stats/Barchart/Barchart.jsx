@@ -1,38 +1,18 @@
-import { useTranslation } from 'react-i18next';
 import { Bar, Rectangle, XAxis, YAxis, Tooltip, Cell } from 'recharts';
 import { Chart } from './Barchart.styled';
 
-const Barchart = () => {
-  const { t } = useTranslation();
-
-  const data = [
-    {
-      name: t('boards.filter.without'),
-      value: 6,
-    },
-    {
-      name: t('boards.filter.low'),
-      value: 6,
-    },
-    {
-      name: t('boards.filter.medium'),
-      value: 18,
-    },
-    {
-      name: t('boards.filter.high'),
-      value: 4,
-    },
-  ];
-
-  const colors = [
-    'var(--priority-gray)',
-    'var(--priority-blue)',
-    'var(--priority-pink)',
-    'var(--priority-green)',
-  ];
+const Barchart = ({ data, colors }) => {
+  let chartSize = 280;
+  if (window.innerWidth >= 768) {
+    chartSize = 600;
+  } else if (window.innerWidth >= 375) {
+    chartSize = 330;
+  } else {
+    chartSize = 280;
+  }
 
   return (
-    <Chart width={300} height={300} data={data}>
+    <Chart width={chartSize} height={300} data={data}>
       <XAxis dataKey="name" />
       <YAxis />
       <Tooltip />

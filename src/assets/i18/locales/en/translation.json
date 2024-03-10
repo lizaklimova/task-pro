@@ -131,7 +131,23 @@
     "text": "Developed by DreamTeam"
   },
   "stats": {
-    "header": "My Tasks Statistics"
+    "header": "My Tasks Statistics",
+    "headerPriority": "Statisctics for Tasks Priority",
+    "headerTiming": "Statisctics for Tasks Timing",
+    "selectHeader": "Statistics for board:",
+    "priority": {
+      "without": "None",
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "timing": {
+      "outdated": "Outdated",
+      "today": "Today",
+      "week": "This Week",
+      "month": "This Month",
+      "further": "Further"
+    }
   },
   "schedule": {
     "header": "My Schedule"
