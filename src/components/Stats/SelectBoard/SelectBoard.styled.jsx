@@ -43,7 +43,7 @@ export const Option = styled.li`
   padding: 0 12px;
   border-radius: 8px;
   background-color: var(--card-bg);
-  opacity: 0.7;
+  opacity: 0.9;
   transition: all var(--easedTransition);
 
   &:hover {
