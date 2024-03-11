@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import sprite from 'assets/images/icons/icons-sprite.svg';
 import { ICONS_ARRAY } from 'constants/index';
-
 import {
   IconsUl,
   IconLi,
