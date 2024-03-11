@@ -65,7 +65,7 @@ const Column = ({ allColumns, column }) => {
     <>
       <ColumnWrap>
         <ColumnTitleWrap>
-          <h3>{column.title}</h3>
+          <h3>{column._id}</h3>
           <ButtonsList>
             <li>
               <ColumnButton

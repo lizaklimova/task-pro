@@ -75,6 +75,22 @@ export const moveCard = createAsyncThunk(
   }
 );
 
+export const changeCardOrder = createAsyncThunk(
+  'cards/changeCardOrder',
+  async ({ cardId, columnId, order }, thunkAPI) => {
+    try {
+      const { data } = await axiosInstance.patch(
+        ENDPOINTS.cards.cardOrder(cardId),
+        { columnId, order }
+      );
+      console.log(data);
+      return data.card;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const getStatistics = createAsyncThunk(
   'cards/getStatistics',
   async (_, thunkAPI) => {

@@ -23,6 +23,7 @@ const ENDPOINTS = Object.freeze({
     cardsStats: 'api/cards/stats',
     oneCard: cardId => `api/cards/${cardId}`,
     cardStatus: cardId => `api/cards/${cardId}/status`,
+    cardOrder: cardId => `api/cards/${cardId}/order`,
   },
   email: {
     support: 'email/support',

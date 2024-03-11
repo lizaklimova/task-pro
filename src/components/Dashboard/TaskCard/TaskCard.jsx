@@ -104,7 +104,7 @@ const TaskCard = ({ allColumns, columnId, card }) => {
         style={aboveCardStyle}
         $label={determineLabelColor(card.priority)}
       >
-        <CardTitle>{card.title}</CardTitle>
+        <CardTitle>{card._id}</CardTitle>
         <CardDescr onClick={handleClick}>
           {showFullText
             ? card.description

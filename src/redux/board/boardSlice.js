@@ -15,6 +15,7 @@ import {
   moveCard,
   getStatistics,
   getAllCards,
+  changeCardOrder,
 } from '../cards/cardsOperations';
 import {
   addColumn,
@@ -52,6 +53,7 @@ const boardsSlice = createSlice({
       .addCase(moveCard.pending, handlePending)
       .addCase(getStatistics.pending, handlePending)
       .addCase(getAllCards.pending, handlePending)
+      .addCase(changeCardOrder.pending, handlePending)
       .addCase(getBackgroundIcons.fulfilled, (state, { payload }) => {
         state.background = payload;
         state.isLoading = false;
@@ -180,6 +182,22 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
+      .addCase(changeCardOrder.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        const column = state.oneBoard.columns.find(
+          ({ _id }) => _id === payload.column
+        );
+        const oldCardOrder = column.cards.findIndex(
+          ({ _id }) => _id === payload._id
+        );
+        const updatedCards = [...column.cards];
+        const [movedCard] = updatedCards.splice(oldCardOrder, 1);
+
+        updatedCards.splice(payload.order, 0, movedCard);
+
+        column.cards = updatedCards;
+      })
       .addCase(getBackgroundIcons.rejected, handleRejected)
       .addCase(getAllBoards.rejected, handleRejected)
       .addCase(getOneBoard.rejected, handleRejected)
@@ -194,7 +212,8 @@ const boardsSlice = createSlice({
       .addCase(editCard.rejected, handleRejected)
       .addCase(moveCard.rejected, handleRejected)
       .addCase(getAllCards.rejected, handleRejected)
-      .addCase(getStatistics.rejected, handleRejected);
+      .addCase(getStatistics.rejected, handleRejected)
+      .addCase(changeCardOrder.rejected, handleRejected);
   },
 });
 

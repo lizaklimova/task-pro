@@ -9,7 +9,7 @@ import {
   closestCorners,
 } from '@dnd-kit/core';
 import { useDispatch } from 'react-redux';
-import { moveCard } from '../../redux/cards/cardsOperations';
+import { changeCardOrder, moveCard } from '../../redux/cards/cardsOperations';
 import Plus from 'components/Icons/Plus';
 import ColumnModal from 'components/Modals/ColumnModal';
 import Column from './Column';
@@ -44,15 +44,34 @@ const Dashboard = ({ board }) => {
     const { active, over } = event;
     console.log(event);
     if (!over) return;
+
     const activeId = active.id;
     const overId = over.id;
+
     if (activeId === overId) return;
+
     if (active.data.current?.card && over.data.current?.column) {
       dispatch(
         moveCard({
           cardId: activeId,
           newColumn: over.data.current?.column._id,
           oldColumn: active.data.current?.sortable.containerId,
+        })
+      );
+    }
+
+    if (
+      over.data.current?.sortable &&
+      active.data.current?.sortable.containerId ===
+        over.data.current?.sortable.containerId
+    ) {
+      const newIndex = over.data.current.sortable.index;
+
+      dispatch(
+        changeCardOrder({
+          cardId: activeId,
+          columnId: activeColumnId,
+          order: newIndex,
         })
       );
     }
@@ -77,7 +96,6 @@ const Dashboard = ({ board }) => {
         onDragStart={onDragStart}
         onDragEnd={onDragEnd}
         onDragOver={onDragOver}
-        autoScroll={{ acceleration: 1 }}
       >
         {board?.columns?.length > 0 && (
           <ColumnsList>
@@ -90,7 +108,7 @@ const Dashboard = ({ board }) => {
         )}
 
         {createPortal(
-          <DragOverlay style={{ opacity: '70%' }}>
+          <DragOverlay style={druggedCard}>
             {druggedCard && (
               <TaskCard
                 allColumns={board?.columns}
