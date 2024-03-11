@@ -4,6 +4,7 @@ const GlobalStyles = createGlobalStyle`
 :root {
     --easedTransition: 350ms ease-in-out;
     --cubicTransition: 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --dnd-transition:  cubic-bezier(0.25, 1, 0.5, 1);
     --black-color: #161616;
     --white-color: #fff;
     --light-green-gradient: linear-gradient(180deg, #ffffff 25%, #bedbb0 92.19%);

@@ -31,16 +31,12 @@ import {
   DeadlineModal,
   CardActionButton,
 } from './TaskCard.styled';
+import CardModal from 'components/Modals/CardModal/CardModal';
 
-const TaskCard = ({
-  allColumns,
-  columnId,
-  card,
-  openCardModal,
-  setActiveCard,
-}) => {
+const TaskCard = ({ allColumns, columnId, card }) => {
   const [showFullText, setShowFullText] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isEditCardModalOpen, setIsEditCardModalOpen] = useState(false);
 
   const {
     setNodeRef,
@@ -56,6 +52,10 @@ const TaskCard = ({
       card,
       type: 'Task',
     },
+    transition: {
+      duration: 300,
+      easing: 'var(--dnd-transition)',
+    },
   });
 
   const style = {
@@ -65,7 +65,7 @@ const TaskCard = ({
 
   const aboveCardStyle = {
     ...style,
-    opacity: isSorting ? '50%' : '100%',
+    opacity: isSorting ? '30%' : '100%',
     outline: isDragging ? '1px solid var(--accent-color)' : 'unset',
   };
 
@@ -179,8 +179,7 @@ const TaskCard = ({
                 type="button"
                 aria-label="Edit card"
                 onClick={() => {
-                  openCardModal();
-                  setActiveCard(card);
+                  setIsEditCardModalOpen(true);
                 }}
               >
                 <Pencil
@@ -206,6 +205,15 @@ const TaskCard = ({
           </BtnsList>
         </div>
       </CardItem>
+
+      {isEditCardModalOpen && (
+        <CardModal
+          activeCard={card}
+          columnId={columnId}
+          variant="edit"
+          closeCardModal={() => setIsEditCardModalOpen(false)}
+        />
+      )}
 
       {isDeleteModalOpen && (
         <DeleteModal

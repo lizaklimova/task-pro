@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   DndContext,
@@ -8,7 +8,6 @@ import {
   useSensor,
   closestCorners,
 } from '@dnd-kit/core';
-import { SortableContext } from '@dnd-kit/sortable';
 import { useDispatch } from 'react-redux';
 import { moveCard } from '../../redux/cards/cardsOperations';
 import Plus from 'components/Icons/Plus';
@@ -20,11 +19,9 @@ import TaskCard from './TaskCard/TaskCard';
 
 const Dashboard = ({ board }) => {
   const [isAddColumnModalOpen, setIsAddColumnModalOpen] = useState(false);
-  const [isEditCardModalOpen, setIsEditCardModalOpen] = useState(false);
   const [druggedCard, setDruggedCard] = useState(null);
-  const [activeCard, setActiveCard] = useState(null);
   const [activeColumnId, setActiveColumnId] = useState(null);
-  console.log(isEditCardModalOpen);
+
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -80,33 +77,25 @@ const Dashboard = ({ board }) => {
         onDragStart={onDragStart}
         onDragEnd={onDragEnd}
         onDragOver={onDragOver}
+        autoScroll={{ acceleration: 1 }}
       >
         {board?.columns?.length > 0 && (
           <ColumnsList>
             {board.columns.map(column => (
               <li key={column._id}>
-                <Column
-                  allColumns={board.columns}
-                  column={column}
-                  isEditCardModalOpen={isEditCardModalOpen}
-                  setIsEditCardModalOpen={setIsEditCardModalOpen}
-                  activeCard={activeCard}
-                  setActiveCard={setActiveCard}
-                />
+                <Column allColumns={board.columns} column={column} />
               </li>
             ))}
           </ColumnsList>
         )}
 
         {createPortal(
-          <DragOverlay>
+          <DragOverlay style={{ opacity: '70%' }}>
             {druggedCard && (
               <TaskCard
                 allColumns={board?.columns}
                 columnId={activeColumnId}
                 card={druggedCard}
-                openEditCardModal={() => setIsEditCardModalOpen(true)}
-                setActiveCard={setActiveCard}
               />
             )}
           </DragOverlay>,

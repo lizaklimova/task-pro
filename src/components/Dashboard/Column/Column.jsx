@@ -25,14 +25,7 @@ import {
   IconWrap,
 } from './Column.styled';
 
-const Column = ({
-  allColumns,
-  column,
-  isEditCardModalOpen,
-  setIsEditCardModalOpen,
-  activeCard,
-  setActiveCard,
-}) => {
+const Column = ({ allColumns, column }) => {
   const [isEditColumnModalOpen, setIsEditColumnModalOpen] = useState(false);
   const [isAddCardModalOpen, setIsAddCardModalOpen] = useState(false);
   const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
@@ -119,8 +112,6 @@ const Column = ({
                       allColumns={allColumns}
                       columnId={column._id}
                       card={card}
-                      openCardModal={() => setIsEditCardModalOpen(true)}
-                      setActiveCard={setActiveCard}
                     />
                   </li>
                 ))}
@@ -149,15 +140,6 @@ const Column = ({
           columnId={column._id}
           variant="add"
           closeCardModal={() => setIsAddCardModalOpen(false)}
-        />
-      )}
-
-      {isEditCardModalOpen && (
-        <CardModal
-          activeCard={activeCard}
-          columnId={column._id}
-          variant="edit"
-          closeCardModal={() => setIsEditCardModalOpen(false)}
         />
       )}
 
