@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { Droppable } from 'react-beautiful-dnd';
 import { deleteColumn } from '../../../redux/columns/columnsOperations';
 import Pencil from 'components/Icons/Pencil';
 import Trash from 'components/Icons/Trash';
@@ -86,30 +85,21 @@ const Column = ({ allColumns, column }) => {
         {showEmptyMsg ? (
           <EmptyMsg>{t('cards.empty')}</EmptyMsg>
         ) : (
-          <Droppable droppableId={column._id}>
-            {(provided, snapshot) => (
-              <CardsList
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-                $isDraggingOver={snapshot.isDraggingOver}
-              >
-                {column.cards &&
-                  column.cards.map((card, index) => (
-                    <li key={card._id}>
-                      <TaskCard
-                        allColumns={allColumns}
-                        columnId={column._id}
-                        card={card}
-                        index={index}
-                        openCardModal={() => setIsEditCardModalOpen(true)}
-                        setActiveCard={setActiveCard}
-                      />
-                    </li>
-                  ))}
-                {provided.placeholder}
-              </CardsList>
-            )}
-          </Droppable>
+          <CardsList>
+            {column.cards &&
+              column.cards.map((card, index) => (
+                <li key={card._id}>
+                  <TaskCard
+                    allColumns={allColumns}
+                    columnId={column._id}
+                    card={card}
+                    index={index}
+                    openCardModal={() => setIsEditCardModalOpen(true)}
+                    setActiveCard={setActiveCard}
+                  />
+                </li>
+              ))}
+          </CardsList>
         )}
 
         <AddButton type="button" onClick={() => setIsAddCardModalOpen(true)}>

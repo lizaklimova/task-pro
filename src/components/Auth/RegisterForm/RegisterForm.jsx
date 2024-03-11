@@ -24,8 +24,6 @@ import Eye from 'components/Icons/Eye';
 import EyeCrossed from 'components/Icons/EyeCrossed';
 import { FcGoogle } from 'react-icons/fc';
 import { useTranslation } from 'react-i18next';
-import { SCORE_WORDS } from 'constants';
-import { SHORT_SCORE_WORD } from 'constants';
 
 const RegisterForm = () => {
   const [visible, setVisible] = useState(false);
@@ -154,8 +152,6 @@ const RegisterForm = () => {
               password={pwd}
               minLength={6}
               barColors={PROGRESS_BAR_COLORS}
-              scoreWords={SCORE_WORDS}
-              shortScoreWord={SHORT_SCORE_WORD}
             />
           )}
           <Google to={'https://task-pro-3a4o.onrender.com/auth/google'}>

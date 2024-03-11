@@ -110,7 +110,7 @@ export const CardsList = styled.ul`
   width: 100%;
   height: calc(100vh - 144px - 130px);
   overflow-y: auto;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 
   &::-webkit-scrollbar-thumb {
     border-radius: 12px;

@@ -1,5 +1,3 @@
-import i18next from 'i18next';
-
 export const CLOSE_KEY_CODE = 'Escape';
 
 export const LABEL_ARR = [
@@ -51,11 +49,3 @@ export const PROGRESS_BAR_COLORS = [
 export const DEFAULT_BACKGROUND_ID = '65e476ee9e0727c033dddb93';
 
 export const MAX_DESCR_LENGTH = 80;
-
-export const SCORE_WORDS =
-  i18next.language === 'en'
-    ? ['weak', 'weak', 'okay', 'good', 'strong']
-    : ['слабкий', 'слабкий', 'нормальний', 'чудовий', 'сильний'];
-
-export const SHORT_SCORE_WORD =
-  i18next.language === 'en' ? 'too short' : 'занадто короткий';

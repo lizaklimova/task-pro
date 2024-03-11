@@ -5,7 +5,7 @@ export const Wrap = styled.div`
   height: 100%;
   padding-top: 39px;
   padding-bottom: 24px;
-  /* overflow-x: auto; */
+  overflow-x: auto;
 
   &::-webkit-scrollbar-thumb {
     border-radius: 12px;
