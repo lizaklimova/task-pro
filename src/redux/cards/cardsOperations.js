@@ -83,7 +83,7 @@ export const changeCardOrder = createAsyncThunk(
         ENDPOINTS.cards.cardOrder(cardId),
         { columnId, order }
       );
-      console.log(data);
+
       return data.card;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

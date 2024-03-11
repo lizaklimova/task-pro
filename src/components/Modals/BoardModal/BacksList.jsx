@@ -9,8 +9,6 @@ import {
 } from '../../../redux/board/boardSelectors';
 import {
   BacksUl,
-  BackLi,
-  BackLabel,
   DefaultImgWrap,
   BackInputRadio,
   BackImage,
@@ -39,11 +37,8 @@ export const BacksList = ({ backgroundId, customBackground }) => {
     <BacksUl>
       {backgroundIcons.map(item => {
         return (
-          <BackLi
-            key={item._id}
-            id={item.backgroundMinURL ? '' : 'default-bg-img'}
-          >
-            <BackLabel>
+          <li key={item._id} id={item.backgroundMinURL ? '' : 'default-bg-img'}>
+            <label>
               <BackInputRadio
                 type="radio"
                 name="background"
@@ -68,8 +63,8 @@ export const BacksList = ({ backgroundId, customBackground }) => {
                   </svg>
                 </DefaultImgWrap>
               )}
-            </BackLabel>
-          </BackLi>
+            </label>
+          </li>
         );
       })}
     </BacksUl>

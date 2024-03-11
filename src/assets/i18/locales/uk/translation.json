@@ -77,6 +77,7 @@
       "editButton": "Редагувати",
       "customBackground": "Оберіть свій власний фон",
       "chooseFile": "Оберіть файл",
+      "fileChosen": "Файл завантажено",
       "toast.error": "Введіть назву дошки ❗️",
       "toast.add.success": "Дошку створено успішно ✅",
       "toast.edit.success": "Дошку відредаговано ✅"

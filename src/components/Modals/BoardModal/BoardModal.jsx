@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
+import { MdFileUpload, MdDownloadDone } from 'react-icons/md';
 import { createBoard, updateBoard } from '../../../redux/board/boardOperations';
 import { selectOneBoard } from '../../../redux/board/boardSelectors';
 import { DEFAULT_BACKGROUND_ID, TOASTER_CONFIG } from 'constants';
@@ -9,7 +11,6 @@ import { validateInputMaxLength } from 'helpers';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import { IconsList } from './IconsList';
 import { BacksList } from './BacksList';
-import { nanoid } from '@reduxjs/toolkit';
 import Plus from 'components/Icons/Plus';
 import {
   Form,
@@ -28,21 +29,22 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
   const [errorMsgShown, setErrorMsgShown] = useState(false);
   const [errorClassName, setErrorClassName] = useState('');
   const [customBackground, setCustomBackground] = useState(null);
+
   const titleRef = useRef(null);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const oneBoard = useSelector(selectOneBoard);
+
+  useEffect(() => {
+    titleRef.current.focus();
+  }, []);
 
   const handleUpload = event => {
     const file = event.target.files[0];
     setCustomBackground(file);
   };
 
-  useEffect(() => {
-    titleRef.current.focus();
-  }, []);
-
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
     const { title, background, iconId } = e.target.elements;
 
@@ -113,13 +115,17 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
         </Label>
 
         <StyledFileLabel>
-          {t('boards.modals.chooseFile')}
+          {customBackground
+            ? t('boards.modals.fileChosen')
+            : t('boards.modals.chooseFile')}
           <StyledFileInput
             type="file"
             name="background"
             onChange={handleUpload}
           />
+          {customBackground ? <MdDownloadDone /> : <MdFileUpload />}
         </StyledFileLabel>
+
         <Button type="submit">
           <Span>
             <Plus

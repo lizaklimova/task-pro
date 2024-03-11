@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import sprite from 'assets/images/icons/icons-sprite.svg';
 import { ICONS_ARRAY } from 'constants/index';
-import {
-  IconsUl,
-  IconLi,
-  IconLabel,
-  IconSVG,
-  InputRadio,
-} from './BoardModal.styled';
+import { IconsUl, IconSVG, InputRadio } from './BoardModal.styled';
 
 export const IconsList = ({ iconId }) => {
   const [selectedIconId, setSelectedIconId] = useState(iconId);
@@ -20,8 +14,8 @@ export const IconsList = ({ iconId }) => {
     <IconsUl>
       {ICONS_ARRAY.map(item => {
         return (
-          <IconLi key={item.id}>
-            <IconLabel>
+          <li key={item.id}>
+            <label>
               <InputRadio
                 type="radio"
                 name="iconId"
@@ -32,8 +26,8 @@ export const IconsList = ({ iconId }) => {
               <IconSVG width="18" height="18">
                 <use xlinkHref={`${sprite}#${item.name}`} />
               </IconSVG>
-            </IconLabel>
-          </IconLi>
+            </label>
+          </li>
         );
       })}
     </IconsUl>

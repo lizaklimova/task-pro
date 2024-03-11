@@ -210,6 +210,7 @@ body {
     color: var(--text-color);
     background-color: var(--background-color);
     transition: background-color var(--easedTransition), color var(--easedTransition);
+    overflow-x: hidden;
 }
 
 #root {
