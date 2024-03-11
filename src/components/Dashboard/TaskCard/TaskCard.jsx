@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import { deleteCard, moveCard } from '../../../redux/cards/cardsOperations';
 import {
   formatDate,
@@ -29,17 +31,42 @@ import {
   DeadlineModal,
   CardActionButton,
 } from './TaskCard.styled';
+import CardModal from 'components/Modals/CardModal/CardModal';
 
-const TaskCard = ({
-  allColumns,
-  columnId,
-  card,
-  index,
-  openCardModal,
-  setActiveCard,
-}) => {
+const TaskCard = ({ allColumns, columnId, card }) => {
   const [showFullText, setShowFullText] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isEditCardModalOpen, setIsEditCardModalOpen] = useState(false);
+
+  const {
+    setNodeRef,
+    attributes,
+    listeners,
+    transform,
+    transition,
+    isDragging,
+    isSorting,
+  } = useSortable({
+    id: card._id,
+    data: {
+      card,
+      type: 'Task',
+    },
+    transition: {
+      duration: 300,
+      easing: 'var(--dnd-transition)',
+    },
+  });
+
+  const style = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+  };
+
+  const aboveCardStyle = {
+    ...style,
+    opacity: isSorting ? '30%' : '100%',
+  };
 
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -56,10 +83,27 @@ const TaskCard = ({
     dispatch(moveCard({ cardId: card._id, newColumn, oldColumn: columnId }));
   };
 
+  if (isDragging) {
+    return (
+      <CardItem
+        ref={setNodeRef}
+        {...listeners}
+        {...attributes}
+        style={aboveCardStyle}
+      />
+    );
+  }
+
   return (
     <>
-      <CardItem $label={determineLabelColor(card.priority)}>
-        <CardTitle>{card.title}</CardTitle>
+      <CardItem
+        ref={setNodeRef}
+        {...listeners}
+        {...attributes}
+        style={aboveCardStyle}
+        $label={determineLabelColor(card.priority)}
+      >
+        <CardTitle>{card._id}</CardTitle>
         <CardDescr onClick={handleClick}>
           {showFullText
             ? card.description
@@ -134,8 +178,7 @@ const TaskCard = ({
                 type="button"
                 aria-label="Edit card"
                 onClick={() => {
-                  openCardModal();
-                  setActiveCard(card);
+                  setIsEditCardModalOpen(true);
                 }}
               >
                 <Pencil
@@ -161,6 +204,15 @@ const TaskCard = ({
           </BtnsList>
         </div>
       </CardItem>
+
+      {isEditCardModalOpen && (
+        <CardModal
+          activeCard={card}
+          columnId={columnId}
+          variant="edit"
+          closeCardModal={() => setIsEditCardModalOpen(false)}
+        />
+      )}
 
       {isDeleteModalOpen && (
         <DeleteModal

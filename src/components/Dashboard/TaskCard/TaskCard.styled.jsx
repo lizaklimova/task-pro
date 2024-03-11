@@ -16,6 +16,7 @@ const swingAnimation = keyframes`
 
 export const CardItem = styled.div`
   width: 100%;
+  min-height: 139px;
   border-radius: 10px;
   padding: 24px 14px;
   background-color: var(--card-bg);
@@ -23,7 +24,12 @@ export const CardItem = styled.div`
   border-left: ${({ $label }) => `7px solid var(--priority-${$label})`};
   word-break: break-all;
   cursor: grab;
-  opacity: ${({ $isDragging }) => ($isDragging ? '0.5' : 'unset')};
+  transition: outline 100ms linear;
+
+  &:hover,
+  &:focus {
+    outline: 2px solid var(--accent-color) !important;
+  }
 
   & > div {
     display: flex;

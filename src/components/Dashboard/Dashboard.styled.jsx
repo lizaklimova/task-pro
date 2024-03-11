@@ -6,6 +6,7 @@ export const Wrap = styled.div`
   padding-top: 39px;
   padding-bottom: 24px;
   overflow-x: auto;
+  scroll-behavior: smooth !important;
 
   &::-webkit-scrollbar-thumb {
     border-radius: 12px;
@@ -49,6 +50,7 @@ export const ColumnsList = styled.ul`
   display: flex;
   gap: 12px;
   margin-right: 34px;
+  scroll-behavior: smooth;
 
   @media screen and (min-width: 375px) {
     gap: 34px;
