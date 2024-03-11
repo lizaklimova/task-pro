@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import { deleteCard, moveCard } from '../../../redux/cards/cardsOperations';
 import {
   formatDate,
@@ -34,12 +36,38 @@ const TaskCard = ({
   allColumns,
   columnId,
   card,
-  index,
   openCardModal,
   setActiveCard,
 }) => {
   const [showFullText, setShowFullText] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  const {
+    setNodeRef,
+    attributes,
+    listeners,
+    transform,
+    transition,
+    isDragging,
+    isSorting,
+  } = useSortable({
+    id: card._id,
+    data: {
+      card,
+      type: 'Task',
+    },
+  });
+
+  const style = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+  };
+
+  const aboveCardStyle = {
+    ...style,
+    opacity: isSorting ? '50%' : '100%',
+    outline: isDragging ? '1px solid var(--accent-color)' : 'unset',
+  };
 
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -56,9 +84,26 @@ const TaskCard = ({
     dispatch(moveCard({ cardId: card._id, newColumn, oldColumn: columnId }));
   };
 
+  if (isDragging) {
+    return (
+      <CardItem
+        ref={setNodeRef}
+        {...listeners}
+        {...attributes}
+        style={aboveCardStyle}
+      />
+    );
+  }
+
   return (
     <>
-      <CardItem $label={determineLabelColor(card.priority)}>
+      <CardItem
+        ref={setNodeRef}
+        {...listeners}
+        {...attributes}
+        style={aboveCardStyle}
+        $label={determineLabelColor(card.priority)}
+      >
         <CardTitle>{card.title}</CardTitle>
         <CardDescr onClick={handleClick}>
           {showFullText

@@ -77,6 +77,7 @@ const CardModal = ({ columnId, variant, closeCardModal, activeCard }) => {
       dispatch(editCard({ cardId: activeCard._id, editedCard: cardInfo }));
       toast(t('cards.modals.toast.edit.success'), TOASTER_CONFIG);
     }
+
     closeCardModal();
   };
 

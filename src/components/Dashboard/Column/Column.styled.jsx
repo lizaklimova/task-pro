@@ -105,8 +105,8 @@ export const CardsList = styled.ul`
   margin-bottom: 14px;
   border-radius: 8px;
   padding: 5px;
-  background-color: ${({ $isDraggingOver }) =>
-    $isDraggingOver ? 'var(--card-list-bg)' : 'transparent'};
+  background-color: ${({ $isOver }) =>
+    $isOver ? 'var(--card-list-bg)' : 'transparent'};
   width: 100%;
   height: calc(100vh - 144px - 130px);
   overflow-y: auto;
