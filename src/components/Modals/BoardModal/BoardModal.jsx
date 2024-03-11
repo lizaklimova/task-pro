@@ -1,12 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import { createBoard, updateBoard } from '../../../redux/board/boardOperations';
 import {
   selectOneBoard,
-  selectBoards,
+  // selectBoards,
 } from '../../../redux/board/boardSelectors';
 import { DEFAULT_BACKGROUND_ID, TOASTER_CONFIG } from 'constants';
 import { validateInputMaxLength } from 'helpers';
@@ -32,8 +32,8 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
   const [errorMsgShown, setErrorMsgShown] = useState(false);
   const [errorClassName, setErrorClassName] = useState('');
   const [customBackground, setCustomBackground] = useState(null);
-  const allBoards = useSelector(selectBoards);
-  const navigate = useNavigate();
+  // const allBoards = useSelector(selectBoards);
+  // const navigate = useNavigate();
   const titleRef = useRef(null);
   const dispatch = useDispatch();
   const { t } = useTranslation();
