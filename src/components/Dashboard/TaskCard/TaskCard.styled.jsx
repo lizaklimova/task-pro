@@ -24,6 +24,12 @@ export const CardItem = styled.div`
   border-left: ${({ $label }) => `7px solid var(--priority-${$label})`};
   word-break: break-all;
   cursor: grab;
+  transition: outline 100ms linear;
+
+  &:hover,
+  &:focus {
+    outline: 2px solid var(--accent-color) !important;
+  }
 
   & > div {
     display: flex;

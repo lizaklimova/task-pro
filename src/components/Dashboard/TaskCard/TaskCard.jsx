@@ -66,7 +66,6 @@ const TaskCard = ({ allColumns, columnId, card }) => {
   const aboveCardStyle = {
     ...style,
     opacity: isSorting ? '30%' : '100%',
-    outline: isDragging ? '1px solid var(--accent-color)' : 'unset',
   };
 
   const { t } = useTranslation();
