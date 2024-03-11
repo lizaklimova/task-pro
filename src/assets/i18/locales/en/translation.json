@@ -148,6 +148,8 @@
     "boards": "boards",
     "tasks": "tasks",
     "has": "has",
+    "all": "all",
+    "noTasks": "You have no tasks yet to build statistics...",
     "priority": {
       "without": "None",
       "low": "Low",

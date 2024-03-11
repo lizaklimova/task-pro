@@ -101,7 +101,6 @@ export const CardsList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 5px;
-  /* padding-right: 8px; */
   margin-bottom: 14px;
   border-radius: 8px;
   padding: 5px;
