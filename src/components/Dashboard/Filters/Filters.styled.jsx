@@ -87,6 +87,8 @@ export const PriorityFilterLabel = styled.label`
 
   input[type='radio']:checked + ${StyledMarker} {
     outline: ${({ $color }) => `1px solid var(--priority-${$color})`};
+    /* box-shadow: ${({ $color }) =>
+      `0 0 0 1px solid var(--priority-${$color})`}; */
     border: 2px solid var(--modal-background);
   }
 
