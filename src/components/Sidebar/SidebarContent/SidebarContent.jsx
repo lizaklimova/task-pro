@@ -103,10 +103,10 @@ const SidebarContent = ({ menu, closeMenu }) => {
             />
           </LightningBox>
           <p>Task Pro</p>{' '}
-          <StatsLink to={'stats'}>
+          <StatsLink to={'stats'} aria-label="To Statistics">
             <BsBarChartLine size={20} />
           </StatsLink>
-          <ExtraLink to={'schedule'}>
+          <ExtraLink to={'schedule'} aria-label="To Schedule">
             <IoCalendarOutline size={20} />
           </ExtraLink>
         </Logo>

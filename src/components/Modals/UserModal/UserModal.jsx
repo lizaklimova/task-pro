@@ -26,6 +26,7 @@ import {
   InputUser,
   PlusButton,
   SendBtn,
+  AvatarEdit,
 } from './UserModal.styled';
 
 const UserModal = ({ onClose }) => {
@@ -73,7 +74,6 @@ const UserModal = ({ onClose }) => {
   };
 
   function editProfile(event) {
-    // toast(t('cards.modals.toast.add.success'), TOASTER_CONFIG); тост
     event.preventDefault();
 
     const user = { avatar_url, name, email, password };
@@ -97,30 +97,34 @@ const UserModal = ({ onClose }) => {
       <h3>{t('editUser.title')}</h3>
       <FormUser onSubmit={editProfile}>
         <Avatar>
-          {avatar_url !== 'default' ? (
-            <img
-              src={preview || avatar_url}
-              alt="avatar"
-              style={{ width: 68, height: 68, objectFit: 'contain' }}
-            />
-          ) : (
-            <User
-              width={68}
-              height={68}
-              strokeColor={'var( --svg-back-color-user)'}
-              fillColor={'var(--svg-color-user)'}
-            />
-          )}
-          <div>
+          <AvatarEdit>
+            {avatar_url !== 'default' ? (
+              <img
+                src={preview || avatar_url}
+                alt="avatar"
+                style={{ width: 68, height: 68, objectFit: 'contain' }}
+              />
+            ) : (
+              <User
+                width={68}
+                height={68}
+                strokeColor={'var( --svg-back-color-user)'}
+                fillColor={'var(--svg-color-user)'}
+              />
+            )}
             <PlusButton>
               <Plus
                 width={20}
                 height={20}
                 strokeColor={'var(--sidebar-plus-icon)'}
               />
-              <AddPhoto type="file" accept="image/*" onChange={changeImg} />
+              <AddPhoto
+                type="file"
+                accept=".png, .jpg, .jpeg"
+                onChange={changeImg}
+              />
             </PlusButton>
-          </div>
+          </AvatarEdit>
         </Avatar>
         <UserNameLabel>
           <InputUser

@@ -92,16 +92,26 @@ const StatsPage = () => {
     <MainContainer>
       <ChartsContainer>
         <StatsHeader dataFor={dataFor} stats={stats} />
-        <SelectBoard onSelect={changeData} name={dataFor} names={boardsNames} />
-        <CategoryHeader>{t('stats.headerPriority')}</CategoryHeader>
-        <CategoryWrap>
-          <Barchart data={dataPriority} colors={colorsForPriority} />
-          <Piechart data={dataPriority} colors={colorsForPriority} />
-        </CategoryWrap>
-        <CategoryHeader>{t('stats.headerTiming')}</CategoryHeader>
-        <CategoryWrap>
-          <Barchart data={dataTiming} colors={colorsForTiming} />
-        </CategoryWrap>
+        {stats?.all?.number === 0 ? (
+          <p style={{ color: 'var(--accent-color)' }}>{t('stats.noTasks')}</p>
+        ) : (
+          <>
+            <SelectBoard
+              onSelect={changeData}
+              name={dataFor}
+              names={boardsNames}
+            />
+            <CategoryHeader>{t('stats.headerPriority')}</CategoryHeader>
+            <CategoryWrap>
+              <Barchart data={dataPriority} colors={colorsForPriority} />
+              <Piechart data={dataPriority} colors={colorsForPriority} />
+            </CategoryWrap>
+            <CategoryHeader>{t('stats.headerTiming')}</CategoryHeader>
+            <CategoryWrap>
+              <Barchart data={dataTiming} colors={colorsForTiming} />
+            </CategoryWrap>
+          </>
+        )}
       </ChartsContainer>
     </MainContainer>
   );

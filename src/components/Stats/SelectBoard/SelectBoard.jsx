@@ -30,7 +30,7 @@ const SelectBoard = ({ onSelect, name, names }) => {
         <p>{t('stats.selectHeader')}</p>
         <SelectContainer>
           <Select onClick={toggleDropdown}>
-            {name} <IoIosArrowDown />
+            {name === 'all' ? t('stats.all') : name} <IoIosArrowDown />
           </Select>
 
           {isOpen && (
@@ -41,7 +41,7 @@ const SelectBoard = ({ onSelect, name, names }) => {
                   data-value={item}
                   onClick={onSelectChange}
                 >
-                  {item}
+                  {item === 'all' ? t('stats.all') : item}
                 </Option>
               ))}
             </Options>
