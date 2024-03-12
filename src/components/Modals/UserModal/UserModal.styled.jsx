@@ -92,7 +92,7 @@ export const EyeBtn = styled.button`
   cursor: pointer;
 `;
 
-export const PlusButton = styled.label`
+export const PlusButton = styled.div`
   width: 24px;
   height: 24px;
   border-radius: 6px;
@@ -100,18 +100,21 @@ export const PlusButton = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   position: absolute;
-  translate: -50% -50%;
+  translate: 100% -50%;
+`;
+
+export const AddPhoto = styled.input`
+  display: none;
+`;
+
+export const AvatarEdit = styled.label`
+  cursor: pointer;
   transition: transform var(--easedTransition);
 
   &:hover {
     transform: scale(1.2);
   }
-`;
-
-export const AddPhoto = styled.input`
-  display: none;
 `;
 
 export const Avatar = styled.div`
