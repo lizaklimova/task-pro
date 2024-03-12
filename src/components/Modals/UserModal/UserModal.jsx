@@ -73,7 +73,6 @@ const UserModal = ({ onClose }) => {
   };
 
   function editProfile(event) {
-    // toast(t('cards.modals.toast.add.success'), TOASTER_CONFIG); тост
     event.preventDefault();
 
     const user = { avatar_url, name, email, password };
@@ -118,7 +117,11 @@ const UserModal = ({ onClose }) => {
                 height={20}
                 strokeColor={'var(--sidebar-plus-icon)'}
               />
-              <AddPhoto type="file" accept="image/*" onChange={changeImg} />
+              <AddPhoto
+                type="file"
+                accept=".png, .jpg, .jpeg"
+                onChange={changeImg}
+              />
             </PlusButton>
           </div>
         </Avatar>

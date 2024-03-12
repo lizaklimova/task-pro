@@ -8,11 +8,10 @@ export const UserContainer = styled.div`
 
 export const UserName = styled.p`
   font-weight: 500;
-display: none;
-    @media screen and (min-width: 768px) {
-      display: unset;
-    }
-   
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: unset;
+  }
 `;
 
 export const Button = styled.button`
@@ -30,6 +29,5 @@ export const Button = styled.button`
   }
   svg {
     border-radius: 8px;
-   
   }
 `;
