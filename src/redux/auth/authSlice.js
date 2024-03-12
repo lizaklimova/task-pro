@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshUser, editUser } from './authOperations';
+import {
+  register,
+  logIn,
+  logOut,
+  refreshUser,
+  editUser,
+} from './authOperations';
 import {
   handleRegLogFulfilled,
   handlePending,

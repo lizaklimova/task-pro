@@ -1,6 +1,7 @@
-import { ENDPOINTS, axiosInstance } from 'api';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 import toast from 'react-hot-toast';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { ENDPOINTS, axiosInstance } from 'api';
 import { TOASTER_CONFIG } from 'constants';
 
 const setAuthorizationHeader = token => {
@@ -20,8 +21,7 @@ export const register = createAsyncThunk(
         credentials
       );
 
-      setAuthorizationHeader(data.user.token);
-
+      setAuthorizationHeader(data.user.tokenAccess);
       return data;
     } catch (error) {
       toast.error(error.response.data.message, TOASTER_CONFIG);
@@ -39,7 +39,7 @@ export const logIn = createAsyncThunk(
         credentials
       );
 
-      setAuthorizationHeader(data.user.token);
+      setAuthorizationHeader(data.user.tokenAccess);
 
       return data;
     } catch (error) {
@@ -78,6 +78,7 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
 export const editUser = createAsyncThunk(
   'user/editUser',
   async (dataUser, thunkAPI) => {
