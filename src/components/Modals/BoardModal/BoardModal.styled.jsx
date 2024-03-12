@@ -107,15 +107,16 @@ export const DefaultImgWrap = styled.div`
 export const BackInputRadio = styled.input`
   display: none;
   &:hover + img {
-    outline: 1px solid var(--accent-color);
+    /* outline: 1px solid var(--accent-color); */
+    box-shadow: 0 0 0 3px var(--modal-background), 0 0 0 4px var(--accent-color);
   }
   &:hover + img,
   &:hover + div {
-    outline: 1px solid var(--accent-color);
+    box-shadow: 0 0 0 3px var(--modal-background), 0 0 0 4px var(--accent-color);
   }
   &:checked + img,
   &:checked + div {
-    outline: 1.8px solid var(--accent-color);
+    box-shadow: 0 0 0 3px var(--modal-background), 0 0 0 4px var(--accent-color);
     transform: scale(1.05);
   }
 `;
