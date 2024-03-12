@@ -26,6 +26,7 @@ import {
   InputUser,
   PlusButton,
   SendBtn,
+  AvatarEdit,
 } from './UserModal.styled';
 
 const UserModal = ({ onClose }) => {
@@ -96,21 +97,21 @@ const UserModal = ({ onClose }) => {
       <h3>{t('editUser.title')}</h3>
       <FormUser onSubmit={editProfile}>
         <Avatar>
-          {avatar_url !== 'default' ? (
-            <img
-              src={preview || avatar_url}
-              alt="avatar"
-              style={{ width: 68, height: 68, objectFit: 'contain' }}
-            />
-          ) : (
-            <User
-              width={68}
-              height={68}
-              strokeColor={'var( --svg-back-color-user)'}
-              fillColor={'var(--svg-color-user)'}
-            />
-          )}
-          <div>
+          <AvatarEdit>
+            {avatar_url !== 'default' ? (
+              <img
+                src={preview || avatar_url}
+                alt="avatar"
+                style={{ width: 68, height: 68, objectFit: 'contain' }}
+              />
+            ) : (
+              <User
+                width={68}
+                height={68}
+                strokeColor={'var( --svg-back-color-user)'}
+                fillColor={'var(--svg-color-user)'}
+              />
+            )}
             <PlusButton>
               <Plus
                 width={20}
@@ -123,7 +124,7 @@ const UserModal = ({ onClose }) => {
                 onChange={changeImg}
               />
             </PlusButton>
-          </div>
+          </AvatarEdit>
         </Avatar>
         <UserNameLabel>
           <InputUser
