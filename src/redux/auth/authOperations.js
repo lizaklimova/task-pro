@@ -1,4 +1,3 @@
-import axios from 'axios';
 import toast from 'react-hot-toast';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ENDPOINTS, axiosInstance } from 'api';
@@ -63,14 +62,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 export const refreshUser = createAsyncThunk(
   'auth/current',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
-
-    if (persistedToken === null) {
-      return thunkAPI.rejectWithValue('There is no user token');
-    }
     try {
-      setAuthorizationHeader(persistedToken);
       const { data } = await axiosInstance.get(ENDPOINTS.users.current);
       return data.user;
     } catch ({ message }) {

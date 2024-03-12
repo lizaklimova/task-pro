@@ -14,22 +14,26 @@ axiosInstance.interceptors.response.use(
     return req;
   },
   async error => {
-    const originReq = error.config;
-    console.log(error);
+    if (
+      error.response.status === 401 &&
+      error.config &&
+      !error.config._isRetry
+    ) {
+      error.config._isRetry = true;
 
-    if (error.response.status === 401) {
       try {
-        const { data } = await axios.get('http://localhost:5050/auth/refresh', {
-          withCredentials: true,
-        });
+        const { data } = await axios.get(
+          `${baseURL}/${ENDPOINTS.auth.refreshToken}`,
+          {
+            withCredentials: true,
+          }
+        );
 
-        console.log(data);
+        axiosInstance.defaults.headers.common.Authorization = `Bearer ${data.user.tokenAccess}`;
 
-        axios.defaults.headers.common.Authorization = `Bearer ${data.tokenAccess}`;
-
-        return axios.request(originReq);
+        return axiosInstance.request(error.config);
       } catch (error) {
-        console.log('Unauthorized');
+        throw error;
       }
     }
   }
