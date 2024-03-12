@@ -155,11 +155,12 @@ export const BoardContainer = styled.div`
   margin-right: -14px;
 
   @media screen and (min-width: 1439px) {
-    max-height: 168px;
+    max-height: calc(100vh - 600px);
     width: 260px;
     margin-left: -24px;
     margin-right: -24px;
     overflow-y: auto;
+    scroll-behavior: smooth;
 
     &::-webkit-scrollbar {
       width: 5px;

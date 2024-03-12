@@ -65,8 +65,10 @@ const SidebarContent = ({ menu, closeMenu }) => {
     const currentIndex = allBoards.findIndex(
       ({ _id }) => _id === currentBoard._id
     );
-    const heightToScroll = currentIndex * 260;
-    boardsContainer.current.scrollTop += heightToScroll;
+    const heightToScroll =
+      allBoards.length > 0 ? currentIndex / allBoards.length : 0;
+    boardsContainer.current.scrollTop =
+      boardsContainer.current.scrollHeight * heightToScroll;
   }, [allBoards, currentBoard]);
 
   useEffect(() => {
