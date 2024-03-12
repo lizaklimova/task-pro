@@ -2,7 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { logOut } from '../../../redux/auth/authOperations';
-import { selectBoards } from '../../../redux/board/boardSelectors';
+import {
+  selectBoards,
+  selectOneBoard,
+} from '../../../redux/board/boardSelectors';
 import { selectBoardSearch } from '../../../redux/search/searchSelectors';
 import { boardSearch } from '../../../redux/search/searchSlice';
 import plantImg from 'assets/images/sidebar/plant.png';
@@ -55,11 +58,16 @@ const SidebarContent = ({ menu, closeMenu }) => {
   const { t } = useTranslation();
   const searchValue = useSelector(selectBoardSearch);
   const allBoards = useSelector(selectBoards);
+  const currentBoard = useSelector(selectOneBoard);
   const boardsContainer = useRef(null);
 
   useEffect(() => {
-    boardsContainer.current.scrollTop = boardsContainer.current.scrollHeight;
-  }, [allBoards]);
+    const currentIndex = allBoards.findIndex(
+      ({ _id }) => _id === currentBoard._id
+    );
+    const heightToScroll = currentIndex * 260;
+    boardsContainer.current.scrollTop += heightToScroll;
+  }, [allBoards, currentBoard]);
 
   useEffect(() => {
     const handleResize = () => {
