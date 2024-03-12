@@ -24,6 +24,7 @@ import {
   StyledFileLabel,
   StyledFileInput,
 } from './BoardModal.styled';
+import { useNavigate } from 'react-router-dom';
 
 const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
   const [errorMsgShown, setErrorMsgShown] = useState(false);
@@ -33,6 +34,7 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
   const titleRef = useRef(null);
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const oneBoard = useSelector(selectOneBoard);
 
   useEffect(() => {
@@ -59,7 +61,10 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
     };
 
     if (variant === 'add') {
-      dispatch(createBoard(data));
+      dispatch(createBoard(data)).then(action => {
+        if (action.type === 'boards/createBoard/fulfilled')
+          navigate(`board/${action.payload._id}`);
+      });
       toast(t('boards.modals.toast.add.success'), TOASTER_CONFIG);
     } else {
       dispatch(updateBoard({ boardId: oneBoard._id, dataUpdate: data }));
