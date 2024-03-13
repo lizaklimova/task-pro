@@ -90,7 +90,9 @@ export const RadioBtn = styled.input`
   opacity: 0;
 
   &:checked + label::before {
-    outline: ${({ $color }) => `1px solid var(--priority-${$color})`};
+    box-shadow: ${({ $color }) =>
+      `0 0 1px var(--modal-background), 0 0 1px 1px var(--priority-${$color})`};
+    opacity: 1;
     border: 2px solid var(--modal-background);
   }
 `;
