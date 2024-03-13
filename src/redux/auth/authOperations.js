@@ -15,13 +15,16 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axiosInstance.post(
+      const { data } = await axiosInstance.post(
         ENDPOINTS.auth.register,
         credentials
       );
-      console.log(response);
-      setAuthorizationHeader(response.data.user.tokenAccess);
-      return response.data;
+
+      if (data) {
+        setAuthorizationHeader(data.user.tokenAccess);
+      }
+
+      return data;
     } catch (error) {
       console.log(error);
       // toast.error(error.response.data.message, TOASTER_CONFIG);
