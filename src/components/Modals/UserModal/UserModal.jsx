@@ -102,7 +102,7 @@ const UserModal = ({ onClose }) => {
               <img
                 src={preview || avatar_url}
                 alt="avatar"
-                style={{ width: 68, height: 68, objectFit: 'contain' }}
+                style={{ width: 68, height: 68, objectFit: 'cover' }}
               />
             ) : (
               <User
