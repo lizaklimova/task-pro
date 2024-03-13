@@ -15,14 +15,14 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.post(
+      const data = await axiosInstance.post(
         ENDPOINTS.auth.register,
         credentials
       );
-
-      if (data) {
-        setAuthorizationHeader(data.user.tokenAccess);
-      }
+      console.log(data);
+      // if (data) {
+      // setAuthorizationHeader(data.user.tokenAccess);
+      // }
 
       return data;
     } catch (error) {
