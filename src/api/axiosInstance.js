@@ -32,7 +32,7 @@ axiosInstance.interceptors.response.use(
 
         return axiosInstance.request(error);
       } catch (error) {
-        throw error;
+        console.log('Unauthorized');
       }
     }
     throw error;
