@@ -30,6 +30,7 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
   const [errorMsgShown, setErrorMsgShown] = useState(false);
   const [errorClassName, setErrorClassName] = useState('');
   const [customBackground, setCustomBackground] = useState(null);
+  const defaultBackgroundId = nanoid();
 
   const titleRef = useRef(null);
   const dispatch = useDispatch();
@@ -115,7 +116,7 @@ const BoardModal = ({ variant, closeModal, menu, closeMenu }) => {
           <BackCustomInputRadio
             type="radio"
             name="background"
-            defaultChecked={nanoid()}
+            defaultChecked={defaultBackgroundId}
           />
         </Label>
 
