@@ -1,7 +1,7 @@
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ENDPOINTS, axiosInstance } from 'api';
-// import { TOASTER_CONFIG } from 'constants';
+import { TOASTER_CONFIG } from 'constants';
 
 const setAuthorizationHeader = token => {
   axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -15,19 +15,16 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const data = await axiosInstance.post(
+      const { data } = await axiosInstance.post(
         ENDPOINTS.auth.register,
         credentials
       );
-      console.log(data);
-      // if (data) {
-      // setAuthorizationHeader(data.user.tokenAccess);
-      // }
+
+      setAuthorizationHeader(data.user.tokenAccess);
 
       return data;
     } catch (error) {
-      console.log(error);
-      // toast.error(error.response.data.message, TOASTER_CONFIG);
+      toast.error(error.response.data.message, TOASTER_CONFIG);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -46,7 +43,7 @@ export const logIn = createAsyncThunk(
 
       return data;
     } catch (error) {
-      // toast.error(error.response.data.message);
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -58,7 +55,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 
     unsetAuthorizationHeader();
   } catch (error) {
-    // toast.error(error.response.data.message, TOASTER_CONFIG);
+    toast.error(error.response.data.message, TOASTER_CONFIG);
     return thunkAPI.rejectWithValue(error.message);
   }
 });

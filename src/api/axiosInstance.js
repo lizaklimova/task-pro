@@ -1,7 +1,8 @@
 import axios from 'axios';
 import ENDPOINTS from './endpoints';
 
-const baseURL = 'https://task-pro-3a4o.onrender.com';
+// const baseURL = 'https://task-pro-3a4o.onrender.com';
+const baseURL = 'http://localhost:5050';
 
 const axiosInstance = axios.create({
   withCredentials: true,
@@ -30,11 +31,12 @@ axiosInstance.interceptors.response.use(
 
         axiosInstance.defaults.headers.common.Authorization = `Bearer ${data.user.tokenAccess}`;
 
-        return axiosInstance.request(error.config);
+        return axiosInstance.request(error);
       } catch (error) {
         throw error;
       }
     }
+    throw error;
   }
 );
 
