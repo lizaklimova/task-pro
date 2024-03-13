@@ -23,6 +23,7 @@ export const register = createAsyncThunk(
       setAuthorizationHeader(data.user.tokenAccess);
       return data;
     } catch (error) {
+      console.log(error);
       toast.error(error.response.data.message, TOASTER_CONFIG);
       return thunkAPI.rejectWithValue(error.message);
     }
