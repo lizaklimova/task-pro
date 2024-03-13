@@ -50,7 +50,6 @@ const RegisterForm = () => {
     dispatch(register({ ...formData }));
 
     await new Promise(res => setTimeout(res, 500));
-    actions.resetForm();
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
