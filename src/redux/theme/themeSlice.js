@@ -5,7 +5,7 @@ import { getTheme, updateTheme } from './themeOperation';
 const themeSlice = createSlice({
   name: 'theme',
   initialState: {
-    theme: '',
+    theme: 'light',
     isLoading: false,
     error: null,
   },

@@ -1,14 +1,17 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
 import { updateTheme } from '../../redux/theme/themeOperation';
+import { selectTheme } from '../../redux/theme/themeSelector';
 import { useTheme } from 'hooks/useTheme';
 import './ThemeSelect.css';
 import { SelectWrap } from './ThemeSelect.styled';
 
 function ThemeSelect() {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
+
+  const themeBack = useSelector(selectTheme);
 
   useTheme();
   const { t } = useTranslation();
@@ -24,6 +27,8 @@ function ThemeSelect() {
     dispatch(updateTheme({ theme: event.value }));
   };
 
+  const defaultValue = THEME_OPTIONS.find(option => option.value === themeBack);
+
   return (
     <SelectWrap $isMenuOpen={isSelectOpen}>
       <Select
@@ -32,6 +37,7 @@ function ThemeSelect() {
           onChangeTheme(event);
         }}
         options={THEME_OPTIONS}
+        defaultValue={defaultValue}
         placeholder={`${t('header.theme')}`}
         isSearchable={false}
         onMenuOpen={() => setIsSelectOpen(true)}
