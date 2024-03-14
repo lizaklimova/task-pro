@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { FcGoogle } from 'react-icons/fc';
 import { logIn } from '../../../redux/auth/authOperations';
 import { useAuth } from 'hooks';
 import { loginSchema } from 'schemas';
@@ -16,10 +18,10 @@ import {
   ErrorPara,
   PassInputWrap,
   HideBtn,
+  Google,
 } from '../RegLogForm.styled';
 import Eye from 'components/Icons/Eye';
 import EyeCrossed from 'components/Icons/EyeCrossed';
-import { useTranslation } from 'react-i18next';
 
 const LoginForm = () => {
   const [visible, setVisible] = useState(false);
@@ -129,6 +131,11 @@ const LoginForm = () => {
               <ErrorPara>{errors.password}</ErrorPara>
             )}
           </label>
+
+          <Google to={'https://task-pro-3a4o.onrender.com/auth/google'}>
+            <FcGoogle style={{ width: '28px', height: '28px' }} />
+            <span>Sign in with Google</span>
+          </Google>
 
           <SubmitBtn type="submit" disabled={isSubmitting}>
             {isLoading ? (

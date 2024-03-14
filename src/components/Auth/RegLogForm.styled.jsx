@@ -101,7 +101,6 @@ export const SubmitBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
   padding: 14px 0;
   font-weight: 500;
   background: #bedbb0;
