@@ -134,7 +134,7 @@ const LoginForm = () => {
 
           <Google to={'https://task-pro-3a4o.onrender.com/auth/google'}>
             <FcGoogle style={{ width: '28px', height: '28px' }} />
-            <span>Sign in with Google</span>
+            <span>Log In with Google</span>
           </Google>
 
           <SubmitBtn type="submit" disabled={isSubmitting}>
