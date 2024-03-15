@@ -132,7 +132,7 @@ const LoginForm = () => {
             )}
           </label>
 
-          <Google to={'https://task-pro-3a4o.onrender.com/auth/google'}>
+          <Google to={'http://localhost:5050/auth/google'}>
             <FcGoogle style={{ width: '28px', height: '28px' }} />
             <span>Log In with Google</span>
           </Google>

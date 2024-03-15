@@ -96,7 +96,7 @@ const Dashboard = ({ board }) => {
             ))}
           </ColumnsList>
           {createPortal(
-            <DragOverlay style={druggedCard}>
+            <DragOverlay>
               {druggedCard && (
                 <TaskCard
                   allColumns={board?.columns}

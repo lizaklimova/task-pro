@@ -1,6 +1,7 @@
 export const handleRegLogFulfilled = (state, { payload }) => {
   state.user = payload.user;
   state.token = payload.user.tokenAccess;
+  state.refreshToken = payload.user.refreshToken;
   state.isLoggedIn = true;
   state.isLoading = false;
 };
