@@ -18,14 +18,14 @@ const SchedulePage = lazy(() => import('pages/SchedulePage'));
 
 const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing, isLoading } = useAuth();
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isRefreshing || isLoading ? (
-    <Loader />
+  return isRefreshing ? (
+    <Loader strokeColor="#fff" />
   ) : (
     <>
       <Toaster position="top-center" />

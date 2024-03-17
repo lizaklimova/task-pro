@@ -13,4 +13,8 @@ export const LoaderContainer = styled.div`
   height: 100vh;
   background-color: rgba(16, 16, 16, 0.8);
   z-index: 4;
+
+  svg {
+    z-index: 5;
+  }
 `;
