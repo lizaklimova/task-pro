@@ -61,6 +61,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
       refreshToken,
     });
 
+    localStorage.removeItem('refreshToken');
     unsetAuthorizationHeader();
   } catch (error) {
     toast.error(error.response.data.message, TOASTER_CONFIG);

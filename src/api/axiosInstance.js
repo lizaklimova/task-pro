@@ -7,6 +7,24 @@ const axiosInstance = axios.create({
   baseURL,
 });
 
+axiosInstance.interceptors.request.use(
+  config => {
+    let urlParams = new URLSearchParams(window.location.search);
+    const accessToken = urlParams.get('token');
+    const refreshToken = urlParams.get('refreshToken');
+
+    if (config.method === 'get' && accessToken && refreshToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+
+      localStorage.setItem('refreshToken', JSON.stringify(refreshToken));
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
+
 axiosInstance.interceptors.response.use(
   req => {
     return req;
@@ -21,10 +39,12 @@ axiosInstance.interceptors.response.use(
 
       try {
         const refreshToken =
+          JSON.parse(localStorage.getItem('refreshToken')) ||
           JSON.parse(localStorage.getItem('persist:auth'))?.refreshToken?.split(
             '"'
-          )[1] ?? null;
-        console.log(refreshToken);
+          )[1] ||
+          null;
+
         const { data } = await axios.post(
           `${baseURL}/${ENDPOINTS.auth.refreshToken}`,
           {
@@ -36,7 +56,7 @@ axiosInstance.interceptors.response.use(
 
         return axiosInstance.request(error.config);
       } catch (error) {
-        console.log('Unauthorized');
+        return Promise.reject(error);
       }
     }
     throw error;
