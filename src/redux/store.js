@@ -19,7 +19,7 @@ import { boardSearchReducer } from './search/searchSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'refreshToken'],
 };
 
 export const store = configureStore({

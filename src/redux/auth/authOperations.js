@@ -19,7 +19,6 @@ export const register = createAsyncThunk(
         ENDPOINTS.auth.register,
         credentials
       );
-
       setAuthorizationHeader(data.user.tokenAccess);
 
       return data;
@@ -50,9 +49,19 @@ export const logIn = createAsyncThunk(
 );
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
-  try {
-    await axiosInstance.post(ENDPOINTS.auth.logout);
+  const state = thunkAPI.getState();
+  const refreshToken = state.auth.token;
 
+  if (!refreshToken) {
+    return thunkAPI.rejectWithValue('No refresh token');
+  }
+
+  try {
+    await axiosInstance.post(ENDPOINTS.auth.logout, {
+      refreshToken,
+    });
+
+    localStorage.removeItem('refreshToken');
     unsetAuthorizationHeader();
   } catch (error) {
     toast.error(error.response.data.message, TOASTER_CONFIG);
@@ -65,6 +74,7 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get(ENDPOINTS.users.current);
+
       return data.user;
     } catch ({ message }) {
       return thunkAPI.rejectWithValue(message);

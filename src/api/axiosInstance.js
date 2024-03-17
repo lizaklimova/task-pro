@@ -4,9 +4,26 @@ import ENDPOINTS from './endpoints';
 const baseURL = 'https://task-pro-3a4o.onrender.com';
 
 const axiosInstance = axios.create({
-  withCredentials: true,
   baseURL,
 });
+
+axiosInstance.interceptors.request.use(
+  config => {
+    let urlParams = new URLSearchParams(window.location.search);
+    const accessToken = urlParams.get('token');
+    const refreshToken = urlParams.get('refreshToken');
+
+    if (config.method === 'get' && accessToken && refreshToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+
+      localStorage.setItem('refreshToken', JSON.stringify(refreshToken));
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
 
 axiosInstance.interceptors.response.use(
   req => {
@@ -21,10 +38,17 @@ axiosInstance.interceptors.response.use(
       error.config._isRetry = true;
 
       try {
-        const { data } = await axios.get(
+        const refreshToken =
+          JSON.parse(localStorage.getItem('refreshToken')) ||
+          JSON.parse(localStorage.getItem('persist:auth'))?.refreshToken?.split(
+            '"'
+          )[1] ||
+          null;
+
+        const { data } = await axios.post(
           `${baseURL}/${ENDPOINTS.auth.refreshToken}`,
           {
-            withCredentials: true,
+            refreshToken,
           }
         );
 
@@ -32,7 +56,7 @@ axiosInstance.interceptors.response.use(
 
         return axiosInstance.request(error.config);
       } catch (error) {
-        console.log('Unauthorized');
+        return Promise.reject(error);
       }
     }
     throw error;
