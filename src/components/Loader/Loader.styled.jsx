@@ -12,4 +12,5 @@ export const LoaderContainer = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(16, 16, 16, 0.8);
+  z-index: 4;
 `;
