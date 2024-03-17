@@ -1,14 +1,12 @@
 import axios from 'axios';
 import ENDPOINTS from './endpoints';
-// const baseURL = 'https://task-pro-3a4o.onrender.com';
-const baseURL = 'http://localhost:5050';
+
+const baseURL = 'https://task-pro-3a4o.onrender.com';
 
 const axiosInstance = axios.create({
   baseURL,
 });
-console.log(
-  JSON.parse(localStorage.getItem('persist:auth')).refreshToken?.split('"')[1]
-);
+
 axiosInstance.interceptors.response.use(
   req => {
     return req;
@@ -33,7 +31,7 @@ axiosInstance.interceptors.response.use(
             refreshToken,
           }
         );
-        console.log(data);
+
         axiosInstance.defaults.headers.common.Authorization = `Bearer ${data.user.tokenAccess}`;
 
         return axiosInstance.request(error.config);
