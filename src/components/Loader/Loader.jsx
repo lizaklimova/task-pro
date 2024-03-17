@@ -1,14 +1,10 @@
 import { LoaderContainer } from './Loader.styled';
 import { RotatingLines } from 'react-loader-spinner';
 
-const Loader = () => {
+const Loader = ({ strokeColor = 'var(--loader-color)' }) => {
   return (
     <LoaderContainer>
-      <RotatingLines
-        width="104"
-        strokeColor="var(--loader-color)"
-        visible={true}
-      />
+      <RotatingLines width="104" strokeColor={strokeColor} visible={true} />
     </LoaderContainer>
   );
 };

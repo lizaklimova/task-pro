@@ -4,7 +4,7 @@ import Welcome from 'components/Welcome';
 
 const WelcomePage = () => {
   const { isLoading } = useAuth();
-  return isLoading ? <Loader /> : <Welcome />;
+  return isLoading ? <Loader strokeColor="#53cf17" /> : <Welcome />;
 };
 
 export default WelcomePage;
