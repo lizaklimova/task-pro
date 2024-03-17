@@ -4,7 +4,21 @@ import Welcome from 'components/Welcome';
 
 const WelcomePage = () => {
   const { isLoading } = useAuth();
-  return isLoading ? <Loader strokeColor="#fff" /> : <Welcome />;
+  return isLoading ? (
+    <Watch
+      visible={true}
+      height="100"
+      width="100"
+      radius="48"
+      color="#ffffff"
+      ariaLabel="watch-loading"
+      wrapperStyle={{
+        zIndex: '5',
+      }}
+    />
+  ) : (
+    <Welcome />
+  );
 };
 
 export default WelcomePage;
